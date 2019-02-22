@@ -1,13 +1,30 @@
 package com.chrynan.video.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.chrynan.video.R
 import com.chrynan.video.ui.fragment.VideoFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
+import com.chrynan.video.ui.view.TopMenuView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    TopMenuView {
+
+    override var topMenuTitle: CharSequence?
+        get() = toolbar?.title
+        set(value) {
+            toolbar?.title = value
+        }
+
+    override var showTopMenu: Boolean
+        get() = toolbar?.let { (it.visibility == View.VISIBLE) and (it.alpha != 0f) } ?: false
+        set(value) {
+            toolbar?.animate()
+                ?.alpha(if (value) 1f else 0f)
+                ?.start()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
