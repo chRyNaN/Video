@@ -11,6 +11,11 @@ import kotlinx.android.synthetic.main.fragment_video.*
 class VideoFragment : BaseFragment(),
     VideoView {
 
+    companion object {
+
+        fun newInstance() = VideoFragment()
+    }
+
     override val containerWidth: Int
         get() = containerView?.measuredWidth ?: 0
 
