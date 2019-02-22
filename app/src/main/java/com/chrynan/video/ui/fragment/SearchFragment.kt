@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chrynan.video.R
-import com.chrynan.video.ui.view.HomeView
+import com.chrynan.video.ui.view.SearchView
 
-class HomeFragment : BaseFragment(),
-    HomeView {
+class SearchFragment : BaseFragment(),
+    SearchView {
 
     companion object {
 
-        fun newInstance() = HomeFragment()
+        fun newInstance() = SearchFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_home, container, false)
+        inflater.inflate(R.layout.fragment_search, container, false)
 }
