@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Video</string>
+
+    <string name="menu_bottom_navigation_home">Home</string>
+    <string name="menu_bottom_navigation_search">Search</string>
+    <string name="menu_bottom_navigation_settings">Settings</string>
+
+</resources>
