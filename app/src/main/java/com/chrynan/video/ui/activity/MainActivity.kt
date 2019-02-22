@@ -2,15 +2,16 @@ package com.chrynan.video.ui.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.chrynan.video.R
+import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.fragment.VideoFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.TopMenuView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(),
-    TopMenuView {
+class MainActivity : BaseActivity(),
+    TopMenuView,
+    MainNavigator {
 
     override var topMenuTitle: CharSequence?
         get() = toolbar?.title
@@ -38,5 +39,19 @@ class MainActivity : AppCompatActivity(),
                 listOf(CollapsingVideoTransitionStateListener(context = this, videoView = videoFragment))
 
         supportFragmentManager.beginTransaction().add(R.id.videoFragmentContainer, videoFragment).commit()
+    }
+
+    override fun goToHome() {
+
+    }
+
+    override fun goToSearch() {
+    }
+
+    override fun goToSettings() {
+    }
+
+    override fun goBack() {
+
     }
 }
