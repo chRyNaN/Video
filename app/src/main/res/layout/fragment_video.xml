@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/containerView"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/colorPrimaryDark">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/containerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
-    <ImageView
+    <View
             android:id="@+id/videoImageView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="#ffffff"/>
+            android:background="#ffffff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-</LinearLayout>
+    <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Title Example"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintEnd_toStartOf="@+id/playIconImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"/>
+
+    <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginBottom="8dp"
+            android:text="Description Example"
+            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"
+            app:layout_constraintEnd_toStartOf="@+id/playIconImageView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+    <ImageView
+            android:id="@+id/playIconImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/colorAccent"
+            android:layout_margin="8dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cancelIconImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>
+
+    <ImageView
+            android:id="@+id/cancelIconImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/colorAccent"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.chrynan.video.R
 import com.chrynan.video.ui.view.VideoView
 import kotlinx.android.synthetic.main.fragment_video.*
@@ -28,7 +29,9 @@ class VideoFragment : BaseFragment(),
     override var videoWidth: Int
         get() = videoImageView?.measuredWidth ?: 0
         set(value) {
-            videoImageView?.layoutParams?.width = value
+            val params = videoImageView?.layoutParams as? ConstraintLayout.LayoutParams
+            params?.width = value
+            videoImageView?.layoutParams = params
         }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
