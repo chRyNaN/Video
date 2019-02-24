@@ -3,25 +3,23 @@ package com.chrynan.video.ui.widget
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.chrynan.video.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.layout_video_motion.view.*
 
 class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionLayout(context, attrs),
     MotionLayout.TransitionListener {
 
-    val baseContainerView: ViewGroup?
-        get() = baseContainerView
+    var videoContainerView: ViewGroup? = null
 
-    val videoContainerView: ViewGroup?
-        get() = videoFragmentContainer
+    var currentState: VideoTransitionState = VideoTransitionState.Collapsed
+        set(value) {
+            field = value
 
-    val bottomNavBar: BottomNavigationView
-        get() = bottomNavigationView
+            if (progress != value.progress) {
+                progress = value.progress
+            }
+        }
 
     var videoTransitionStateListeners: List<VideoTransitionStateListener> = emptyList()
 
@@ -30,7 +28,6 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
     private var touchStarted = false
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.layout_video_motion, this)
         setTransitionListener(this)
     }
 
@@ -41,7 +38,7 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
         }
 
         if (!touchStarted) {
-            videoFragmentContainer?.getHitRect(viewRect)
+            videoContainerView?.getHitRect(viewRect)
             touchStarted = viewRect.contains(event.x.toInt(), event.y.toInt())
         }
 
@@ -59,11 +56,15 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
     override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) = updateListenersWithTransitionState()
 
     private fun updateListenersWithTransitionState() {
-        val state = when (progress) {
-            0f -> VideoTransitionState.Collapsed
-            1f -> VideoTransitionState.Expanded
-            else -> VideoTransitionState.Transitioning(progress = progress)
+        val state = when {
+            progress == 0f -> VideoTransitionState.Collapsed
+            progress == 1f -> VideoTransitionState.Expanded
+            progress < currentState.progress -> VideoTransitionState.Collapsing(progress)
+            progress > currentState.progress -> VideoTransitionState.Expanding(progress)
+            else -> VideoTransitionState.Steady(progress = progress)
         }
+
+        currentState = state
 
         for (listener in videoTransitionStateListeners) {
             listener.onTransitionStateChange(state)
@@ -76,7 +77,11 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
 
         object Expanded : VideoTransitionState(1f)
 
-        class Transitioning(progress: Float) : VideoTransitionState(progress)
+        class Collapsing(progress: Float) : VideoTransitionState(progress)
+
+        class Expanding(progress: Float) : VideoTransitionState(progress)
+
+        class Steady(progress: Float) : VideoTransitionState(progress)
     }
 
     interface VideoTransitionStateListener {
