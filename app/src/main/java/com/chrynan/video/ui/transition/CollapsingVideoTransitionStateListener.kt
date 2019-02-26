@@ -17,8 +17,15 @@ class CollapsingVideoTransitionStateListener(
         get() = videoView.containerWidth
 
     override fun onTransitionStateChange(state: VideoMotionLayout.VideoTransitionState) {
-        videoView.videoHeight = (expandedHeight - ((1 - state.progress) * (expandedHeight - collapsedHeight))).toInt()
-        videoView.videoWidth = (expandedWidth - ((1 - 4 * state.progress) * (expandedWidth - collapsedWidth))).toInt()
+        val videoWidth = (expandedWidth - ((1 - 4 * state.progress) * (expandedWidth - collapsedWidth))).toInt()
             .coerceAtMost(expandedWidth)
+        videoView.videoWidth = videoWidth
+        videoView.videoHeight = (expandedHeight - ((1 - state.progress) * (expandedHeight - collapsedHeight))).toInt()
+
+        val alphaMaxWidth = expandedWidth - videoView.collapsedPlayIconWidth - videoView.collapsedCancelIconWidth
+        val alpha = if (state.progress == 0f) 1f else 1 - (videoWidth / alphaMaxWidth.toFloat()).coerceIn(0f, 1f)
+
+        videoView.collapsedPlayIconAlpha = alpha
+        videoView.collapsedCancelIconAlpha = alpha
     }
 }
