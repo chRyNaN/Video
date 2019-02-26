@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.aaaah.ManagerRecyclerViewAdapter
+import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
+import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.view.VideoView
 import kotlinx.android.synthetic.main.fragment_video.*
 
@@ -66,4 +70,11 @@ class VideoFragment : BaseFragment(),
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_video, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerView?.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(VideoInfoAdapter()))
+        }
+    }
 }
