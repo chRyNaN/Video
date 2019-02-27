@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="cd_video_info_expand_collapse">Expand or collapse the Video Descriptions.</string>
+    <string name="cd_video_info_channel_image">Channel logo image.</string>
+
+</resources>

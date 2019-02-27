@@ -9,6 +9,7 @@ import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfoViewModel
+import kotlinx.android.synthetic.main.adapter_video_info.view.*
 
 class VideoInfoAdapter : AnotherAdapter<VideoInfoViewModel>() {
 
@@ -20,6 +21,10 @@ class VideoInfoAdapter : AnotherAdapter<VideoInfoViewModel>() {
         LayoutInflater.from(parent.context).inflate(R.layout.adapter_video_info, parent, false)
 
     override fun onBindItem(view: View, item: VideoInfoViewModel) {
-
+        view.apply {
+            titleTextView?.text = item.title
+            viewCountTextView?.text = item.viewCount
+            descriptionTextView?.text = item.description
+        }
     }
 }

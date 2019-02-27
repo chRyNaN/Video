@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
+import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.view.VideoView
 import kotlinx.android.synthetic.main.fragment_video.*
@@ -73,8 +74,30 @@ class VideoFragment : BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView?.apply {
+            val managerAdapter = ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(VideoInfoAdapter()))
             layoutManager = LinearLayoutManager(context)
-            adapter = ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(VideoInfoAdapter()))
+            adapter = managerAdapter
+
+            managerAdapter.items = listOf(
+                VideoInfoViewModel(
+                    uniqueAdapterId = 0,
+                    title = "Testing 123",
+                    viewCount = "225k",
+                    description = "Description",
+                    publishedDate = "",
+                    category = "",
+                    tags = emptyList(),
+                    supportsRating = false,
+                    likeCount = null,
+                    dislikeCount = null,
+                    isLiked = false,
+                    isDisliked = false,
+                    channelName = "",
+                    channelImageUrl = "",
+                    channelSubscriberCount = "",
+                    isSubscribedToChannel = false
+                )
+            )
         }
     }
 }

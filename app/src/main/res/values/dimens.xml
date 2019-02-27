@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_horizontal_spacing">@dimen/spacing_small</dimen>
+
+    <dimen name="spacing_xxsmall">4dp</dimen>
+    <dimen name="spacing_xsmall">8dp</dimen>
+    <dimen name="spacing_small">16dp</dimen>
+
+    <dimen name="horizontal_divider_height">1dp</dimen>
+
+    <dimen name="video_info_channel_image_size">48dp</dimen>
+
+</resources>
