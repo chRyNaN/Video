@@ -3,6 +3,7 @@ package com.chrynan.video.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
@@ -45,6 +46,11 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
                         providerUrl = item.providerUrl
                     )
                 }
+            }
+            channelImageView?.apply {
+                Glide.with(context)
+                    .load(item.channelImageUrl)
+                    .into(this)
             }
             channelSubscribeCountTextView?.text = item.channelSubscriberCount
             channelSubscribeCountTextView?.visibility = if (item.showChannelSubscribeCount) View.VISIBLE else View.GONE
