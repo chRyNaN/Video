@@ -49,4 +49,174 @@
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 
+    <!-- Extensions -->
+
+    <style name="TextAppearance.Header.Dark">
+        <item name="android:textColor">@color/text_dark_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Header.Dark.Secondary">
+        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Header.Light">
+        <item name="android:textColor">@color/text_light_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Header.Light.Secondary">
+        <item name="android:textColor">@color/text_light_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Header.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Header.Attention">
+        <item name="android:textColor">@color/text_accent_two_color</item>
+    </style>
+
+    <style name="TextAppearance.Header.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_three_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Dark">
+        <item name="android:textColor">@color/text_dark_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Dark.Secondary">
+        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Light">
+        <item name="android:textColor">@color/text_light_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Light.Secondary">
+        <item name="android:textColor">@color/text_light_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Attention">
+        <item name="android:textColor">@color/text_accent_two_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_three_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Dark">
+        <item name="android:textColor">@color/text_dark_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Dark.Secondary">
+        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Light">
+        <item name="android:textColor">@color/text_light_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Light.Secondary">
+        <item name="android:textColor">@color/text_light_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Attention">
+        <item name="android:textColor">@color/text_accent_two_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_three_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Dark">
+        <item name="android:textColor">@color/text_dark_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Dark.Secondary">
+        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Light">
+        <item name="android:textColor">@color/text_light_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Light.Secondary">
+        <item name="android:textColor">@color/text_light_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Attention">
+        <item name="android:textColor">@color/text_accent_two_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_three_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Dark">
+        <item name="android:textColor">@color/text_dark_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Dark.Secondary">
+        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Light">
+        <item name="android:textColor">@color/text_light_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Light.Secondary">
+        <item name="android:textColor">@color/text_light_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Attention">
+        <item name="android:textColor">@color/text_accent_two_color</item>
+    </style>
+
+    <style name="TextAppearance.Body.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_three_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Dark">
+        <item name="android:textColor">@color/text_dark_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Dark.Secondary">
+        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Light">
+        <item name="android:textColor">@color/text_light_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Light.Secondary">
+        <item name="android:textColor">@color/text_light_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Attention">
+        <item name="android:textColor">@color/text_accent_two_color</item>
+    </style>
+
+    <style name="TextAppearance.Label.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_three_color</item>
+    </style>
+
 </resources>

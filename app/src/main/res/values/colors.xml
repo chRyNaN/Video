@@ -26,10 +26,10 @@
     <color name="text_light_primary_color">@color/white</color>
     <color name="text_light_secondary_color">@color/white_transparency_50_percent</color>
     <color name="text_accent_color">@color/colorAccent</color>
-    <color name="text_accent_two_color">@color/accent_three_color</color>
+    <color name="text_accent_two_color">@color/accent_two_color</color>
+    <color name="text_accent_three_color">@color/accent_three_color</color>
     <color name="text_medium_color">@color/primary_color</color>
     <color name="text_dark_primary_color">@color/primary_dark_color</color>
     <color name="text_dark_secondary_color">@color/primary_dark_transparency_50_percent</color>
-    <color name="text_error_color">@color/accent_two_color</color>
 
 </resources>
