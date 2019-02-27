@@ -5,13 +5,13 @@
         android:id="@+id/containerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/background_dark_color">
 
     <View
             android:id="@+id/videoImageView"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/video_expanded_default_height"
+            android:background="@color/background_light_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -22,9 +22,11 @@
             android:singleLine="true"
             android:maxLines="1"
             android:ellipsize="end"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            android:layout_marginBottom="@dimen/spacing_xxsmall"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:text="Title Example"
+            android:textAppearance="@style/TextAppearance.Title.Light"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/videoImageView"
             app:layout_constraintEnd_toStartOf="@+id/playIconImageView"
@@ -38,8 +40,10 @@
             android:singleLine="true"
             android:maxLines="1"
             android:ellipsize="end"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/spacing_xsmall"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:text="Description Example"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toEndOf="@+id/videoImageView"
             app:layout_constraintBottom_toBottomOf="@+id/videoImageView"
             app:layout_constraintEnd_toStartOf="@+id/playIconImageView"
@@ -47,10 +51,11 @@
 
     <ImageView
             android:id="@+id/playIconImageView"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@color/colorAccent"
-            android:layout_margin="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_xsmall"
+            android:src="@drawable/ic_play_pause"
+            android:contentDescription="@string/cd_video_action_play_pause"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cancelIconImageView"
@@ -58,10 +63,12 @@
 
     <ImageView
             android:id="@+id/cancelIconImageView"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@color/colorAccent"
-            android:layout_margin="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_xsmall"
+            android:layout_marginEnd="@dimen/spacing_xsmall"
+            android:src="@drawable/ic_stop"
+            android:contentDescription="@string/cd_video_action_stop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>

@@ -17,4 +17,6 @@
 
     <dimen name="video_info_channel_image_size">48dp</dimen>
 
+    <dimen name="video_expanded_default_height">250dp</dimen>
+
 </resources>

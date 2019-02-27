@@ -36,9 +36,15 @@ class MainActivity : BaseActivity(),
         val videoFragment = VideoFragment()
 
         mainMotionLayout?.apply {
+            progress = 1f
             videoContainerView = videoFragmentContainer
             videoTransitionStateListeners =
-                    listOf(CollapsingVideoTransitionStateListener(context = this@MainActivity, videoView = videoFragment))
+                    listOf(
+                        CollapsingVideoTransitionStateListener(
+                            context = this@MainActivity,
+                            videoView = videoFragment
+                        )
+                    )
         }
 
         supportFragmentManager.beginTransaction().add(R.id.videoFragmentContainer, videoFragment).commit()

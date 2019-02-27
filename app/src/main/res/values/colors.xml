@@ -11,9 +11,11 @@
     <color name="accent_two_color">#FF9421</color>
     <color name="accent_two_focused_color">#F37B20</color>
     <color name="accent_three_color">#41AF3D</color>
-    <color name="background_dark_color">#E9E9E9</color>
-    <color name="background_medium_color">#F7F7F3</color>
+    <color name="background_dark_color">@color/primary_dark_color</color>
+    <color name="background_dark_secondary_color">@color/primary_color</color>
+    <color name="background_medium_color">#E9E9E9</color>
     <color name="background_light_color">@color/white</color>
+    <color name="background_light_secondary_color">#F7F7F3</color>
 
     <color name="white">#FFFFFF</color>
 

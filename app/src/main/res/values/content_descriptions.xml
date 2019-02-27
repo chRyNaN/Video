@@ -3,5 +3,7 @@
 
     <string name="cd_video_info_expand_collapse">Expand or collapse the Video Descriptions.</string>
     <string name="cd_video_info_channel_image">Channel logo image.</string>
+    <string name="cd_video_action_play_pause">Play and Pause the current video.</string>
+    <string name="cd_video_action_stop">Stop playing the current video.</string>
 
 </resources>

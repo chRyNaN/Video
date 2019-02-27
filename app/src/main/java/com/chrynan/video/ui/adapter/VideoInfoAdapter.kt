@@ -37,14 +37,22 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
             dislikeButton?.isActivated = item.isDisliked
             shareButton?.text = item.shareButtonText
 
-            channelNameTextView?.text = item.channelName
+            channelNameTextView?.apply {
+                text = item.channelName
+                setOnClickListener {
+                    listener.channelSelected(
+                        channelId = item.channelId,
+                        providerUrl = item.providerUrl
+                    )
+                }
+            }
             channelSubscribeCountTextView?.text = item.channelSubscriberCount
             channelSubscribeCountTextView?.visibility = if (item.showChannelSubscribeCount) View.VISIBLE else View.GONE
             channelSubscribeButton?.isActivated = item.isSubscribedToChannel
 
             providerNameTextView?.apply {
                 text = item.providerServiceName
-                setOnClickListener { listener.providerSelected(item.providerUrl) }
+                setOnClickListener { listener.providerSelected(providerUrl = item.providerUrl) }
             }
 
             publishedTimeTextView?.text = item.publishedDate
@@ -53,7 +61,7 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
                 text = item.category
                 visibility = if (item.showCategory) View.VISIBLE else View.GONE
                 categoryHeaderTextView?.visibility = if (item.showCategory) View.VISIBLE else View.GONE
-                setOnClickListener { listener.categorySelected(item.category) }
+                setOnClickListener { listener.categorySelected(category = item.category) }
             }
 
             tagsTextView?.apply {
