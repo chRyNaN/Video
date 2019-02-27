@@ -4,7 +4,10 @@ import com.chrynan.aaaah.AdapterId
 import com.chrynan.aaaah.UniqueAdapterItem
 
 data class VideoInfoViewModel(
-    override val uniqueAdapterId: AdapterId,
+    val videoId: String,
+    val channelId: String,
+    val providerUrl: String,
+    override val uniqueAdapterId: AdapterId = -1L,
     val title: String,
     val viewCount: String,
     val description: String,
@@ -12,10 +15,12 @@ data class VideoInfoViewModel(
     val category: String? = null,
     val tags: List<String> = emptyList(),
     val supportsRating: Boolean = false,
-    val likeCount: String? = null,
-    val dislikeCount: String? = null,
+    val likeButtonText: String,
+    val dislikeButtonText: String,
+    val shareButtonText: String,
     val isLiked: Boolean = false,
     val isDisliked: Boolean = false,
+    val providerServiceName: String,
     val channelName: String,
     val channelImageUrl: String,
     val channelSubscriberCount: String? = null,

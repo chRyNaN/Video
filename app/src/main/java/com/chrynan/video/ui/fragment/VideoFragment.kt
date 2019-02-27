@@ -11,11 +11,11 @@ import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
-import com.chrynan.video.ui.view.VideoView
+import com.chrynan.video.ui.view.CollapsibleVideoView
 import kotlinx.android.synthetic.main.fragment_video.*
 
 class VideoFragment : BaseFragment(),
-    VideoView {
+    CollapsibleVideoView {
 
     companion object {
 
@@ -69,6 +69,12 @@ class VideoFragment : BaseFragment(),
             cancelIconImageView?.visibility = if (value) View.VISIBLE else View.GONE
         }
 
+    override var contentContainerAlpha: Float
+        get() = recyclerView?.alpha ?: 0f
+        set(value) {
+            recyclerView?.alpha = value
+        }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_video, container, false)
 
@@ -80,6 +86,10 @@ class VideoFragment : BaseFragment(),
 
             managerAdapter.items = listOf(
                 VideoInfoViewModel(
+                    videoId = "",
+                    channelId = "",
+                    providerUrl = "",
+                    providerServiceName = "",
                     uniqueAdapterId = 0,
                     title = "Testing 123",
                     viewCount = "225k",
@@ -88,8 +98,9 @@ class VideoFragment : BaseFragment(),
                     category = "",
                     tags = emptyList(),
                     supportsRating = false,
-                    likeCount = null,
-                    dislikeCount = null,
+                    likeButtonText = "Like",
+                    dislikeButtonText = "Dislike",
+                    shareButtonText = "Share",
                     isLiked = false,
                     isDisliked = false,
                     channelName = "",

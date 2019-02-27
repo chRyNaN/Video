@@ -1,12 +1,12 @@
 package com.chrynan.video.ui.transition
 
 import android.content.Context
-import com.chrynan.video.ui.view.VideoView
+import com.chrynan.video.ui.view.CollapsibleVideoView
 import com.chrynan.video.ui.widget.VideoMotionLayout
 
 class CollapsingVideoTransitionStateListener(
     private val context: Context,
-    private val videoView: VideoView
+    private val videoView: CollapsibleVideoView
 ) : VideoMotionLayout.VideoTransitionStateListener {
 
     private val expandedHeight by lazy { 250 * context.resources.displayMetrics.density }
@@ -27,5 +27,7 @@ class CollapsingVideoTransitionStateListener(
 
         videoView.collapsedPlayIconAlpha = alpha
         videoView.collapsedCancelIconAlpha = alpha
+
+        videoView.contentContainerAlpha = state.progress
     }
 }

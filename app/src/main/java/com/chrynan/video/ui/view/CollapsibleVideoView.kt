@@ -1,6 +1,6 @@
 package com.chrynan.video.ui.view
 
-interface VideoView {
+interface CollapsibleVideoView {
 
     val containerWidth: Int
 
@@ -19,4 +19,6 @@ interface VideoView {
     var collapsedPlayIconIsVisible: Boolean
 
     var collapsedCancelIconIsVisible: Boolean
+
+    var contentContainerAlpha: Float
 }

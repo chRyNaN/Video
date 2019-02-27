@@ -14,5 +14,6 @@
     <string name="video_info_subtitle_published">Published</string>
     <string name="video_info_subtitle_category">Category</string>
     <string name="video_info_subtitle_tags">Tags</string>
+    <string name="video_info_subtitle_provider">Provider</string>
 
 </resources>

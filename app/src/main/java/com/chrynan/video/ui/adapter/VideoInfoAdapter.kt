@@ -25,6 +25,10 @@ class VideoInfoAdapter : AnotherAdapter<VideoInfoViewModel>() {
             titleTextView?.text = item.title
             viewCountTextView?.text = item.viewCount
             descriptionTextView?.text = item.description
+            expandDescriptionBackgroundView?.setOnClickListener {
+                descriptionGroup?.visibility =
+                        if (descriptionGroup?.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+            }
         }
     }
 }
