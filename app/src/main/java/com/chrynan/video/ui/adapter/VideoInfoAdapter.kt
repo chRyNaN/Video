@@ -28,8 +28,9 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
             descriptionTextView?.text = item.description
 
             expandDescriptionBackgroundView?.setOnClickListener {
-                descriptionGroup?.visibility =
-                        if (descriptionGroup?.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+                val wasVisible = descriptionGroup?.visibility == View.VISIBLE
+                descriptionGroup?.visibility = if (wasVisible) View.GONE else View.VISIBLE
+                expandIconImageView?.isActivated = !wasVisible
             }
 
             likeButton?.text = item.likeButtonText

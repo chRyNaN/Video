@@ -26,7 +26,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:contentDescription="@string/cd_video_info_expand_collapse"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
-            android:src="@drawable/ic_arrow_down"
+            android:src="@drawable/state_arrow_up_down"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
