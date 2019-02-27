@@ -227,6 +227,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
             app:layout_constraintTop_toBottomOf="@+id/providerDivider"
             app:layout_constraintStart_toEndOf="@+id/publishedHeaderTextView"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -255,6 +256,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
             app:layout_constraintTop_toBottomOf="@+id/publishedBarrier"
             app:layout_constraintStart_toEndOf="@+id/categoryHeaderTextView"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -282,6 +284,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             app:layout_constraintTop_toBottomOf="@+id/categoryBarrier"
             app:layout_constraintStart_toEndOf="@+id/tagsHeaderTextView"

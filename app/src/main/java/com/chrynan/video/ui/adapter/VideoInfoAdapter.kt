@@ -25,9 +25,41 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
             titleTextView?.text = item.title
             viewCountTextView?.text = item.viewCount
             descriptionTextView?.text = item.description
+
             expandDescriptionBackgroundView?.setOnClickListener {
                 descriptionGroup?.visibility =
                         if (descriptionGroup?.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+            }
+
+            likeButton?.text = item.likeButtonText
+            likeButton?.isActivated = item.isLiked
+            dislikeButton?.text = item.dislikeButtonText
+            dislikeButton?.isActivated = item.isDisliked
+            shareButton?.text = item.shareButtonText
+
+            channelNameTextView?.text = item.channelName
+            channelSubscribeCountTextView?.text = item.channelSubscriberCount
+            channelSubscribeCountTextView?.visibility = if (item.showChannelSubscribeCount) View.VISIBLE else View.GONE
+            channelSubscribeButton?.isActivated = item.isSubscribedToChannel
+
+            providerNameTextView?.apply {
+                text = item.providerServiceName
+                setOnClickListener { listener.providerSelected(item.providerUrl) }
+            }
+
+            publishedTimeTextView?.text = item.publishedDate
+
+            categoryTextView?.apply {
+                text = item.category
+                visibility = if (item.showCategory) View.VISIBLE else View.GONE
+                categoryHeaderTextView?.visibility = if (item.showCategory) View.VISIBLE else View.GONE
+                setOnClickListener { listener.categorySelected(item.category) }
+            }
+
+            tagsTextView?.apply {
+                text = item.tags.toString()
+                visibility = if (item.showTags) View.VISIBLE else View.GONE
+                tagsHeaderTextView?.visibility = if (item.showTags) View.VISIBLE else View.GONE
             }
         }
     }

@@ -12,8 +12,10 @@ data class VideoInfoViewModel(
     val viewCount: String,
     val description: String,
     val publishedDate: String,
-    val category: String? = null,
+    val category: String,
+    val showCategory: Boolean = false,
     val tags: List<String> = emptyList(),
+    val showTags: Boolean = false,
     val supportsRating: Boolean = false,
     val likeButtonText: String,
     val dislikeButtonText: String,
@@ -23,6 +25,7 @@ data class VideoInfoViewModel(
     val providerServiceName: String,
     val channelName: String,
     val channelImageUrl: String,
-    val channelSubscriberCount: String? = null,
+    val channelSubscriberCount: String,
+    val showChannelSubscribeCount: Boolean = false,
     val isSubscribedToChannel: Boolean = false
 ) : UniqueAdapterItem
