@@ -108,7 +108,7 @@ class VideoFragment : BaseFragment(),
                     channelName = "chRyNaN Codes",
                     channelImageUrl = "www.chrynan.com",
                     channelSubscriberCount = "250m",
-                    isSubscribedToChannel = true,
+                    isSubscribedToChannel = false,
                     showCategory = true,
                     showTags = true,
                     showChannelSubscribeCount = true
