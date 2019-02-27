@@ -13,6 +13,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.SubHeader.Light"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/expandIconImageView"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -35,6 +36,7 @@
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:layout_marginTop="@dimen/spacing_xxsmall"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
 
@@ -59,6 +61,7 @@
             android:background="@android:color/transparent"
             android:drawablePadding="@dimen/spacing_xxsmall"
             android:text="@string/video_info_button_like"
+            android:textAppearance="@style/TextAppearance.Button.Light.Secondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/dislikeButton"
             app:layout_constraintTop_toBottomOf="@+id/viewCountTextView"/>
@@ -74,6 +77,7 @@
             android:text="@string/video_info_button_dislike"
             android:background="@android:color/transparent"
             android:drawablePadding="@dimen/spacing_xxsmall"
+            android:textAppearance="@style/TextAppearance.Button.Light.Secondary"
             app:layout_constraintEnd_toStartOf="@+id/shareButton"
             app:layout_constraintStart_toEndOf="@+id/likeButton"
             app:layout_constraintTop_toBottomOf="@+id/viewCountTextView"/>
@@ -89,6 +93,7 @@
             android:text="@string/video_info_button_share"
             android:drawablePadding="@dimen/spacing_xxsmall"
             android:background="@android:color/transparent"
+            android:textAppearance="@style/TextAppearance.Button.Light.Secondary"
             app:layout_constraintStart_toEndOf="@+id/dislikeButton"
             app:layout_constraintTop_toBottomOf="@+id/viewCountTextView"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -126,7 +131,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
-            android:text="Channel Name"
+            android:textAppearance="@style/TextAppearance.Title.Accent"
             app:layout_constraintStart_toEndOf="@+id/channelImageView"
             app:layout_constraintTop_toBottomOf="@+id/buttonDivider"
             app:layout_constraintEnd_toStartOf="@+id/channelSubscribeButton"/>
@@ -140,6 +145,7 @@
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:text="@string/video_info_button_subscribe"
             android:background="@android:color/transparent"
+            android:textAppearance="@style/TextAppearance.Button.Attention"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/buttonDivider"/>
 
@@ -148,7 +154,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xxsmall"
-            android:text="100k Subscribers"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toEndOf="@+id/channelImageView"
             app:layout_constraintEnd_toEndOf="@+id/channelSubscribeButton"
             app:layout_constraintTop_toBottomOf="@+id/channelNameTextView"/>
@@ -178,6 +184,7 @@
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:text="@string/video_info_subtitle_provider"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/channelDivider"/>
 
@@ -188,7 +195,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
-            android:text="Provider Name"
+            android:textAppearance="@style/TextAppearance.Title.Accent"
             app:layout_constraintStart_toEndOf="@+id/providerHeaderTextView"
             app:layout_constraintTop_toBottomOf="@+id/channelDivider"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -218,6 +225,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/providerDivider"/>
 
@@ -227,6 +235,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Light"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             app:layout_constraintTop_toBottomOf="@+id/providerDivider"
             app:layout_constraintStart_toEndOf="@+id/publishedHeaderTextView"
@@ -247,6 +256,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/publishedBarrier"/>
 
@@ -257,6 +267,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Accent"
             app:layout_constraintTop_toBottomOf="@+id/publishedBarrier"
             app:layout_constraintStart_toEndOf="@+id/categoryHeaderTextView"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -276,6 +287,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryBarrier"/>
 
@@ -286,6 +298,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Light"
             app:layout_constraintTop_toBottomOf="@+id/categoryBarrier"
             app:layout_constraintStart_toEndOf="@+id/tagsHeaderTextView"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -304,6 +317,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Body.Light"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tagsBarrier"/>

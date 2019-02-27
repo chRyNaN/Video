@@ -34,19 +34,19 @@
     </style>
 
     <style name="TextAppearance.Title" parent="SemiBold">
-        <item name="android:textSize">@dimen/text_size_large</item>
-    </style>
-
-    <style name="TextAppearance.Button" parent="SemiBold">
-        <item name="android:textSize">@dimen/text_size_large</item>
-    </style>
-
-    <style name="TextAppearance.Body" parent="Regular">
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
-    <style name="TextAppearance.Label" parent="Regular">
+    <style name="TextAppearance.Button" parent="SemiBold">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="Regular">
         <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="TextAppearance.Label" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_xsmall</item>
     </style>
 
     <!-- Extensions -->
