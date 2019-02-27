@@ -23,4 +23,30 @@
         <item name="fontFamily">@font/open_sans_bold</item>
     </style>
 
+    <!-- TextAppearances -->
+
+    <style name="TextAppearance.Header" parent="Bold">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader" parent="Bold">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TextAppearance.Title" parent="SemiBold">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="SemiBold">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="TextAppearance.Label" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
 </resources>
