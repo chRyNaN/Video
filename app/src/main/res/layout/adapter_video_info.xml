@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:textAppearance="@style/TextAppearance.Title.Accent"
+            android:textColor="@color/link_text_color"
             app:layout_constraintStart_toEndOf="@+id/channelImageView"
             app:layout_constraintTop_toBottomOf="@+id/buttonDivider"
             app:layout_constraintEnd_toStartOf="@+id/channelSubscribeButton"/>
@@ -198,6 +199,7 @@
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:textAppearance="@style/TextAppearance.Title.Accent"
+            android:textColor="@color/link_text_color"
             app:layout_constraintStart_toEndOf="@+id/providerHeaderTextView"
             app:layout_constraintTop_toBottomOf="@+id/channelDivider"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -270,6 +272,7 @@
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:textAppearance="@style/TextAppearance.Body.Accent"
+            android:textColor="@color/link_text_color"
             app:layout_constraintTop_toBottomOf="@+id/publishedBarrier"
             app:layout_constraintStart_toEndOf="@+id/categoryHeaderTextView"
             app:layout_constraintEnd_toEndOf="parent"/>
