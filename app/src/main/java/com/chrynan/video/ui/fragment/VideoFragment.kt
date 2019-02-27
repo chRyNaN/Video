@@ -15,7 +15,8 @@ import com.chrynan.video.ui.view.CollapsibleVideoView
 import kotlinx.android.synthetic.main.fragment_video.*
 
 class VideoFragment : BaseFragment(),
-    CollapsibleVideoView {
+    CollapsibleVideoView,
+    VideoInfoAdapter.Listener {
 
     companion object {
 
@@ -80,7 +81,8 @@ class VideoFragment : BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView?.apply {
-            val managerAdapter = ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(VideoInfoAdapter()))
+            val managerAdapter =
+                ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(VideoInfoAdapter(this@VideoFragment)))
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
 
@@ -110,5 +112,30 @@ class VideoFragment : BaseFragment(),
                 )
             )
         }
+    }
+
+    override fun likeButtonSelected(videoId: String, channelId: String, providerUrl: String) {
+
+    }
+
+    override fun dislikeButtonSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun shareButtonSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun channelSelected(channelId: String, providerUrl: String) {
+    }
+
+    override fun subscribeButtonSelected(channelId: String, providerUrl: String) {
+    }
+
+    override fun providerSelected(providerUrl: String) {
+    }
+
+    override fun categorySelected(category: String) {
+    }
+
+    override fun tagSelected(tag: String) {
     }
 }
