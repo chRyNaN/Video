@@ -6,6 +6,7 @@
     <dimen name="spacing_xxsmall">4dp</dimen>
     <dimen name="spacing_xsmall">8dp</dimen>
     <dimen name="spacing_small">16dp</dimen>
+    <dimen name="spacing_medium">24dp</dimen>
 
     <dimen name="text_size_xsmall">12sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
@@ -24,5 +25,7 @@
     <dimen name="video_showcase_image_default_height">200dp</dimen>
 
     <dimen name="bottom_navigation_bar_height">55dp</dimen>
+
+    <dimen name="recycler_view_bottom_padding">@dimen/spacing_medium</dimen>
 
 </resources>

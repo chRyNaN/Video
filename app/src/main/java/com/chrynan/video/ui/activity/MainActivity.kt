@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.chrynan.video.R
 import com.chrynan.video.navigator.MainNavigator
+import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.fragment.VideoFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.TopMenuView
@@ -47,6 +48,7 @@ class MainActivity : BaseActivity(),
         }
 
         supportFragmentManager.beginTransaction().add(R.id.videoFragmentContainer, videoFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.baseFragmentContainer, HomeFragment.newInstance()).commit()
     }
 
     override fun goToHome() {

@@ -137,16 +137,6 @@ class VideoFragment : BaseFragment(),
                     providerUrl = "",
                     videoImageUrl = "",
                     videoLength = "10:00"
-                ),
-                VideoShowcaseViewModel(
-                    videoId = "videoId",
-                    channelId = "channelId",
-                    providerUrl = "providerUrl",
-                    title = "Another Video Title",
-                    details = "Some Video Details Here",
-                    provider = "chRyNaN",
-                    videoLength = "5:30",
-                    videoImageUrl = ""
                 )
             )
         }
