@@ -22,4 +22,6 @@
     <dimen name="video_recommendation_image_width">160dp</dimen>
     <dimen name="video_recommendation_image_height">100dp</dimen>
 
+    <dimen name="bottom_navigation_bar_height">55dp</dimen>
+
 </resources>

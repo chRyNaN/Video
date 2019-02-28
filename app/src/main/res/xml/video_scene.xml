@@ -32,9 +32,9 @@
         <Constraint
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/bottom_navigation_bar_height"
                 android:visibility="gone"
-                android:translationY="55dp"
+                android:translationY="@dimen/bottom_navigation_bar_height"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -59,7 +59,7 @@
         <Constraint
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/bottom_navigation_bar_height"
                 android:visibility="visible"
                 android:translationY="0dp"
                 app:layout_constraintStart_toStartOf="parent"

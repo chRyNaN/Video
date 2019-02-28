@@ -36,7 +36,6 @@ class MainActivity : BaseActivity(),
         val videoFragment = VideoFragment()
 
         mainMotionLayout?.apply {
-            progress = 1f
             videoContainerView = videoFragmentContainer
             videoTransitionStateListeners =
                     listOf(
