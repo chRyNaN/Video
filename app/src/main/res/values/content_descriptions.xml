@@ -7,5 +7,6 @@
     <string name="cd_video_action_stop">Stop playing the current video.</string>
     <string name="cd_video_recommendation_image">Video recommendation image.</string>
     <string name="cd_video_recommendation_overflow_options">Video recommendation options.</string>
+    <string name="cd_video_showcase_image">Video showcase image.</string>
 
 </resources>

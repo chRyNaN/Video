@@ -11,9 +11,10 @@ import com.chrynan.aaaah.from
 import com.chrynan.kotlinutils.runThenTrue
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoRecommendationViewModel
+import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_recommendation.view.*
 
-class VideoRecommendationAdapter(private val listener: VideoRecommendationAdapter.Listener) :
+class VideoRecommendationAdapter(private val listener: VideoOptionsListener) :
     AnotherAdapter<VideoRecommendationViewModel>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
@@ -31,7 +32,7 @@ class VideoRecommendationAdapter(private val listener: VideoRecommendationAdapte
             videoLengthTextView?.text = item.videoLength
 
             videoRecommendationBackgroundView?.setOnClickListener {
-                listener.playVideoSelected(
+                listener.playNowSelected(
                     videoId = item.videoId,
                     channelId = item.channelId,
                     providerUrl = item.providerUrl
@@ -68,18 +69,7 @@ class VideoRecommendationAdapter(private val listener: VideoRecommendationAdapte
                 }
             }
 
-            overflowOptionsImageView?.setOnClickListener { optionsMenu?.show() }
+            overflowOptionsImageView?.setOnClickListener { optionsMenu.show() }
         }
-    }
-
-    interface Listener {
-
-        fun playVideoSelected(videoId: String, channelId: String, providerUrl: String)
-
-        fun dismissSelected(videoId: String, channelId: String, providerUrl: String)
-
-        fun shareSelected(videoId: String, channelId: String, providerUrl: String)
-
-        fun reportSelected(videoId: String, channelId: String, providerUrl: String)
     }
 }

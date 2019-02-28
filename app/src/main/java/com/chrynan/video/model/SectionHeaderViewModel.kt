@@ -6,5 +6,5 @@ import com.chrynan.aaaah.asUniqueAdapterId
 
 data class SectionHeaderViewModel(val header: String) : UniqueAdapterItem {
 
-    override val uniqueAdapterId: AdapterId = header.asUniqueAdapterId()
+    override val uniqueAdapterId: AdapterId = "SectionHeader:$header".asUniqueAdapterId()
 }

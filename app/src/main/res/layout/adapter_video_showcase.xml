@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <View
+            android:id="@+id/videoShowcaseBackgroundView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+            android:id="@+id/videoShowcaseImageView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/video_showcase_image_default_height"
+            android:contentDescription="@string/cd_video_showcase_image"
+            android:background="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/videoLengthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_xxsmall"
+            android:layout_marginEnd="@dimen/spacing_xsmall"
+            android:layout_marginBottom="@dimen/spacing_xsmall"
+            android:textAppearance="@style/TextAppearance.Body.Light"
+            android:background="@color/background_dark_transparency_75_percent"
+            android:text="5:30"
+            app:layout_constraintEnd_toEndOf="@+id/videoShowcaseImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/videoShowcaseImageView"/>
+
+    <TextView
+            android:id="@+id/titleTextView"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.SubHeader.Light"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:ellipsize="end"
+            android:text="Test Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/overflowOptionsImageView"
+            app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView"/>
+
+    <ImageView
+            android:id="@+id/overflowOptionsImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small"
+            android:contentDescription="@string/cd_video_recommendation_overflow_options"
+            android:src="@drawable/ic_overflow_options"
+            app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+            android:id="@+id/detailsTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Details Text"
+            android:ellipsize="end"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+    <TextView
+            android:id="@+id/providerTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:text="Provided by chRyNaN"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsTextView"/>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/horizontal_divider_height"
+            android:background="@color/divider_color"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/providerTextView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

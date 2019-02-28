@@ -12,16 +12,19 @@ import com.chrynan.video.R
 import com.chrynan.video.model.SectionHeaderViewModel
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.model.VideoRecommendationViewModel
+import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
+import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.view.CollapsibleVideoView
 import kotlinx.android.synthetic.main.fragment_video.*
 
 class VideoFragment : BaseFragment(),
     CollapsibleVideoView,
     VideoInfoAdapter.Listener,
-    VideoRecommendationAdapter.Listener {
+    VideoOptionsListener {
 
     companion object {
 
@@ -91,7 +94,8 @@ class VideoFragment : BaseFragment(),
                     adapters = setOf(
                         VideoInfoAdapter(this@VideoFragment),
                         SectionHeaderAdapter(),
-                        VideoRecommendationAdapter(this@VideoFragment)
+                        VideoRecommendationAdapter(this@VideoFragment),
+                        VideoShowcaseAdapter(this@VideoFragment)
                     )
                 )
             layoutManager = LinearLayoutManager(context)
@@ -103,7 +107,6 @@ class VideoFragment : BaseFragment(),
                     channelId = "Channel Id",
                     providerUrl = "www.chrynan.com",
                     providerServiceName = "chRyNaN",
-                    uniqueAdapterId = 0,
                     title = "A Really Cool Video",
                     viewCount = "225k",
                     description = "This is a really cool video that you may enjoy watching.",
@@ -134,6 +137,16 @@ class VideoFragment : BaseFragment(),
                     providerUrl = "",
                     videoImageUrl = "",
                     videoLength = "10:00"
+                ),
+                VideoShowcaseViewModel(
+                    videoId = "videoId",
+                    channelId = "channelId",
+                    providerUrl = "providerUrl",
+                    title = "Another Video Title",
+                    details = "Some Video Details Here",
+                    provider = "chRyNaN",
+                    videoLength = "5:30",
+                    videoImageUrl = ""
                 )
             )
         }
@@ -164,9 +177,6 @@ class VideoFragment : BaseFragment(),
     override fun tagSelected(tag: String) {
     }
 
-    override fun playVideoSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
     override fun dismissSelected(videoId: String, channelId: String, providerUrl: String) {
     }
 
@@ -174,5 +184,14 @@ class VideoFragment : BaseFragment(),
     }
 
     override fun reportSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun playNowSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun playNextSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun addToQueueSelected(videoId: String, channelId: String, providerUrl: String) {
     }
 }

@@ -1,13 +1,12 @@
 package com.chrynan.video.model
 
-import com.chrynan.aaaah.AdapterId
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.aaaah.asUniqueAdapterId
 
 data class VideoInfoViewModel(
     val videoId: String,
     val channelId: String,
     val providerUrl: String,
-    override val uniqueAdapterId: AdapterId = -1L,
     val title: String,
     val viewCount: String,
     val description: String,
@@ -28,4 +27,7 @@ data class VideoInfoViewModel(
     val channelSubscriberCount: String,
     val showChannelSubscribeCount: Boolean = false,
     val isSubscribedToChannel: Boolean = false
-) : UniqueAdapterItem
+) : UniqueAdapterItem {
+
+    override val uniqueAdapterId = "Info:$providerUrl:$channelId:$videoId".asUniqueAdapterId()
+}
