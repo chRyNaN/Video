@@ -12,12 +12,12 @@ import com.chrynan.video.R
 import com.chrynan.video.model.SectionHeaderViewModel
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.model.VideoRecommendationViewModel
-import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
+import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.view.CollapsibleVideoView
 import kotlinx.android.synthetic.main.fragment_video.*
 
@@ -30,6 +30,9 @@ class VideoFragment : BaseFragment(),
 
         fun newInstance() = VideoFragment()
     }
+
+    private val videoOptionsMenuBottomSheet =
+        MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_recommendation_options)
 
     override val containerWidth: Int
         get() = containerView?.measuredWidth ?: 0
@@ -167,15 +170,6 @@ class VideoFragment : BaseFragment(),
     override fun tagSelected(tag: String) {
     }
 
-    override fun dismissSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun shareSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun reportSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
     override fun playNowSelected(videoId: String, channelId: String, providerUrl: String) {
     }
 
@@ -183,5 +177,9 @@ class VideoFragment : BaseFragment(),
     }
 
     override fun addToQueueSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun videoOptionsMenuSelected(videoId: String, channelId: String, providerUrl: String) {
+        videoOptionsMenuBottomSheet.show(childFragmentManager, null)
     }
 }

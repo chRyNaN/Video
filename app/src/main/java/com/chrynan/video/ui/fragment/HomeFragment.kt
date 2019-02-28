@@ -65,15 +65,6 @@ class HomeFragment : BaseFragment(),
         }
     }
 
-    override fun dismissSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun shareSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun reportSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
     override fun playNowSelected(videoId: String, channelId: String, providerUrl: String) {
     }
 

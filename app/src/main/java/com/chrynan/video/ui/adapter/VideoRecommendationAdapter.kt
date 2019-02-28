@@ -3,12 +3,10 @@ package com.chrynan.video.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
-import com.chrynan.kotlinutils.runThenTrue
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoRecommendationViewModel
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
@@ -39,37 +37,13 @@ class VideoRecommendationAdapter(private val listener: VideoOptionsListener) :
                 )
             }
 
-            val optionsMenu = PopupMenu(context, overflowOptionsImageView).apply {
-                inflate(R.menu.menu_video_recommendation_options)
-                setOnMenuItemClickListener { menuItem ->
-                    when (menuItem.itemId) {
-                        R.id.action_dismiss -> runThenTrue {
-                            listener.dismissSelected(
-                                videoId = item.videoId,
-                                channelId = item.channelId,
-                                providerUrl = item.providerUrl
-                            )
-                        }
-                        R.id.action_share -> runThenTrue {
-                            listener.shareSelected(
-                                videoId = item.videoId,
-                                channelId = item.channelId,
-                                providerUrl = item.providerUrl
-                            )
-                        }
-                        R.id.action_report -> runThenTrue {
-                            listener.reportSelected(
-                                videoId = item.videoId,
-                                channelId = item.channelId,
-                                providerUrl = item.providerUrl
-                            )
-                        }
-                        else -> false
-                    }
-                }
+            overflowOptionsImageView?.setOnClickListener {
+                listener.videoOptionsMenuSelected(
+                    videoId = item.videoId,
+                    channelId = item.channelId,
+                    providerUrl = item.providerUrl
+                )
             }
-
-            overflowOptionsImageView?.setOnClickListener { optionsMenu.show() }
         }
     }
 }
