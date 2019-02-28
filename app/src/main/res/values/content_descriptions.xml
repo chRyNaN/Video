@@ -5,5 +5,7 @@
     <string name="cd_video_info_channel_image">Channel logo image.</string>
     <string name="cd_video_action_play_pause">Play and Pause the current video.</string>
     <string name="cd_video_action_stop">Stop playing the current video.</string>
+    <string name="cd_video_recommendation_image">Video recommendation image.</string>
+    <string name="cd_video_recommendation_overflow_options">Video recommendation options.</string>
 
 </resources>

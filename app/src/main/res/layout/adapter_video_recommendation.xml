@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <View
+            android:id="@+id/videoRecommendationBackgroundView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+            android:id="@+id/videoImageView"
+            android:layout_width="@dimen/video_recommendation_image_width"
+            android:layout_height="@dimen/video_recommendation_image_height"
+            android:contentDescription="@string/cd_video_recommendation_image"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/videoLengthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_xxsmall"
+            android:layout_marginEnd="@dimen/spacing_xsmall"
+            android:layout_marginBottom="@dimen/spacing_xsmall"
+            android:textAppearance="@style/TextAppearance.Label.Light"
+            android:background="@color/background_dark_transparency_75_percent"
+            app:layout_constraintEnd_toEndOf="@+id/videoImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>
+
+    <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:maxLines="3"
+            android:textAppearance="@style/TextAppearance.Title.Light"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintEnd_toStartOf="@+id/overflowOptionsImageView"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+            android:id="@+id/overflowOptionsImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small"
+            android:contentDescription="@string/cd_video_recommendation_overflow_options"
+            android:src="@drawable/ic_overflow_options"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+            android:id="@+id/channelNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Label.Light.Secondary"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            app:layout_constraintStart_toStartOf="@+id/titleTextView"
+            app:layout_constraintEnd_toEndOf="@+id/titleTextView"/>
+
+    <TextView
+            android:id="@+id/detailsTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Label.Light.Secondary"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            app:layout_constraintTop_toBottomOf="@+id/channelNameTextView"
+            app:layout_constraintStart_toStartOf="@+id/channelNameTextView"
+            app:layout_constraintEnd_toEndOf="@+id/channelNameTextView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

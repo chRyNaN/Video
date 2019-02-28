@@ -10,13 +10,16 @@ import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfoViewModel
+import com.chrynan.video.model.VideoRecommendationViewModel
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
+import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.view.CollapsibleVideoView
 import kotlinx.android.synthetic.main.fragment_video.*
 
 class VideoFragment : BaseFragment(),
     CollapsibleVideoView,
-    VideoInfoAdapter.Listener {
+    VideoInfoAdapter.Listener,
+    VideoRecommendationAdapter.Listener {
 
     companion object {
 
@@ -82,7 +85,12 @@ class VideoFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView?.apply {
             val managerAdapter =
-                ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(VideoInfoAdapter(this@VideoFragment)))
+                ManagerRecyclerViewAdapter<UniqueAdapterItem>(
+                    adapters = setOf(
+                        VideoInfoAdapter(this@VideoFragment),
+                        VideoRecommendationAdapter(this@VideoFragment)
+                    )
+                )
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
 
@@ -112,6 +120,16 @@ class VideoFragment : BaseFragment(),
                     showCategory = true,
                     showTags = true,
                     showChannelSubscribeCount = true
+                ),
+                VideoRecommendationViewModel(
+                    title = "A Really Cool Video",
+                    channelName = "chRyNaN Codes",
+                    detailText = "Provided by chRyNaN",
+                    channelId = "",
+                    videoId = "",
+                    providerUrl = "",
+                    videoImageUrl = "",
+                    videoLength = "10:00"
                 )
             )
         }
@@ -140,5 +158,17 @@ class VideoFragment : BaseFragment(),
     }
 
     override fun tagSelected(tag: String) {
+    }
+
+    override fun playVideoSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun dismissSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun shareSelected(videoId: String, channelId: String, providerUrl: String) {
+    }
+
+    override fun reportSelected(videoId: String, channelId: String, providerUrl: String) {
     }
 }
