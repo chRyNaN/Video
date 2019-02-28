@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/sectionHeaderTextView"
+          android:textAppearance="@style/TextAppearance.SubHeader.Light"
+          android:paddingTop="@dimen/spacing_small"
+          android:paddingStart="@dimen/default_horizontal_spacing"
+          android:paddingEnd="@dimen/default_horizontal_spacing"
+          android:paddingBottom="@dimen/spacing_xxsmall"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>

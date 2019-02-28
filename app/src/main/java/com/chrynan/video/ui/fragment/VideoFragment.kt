@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
+import com.chrynan.video.model.SectionHeaderViewModel
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.model.VideoRecommendationViewModel
+import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.view.CollapsibleVideoView
@@ -88,6 +90,7 @@ class VideoFragment : BaseFragment(),
                 ManagerRecyclerViewAdapter<UniqueAdapterItem>(
                     adapters = setOf(
                         VideoInfoAdapter(this@VideoFragment),
+                        SectionHeaderAdapter(),
                         VideoRecommendationAdapter(this@VideoFragment)
                     )
                 )
@@ -121,6 +124,7 @@ class VideoFragment : BaseFragment(),
                     showTags = true,
                     showChannelSubscribeCount = true
                 ),
+                SectionHeaderViewModel(header = "Recommended Videos"),
                 VideoRecommendationViewModel(
                     title = "A Really Cool Video",
                     channelName = "chRyNaN Codes",
