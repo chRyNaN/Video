@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_play_now"
+          android:title="@string/menu_video_play_now"
+          android:icon="@drawable/ic_play"/>
+
+    <item android:id="@+id/action_play_next"
+          android:title="@string/menu_video_play_next"
+          android:icon="@drawable/ic_play_next"/>
+
+    <item android:id="@+id/action_add_to_queue"
+          android:title="@string/menu_video_add_to_queue"
+          android:icon="@drawable/ic_add_to_queue"/>
+
+    <item android:id="@+id/action_dismiss"
+          android:title="@string/menu_video_dismiss"
+          android:icon="@drawable/ic_dismiss"/>
+
+    <item android:id="@+id/action_share"
+          android:title="@string/menu_video_share"
+          android:icon="@drawable/ic_share"/>
+
+    <item android:id="@+id/action_report"
+          android:title="@string/menu_video_report"
+          android:icon="@drawable/ic_report"/>
+
+</menu>

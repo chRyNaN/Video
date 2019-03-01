@@ -29,13 +29,7 @@ class VideoRecommendationAdapter(private val listener: VideoOptionsListener) :
             detailsTextView?.text = item.detailText
             videoLengthTextView?.text = item.videoLength
 
-            videoRecommendationBackgroundView?.setOnClickListener {
-                listener.playNowSelected(
-                    videoId = item.videoId,
-                    channelId = item.channelId,
-                    providerUrl = item.providerUrl
-                )
-            }
+            videoRecommendationBackgroundView?.setOnClickListener {}
 
             overflowOptionsImageView?.setOnClickListener {
                 listener.videoOptionsMenuSelected(

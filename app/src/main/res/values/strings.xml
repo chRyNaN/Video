@@ -6,9 +6,12 @@
     <string name="menu_bottom_navigation_search">Search</string>
     <string name="menu_bottom_navigation_settings">Settings</string>
 
-    <string name="menu_video_recommendation_dismiss">Dismiss</string>
-    <string name="menu_video_recommendation_share">Share</string>
-    <string name="menu_video_recommendation_report">Report</string>
+    <string name="menu_video_dismiss">Dismiss</string>
+    <string name="menu_video_share">Share</string>
+    <string name="menu_video_report">Report</string>
+    <string name="menu_video_play_now">Play Now</string>
+    <string name="menu_video_play_next">Play Next</string>
+    <string name="menu_video_add_to_queue">Add to Queue</string>
 
     <string name="video_info_button_like">Like</string>
     <string name="video_info_button_dislike">Dislike</string>

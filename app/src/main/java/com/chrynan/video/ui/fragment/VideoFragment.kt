@@ -32,7 +32,7 @@ class VideoFragment : BaseFragment(),
     }
 
     private val videoOptionsMenuBottomSheet =
-        MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_recommendation_options)
+        MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options)
 
     override val containerWidth: Int
         get() = containerView?.measuredWidth ?: 0
@@ -168,15 +168,6 @@ class VideoFragment : BaseFragment(),
     }
 
     override fun tagSelected(tag: String) {
-    }
-
-    override fun playNowSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun playNextSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun addToQueueSelected(videoId: String, channelId: String, providerUrl: String) {
     }
 
     override fun videoOptionsMenuSelected(videoId: String, channelId: String, providerUrl: String) {

@@ -64,13 +64,4 @@ class HomeFragment : BaseFragment(),
             )
         }
     }
-
-    override fun playNowSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun playNextSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
-
-    override fun addToQueueSelected(videoId: String, channelId: String, providerUrl: String) {
-    }
 }

@@ -33,13 +33,7 @@ class VideoShowcaseAdapter(private val listener: VideoOptionsListener) : Another
                 .load(item.videoImageUrl)
                 .into(videoShowcaseImageView)
 
-            videoShowcaseBackgroundView?.setOnClickListener {
-                listener.playNowSelected(
-                    videoId = item.videoId,
-                    channelId = item.channelId,
-                    providerUrl = item.providerUrl
-                )
-            }
+            videoShowcaseBackgroundView?.setOnClickListener {}
         }
     }
 }
