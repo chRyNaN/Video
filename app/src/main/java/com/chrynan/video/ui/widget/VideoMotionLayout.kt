@@ -10,6 +10,18 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionLayout(context, attrs),
     MotionLayout.TransitionListener {
 
+    companion object {
+
+        private const val EXPANDED = 1f
+        private const val COLLAPSED = 0f
+    }
+
+    val isVideoExpanded: Boolean
+        get() = progress == EXPANDED
+
+    val isVideoCollapsed: Boolean
+        get() = progress == COLLAPSED
+
     var videoContainerView: ViewGroup? = null
 
     var currentState: VideoTransitionState = VideoTransitionState.Collapsed
@@ -55,10 +67,18 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
 
     override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) = updateListenersWithTransitionState()
 
+    fun expand() {
+        transitionToEnd()
+    }
+
+    fun collapse() {
+        transitionToStart()
+    }
+
     private fun updateListenersWithTransitionState() {
         val state = when {
-            progress == 0f -> VideoTransitionState.Collapsed
-            progress == 1f -> VideoTransitionState.Expanded
+            progress == COLLAPSED -> VideoTransitionState.Collapsed
+            progress == EXPANDED -> VideoTransitionState.Expanded
             progress < currentState.progress -> VideoTransitionState.Collapsing(progress)
             progress > currentState.progress -> VideoTransitionState.Expanding(progress)
             else -> VideoTransitionState.Steady(progress = progress)
@@ -73,9 +93,9 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
 
     sealed class VideoTransitionState(val progress: Float) {
 
-        object Collapsed : VideoTransitionState(0f)
+        object Collapsed : VideoTransitionState(COLLAPSED)
 
-        object Expanded : VideoTransitionState(1f)
+        object Expanded : VideoTransitionState(EXPANDED)
 
         class Collapsing(progress: Float) : VideoTransitionState(progress)
 
