@@ -1,18 +1,23 @@
 package com.chrynan.video.ui.activity
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import com.chrynan.video.R
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.fragment.HomeFragment
+import com.chrynan.video.ui.fragment.SearchFragment
+import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.fragment.VideoFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.TopMenuView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(),
     TopMenuView,
-    MainNavigator {
+    MainNavigator,
+    BottomNavigationView.OnNavigationItemSelectedListener {
 
     override var topMenuTitle: CharSequence?
         get() = toolbar?.title
@@ -34,6 +39,8 @@ class MainActivity : BaseActivity(),
 
         toolbar?.let { setSupportActionBar(it) }
 
+        bottomNavigationView?.setOnNavigationItemSelectedListener(this)
+
         val videoFragment = VideoFragment()
 
         mainMotionLayout?.apply {
@@ -48,20 +55,35 @@ class MainActivity : BaseActivity(),
         }
 
         supportFragmentManager.beginTransaction().add(R.id.videoFragmentContainer, videoFragment).commit()
-        supportFragmentManager.beginTransaction().add(R.id.baseFragmentContainer, HomeFragment.newInstance()).commit()
+
+        goToHome()
     }
 
     override fun goToHome() {
-
+        supportFragmentManager.beginTransaction().replace(R.id.baseFragmentContainer, HomeFragment.newInstance())
+            .commit()
     }
 
     override fun goToSearch() {
+        supportFragmentManager.beginTransaction().replace(R.id.baseFragmentContainer, SearchFragment.newInstance())
+            .commit()
     }
 
     override fun goToSettings() {
+        supportFragmentManager.beginTransaction().replace(R.id.baseFragmentContainer, SettingsFragment.newInstance())
+            .commit()
     }
 
     override fun goBack() {
+    }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_home -> goToHome()
+            R.id.action_search -> goToSearch()
+            R.id.action_settings -> goToSettings()
+        }
+
+        return true
     }
 }
