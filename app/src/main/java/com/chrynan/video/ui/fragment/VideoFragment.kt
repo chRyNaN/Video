@@ -31,8 +31,7 @@ class VideoFragment : BaseFragment(),
         fun newInstance() = VideoFragment()
     }
 
-    private val videoOptionsMenuBottomSheet =
-        MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options)
+    private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options) }
 
     override val containerWidth: Int
         get() = containerView?.measuredWidth ?: 0

@@ -38,6 +38,17 @@
             app:layout_constraintEnd_toEndOf="@+id/videoShowcaseImageView"
             app:layout_constraintBottom_toBottomOf="@+id/videoShowcaseImageView"/>
 
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/channelImageView"
+            android:layout_width="@dimen/video_info_channel_image_size"
+            android:layout_height="@dimen/video_info_channel_image_size"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:contentDescription="@string/cd_video_info_channel_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView"/>
+
     <TextView
             android:id="@+id/titleTextView"
             android:singleLine="false"
@@ -50,7 +61,7 @@
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:ellipsize="end"
             android:text="Test Title"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/channelImageView"
             app:layout_constraintEnd_toStartOf="@+id/overflowOptionsImageView"
             app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView"/>
 
@@ -76,7 +87,7 @@
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:layout_marginEnd="@dimen/default_horizontal_spacing"
             android:layout_marginTop="@dimen/spacing_xxsmall"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/channelImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
 
@@ -89,7 +100,7 @@
             android:layout_marginTop="@dimen/spacing_xxsmall"
             android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
             android:text="Provided by chRyNaN"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/channelImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsTextView"/>
 

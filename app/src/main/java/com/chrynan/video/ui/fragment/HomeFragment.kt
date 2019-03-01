@@ -12,6 +12,7 @@ import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
+import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.view.HomeView
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -23,6 +24,8 @@ class HomeFragment : BaseFragment(),
 
         fun newInstance() = HomeFragment()
     }
+
+    private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_home, container, false)
@@ -49,7 +52,8 @@ class HomeFragment : BaseFragment(),
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
                     videoLength = "5:30",
-                    videoImageUrl = ""
+                    videoImageUrl = "",
+                    channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
                     videoId = "videoId",
@@ -59,9 +63,14 @@ class HomeFragment : BaseFragment(),
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
                     videoLength = "5:30",
-                    videoImageUrl = ""
+                    videoImageUrl = "",
+                    channelImageUrl = ""
                 )
             )
         }
+    }
+
+    override fun videoOptionsMenuSelected(videoId: String, channelId: String, providerUrl: String) {
+        videoOptionsMenuBottomSheet.show(childFragmentManager, null)
     }
 }

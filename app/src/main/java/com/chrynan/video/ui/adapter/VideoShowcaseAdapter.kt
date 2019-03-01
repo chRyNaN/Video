@@ -33,7 +33,19 @@ class VideoShowcaseAdapter(private val listener: VideoOptionsListener) : Another
                 .load(item.videoImageUrl)
                 .into(videoShowcaseImageView)
 
+            Glide.with(context)
+                .load(item.channelImageUrl)
+                .into(channelImageView)
+
             videoShowcaseBackgroundView?.setOnClickListener {}
+
+            overflowOptionsImageView?.setOnClickListener {
+                listener.videoOptionsMenuSelected(
+                    videoId = item.videoId,
+                    channelId = item.channelId,
+                    providerUrl = item.providerUrl
+                )
+            }
         }
     }
 }
