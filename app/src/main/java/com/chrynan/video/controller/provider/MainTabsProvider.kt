@@ -4,8 +4,9 @@ import com.chrynan.video.controller.tab.MainTabs
 import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.fragment.SearchFragment
 import com.chrynan.video.ui.fragment.SettingsFragment
+import javax.inject.Inject
 
-class MainTabsProvider : TabFragmentProvider<MainTabs> {
+class MainTabsProvider @Inject constructor() : TabFragmentProvider<MainTabs> {
 
     override val rootTabCount = 3
 

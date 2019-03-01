@@ -12,8 +12,10 @@ import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.VideoInfoViewModel
 import kotlinx.android.synthetic.main.adapter_video_info.view.*
+import javax.inject.Inject
 
-class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : AnotherAdapter<VideoInfoViewModel>() {
+class VideoInfoAdapter @Inject constructor(private val listener: VideoInfoAdapter.Listener) :
+    AnotherAdapter<VideoInfoViewModel>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
 

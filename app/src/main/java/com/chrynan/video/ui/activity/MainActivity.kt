@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import com.chrynan.video.R
-import com.chrynan.video.controller.BaseActivityController
 import com.chrynan.video.controller.Controller
-import com.chrynan.video.controller.provider.MainTabsProvider
 import com.chrynan.video.controller.tab.MainTabs
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.fragment.VideoFragment
@@ -14,17 +12,15 @@ import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.TopMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
     TopMenuView,
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener {
 
-    override val controller: Controller<MainTabs> = BaseActivityController(
-        activity = this,
-        containerId = R.id.baseFragmentContainer,
-        tabProvider = MainTabsProvider()
-    )
+    @Inject
+    override lateinit var controller: Controller<MainTabs>
 
     override var topMenuTitle: CharSequence?
         get() = toolbar?.title

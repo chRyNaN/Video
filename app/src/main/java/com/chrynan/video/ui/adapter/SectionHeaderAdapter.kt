@@ -10,8 +10,9 @@ import com.chrynan.aaaah.from
 import com.chrynan.video.R
 import com.chrynan.video.model.SectionHeaderViewModel
 import kotlinx.android.synthetic.main.adapter_section_header.view.*
+import javax.inject.Inject
 
-class SectionHeaderAdapter : AnotherAdapter<SectionHeaderViewModel>() {
+class SectionHeaderAdapter @Inject constructor() : AnotherAdapter<SectionHeaderViewModel>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
 

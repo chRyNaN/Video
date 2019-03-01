@@ -12,8 +12,10 @@ import com.chrynan.video.R
 import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_showcase.view.*
+import javax.inject.Inject
 
-class VideoShowcaseAdapter(private val listener: VideoOptionsListener) : AnotherAdapter<VideoShowcaseViewModel>() {
+class VideoShowcaseAdapter @Inject constructor(private val listener: VideoOptionsListener) :
+    AnotherAdapter<VideoShowcaseViewModel>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
 

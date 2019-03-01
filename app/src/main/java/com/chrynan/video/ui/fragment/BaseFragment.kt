@@ -1,10 +1,10 @@
 package com.chrynan.video.ui.fragment
 
-import androidx.fragment.app.Fragment
 import com.chrynan.video.navigator.Navigator
 import com.chrynan.video.ui.activity.BaseActivity
+import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment : Fragment(),
+abstract class BaseFragment : DaggerFragment(),
     Navigator {
 
     override fun goBack() {

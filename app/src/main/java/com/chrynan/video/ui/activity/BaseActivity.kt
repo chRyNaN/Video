@@ -1,11 +1,11 @@
 package com.chrynan.video.ui.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.chrynan.video.controller.Controller
 import com.chrynan.video.navigator.Navigator
+import dagger.android.support.DaggerAppCompatActivity
 
-abstract class BaseActivity : AppCompatActivity(),
+abstract class BaseActivity : DaggerAppCompatActivity(),
     Navigator {
 
     protected abstract val controller: Controller<*>

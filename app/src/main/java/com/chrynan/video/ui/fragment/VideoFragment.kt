@@ -14,14 +14,12 @@ import com.chrynan.video.model.SectionHeaderViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.model.VideoRecommendationViewModel
-import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
-import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
-import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.view.CollapsibleVideoView
 import kotlinx.android.synthetic.main.fragment_video.*
+import javax.inject.Inject
 
 class VideoFragment : BaseFragment(),
     CollapsibleVideoView,
@@ -32,6 +30,9 @@ class VideoFragment : BaseFragment(),
 
         fun newInstance() = VideoFragment()
     }
+
+    @Inject
+    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
 
     private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options) }
 
@@ -93,15 +94,6 @@ class VideoFragment : BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView?.apply {
-            val managerAdapter =
-                ManagerRecyclerViewAdapter<UniqueAdapterItem>(
-                    adapters = setOf(
-                        VideoInfoAdapter(this@VideoFragment),
-                        SectionHeaderAdapter(),
-                        VideoRecommendationAdapter(this@VideoFragment),
-                        VideoShowcaseAdapter(this@VideoFragment)
-                    )
-                )
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
 
