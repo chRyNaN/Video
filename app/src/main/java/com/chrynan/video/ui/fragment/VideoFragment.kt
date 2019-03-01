@@ -1,5 +1,6 @@
 package com.chrynan.video.ui.fragment
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
 import com.chrynan.video.model.SectionHeaderViewModel
+import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.model.VideoRecommendationViewModel
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
@@ -103,11 +105,16 @@ class VideoFragment : BaseFragment(),
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
 
+            val videoInfo = VideoInfo(
+                videoId = "VideoId",
+                channelId = "ChannelId",
+                providerUri = Uri.parse("ProviderUri"),
+                videoUri = Uri.parse("VideoUri")
+            )
+
             managerAdapter.items = listOf(
                 VideoInfoViewModel(
-                    videoId = "Video Id",
-                    channelId = "Channel Id",
-                    providerUrl = "www.chrynan.com",
+                    videoInfo = videoInfo,
                     providerServiceName = "chRyNaN",
                     title = "A Really Cool Video",
                     viewCount = "225k",
@@ -134,9 +141,7 @@ class VideoFragment : BaseFragment(),
                     title = "A Really Cool Video",
                     channelName = "chRyNaN Codes",
                     detailText = "Provided by chRyNaN",
-                    channelId = "",
-                    videoId = "",
-                    providerUrl = "",
+                    videoInfo = videoInfo,
                     videoImageUrl = "",
                     videoLength = "10:00"
                 )
@@ -144,23 +149,23 @@ class VideoFragment : BaseFragment(),
         }
     }
 
-    override fun likeButtonSelected(videoId: String, channelId: String, providerUrl: String) {
+    override fun likeButtonSelected(videoInfo: VideoInfo) {
 
     }
 
-    override fun dislikeButtonSelected(videoId: String, channelId: String, providerUrl: String) {
+    override fun dislikeButtonSelected(videoInfo: VideoInfo) {
     }
 
-    override fun shareButtonSelected(videoId: String, channelId: String, providerUrl: String) {
+    override fun shareButtonSelected(videoInfo: VideoInfo) {
     }
 
-    override fun channelSelected(channelId: String, providerUrl: String) {
+    override fun channelSelected(videoInfo: VideoInfo) {
     }
 
-    override fun subscribeButtonSelected(channelId: String, providerUrl: String) {
+    override fun subscribeButtonSelected(videoInfo: VideoInfo) {
     }
 
-    override fun providerSelected(providerUrl: String) {
+    override fun providerSelected(videoInfo: VideoInfo) {
     }
 
     override fun categorySelected(category: String) {
@@ -169,7 +174,7 @@ class VideoFragment : BaseFragment(),
     override fun tagSelected(tag: String) {
     }
 
-    override fun videoOptionsMenuSelected(videoId: String, channelId: String, providerUrl: String) {
+    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
         videoOptionsMenuBottomSheet.show(childFragmentManager, null)
     }
 }

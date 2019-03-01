@@ -9,6 +9,7 @@ import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.video.R
+import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.VideoInfoViewModel
 import kotlinx.android.synthetic.main.adapter_video_info.view.*
 
@@ -42,10 +43,7 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
             channelNameTextView?.apply {
                 text = item.channelName
                 setOnClickListener {
-                    listener.channelSelected(
-                        channelId = item.channelId,
-                        providerUrl = item.providerUrl
-                    )
+                    listener.channelSelected(videoInfo = item.videoInfo)
                 }
             }
             channelImageView?.apply {
@@ -59,7 +57,7 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
 
             providerNameTextView?.apply {
                 text = item.providerServiceName
-                setOnClickListener { listener.providerSelected(providerUrl = item.providerUrl) }
+                setOnClickListener { listener.providerSelected(videoInfo = item.videoInfo) }
             }
 
             publishedTimeTextView?.text = item.publishedDate
@@ -81,17 +79,17 @@ class VideoInfoAdapter(private val listener: VideoInfoAdapter.Listener) : Anothe
 
     interface Listener {
 
-        fun likeButtonSelected(videoId: String, channelId: String, providerUrl: String)
+        fun likeButtonSelected(videoInfo: VideoInfo)
 
-        fun dislikeButtonSelected(videoId: String, channelId: String, providerUrl: String)
+        fun dislikeButtonSelected(videoInfo: VideoInfo)
 
-        fun shareButtonSelected(videoId: String, channelId: String, providerUrl: String)
+        fun shareButtonSelected(videoInfo: VideoInfo)
 
-        fun channelSelected(channelId: String, providerUrl: String)
+        fun channelSelected(videoInfo: VideoInfo)
 
-        fun subscribeButtonSelected(channelId: String, providerUrl: String)
+        fun subscribeButtonSelected(videoInfo: VideoInfo)
 
-        fun providerSelected(providerUrl: String)
+        fun providerSelected(videoInfo: VideoInfo)
 
         fun categorySelected(category: String)
 

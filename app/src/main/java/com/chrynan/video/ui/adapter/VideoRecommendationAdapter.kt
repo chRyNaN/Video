@@ -32,11 +32,7 @@ class VideoRecommendationAdapter(private val listener: VideoOptionsListener) :
             videoRecommendationBackgroundView?.setOnClickListener {}
 
             overflowOptionsImageView?.setOnClickListener {
-                listener.videoOptionsMenuSelected(
-                    videoId = item.videoId,
-                    channelId = item.channelId,
-                    providerUrl = item.providerUrl
-                )
+                listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
             }
         }
     }

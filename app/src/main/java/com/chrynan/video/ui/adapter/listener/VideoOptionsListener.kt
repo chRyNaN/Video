@@ -1,6 +1,8 @@
 package com.chrynan.video.ui.adapter.listener
 
+import com.chrynan.video.model.VideoInfo
+
 interface VideoOptionsListener {
 
-    fun videoOptionsMenuSelected(videoId: String, channelId: String, providerUrl: String)
+    fun videoOptionsMenuSelected(videoInfo: VideoInfo)
 }

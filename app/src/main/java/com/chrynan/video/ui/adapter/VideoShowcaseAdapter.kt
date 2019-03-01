@@ -40,11 +40,7 @@ class VideoShowcaseAdapter(private val listener: VideoOptionsListener) : Another
             videoShowcaseBackgroundView?.setOnClickListener {}
 
             overflowOptionsImageView?.setOnClickListener {
-                listener.videoOptionsMenuSelected(
-                    videoId = item.videoId,
-                    channelId = item.channelId,
-                    providerUrl = item.providerUrl
-                )
+                listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.chrynan.video.ui.fragment
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
+import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
@@ -43,11 +45,16 @@ class HomeFragment : BaseFragment(),
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
 
+            val videoInfo = VideoInfo(
+                videoId = "VideoId",
+                channelId = "ChannelId",
+                providerUri = Uri.parse("ProviderUri"),
+                videoUri = Uri.parse("VideoUri")
+            )
+
             managerAdapter.items = listOf(
                 VideoShowcaseViewModel(
-                    videoId = "videoId",
-                    channelId = "channelId",
-                    providerUrl = "providerUrl",
+                    videoInfo = videoInfo,
                     title = "Another Video Title",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
@@ -56,9 +63,7 @@ class HomeFragment : BaseFragment(),
                     channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
-                    videoId = "videoId",
-                    channelId = "channelId",
-                    providerUrl = "providerUrl",
+                    videoInfo = videoInfo,
                     title = "Another Video Title",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
@@ -67,9 +72,7 @@ class HomeFragment : BaseFragment(),
                     channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
-                    videoId = "videoId",
-                    channelId = "channelId",
-                    providerUrl = "providerUrl",
+                    videoInfo = videoInfo,
                     title = "Another Video Title",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
@@ -78,9 +81,7 @@ class HomeFragment : BaseFragment(),
                     channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
-                    videoId = "videoId",
-                    channelId = "channelId",
-                    providerUrl = "providerUrl",
+                    videoInfo = videoInfo,
                     title = "Another Video Title",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
@@ -92,7 +93,7 @@ class HomeFragment : BaseFragment(),
         }
     }
 
-    override fun videoOptionsMenuSelected(videoId: String, channelId: String, providerUrl: String) {
+    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
         videoOptionsMenuBottomSheet.show(childFragmentManager, null)
     }
 }

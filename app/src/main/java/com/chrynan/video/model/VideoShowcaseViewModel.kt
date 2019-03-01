@@ -4,9 +4,7 @@ import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.aaaah.asUniqueAdapterId
 
 data class VideoShowcaseViewModel(
-    val videoId: String,
-    val channelId: String,
-    val providerUrl: String,
+    val videoInfo: VideoInfo,
     val title: String,
     val details: String,
     val provider: String,
@@ -15,5 +13,5 @@ data class VideoShowcaseViewModel(
     val channelImageUrl: String
 ) : UniqueAdapterItem {
 
-    override val uniqueAdapterId = "Showcase:$providerUrl:$channelId:$videoId".asUniqueAdapterId()
+    override val uniqueAdapterId = videoInfo.run { "Showcase:$providerUri:$channelId:$videoId".asUniqueAdapterId() }
 }
