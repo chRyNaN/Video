@@ -17,13 +17,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <FrameLayout
             android:id="@+id/videoFragmentContainer"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:background="@color/colorPrimaryDark"
+            android:elevation="@dimen/elevation_bottom_navigation"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -38,6 +39,7 @@
             app:itemIconTint="@color/icon_menu_color"
             app:itemTextColor="@color/text_menu_color"
             app:menu="@menu/menu_bottom_navigation"
+            android:elevation="@dimen/elevation_bottom_navigation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -46,6 +48,9 @@
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/background_dark_color"
+            android:elevation="@dimen/elevation_toolbar"
+            app:titleTextAppearance="@style/TextAppearance.Title.Light"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
