@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 
@@ -43,18 +44,36 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
         setTransitionListener(this)
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        if ((event.actionMasked == MotionEvent.ACTION_UP) or (event.actionMasked == MotionEvent.ACTION_CANCEL)) {
+    override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+        if (videoContainerView == null) return super.onInterceptTouchEvent(event)
+
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            touchStarted = event.isInVideoTouchBounds() and !isTransitionInProgress()
+        }
+
+        if ((event.action == MotionEvent.ACTION_CANCEL) or (event.action == MotionEvent.ACTION_UP)) {
             touchStarted = false
-            return super.onTouchEvent(event)
         }
 
-        if (!touchStarted) {
-            videoContainerView?.getHitRect(viewRect)
-            touchStarted = viewRect.contains(event.x.toInt(), event.y.toInt())
+        return super.onInterceptTouchEvent(event)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (videoContainerView == null) return super.onTouchEvent(event)
+
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            touchStarted = event.isInVideoTouchBounds() and !isTransitionInProgress()
         }
 
-        return touchStarted and super.onTouchEvent(event)
+        if ((event.action == MotionEvent.ACTION_CANCEL) or (event.action == MotionEvent.ACTION_UP)) {
+            touchStarted = false
+        }
+
+        return super.onTouchEvent(event)
+    }
+
+    override fun onNestedPreScroll(target: View, dx: Int, dy: Int, consumed: IntArray, type: Int) {
+        if (touchStarted) super.onNestedPreScroll(target, dx, dy, consumed, type)
     }
 
     override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) =
@@ -73,6 +92,13 @@ class VideoMotionLayout(context: Context, attrs: AttributeSet? = null) : MotionL
 
     fun collapse() {
         transitionToStart()
+    }
+
+    private fun isTransitionInProgress() = (progress > COLLAPSED) and (progress < EXPANDED)
+
+    private fun MotionEvent.isInVideoTouchBounds(): Boolean {
+        videoContainerView?.getHitRect(viewRect)
+        return viewRect.contains(x.toInt(), y.toInt())
     }
 
     private fun updateListenersWithTransitionState() {

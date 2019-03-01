@@ -65,6 +65,28 @@ class HomeFragment : BaseFragment(),
                     videoLength = "5:30",
                     videoImageUrl = "",
                     channelImageUrl = ""
+                ),
+                VideoShowcaseViewModel(
+                    videoId = "videoId",
+                    channelId = "channelId",
+                    providerUrl = "providerUrl",
+                    title = "Another Video Title",
+                    details = "Some Video Details Here",
+                    provider = "chRyNaN",
+                    videoLength = "5:30",
+                    videoImageUrl = "",
+                    channelImageUrl = ""
+                ),
+                VideoShowcaseViewModel(
+                    videoId = "videoId",
+                    channelId = "channelId",
+                    providerUrl = "providerUrl",
+                    title = "Another Video Title",
+                    details = "Some Video Details Here",
+                    provider = "chRyNaN",
+                    videoLength = "5:30",
+                    videoImageUrl = "",
+                    channelImageUrl = ""
                 )
             )
         }
