@@ -7,11 +7,10 @@
         android:layout_height="match_parent"
         android:background="@color/background_dark_color">
 
-    <View
-            android:id="@+id/videoImageView"
+    <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/videoPlayerView"
             android:layout_width="0dp"
             android:layout_height="@dimen/video_expanded_default_height"
-            android:background="@color/background_light_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -28,7 +27,7 @@
             android:text="Title Example"
             android:textAppearance="@style/TextAppearance.Title.Light"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintStart_toEndOf="@+id/videoPlayerView"
             app:layout_constraintEnd_toStartOf="@+id/playIconImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"/>
@@ -44,8 +43,8 @@
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:text="Description Example"
             android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
-            app:layout_constraintStart_toEndOf="@+id/videoImageView"
-            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"
+            app:layout_constraintStart_toEndOf="@+id/videoPlayerView"
+            app:layout_constraintBottom_toBottomOf="@+id/videoPlayerView"
             app:layout_constraintEnd_toStartOf="@+id/playIconImageView"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
 
@@ -59,7 +58,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cancelIconImageView"
-            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>
+            app:layout_constraintBottom_toBottomOf="@+id/videoPlayerView"/>
 
     <ImageView
             android:id="@+id/cancelIconImageView"
@@ -71,7 +70,7 @@
             android:contentDescription="@string/cd_video_action_stop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>
+            app:layout_constraintBottom_toBottomOf="@+id/videoPlayerView"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -81,7 +80,7 @@
             android:clipToPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/videoImageView"
+            app:layout_constraintTop_toBottomOf="@+id/videoPlayerView"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

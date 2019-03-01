@@ -16,7 +16,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
-            android:id="@+id/videoImageView"
+            android:id="@+id/videoPlayerView"
             android:layout_width="@dimen/video_recommendation_image_width"
             android:layout_height="@dimen/video_recommendation_image_height"
             android:contentDescription="@string/cd_video_recommendation_image"
@@ -36,8 +36,8 @@
             android:layout_marginBottom="@dimen/spacing_xsmall"
             android:textAppearance="@style/TextAppearance.Label.Light"
             android:background="@color/background_dark_transparency_75_percent"
-            app:layout_constraintEnd_toEndOf="@+id/videoImageView"
-            app:layout_constraintBottom_toBottomOf="@+id/videoImageView"/>
+            app:layout_constraintEnd_toEndOf="@+id/videoPlayerView"
+            app:layout_constraintBottom_toBottomOf="@+id/videoPlayerView"/>
 
     <TextView
             android:id="@+id/titleTextView"
@@ -49,7 +49,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/default_horizontal_spacing"
             android:ellipsize="end"
-            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintStart_toEndOf="@+id/videoPlayerView"
             app:layout_constraintEnd_toStartOf="@+id/overflowOptionsImageView"
             app:layout_constraintTop_toTopOf="parent"/>
 

@@ -45,17 +45,17 @@ class VideoFragment : BaseFragment(),
         get() = cancelIconImageView?.measuredWidth ?: 0
 
     override var videoHeight: Int
-        get() = videoImageView?.measuredHeight ?: 0
+        get() = videoPlayerView?.measuredHeight ?: 0
         set(value) {
-            videoImageView?.layoutParams?.height = value
+            videoPlayerView?.layoutParams?.height = value
         }
 
     override var videoWidth: Int
-        get() = videoImageView?.measuredWidth ?: 0
+        get() = videoPlayerView?.measuredWidth ?: 0
         set(value) {
-            val params = videoImageView?.layoutParams as? ConstraintLayout.LayoutParams
+            val params = videoPlayerView?.layoutParams as? ConstraintLayout.LayoutParams
             params?.width = value
-            videoImageView?.layoutParams = params
+            videoPlayerView?.layoutParams = params
         }
 
     override var collapsedPlayIconAlpha: Float
