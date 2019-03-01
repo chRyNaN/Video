@@ -1,35 +1,35 @@
 package com.chrynan.video.ui.activity
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import com.chrynan.video.controller.Controller
 import com.chrynan.video.navigator.Navigator
 
 abstract class BaseActivity : AppCompatActivity(),
     Navigator {
 
-    override fun goBack() =
-        with(supportFragmentManager) {
-            if (!isStateSaved && backStackEntryCount > 0) {
-                supportFragmentManager.popBackStack()
-            } else {
-                onBackPressed()
-            }
-        }
+    protected abstract val controller: Controller<*>
 
-    protected fun goToFragment(containerViewId: Int, fragment: Fragment, addToBackStack: Boolean = false) {
-        supportFragmentManager.let { fragmentManager ->
-            fragmentManager.beginTransaction().let { fragmentTransaction ->
+    private var lastSavedInstanceState: Bundle? = null
 
-                fragmentTransaction.replace(containerViewId, fragment)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lastSavedInstanceState = savedInstanceState
+    }
 
-                if (addToBackStack) {
-                    fragmentTransaction.addToBackStack(null)
-                        .commit()
-                        .run { fragmentManager.executePendingTransactions() }
-                } else {
-                    fragmentTransaction.commitNow()
-                }
-            }
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        controller.lastSavedInstanceState = outState
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        lastSavedInstanceState = savedInstanceState
+    }
+
+    override fun onBackPressed() = goBack()
+
+    override fun goBack() {
+        if (controller.isAtRootTabFragment) super.onBackPressed() else controller.popFragment()
     }
 }

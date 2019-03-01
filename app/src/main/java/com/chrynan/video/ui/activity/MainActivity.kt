@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import com.chrynan.video.R
+import com.chrynan.video.controller.BaseActivityController
+import com.chrynan.video.controller.Controller
+import com.chrynan.video.controller.provider.MainTabsProvider
+import com.chrynan.video.controller.tab.MainTabs
 import com.chrynan.video.navigator.MainNavigator
-import com.chrynan.video.ui.fragment.HomeFragment
-import com.chrynan.video.ui.fragment.SearchFragment
-import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.fragment.VideoFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.TopMenuView
@@ -18,6 +19,12 @@ class MainActivity : BaseActivity(),
     TopMenuView,
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener {
+
+    override val controller: Controller<MainTabs> = BaseActivityController(
+        activity = this,
+        containerId = R.id.baseFragmentContainer,
+        tabProvider = MainTabsProvider()
+    )
 
     override var topMenuTitle: CharSequence?
         get() = toolbar?.title
@@ -36,6 +43,8 @@ class MainActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        controller.startAtTab(MainTabs.HOME)
 
         toolbar?.let { setSupportActionBar(it) }
 
@@ -59,22 +68,18 @@ class MainActivity : BaseActivity(),
         goToHome()
     }
 
-    override fun goToHome() {
-        supportFragmentManager.beginTransaction().replace(R.id.baseFragmentContainer, HomeFragment.newInstance())
-            .commit()
-    }
+    override fun goToHome() = controller.switchToTab(MainTabs.HOME)
 
-    override fun goToSearch() {
-        supportFragmentManager.beginTransaction().replace(R.id.baseFragmentContainer, SearchFragment.newInstance())
-            .commit()
-    }
+    override fun goToSearch() = controller.switchToTab(MainTabs.SEARCH)
 
-    override fun goToSettings() {
-        supportFragmentManager.beginTransaction().replace(R.id.baseFragmentContainer, SettingsFragment.newInstance())
-            .commit()
-    }
+    override fun goToSettings() = controller.switchToTab(MainTabs.SETTINGS)
 
     override fun goBack() {
+        if (mainMotionLayout?.isVideoExpanded == true) {
+            mainMotionLayout?.collapse()
+        } else {
+            super.goBack()
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
