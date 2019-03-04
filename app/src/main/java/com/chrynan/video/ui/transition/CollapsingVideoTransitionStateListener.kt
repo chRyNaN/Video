@@ -1,13 +1,15 @@
 package com.chrynan.video.ui.transition
 
-import android.content.Context
 import com.chrynan.video.ui.view.CollapsibleVideoView
-import com.chrynan.video.ui.widget.VideoMotionLayout
+import com.chrynan.video.ui.widget.expandable.ExpandableState
+import com.chrynan.video.ui.widget.expandable.ExpandableStateListener
+import com.chrynan.video.utils.AppContext
+import javax.inject.Inject
 
-class CollapsingVideoTransitionStateListener(
-    private val context: Context,
+class CollapsingVideoTransitionStateListener @Inject constructor(
+    private val context: AppContext,
     private val videoView: CollapsibleVideoView
-) : VideoMotionLayout.VideoTransitionStateListener {
+) : ExpandableStateListener {
 
     private val expandedHeight by lazy { 250 * context.resources.displayMetrics.density }
     private val collapsedHeight by lazy { 80 * context.resources.displayMetrics.density }
@@ -16,7 +18,7 @@ class CollapsingVideoTransitionStateListener(
     private val expandedWidth: Int
         get() = videoView.containerWidth
 
-    override fun onTransitionStateChange(state: VideoMotionLayout.VideoTransitionState) {
+    override fun onExpandableStateChange(state: ExpandableState) {
         val videoWidth = (expandedWidth - ((1 - 4 * state.progress) * (expandedWidth - collapsedWidth))).toInt()
             .coerceAtMost(expandedWidth)
         videoView.videoWidth = videoWidth

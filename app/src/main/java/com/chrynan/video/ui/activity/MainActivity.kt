@@ -8,14 +8,19 @@ import com.chrynan.video.controller.Controller
 import com.chrynan.video.controller.tab.MainTabs
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.fragment.VideoFragment
-import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.TopMenuView
+import com.chrynan.video.ui.widget.expandable.ExpandableChildLayout
+import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
+import com.chrynan.video.ui.widget.expandable.ExpandableState
+import com.chrynan.video.ui.widget.expandable.ExpandableStateListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_video.view.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
     TopMenuView,
+    ExpandableContainerView,
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -36,6 +41,24 @@ class MainActivity : BaseActivity(),
                 ?.start()
         }
 
+    override val currentExpandableState: ExpandableState
+        get() = expandableLayout?.currentExpandableState ?: ExpandableState.Collapsed
+
+    override val expandableChildLayout: ExpandableChildLayout?
+        get() = videoFragmentContainer
+
+    override var expandedInteractionView: View?
+        get() = expandableChildLayout?.expandedInteractionView
+        set(value) {
+            expandableChildLayout?.expandedInteractionView = value
+        }
+
+    override var collapsedInteractionView: View?
+        get() = expandableChildLayout?.collapsedInteractionView
+        set(value) {
+            expandableChildLayout?.collapsedInteractionView = value
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,20 +71,30 @@ class MainActivity : BaseActivity(),
 
         val videoFragment = VideoFragment()
 
-        mainMotionLayout?.apply {
-            videoContainerView = videoFragmentContainer
-            videoTransitionStateListeners =
-                    listOf(
-                        CollapsingVideoTransitionStateListener(
-                            context = this@MainActivity,
-                            videoView = videoFragment
-                        )
-                    )
-        }
-
         supportFragmentManager.beginTransaction().add(R.id.videoFragmentContainer, videoFragment).commit()
 
+        videoFragmentContainer?.apply {
+            collapsedInteractionView = this
+            expandedInteractionView = this.videoPlayerView
+        }
+
         goToHome()
+    }
+
+    override fun addStateListener(listener: ExpandableStateListener) {
+        expandableLayout?.expandableStateListeners?.add(listener)
+    }
+
+    override fun removeStateListener(listener: ExpandableStateListener) {
+        expandableLayout?.expandableStateListeners?.remove(listener)
+    }
+
+    override fun expand() {
+        expandableLayout?.expand()
+    }
+
+    override fun collapse() {
+        expandableLayout?.collapse()
     }
 
     override fun goToHome() = controller.switchToTab(MainTabs.HOME)
@@ -71,11 +104,12 @@ class MainActivity : BaseActivity(),
     override fun goToSettings() = controller.switchToTab(MainTabs.SETTINGS)
 
     override fun goBack() {
-        if (mainMotionLayout?.isVideoExpanded == true) {
+        /*
+        if (mainMotionLayout?.isExpanded == true) {
             mainMotionLayout?.collapse()
         } else {
             super.goBack()
-        }
+        }*/
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -3,13 +3,14 @@
              xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
+            app:constraintSetStart="@+id/collapsed"
             app:constraintSetEnd="@+id/expanded"
-            app:constraintSetStart="@+id/collapsed">
+            app:duration="1000">
 
         <OnSwipe
-                app:touchAnchorId="@+id/videoFragmentContainer"
                 app:touchAnchorSide="top"
-                app:dragDirection="dragUp"/>
+                app:dragDirection="dragUp"
+                app:touchAnchorId="@+id/videoFragmentContainer"/>
 
     </Transition>
 
@@ -23,7 +24,7 @@
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginTop="0dp"
-                app:progress="1"
+                app:progress="@integer/expandable_layout_expanded"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,7 @@
                 android:layout_height="@dimen/bottom_navigation_bar_height"
                 android:visibility="gone"
                 android:translationY="@dimen/bottom_navigation_bar_height"
-                app:progress="1"
+                app:progress="@integer/expandable_layout_expanded"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -52,7 +53,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                app:progress="0"
+                app:progress="@integer/expandable_layout_collapsed"
                 app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -63,7 +64,7 @@
                 android:layout_height="@dimen/bottom_navigation_bar_height"
                 android:visibility="visible"
                 android:translationY="0dp"
-                app:progress="0"
+                app:progress="@integer/expandable_layout_collapsed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>

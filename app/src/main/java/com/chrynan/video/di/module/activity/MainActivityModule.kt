@@ -17,6 +17,8 @@ import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.fragment.SearchFragment
 import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.fragment.VideoFragment
+import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
+import com.chrynan.video.ui.view.TopMenuView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -41,6 +43,14 @@ internal abstract class MainActivityModule {
                 tabProvider = tabsProvider
             )
     }
+
+    @Binds
+    @ActivityScope
+    abstract fun bindTopMenuView(activity: MainActivity): TopMenuView
+
+    @Binds
+    @ActivityScope
+    abstract fun bindExpandableView(activity: MainActivity): ExpandableContainerView
 
     @Binds
     @ActivityScope

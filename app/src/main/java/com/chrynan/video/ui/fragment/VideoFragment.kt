@@ -17,7 +17,9 @@ import com.chrynan.video.model.VideoRecommendationViewModel
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
+import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.CollapsibleVideoView
+import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
@@ -33,6 +35,12 @@ class VideoFragment : BaseFragment(),
 
     @Inject
     lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
+
+    @Inject
+    lateinit var transitionListener: CollapsingVideoTransitionStateListener
+
+    @Inject
+    lateinit var expandableView: ExpandableContainerView
 
     private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options) }
 
@@ -93,6 +101,10 @@ class VideoFragment : BaseFragment(),
         inflater.inflate(R.layout.fragment_video, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        expandableView.addStateListener(listener = transitionListener)
+        transitionListener.onExpandableStateChange(expandableView.currentExpandableState)
+        expandableView.expandedInteractionView = videoPlayerView
+
         recyclerView?.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
