@@ -3,11 +3,13 @@ package com.chrynan.video.ui.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import com.chrynan.kotlinutils.isTruthy
 import com.chrynan.video.R
-import com.chrynan.video.controller.Controller
+import com.chrynan.video.controller.MainController
+import com.chrynan.video.controller.VideoPlayerController
 import com.chrynan.video.controller.tab.MainTabs
+import com.chrynan.video.controller.tab.VideoPlayerTabs
 import com.chrynan.video.navigator.MainNavigator
-import com.chrynan.video.ui.fragment.VideoFragment
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.ui.widget.expandable.ExpandableChildLayout
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
@@ -25,7 +27,10 @@ class MainActivity : BaseActivity(),
     BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Inject
-    override lateinit var controller: Controller<MainTabs>
+    override lateinit var controller: MainController
+
+    @Inject
+    lateinit var videoPlayerController: VideoPlayerController
 
     override var topMenuTitle: CharSequence?
         get() = toolbar?.title
@@ -69,16 +74,16 @@ class MainActivity : BaseActivity(),
 
         bottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
-        val videoFragment = VideoFragment()
-
-        supportFragmentManager.beginTransaction().add(R.id.videoFragmentContainer, videoFragment).commit()
-
         videoFragmentContainer?.apply {
             collapsedInteractionView = this
             expandedInteractionView = this.videoPlayerView
         }
 
+        videoPlayerController.startAtTab(VideoPlayerTabs.VIDEO)
+
         goToHome()
+
+        goToVideo()
     }
 
     override fun addStateListener(listener: ExpandableStateListener) {
@@ -103,13 +108,16 @@ class MainActivity : BaseActivity(),
 
     override fun goToSettings() = controller.switchToTab(MainTabs.SETTINGS)
 
+    override fun goToVideo() {
+        videoPlayerController.switchToTab(VideoPlayerTabs.VIDEO)
+    }
+
     override fun goBack() {
-        /*
-        if (mainMotionLayout?.isExpanded == true) {
-            mainMotionLayout?.collapse()
+        if (expandableLayout?.currentExpandableState?.isExpanded.isTruthy()) {
+            expandableLayout?.collapse()
         } else {
             super.goBack()
-        }*/
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

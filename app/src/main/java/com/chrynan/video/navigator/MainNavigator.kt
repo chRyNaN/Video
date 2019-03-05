@@ -7,4 +7,6 @@ interface MainNavigator : Navigator {
     fun goToSearch()
 
     fun goToSettings()
+
+    fun goToVideo()
 }

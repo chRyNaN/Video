@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class MainTabsProvider @Inject constructor() : TabFragmentProvider<MainTabs> {
 
-    override val rootTabCount = 3
+    override val rootTabCount = MainTabs.values().size
 
     override fun getTabFromIndex(index: Int) = MainTabs.values().firstOrNull { it.index == index }
 

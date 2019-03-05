@@ -9,8 +9,8 @@ import com.chrynan.video.controller.tab.Tab
 import com.chrynan.video.ui.activity.BaseActivity
 import com.ncapdevi.fragnav.FragNavController
 
-class BaseActivityController<T : Tab>(
-    activity: BaseActivity,
+open class BaseActivityController<T : Tab>(
+    private val activity: BaseActivity,
     @IdRes containerId: Int,
     private val tabProvider: TabFragmentProvider<T>
 ) : Controller<T>,
@@ -19,7 +19,7 @@ class BaseActivityController<T : Tab>(
     private val fragNavController = FragNavController(activity.supportFragmentManager, containerId)
 
     override lateinit var currentTab: T
-        private set
+        protected set
 
     override val currentTabStackCount: Int
         get() = fragNavController.currentStack?.size ?: 1

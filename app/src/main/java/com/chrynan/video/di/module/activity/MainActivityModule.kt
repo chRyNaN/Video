@@ -1,10 +1,10 @@
 package com.chrynan.video.di.module.activity
 
 import com.chrynan.video.R
-import com.chrynan.video.controller.BaseActivityController
-import com.chrynan.video.controller.Controller
+import com.chrynan.video.controller.MainController
+import com.chrynan.video.controller.VideoPlayerController
 import com.chrynan.video.controller.provider.MainTabsProvider
-import com.chrynan.video.controller.tab.MainTabs
+import com.chrynan.video.controller.provider.VideoPlayerTabsProvider
 import com.chrynan.video.di.module.fragment.HomeFragmentModule
 import com.chrynan.video.di.module.fragment.SearchFragmentModule
 import com.chrynan.video.di.module.fragment.SettingsFragmentModule
@@ -17,8 +17,8 @@ import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.fragment.SearchFragment
 import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.fragment.VideoFragment
-import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import com.chrynan.video.ui.view.TopMenuView
+import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -36,10 +36,23 @@ internal abstract class MainActivityModule {
         fun provideMainController(
             activity: MainActivity,
             tabsProvider: MainTabsProvider
-        ): Controller<MainTabs> =
-            BaseActivityController(
+        ): MainController =
+            MainController(
                 activity = activity,
                 containerId = R.id.baseFragmentContainer,
+                tabProvider = tabsProvider
+            )
+
+        @JvmStatic
+        @Provides
+        @ActivityScope
+        fun provideVideoPlayerController(
+            activity: MainActivity,
+            tabsProvider: VideoPlayerTabsProvider
+        ): VideoPlayerController =
+            VideoPlayerController(
+                activity = activity,
+                containerId = R.id.videoFragmentContainer,
                 tabProvider = tabsProvider
             )
     }
