@@ -3,11 +3,15 @@ package com.chrynan.video.di.module.fragment
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.ui.adapter.FilterItemAdapter
+import com.chrynan.video.ui.adapter.SectionHeaderAdapter
+import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.SearchFragment
 import com.chrynan.video.ui.view.SearchView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 
 @Module
 internal abstract class SearchFragmentModule {
@@ -17,8 +21,18 @@ internal abstract class SearchFragmentModule {
 
         @JvmStatic
         @Provides
+        @Named("FilterItemAdapter")
         fun provideFilterAdapter(filterItemAdapter: FilterItemAdapter) =
             ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(filterItemAdapter))
+
+        @JvmStatic
+        @Provides
+        @Named("ResultAdapter")
+        fun provideResultAdapter(
+            headerAdapter: SectionHeaderAdapter,
+            videoRecommendationAdapter: VideoRecommendationAdapter
+        ) =
+            ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(headerAdapter, videoRecommendationAdapter))
     }
 
     @Binds
@@ -26,4 +40,7 @@ internal abstract class SearchFragmentModule {
 
     @Binds
     abstract fun bindFilterItemCheckedChangeListener(fragment: SearchFragment): FilterItemAdapter.FilterItemCheckedListener
+
+    @Binds
+    abstract fun bindVideoInfoAdapterListener(fragment: SearchFragment): VideoOptionsListener
 }

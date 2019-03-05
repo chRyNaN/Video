@@ -9,13 +9,18 @@ import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
 import com.chrynan.video.model.FilterItemViewModel
+import com.chrynan.video.model.SectionHeaderViewModel
+import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.FilterItemAdapter
+import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.view.SearchView
 import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
+import javax.inject.Named
 
 class SearchFragment : BaseFragment(),
     SearchView,
+    VideoOptionsListener,
     FilterItemAdapter.FilterItemCheckedListener {
 
     companion object {
@@ -24,7 +29,12 @@ class SearchFragment : BaseFragment(),
     }
 
     @Inject
+    @field:Named("FilterItemAdapter")
     lateinit var filterItemAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
+
+    @Inject
+    @field:Named("ResultAdapter")
+    lateinit var resultAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_search, container, false)
@@ -67,9 +77,22 @@ class SearchFragment : BaseFragment(),
                 )
             )
         }
+
+        searchResultsRecyclerView?.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = resultAdapter
+
+            resultAdapter.items = listOf(
+                SectionHeaderViewModel(header = "Results")
+            )
+        }
     }
 
     override fun onFilterItemCheckChange(isChecked: Boolean, filterItem: FilterItemViewModel) {
+
+    }
+
+    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
 
     }
 }
