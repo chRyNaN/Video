@@ -7,6 +7,7 @@
         android:layout_height="match_parent">
 
     <com.chrynan.video.ui.widget.SearchWidget
+            android:id="@+id/searchWidget"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.Title.Light"
@@ -24,5 +25,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UnusedAttribute"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filterItemRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchWidget"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
