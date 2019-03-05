@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         android:id="@+id/filterItemChip"
         android:textAppearance="@style/TextAppearance.Title.Light"
         android:layout_marginEnd="@dimen/spacing_small"
