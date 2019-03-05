@@ -7,14 +7,15 @@ import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.video.ui.fragment.VideoFragment
+import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.ui.view.CollapsibleVideoView
+import com.chrynan.video.ui.view.VideoPlayerView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
 @Module
-internal abstract class VideoFragmentModule {
+internal abstract class VideoPlayerFragmentModule {
 
     @Module
     companion object {
@@ -38,11 +39,14 @@ internal abstract class VideoFragmentModule {
     }
 
     @Binds
-    abstract fun bindCollapsibleVideoView(fragment: VideoFragment): CollapsibleVideoView
+    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
 
     @Binds
-    abstract fun bindVideoInfoAdapterListener(fragment: VideoFragment): VideoInfoAdapter.Listener
+    abstract fun bindCollapsibleVideoView(fragment: VideoPlayerFragment): CollapsibleVideoView
 
     @Binds
-    abstract fun bindVideoOptionsListener(fragment: VideoFragment): VideoOptionsListener
+    abstract fun bindVideoInfoAdapterListener(fragment: VideoPlayerFragment): VideoInfoAdapter.Listener
+
+    @Binds
+    abstract fun bindVideoOptionsListener(fragment: VideoPlayerFragment): VideoOptionsListener
 }

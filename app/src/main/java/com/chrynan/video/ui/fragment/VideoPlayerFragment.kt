@@ -14,24 +14,30 @@ import com.chrynan.video.model.SectionHeaderViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.VideoInfoViewModel
 import com.chrynan.video.model.VideoRecommendationViewModel
+import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.view.CollapsibleVideoView
+import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
-class VideoFragment : BaseFragment(),
+class VideoPlayerFragment : BaseFragment(),
+    VideoPlayerView,
     CollapsibleVideoView,
     VideoInfoAdapter.Listener,
     VideoOptionsListener {
 
     companion object {
 
-        fun newInstance() = VideoFragment()
+        fun newInstance() = VideoPlayerFragment()
     }
+
+    @Inject
+    override lateinit var presenter: VideoPlayerPresenter
 
     @Inject
     lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
