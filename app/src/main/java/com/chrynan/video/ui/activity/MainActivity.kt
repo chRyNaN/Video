@@ -109,6 +109,8 @@ class MainActivity : BaseActivity(),
     override fun goToSettings() = controller.switchToTab(MainTabs.SETTINGS)
 
     override fun goToVideo() {
+        // Later, when you need to pass in parameters, consider using sealed classes
+        // instead of enum classes as tabs? Maybe that way you can provide information to them? Not sure if that would work
         videoPlayerController.switchToTab(VideoPlayerTabs.VIDEO)
     }
 
