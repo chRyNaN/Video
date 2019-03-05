@@ -35,4 +35,6 @@
     <color name="text_dark_primary_color">@color/primary_dark_color</color>
     <color name="text_dark_secondary_color">@color/primary_dark_transparency_50_percent</color>
 
+    <color name="search_widget_default_background_color">@color/primary_color</color>
+
 </resources>

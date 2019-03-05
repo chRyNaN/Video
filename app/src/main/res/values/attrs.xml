@@ -7,4 +7,14 @@
         <attr name="transitionOnClick" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="SearchWidget">
+        <attr name="style" format="enum">
+            <enum name="round" value="0"/>
+            <enum name="rectangle" value="1"/>
+            <enum name="rounded_rectangle" value="2"/>
+        </attr>
+        <attr name="roundedRectangleCornerRadius" format="dimension"/>
+        <attr name="backgroundColor" format="color"/>
+    </declare-styleable>
+
 </resources>
