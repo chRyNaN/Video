@@ -38,7 +38,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     implementation 'com.github.chRyNaN.aaaah:libraryx:0.2.3'
-    implementation 'com.github.chRyNaN.kotlin-utils:platform-jvm:0.1.2'
+    implementation 'com.github.chRyNaN.kotlin-utils:platform-jvm:0.1.3'
 
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
@@ -48,10 +48,10 @@ dependencies {
 
     implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
 
-    kapt "com.google.dagger:dagger-compiler:2.16"
-    kapt "com.google.dagger:dagger-android-processor:2.16"
-    implementation "com.google.dagger:dagger:2.16"
-    implementation "com.google.dagger:dagger-android-support:2.16"
+    kapt "com.google.dagger:dagger-compiler:2.19"
+    kapt "com.google.dagger:dagger-android-processor:2.19"
+    implementation "com.google.dagger:dagger:2.19"
+    implementation "com.google.dagger:dagger-android-support:2.19"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

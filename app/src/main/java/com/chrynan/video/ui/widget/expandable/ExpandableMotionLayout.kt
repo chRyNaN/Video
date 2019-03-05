@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.chrynan.video.utils.alias
+import com.chrynan.kotlinutils.delegates.alias
 
 class ExpandableMotionLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     MotionLayout(context, attrs),
