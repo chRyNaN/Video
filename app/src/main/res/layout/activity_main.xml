@@ -54,13 +54,13 @@
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@null">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbar_height"
-                android:background="@color/background_dark_color"
                 android:elevation="@dimen/elevation_toolbar"
                 android:layout_gravity="top"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
