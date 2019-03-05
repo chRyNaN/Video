@@ -12,6 +12,7 @@
     <string name="menu_video_play_now">Play Now</string>
     <string name="menu_video_play_next">Play Next</string>
     <string name="menu_video_add_to_queue">Add to Queue</string>
+    <string name="menu_video_add_to_watch_list">Add to Watch List</string>
 
     <string name="video_info_button_like">Like</string>
     <string name="video_info_button_dislike">Dislike</string>

@@ -13,6 +13,10 @@
           android:title="@string/menu_video_add_to_queue"
           android:icon="@drawable/ic_add_to_queue"/>
 
+    <item android:id="@+id/action_add_to_watch_list"
+          android:title="@string/menu_video_add_to_watch_list"
+          android:icon="@drawable/ic_add_to_watch_list"/>
+
     <item android:id="@+id/action_dismiss"
           android:title="@string/menu_video_dismiss"
           android:icon="@drawable/ic_dismiss"/>
