@@ -9,6 +9,10 @@
           android:icon="@drawable/ic_search"
           android:title="@string/menu_bottom_navigation_search"/>
 
+    <item android:id="@+id/action_user_content"
+          android:icon="@drawable/ic_user_content"
+          android:title="@string/menu_bottom_navigation_user_content"/>
+
     <item android:id="@+id/action_settings"
           android:icon="@drawable/ic_settings"
           android:title="@string/menu_bottom_navigation_settings"/>

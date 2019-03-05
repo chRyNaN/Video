@@ -5,18 +5,12 @@ import com.chrynan.video.controller.MainController
 import com.chrynan.video.controller.VideoPlayerController
 import com.chrynan.video.controller.provider.MainTabsProvider
 import com.chrynan.video.controller.provider.VideoPlayerTabsProvider
-import com.chrynan.video.di.module.fragment.HomeFragmentModule
-import com.chrynan.video.di.module.fragment.SearchFragmentModule
-import com.chrynan.video.di.module.fragment.SettingsFragmentModule
-import com.chrynan.video.di.module.fragment.VideoPlayerFragmentModule
+import com.chrynan.video.di.module.fragment.*
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.activity.MainActivity
-import com.chrynan.video.ui.fragment.HomeFragment
-import com.chrynan.video.ui.fragment.SearchFragment
-import com.chrynan.video.ui.fragment.SettingsFragment
-import com.chrynan.video.ui.fragment.VideoPlayerFragment
+import com.chrynan.video.ui.fragment.*
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import dagger.Binds
@@ -76,6 +70,10 @@ internal abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [SearchFragmentModule::class])
     abstract fun searchFragmentInjector(): SearchFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [UserContentFragmentModule::class])
+    abstract fun userContentInjector(): UserContentFragment
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [SettingsFragmentModule::class])

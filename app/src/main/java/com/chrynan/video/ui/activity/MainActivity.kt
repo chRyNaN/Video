@@ -106,6 +106,8 @@ class MainActivity : BaseActivity(),
 
     override fun goToSearch() = controller.switchToTab(MainTabs.SEARCH)
 
+    override fun goToUserContent() = controller.switchToTab(MainTabs.USER_CONTENT)
+
     override fun goToSettings() = controller.switchToTab(MainTabs.SETTINGS)
 
     override fun goToVideo() {
@@ -126,6 +128,7 @@ class MainActivity : BaseActivity(),
         when (item.itemId) {
             R.id.action_home -> goToHome()
             R.id.action_search -> goToSearch()
+            R.id.action_user_content -> goToUserContent()
             R.id.action_settings -> goToSettings()
         }
 
