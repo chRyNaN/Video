@@ -26,6 +26,8 @@
 
     <dimen name="bottom_navigation_bar_height">55dp</dimen>
 
+    <dimen name="toolbar_height">56dp</dimen>
+
     <dimen name="recycler_view_bottom_padding">@dimen/spacing_medium</dimen>
 
     <dimen name="elevation_toolbar">4dp</dimen>

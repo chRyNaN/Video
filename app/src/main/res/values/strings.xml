@@ -23,4 +23,6 @@
     <string name="video_info_subtitle_tags">Tags</string>
     <string name="video_info_subtitle_provider">Provider</string>
 
+    <string name="search_hint">Search</string>
+
 </resources>

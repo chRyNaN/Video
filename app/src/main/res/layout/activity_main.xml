@@ -13,6 +13,7 @@
             android:id="@+id/baseFragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:nestedScrollingEnabled="true"/>
 
     <com.chrynan.video.ui.widget.expandable.ExpandableMotionLayout
@@ -50,16 +51,21 @@
 
     </com.chrynan.video.ui.widget.expandable.ExpandableMotionLayout>
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background_dark_color"
-            android:elevation="@dimen/elevation_toolbar"
-            android:layout_gravity="top"
-            app:titleTextAppearance="@style/TextAppearance.Title.Light"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"
+                android:background="@color/background_dark_color"
+                android:elevation="@dimen/elevation_toolbar"
+                android:layout_gravity="top"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:titleTextAppearance="@style/TextAppearance.Title.Light"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
