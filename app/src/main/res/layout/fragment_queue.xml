@@ -13,110 +13,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/bottomControlBarrier"/>
+            app:layout_constraintBottom_toTopOf="@+id/videoQueueControlWidget"/>
 
-    <View
-            android:id="@+id/bottomControlBackgroundView"
+    <com.chrynan.video.ui.widget.VideoQueueControlWidget
+            android:id="@+id/videoQueueControlWidget"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/primary_color"
+            android:paddingTop="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_medium"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingEnd="@dimen/spacing_small"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bottomControlBarrier"/>
-
-    <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/bottomControlBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="titleTextView"/>
-
-    <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_horizontal_spacing"
-            android:layout_marginEnd="@dimen/default_horizontal_spacing"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_small"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomControlButtonBarrier"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/bottomControlButtonBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="previousImageView, mainActionImageView, nextImageView"/>
-
-    <ImageView
-            android:id="@+id/previousImageView"
-            android:layout_width="@dimen/video_queue_controls_previous_next_size"
-            android:layout_height="@dimen/video_queue_controls_previous_next_size"
-            android:contentDescription="@string/cd_video_queue_action_previous"
-            android:src="@drawable/ic_previous"
-            app:layout_constraintBottom_toBottomOf="@+id/mainActionImageView"
-            app:layout_constraintTop_toTopOf="@+id/mainActionImageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/mainActionImageView"/>
-
-    <ImageView
-            android:id="@+id/mainActionImageView"
-            android:layout_width="@dimen/video_queue_controls_main_size"
-            android:layout_height="@dimen/video_queue_controls_main_size"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            android:contentDescription="@string/cd_video_queue_action_main"
-            android:src="@drawable/ic_play"
-            app:layout_constraintStart_toEndOf="@+id/previousImageView"
-            app:layout_constraintBottom_toTopOf="@+id/bottomControlSeekBarBarrier"
-            app:layout_constraintEnd_toStartOf="@+id/nextImageView"/>
-
-    <ImageView
-            android:id="@+id/nextImageView"
-            android:layout_width="@dimen/video_queue_controls_previous_next_size"
-            android:layout_height="@dimen/video_queue_controls_previous_next_size"
-            android:contentDescription="@string/cd_video_queue_action_next"
-            android:src="@drawable/ic_next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/mainActionImageView"
-            app:layout_constraintTop_toTopOf="@+id/mainActionImageView"
-            app:layout_constraintStart_toEndOf="@+id/mainActionImageView"/>
-
-    <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/bottomControlSeekBarBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="currentTimeTextView, videoPositionSeekBar, endTimeTextView"/>
-
-    <TextView
-            android:id="@+id/currentTimeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_horizontal_spacing"
-            android:layout_marginEnd="@dimen/default_horizontal_spacing"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <SeekBar
-            android:id="@+id/videoPositionSeekBar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/currentTimeTextView"
-            app:layout_constraintEnd_toStartOf="@+id/endTimeTextView"
-            app:layout_constraintTop_toTopOf="@+id/currentTimeTextView"
-            app:layout_constraintBottom_toBottomOf="@+id/currentTimeTextView"/>
-
-    <TextView
-            android:id="@+id/endTimeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_horizontal_spacing"
-            android:layout_marginStart="@dimen/default_horizontal_spacing"
-            android:layout_marginBottom="@dimen/spacing_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
