@@ -13,5 +13,7 @@
     <string name="cd_video_queue_action_previous">Previous queue item.</string>
     <string name="cd_video_queue_action_main">Play, pause, or repeat queue item.</string>
     <string name="cd_video_queue_action_next">Next queue item.</string>
+    <string name="cd_video_watch_list_image">Video watch list image.</string>
+    <string name="cd_video_watch_list_remove">Remove from watch list action.</string>
 
 </resources>

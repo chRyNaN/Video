@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/watchListItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+            android:id="@+id/videoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_video_watch_list_image"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Title.Light"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/removeFromWatchListImageView"/>
+
+    <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintEnd_toStartOf="@+id/removeFromWatchListImageView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+    <TextView
+            android:id="@+id/secondaryDescriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginBottom="@dimen/spacing_small"
+            app:layout_constraintStart_toEndOf="@+id/videoImageView"
+            app:layout_constraintEnd_toStartOf="@+id/removeFromWatchListImageView"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"/>
+
+    <ImageView
+            android:id="@+id/removeFromWatchListImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_video_watch_list_remove"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_dismiss"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
