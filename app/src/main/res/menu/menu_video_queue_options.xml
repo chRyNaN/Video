@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_remove_from_queue"
+          android:title="@string/menu_video_queue_remove_from_queue"
+          android:icon="@drawable/ic_dismiss"/>
+
+    <item android:id="@+id/action_add_to_watch_list"
+          android:title="@string/menu_video_queue_add_to_watch_list"
+          android:icon="@drawable/ic_add_to_watch_list"/>
+
+    <item android:id="@+id/action_share"
+          android:title="@string/menu_video_queue_share"
+          android:icon="@drawable/ic_share"/>
+
+</menu>

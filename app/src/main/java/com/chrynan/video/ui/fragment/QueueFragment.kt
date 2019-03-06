@@ -12,6 +12,7 @@ import com.chrynan.video.R
 import com.chrynan.video.model.QueueItemViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
+import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.view.QueueView
 import kotlinx.android.synthetic.main.fragment_queue.*
 import javax.inject.Inject
@@ -22,6 +23,8 @@ class QueueFragment : BaseFragment(),
 
     @Inject
     lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
+
+    private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_queue_options) }
 
     companion object {
 
@@ -56,6 +59,6 @@ class QueueFragment : BaseFragment(),
     }
 
     override fun queueOptionsMenuSelected(videoInfo: VideoInfo) {
-
+        videoOptionsMenuBottomSheet.show(childFragmentManager, null)
     }
 }

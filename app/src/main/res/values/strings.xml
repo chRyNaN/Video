@@ -15,6 +15,10 @@
     <string name="menu_video_add_to_queue">Add to Queue</string>
     <string name="menu_video_add_to_watch_list">Add to Watch List</string>
 
+    <string name="menu_video_queue_remove_from_queue">Remove from Queue</string>
+    <string name="menu_video_queue_add_to_watch_list">Add to Watch List</string>
+    <string name="menu_video_queue_share">Share</string>
+
     <string name="video_info_button_like">Like</string>
     <string name="video_info_button_dislike">Dislike</string>
     <string name="video_info_button_share">Share</string>
