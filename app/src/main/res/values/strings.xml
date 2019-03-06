@@ -29,6 +29,10 @@
     <string name="video_info_subtitle_tags">Tags</string>
     <string name="video_info_subtitle_provider">Provider</string>
 
+    <string name="channel_info_header_about">About</string>
+    <string name="channel_info_subtitle_created">Created</string>
+    <string name="channel_info_subtitle_last_updated">Last Updated</string>
+
     <string name="search_hint">Search</string>
 
 </resources>

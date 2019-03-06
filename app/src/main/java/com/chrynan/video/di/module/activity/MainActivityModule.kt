@@ -90,4 +90,8 @@ internal abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [WatchListFragmentModule::class])
     abstract fun watchListFragmentInjector(): WatchListFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [ChannelFragmentModule::class])
+    abstract fun channelFragmentInjector(): ChannelFragment
 }

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+            android:id="@+id/channelHeaderImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_channel_header_image"
+            android:background="@color/primary_color"
+            android:minHeight="@dimen/header_image_default_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/channelImageView"
+            android:layout_width="@dimen/channel_info_image_size"
+            android:layout_height="@dimen/channel_info_image_size"
+            android:background="@color/primary_color"
+            android:contentDescription="@string/cd_channel_image"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            app:layout_constraintTop_toBottomOf="@+id/channelHeaderImageView"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+            android:id="@+id/channelTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.SubHeader.Light"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="Test Title"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            app:layout_constraintStart_toEndOf="@+id/channelImageView"
+            app:layout_constraintTop_toTopOf="@+id/channelImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/channelImageView"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/channelImageNameBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="channelImageView, channelTitleTextView"
+            app:barrierDirection="bottom"/>
+
+    <TextView
+            android:id="@+id/subscriberCountTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="1,000,000 Subscribers"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/viewSubscriberCountCenterGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/channelImageNameBarrier"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/viewSubscriberCountCenterGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
+    <TextView
+            android:id="@+id/totalVideoViewCountTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:gravity="center_horizontal"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:text="5,000,000 Views"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/viewSubscriberCountCenterGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/channelImageNameBarrier"/>
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/viewSubscriberCountBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="subscriberCountTextView, totalVideoViewCountTextView"
+            app:barrierDirection="bottom"/>
+
+    <Button
+            android:id="@+id/channelSubscribeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:text="@string/video_info_button_subscribe"
+            android:background="@android:color/transparent"
+            android:textAppearance="@style/TextAppearance.Button.Attention"
+            android:textColor="@color/button_subscription_text_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewSubscriberCountBarrier"/>
+
+    <View
+            android:id="@+id/providerTopDivider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/horizontal_divider_height"
+            android:background="@color/divider_color"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/channelSubscribeButton"/>
+
+    <TextView
+            android:id="@+id/providerHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:text="@string/video_info_subtitle_provider"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/providerTopDivider"/>
+
+    <TextView
+            android:id="@+id/providerNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Title.Accent"
+            android:textColor="@color/text_link_color"
+            android:text="chRyNaN Codes"
+            app:layout_constraintStart_toEndOf="@+id/providerHeaderTextView"
+            app:layout_constraintTop_toBottomOf="@+id/providerTopDivider"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/providerBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="providerHeaderTextView, providerNameTextView"/>
+
+    <View
+            android:id="@+id/providerBottomDivider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/horizontal_divider_height"
+            android:background="@color/divider_color"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/providerBarrier"/>
+
+    <TextView
+            android:id="@+id/aboutHeaderTextView"
+            android:textAppearance="@style/TextAppearance.SubHeader.Light"
+            android:text="@string/channel_info_header_about"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingStart="@dimen/default_horizontal_spacing"
+            android:paddingEnd="@dimen/default_horizontal_spacing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/providerBottomDivider"/>
+
+    <TextView
+            android:id="@+id/createdHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:text="@string/channel_info_subtitle_created"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutHeaderTextView"/>
+
+    <TextView
+            android:id="@+id/createdTimeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:text="Yesterday"
+            app:layout_constraintStart_toEndOf="@+id/createdHeaderTextView"
+            app:layout_constraintTop_toBottomOf="@+id/aboutHeaderTextView"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/createdBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="createdHeaderTextView, createdTimeTextView"/>
+
+    <TextView
+            android:id="@+id/lastUpdatedHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:text="@string/channel_info_subtitle_last_updated"
+            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createdBarrier"/>
+
+    <TextView
+            android:id="@+id/lastUpdatedTimeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:text="Today"
+            app:layout_constraintStart_toEndOf="@+id/lastUpdatedHeaderTextView"
+            app:layout_constraintTop_toBottomOf="@+id/createdBarrier"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/lastUpdatedBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="lastUpdatedHeaderTextView, lastUpdatedTimeTextView"/>
+
+    <TextView
+            android:id="@+id/aboutTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Body.Light"
+            android:layout_marginStart="@dimen/default_horizontal_spacing"
+            android:layout_marginEnd="@dimen/default_horizontal_spacing"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="Example About Text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastUpdatedBarrier"/>
+
+    <View
+            android:id="@+id/aboutBottomDivider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/horizontal_divider_height"
+            android:background="@color/divider_color"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutTextView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,10 @@
 package com.chrynan.video.controller.provider
 
 import com.chrynan.video.controller.tab.MainTabs
+import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.fragment.SearchFragment
 import com.chrynan.video.ui.fragment.SettingsFragment
-import com.chrynan.video.ui.fragment.WatchListFragment
 import javax.inject.Inject
 
 class MainTabsProvider @Inject constructor() : TabFragmentProvider<MainTabs> {
@@ -17,7 +17,7 @@ class MainTabsProvider @Inject constructor() : TabFragmentProvider<MainTabs> {
         when (tab) {
             MainTabs.HOME -> HomeFragment.newInstance()
             MainTabs.SEARCH -> SearchFragment.newInstance()
-            MainTabs.USER_CONTENT -> WatchListFragment.newInstance()
+            MainTabs.USER_CONTENT -> ChannelFragment.newInstance()
             MainTabs.SETTINGS -> SettingsFragment.newInstance()
         }
 }
