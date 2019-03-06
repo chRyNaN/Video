@@ -12,7 +12,7 @@ import com.chrynan.video.R
 import com.chrynan.video.model.QueueItemViewModel
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import kotlinx.android.synthetic.main.adapter_queue_item.view.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class QueueItemAdapter @Inject constructor(private val listener: QueueOptionsListener) :
     AnotherAdapter<QueueItemViewModel>() {

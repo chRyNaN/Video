@@ -11,7 +11,7 @@ import com.chrynan.video.R
 import com.chrynan.video.model.VideoRecommendationViewModel
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_recommendation.view.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class VideoRecommendationAdapter @Inject constructor(private val listener: VideoOptionsListener) :
     AnotherAdapter<VideoRecommendationViewModel>() {

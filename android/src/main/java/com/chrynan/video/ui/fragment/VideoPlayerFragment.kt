@@ -23,7 +23,7 @@ import com.chrynan.video.ui.view.CollapsibleVideoView
 import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import kotlinx.android.synthetic.main.fragment_video.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class VideoPlayerFragment : BaseFragment(),
     VideoPlayerView,

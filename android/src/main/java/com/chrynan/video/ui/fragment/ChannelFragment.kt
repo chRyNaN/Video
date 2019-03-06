@@ -13,8 +13,8 @@ import com.chrynan.video.model.ChannelInfoViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.view.ChannelView
+import com.chrynan.video.utils.Inject
 import kotlinx.android.synthetic.main.fragment_channel.*
-import javax.inject.Inject
 
 class ChannelFragment : BaseFragment(),
     ChannelView,

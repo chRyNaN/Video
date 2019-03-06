@@ -18,7 +18,7 @@ import com.chrynan.video.ui.widget.expandable.ExpandableStateListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class MainActivity : BaseActivity(),
     TopMenuView,

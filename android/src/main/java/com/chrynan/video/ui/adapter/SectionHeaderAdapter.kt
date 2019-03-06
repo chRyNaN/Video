@@ -10,7 +10,7 @@ import com.chrynan.aaaah.from
 import com.chrynan.video.R
 import com.chrynan.video.model.SectionHeaderViewModel
 import kotlinx.android.synthetic.main.adapter_section_header.view.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class SectionHeaderAdapter @Inject constructor() : AnotherAdapter<SectionHeaderViewModel>() {
 

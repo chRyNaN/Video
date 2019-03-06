@@ -15,7 +15,7 @@ import com.chrynan.video.ui.adapter.FilterItemAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.view.SearchView
 import kotlinx.android.synthetic.main.fragment_search.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 import javax.inject.Named
 
 class SearchFragment : BaseFragment(),

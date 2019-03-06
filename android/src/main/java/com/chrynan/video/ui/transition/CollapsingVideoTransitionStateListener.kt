@@ -4,7 +4,7 @@ import com.chrynan.video.ui.view.CollapsibleVideoView
 import com.chrynan.video.ui.widget.expandable.ExpandableState
 import com.chrynan.video.ui.widget.expandable.ExpandableStateListener
 import com.chrynan.video.utils.AppContext
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class CollapsingVideoTransitionStateListener @Inject constructor(
     private val context: AppContext,

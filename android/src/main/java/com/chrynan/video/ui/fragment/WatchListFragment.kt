@@ -14,7 +14,7 @@ import com.chrynan.video.model.WatchListItemViewModel
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.ui.view.WatchListView
 import kotlinx.android.synthetic.main.fragment_watch_list.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class WatchListFragment : BaseFragment(),
     WatchListView,

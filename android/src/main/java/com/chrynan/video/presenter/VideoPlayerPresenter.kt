@@ -1,10 +1,8 @@
 package com.chrynan.video.presenter
 
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
-class VideoPlayerPresenter @Inject constructor(
-
-) : Presenter {
+class VideoPlayerPresenter @Inject constructor() : Presenter {
 
     override fun onAttachToView() {
     }

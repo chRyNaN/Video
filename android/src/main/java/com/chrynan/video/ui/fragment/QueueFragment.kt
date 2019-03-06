@@ -15,7 +15,7 @@ import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.view.QueueView
 import kotlinx.android.synthetic.main.fragment_queue.*
-import javax.inject.Inject
+import com.chrynan.video.utils.Inject
 
 class QueueFragment : BaseFragment(),
     QueueView,

@@ -10,6 +10,8 @@ dependencies {
 
     expectedBy project(':core')
 
+    implementation "javax.inject:javax.inject:1"
+
     testCompile "junit:junit:4.12"
     testCompile "org.jetbrains.kotlin:kotlin-test"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit"
