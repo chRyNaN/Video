@@ -8,5 +8,7 @@
     <string name="cd_video_recommendation_image">Video recommendation image.</string>
     <string name="cd_video_recommendation_overflow_options">Video recommendation options.</string>
     <string name="cd_video_showcase_image">Video showcase image.</string>
+    <string name="cd_video_queue_item_image">Video queue item image.</string>
+    <string name="cd_video_queue_item_overflow_options">Video queue item options.</string>
 
 </resources>

@@ -24,6 +24,8 @@
     <dimen name="video_recommendation_image_height">100dp</dimen>
     <dimen name="video_showcase_image_default_height">200dp</dimen>
 
+    <dimen name="video_queue_item_image_size">80dp</dimen>
+
     <dimen name="bottom_navigation_bar_height">55dp</dimen>
 
     <dimen name="toolbar_height">56dp</dimen>
