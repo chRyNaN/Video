@@ -5,6 +5,7 @@ import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.ui.adapter.ChannelInfoAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.ui.view.ChannelView
 import dagger.Binds
@@ -29,4 +30,7 @@ internal abstract class ChannelFragmentModule {
 
     @Binds
     abstract fun bindChannelView(fragment: ChannelFragment): ChannelView
+
+    @Binds
+    abstract fun bindVideoOptionsListener(fragment: ChannelFragment): VideoOptionsListener
 }

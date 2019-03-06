@@ -1,0 +1,12 @@
+apply plugin: 'kotlin-platform-common'
+apply plugin: 'maven'
+
+group 'com.chrynan'
+version rootProject.ext.version
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-common"
+
+    testCompile "org.jetbrains.kotlin:kotlin-test-annotations-common"
+    testCompile "org.jetbrains.kotlin:kotlin-test-common"
+}

@@ -10,12 +10,15 @@ import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.video.R
 import com.chrynan.video.model.ChannelInfoViewModel
+import com.chrynan.video.model.VideoInfo
+import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.view.ChannelView
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 
 class ChannelFragment : BaseFragment(),
-    ChannelView {
+    ChannelView,
+    VideoOptionsListener {
 
     companion object {
 
@@ -55,5 +58,9 @@ class ChannelFragment : BaseFragment(),
                 )
             )
         }
+    }
+
+    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
+
     }
 }

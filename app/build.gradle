@@ -6,14 +6,17 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+group 'com.chrynan'
+version rootProject.ext.version
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.chrynan.video"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.versionNumber
+        versionName rootProject.ext.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
