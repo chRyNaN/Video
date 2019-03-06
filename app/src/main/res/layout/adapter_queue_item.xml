@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/queueItemContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background_queue_item_color">
 
     <ImageView
             android:id="@+id/videoImageView"
@@ -40,9 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/cd_video_queue_item_overflow_options"
-            android:layout_marginEnd="@dimen/default_horizontal_spacing"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_small"
+            android:padding="@dimen/spacing_small"
             android:src="@drawable/ic_overflow_options"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

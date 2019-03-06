@@ -82,4 +82,8 @@ internal abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [VideoPlayerFragmentModule::class])
     abstract fun videoFragmentInjector(): VideoPlayerFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [QueueFragmentModule::class])
+    abstract fun queueFragmentInjector(): QueueFragment
 }

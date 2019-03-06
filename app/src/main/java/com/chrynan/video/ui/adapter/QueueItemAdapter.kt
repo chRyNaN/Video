@@ -32,6 +32,8 @@ class QueueItemAdapter @Inject constructor(private val listener: QueueOptionsLis
                 .load(item.videoImageUri)
                 .into(videoImageView)
 
+            queueItemContainer?.isActivated = item.isActivated
+
             overflowOptionsImageView?.setOnClickListener {
                 listener.queueOptionsMenuSelected(videoInfo = item.videoInfo)
             }

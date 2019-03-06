@@ -8,10 +8,10 @@ data class QueueItemViewModel(
     val videoInfo: VideoInfo,
     val videoImageUri: Uri,
     val title: String,
-    val isSelected: Boolean,
+    val isActivated: Boolean,
     val position: Int
 ) : UniqueAdapterItem {
 
     override val uniqueAdapterId =
-        "Queue Item: videoInfo = $videoInfo; position = $position; isSelected = $isSelected".asUniqueAdapterId()
+        "Queue Item: videoInfo = $videoInfo; position = $position; isActivated = $isActivated".asUniqueAdapterId()
 }
