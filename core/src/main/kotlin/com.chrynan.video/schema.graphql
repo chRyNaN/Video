@@ -1,0 +1,129 @@
+type Uri {
+  scheme: String!
+  authority: String
+  userInfo: String
+  host: String
+  port: String
+  path: String!
+  query: String
+  fragment: String
+}
+
+type Provider {
+  uri: Uri!
+  created: String!
+  lastUpdated: String!
+  name: String!
+  description: String!
+  details: String
+  imageUri(imageType: ImageType = MAIN): Uri
+  website: Uri
+}
+
+type Publisher {
+  id: ID!
+  provider: Provider!
+  created: String!
+  lastUpdated: String!
+  name: String!
+  description: String!
+  details: String
+  imageUri(imageType: ImageType = MAIN): Uri
+  website: Uri
+}
+
+type Channel {
+  id: ID!
+  publisher: Publisher!
+  created: String!
+  published: String!
+  lastUpdated: String!
+  name: String!
+  description: String!
+  details: String
+  imageUri(imageType: ImageType = MAIN): Uri
+  website: Uri
+}
+
+type Video {
+  id: ID!
+  channel: Channel!
+  created: String!
+  published: String!
+  lastUpdated: String!
+  name: String!
+  description: String!
+  imageUri: Uri
+  category: String
+  tags: [String!]!
+  viewCount: Int
+  supportsRating: Boolean!
+  rateUpCount: Int
+  rateDownCount: Int
+  videoDetails: VideoDetails!
+}
+
+type VideoDetails {
+  isLive: Boolean!
+  initialDelay: Float
+  length: Float
+  formatType: FormatType!
+  containerFormat: ContainerFormat!
+  uri: Uri!
+  standaloneSubtitle: Subtitle
+}
+
+type Subtitle {
+  uri: Uri!
+  format: SubtitleFormat!
+}
+
+enum FormatType {
+  PROGRESSIVE
+  DASH
+  SMOOTH_STREAMING
+  HLS
+  UNKNOWN
+}
+
+enum ContainerFormat {
+  MP4
+  M4A
+  FMP4
+  WEBM
+  MATROSKA
+  MP3
+  OGG
+  WAV
+  MPEG_TS
+  MPEG_PS
+  FLV
+  ADTS_AAC
+  FLAC
+  AMR
+  UNKNOWN
+}
+
+enum SubtitleFormat {
+  WEBVTT
+  TTML
+  SMPTE_TT
+  SUBRIP
+  SSA
+  ASS
+  UNKNOWN
+}
+
+enum ImageType {
+  MAIN
+  HEADER
+}
+
+type User {
+  id: ID!
+  provider: Provider!
+  name: String!
+  email: String!
+  username: String
+  phoneNumber: String
+}
