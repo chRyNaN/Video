@@ -1,3 +1,21 @@
+scalar Cursor
+
+interface Edge {
+  cursor: Cursor!
+}
+
+interface Connection {
+  totalCount: Int!
+  pageInfo: PageInfo!
+}
+
+type PageInfo {
+  isFirstPage: Boolean!
+  isLastPage: Boolean!
+  startCursor: Cursor
+  endCursor: Cursor
+}
+
 type Uri {
   scheme: String!
   authority: String
@@ -9,6 +27,27 @@ type Uri {
   fragment: String
 }
 
+type UserConnection implements Connection {
+  edges: [UserEdge!]!
+}
+
+type UserEdge implements Edge {
+  node: User!
+}
+
+type User {
+  id: ID!
+  provider: Provider!
+  name: String!
+  email: String!
+  username: String
+  phoneNumber: String
+  notesConnection(take: Int!, after: Cursor): NotesConnection!
+  ratingsConnection(take: Int!, after: Cursor): RatingsConnection!
+  subscribedChannelsConnection(take: Int!, after: Cursor): ChannelsConnection!
+	membershipsConnection(take: Int!, after: Cursor): PublishersConnection!
+}
+
 type Provider {
   uri: Uri!
   created: String!
@@ -16,8 +55,17 @@ type Provider {
   name: String!
   description: String!
   details: String
-  imageUri(imageType: ImageType = MAIN): Uri
+  imageUri(imageType: ImageType! = MAIN): Uri
   website: Uri
+  publishersConnection(take: Int!, after: Cursor): PublisherConnection!
+}
+
+type PublisherConnection implements Connection {
+  edges: [PublisherEdge!]!
+}
+
+type PublisherEdge implements Edge {
+  node: Publisher!
 }
 
 type Publisher {
@@ -28,12 +76,23 @@ type Publisher {
   name: String!
   description: String!
   details: String
-  imageUri(imageType: ImageType = MAIN): Uri
+  imageUri(imageType: ImageType! = MAIN): Uri
   website: Uri
+  channelsConnection(take: Int!, after: Cursor): ChannelConnection!
+  membersConnection(take: Int!, after: Cursor): UserConnection!
+}
+
+type ChannelConnection implements Connection {
+  edges: [ChannelEdge!]!
+}
+
+type ChannelEdge implements Edge {
+  node: Channel!
 }
 
 type Channel {
   id: ID!
+  provider: Provider!
   publisher: Publisher!
   created: String!
   published: String!
@@ -41,12 +100,24 @@ type Channel {
   name: String!
   description: String!
   details: String
-  imageUri(imageType: ImageType = MAIN): Uri
+  imageUri(imageType: ImageType! = MAIN): Uri
   website: Uri
+  videosConnection(take: Int!, after: Cursor): VideoConnection!
+  subscribersConnection(take: Int!, after: Cursor): UserConnection!
+}
+
+type VideoConnection implements Connection {
+  edges: [VideoEdge!]!
+}
+
+type VideoEdge implements Edge {
+  node: Video!
 }
 
 type Video {
   id: ID!
+  provider: Provider!
+  publisher: Publisher!
   channel: Channel!
   created: String!
   published: String!
@@ -58,8 +129,8 @@ type Video {
   tags: [String!]!
   viewCount: Int
   supportsRating: Boolean!
-  rateUpCount: Int
-  rateDownCount: Int
+  ratingsConnection(take: Int!, after: Cursor): RatingConnection!
+  notesConnection(take: Int!, after: Cursor): NoteConnection!
   videoDetails: VideoDetails!
 }
 
@@ -69,6 +140,7 @@ type VideoDetails {
   length: Float
   formatType: FormatType!
   containerFormat: ContainerFormat!
+  videoType: VideoType!
   uri: Uri!
   standaloneSubtitle: Subtitle
 }
@@ -76,6 +148,63 @@ type VideoDetails {
 type Subtitle {
   uri: Uri!
   format: SubtitleFormat!
+}
+
+type RatingConnection implements Connection {
+  rateUpCount: Int!
+  rateDownCount: Int!
+  edges: [RatingEdge!]!
+}
+
+type RatingEdge implements Edge {
+  node: Rating!
+}
+
+type Rating {
+  id: ID!
+  created: String!
+  lastUpdated: String!
+  video: Video!
+  user: User!
+  rateUp: Boolean!
+  rateDown: Boolean!
+}
+
+type NoteConnection implements Connection {
+  edges: [NoteEdge!]!
+}
+
+type NoteEdge implements Edge {
+  node: Note!
+}
+
+type Note {
+  id: ID!
+  created: String!
+  lastUpdated: String!
+  video: Video!
+  user: User!
+  content: String!
+}
+
+enum VideoType {
+  MOVIE
+  PREVIEW
+  SHOW
+  SHORT_SERIES
+  CLIP
+  HOME_VIDEO
+  RECORDING
+  SNIPPET
+  LIVE_STREAM
+  MUSIC_VIDEO
+  PRESENTATION
+  VLOG
+  PODCAST
+  NEWS
+  VIDEO
+  OTHER
+  UNKNOWN
 }
 
 enum FormatType {
@@ -117,13 +246,4 @@ enum SubtitleFormat {
 enum ImageType {
   MAIN
   HEADER
-}
-
-type User {
-  id: ID!
-  provider: Provider!
-  name: String!
-  email: String!
-  username: String
-  phoneNumber: String
 }
