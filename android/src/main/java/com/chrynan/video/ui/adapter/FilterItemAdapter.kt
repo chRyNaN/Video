@@ -10,7 +10,7 @@ import com.chrynan.aaaah.from
 import com.chrynan.video.R
 import com.chrynan.video.model.FilterItemViewModel
 import kotlinx.android.synthetic.main.adapter_filter_item.view.*
-import com.chrynan.common.Inject
+import javax.inject.Inject
 
 class FilterItemAdapter @Inject constructor(private val listener: FilterItemCheckedListener) :
     AnotherAdapter<FilterItemViewModel>() {

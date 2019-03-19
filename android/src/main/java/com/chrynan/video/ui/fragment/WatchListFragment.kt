@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
-import com.chrynan.common.Inject
 import com.chrynan.presentation.view.WatchListView
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfo
@@ -25,7 +24,6 @@ class WatchListFragment : BaseFragment(),
         fun newInstance() = WatchListFragment()
     }
 
-    @Inject
     lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

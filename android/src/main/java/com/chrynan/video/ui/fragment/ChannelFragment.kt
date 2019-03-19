@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
-import com.chrynan.common.Inject
 import com.chrynan.presentation.view.ChannelView
 import com.chrynan.video.R
 import com.chrynan.video.model.ChannelInfoViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.fragment_channel.*
+import javax.inject.Inject
 
 class ChannelFragment : BaseFragment(),
     ChannelView,

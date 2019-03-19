@@ -8,11 +8,11 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
-import com.chrynan.common.Inject
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.WatchListItemViewModel
 import kotlinx.android.synthetic.main.adapter_watch_list_item.view.*
+import javax.inject.Inject
 
 class WatchListItemAdapter @Inject constructor(private val listener: WatchListItemSelectedListener) :
     AnotherAdapter<WatchListItemViewModel>() {

@@ -3,7 +3,6 @@ package com.chrynan.video.ui.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import com.chrynan.common.Inject
 import com.chrynan.kotlinutils.isTruthy
 import com.chrynan.presentation.view.TopMenuView
 import com.chrynan.video.R
@@ -19,6 +18,7 @@ import com.chrynan.video.ui.widget.expandable.ExpandableStateListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
     TopMenuView,

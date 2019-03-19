@@ -9,7 +9,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
-import com.chrynan.common.Inject
 import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.video.R
@@ -24,6 +23,7 @@ import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import kotlinx.android.synthetic.main.fragment_video.*
+import javax.inject.Inject
 
 class VideoPlayerFragment : BaseFragment(),
     VideoPlayerView,
