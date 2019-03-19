@@ -1,6 +1,6 @@
 package com.chrynan.video.presenter
 
-import com.chrynan.video.utils.Inject
+import javax.inject.Inject
 
 class VideoPlayerPresenter @Inject constructor() : Presenter {
 

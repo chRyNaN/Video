@@ -1,3 +1,14 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "kotlin-multiplatform") {
+                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+}
+
 include ':android'
-include ':core'
-include ':core-jvm'
+include ':common'
+
+enableFeaturePreview('GRADLE_METADATA')

@@ -1,3 +1,3 @@
-package com.chrynan.video.utils
+package com.chrynan.common
 
 actual typealias Inject = javax.inject.Inject

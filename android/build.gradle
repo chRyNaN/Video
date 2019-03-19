@@ -28,15 +28,18 @@ android {
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'META-INF/common.kotlin_module'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    implementation project(':core-jvm')
-
+    
+    implementation project(':common')
+    
     implementation 'androidx.core:core:1.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     implementation 'com.google.android.material:material:1.1.0-alpha04'

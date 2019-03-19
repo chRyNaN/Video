@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.common.Inject
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.model.WatchListItemViewModel
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.ui.view.WatchListView
 import kotlinx.android.synthetic.main.fragment_watch_list.*
-import com.chrynan.video.utils.Inject
 
 class WatchListFragment : BaseFragment(),
     WatchListView,

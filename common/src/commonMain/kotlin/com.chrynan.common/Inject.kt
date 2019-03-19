@@ -1,4 +1,4 @@
-package com.chrynan.video.utils
+package com.chrynan.common
 
 @Target(AnnotationTarget.PROPERTY, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION, AnnotationTarget.CONSTRUCTOR)
 @Retention(AnnotationRetention.RUNTIME)

@@ -7,10 +7,10 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
+import com.chrynan.common.Inject
 import com.chrynan.video.R
 import com.chrynan.video.model.ChannelInfoViewModel
 import kotlinx.android.synthetic.main.adapter_channel_info.view.*
-import com.chrynan.video.utils.Inject
 
 class ChannelInfoAdapter @Inject constructor() : AnotherAdapter<ChannelInfoViewModel>() {
 
