@@ -10,5 +10,6 @@ pluginManagement {
 
 include ':android'
 include ':common'
+include ':presentation'
 
 enableFeaturePreview('GRADLE_METADATA')
