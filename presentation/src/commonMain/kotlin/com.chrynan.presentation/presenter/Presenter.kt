@@ -1,4 +1,4 @@
-package com.chrynan.video.presenter
+package com.chrynan.presentation.presenter
 
 interface Presenter {
 
