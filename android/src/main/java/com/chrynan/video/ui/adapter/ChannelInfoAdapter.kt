@@ -7,8 +7,8 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
+import com.chrynan.presentation.viewmodel.ChannelInfoViewModel
 import com.chrynan.video.R
-import com.chrynan.video.model.ChannelInfoViewModel
 import kotlinx.android.synthetic.main.adapter_channel_info.view.*
 import javax.inject.Inject
 

@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.ChannelView
+import com.chrynan.presentation.viewmodel.ChannelInfoViewModel
+import com.chrynan.presentation.viewmodel.UniqueListItem
+import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
-import com.chrynan.video.model.ChannelInfoViewModel
-import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
+import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 
@@ -26,7 +27,7 @@ class ChannelFragment : BaseFragment(),
     }
 
     @Inject
-    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
+    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         layoutInflater.inflate(R.layout.fragment_channel, container, false)
@@ -48,12 +49,12 @@ class ChannelFragment : BaseFragment(),
                     showSubscriberCount = true,
                     showTotalVideoViewCount = true,
                     showVideoCount = true,
-                    headerImageUri = Uri.parse(""),
-                    channelImageUri = Uri.parse(""),
+                    headerImageUri = Uri.parse("").asUri(),
+                    channelImageUri = Uri.parse("").asUri(),
                     isSubscribed = false,
                     providerServiceName = "chRyNaN Codes",
                     channelId = "",
-                    providerUri = Uri.parse(""),
+                    providerUri = Uri.parse("").asUri(),
                     channelUrl = ""
                 )
             )

@@ -8,8 +8,8 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
+import com.chrynan.presentation.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
-import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_showcase.view.*
 import javax.inject.Inject

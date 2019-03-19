@@ -1,8 +1,8 @@
 package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.QueueView
+import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.video.ui.adapter.QueueItemAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.fragment.QueueFragment
@@ -19,7 +19,7 @@ internal abstract class QueueFragmentModule {
         @JvmStatic
         @Provides
         fun provideAdapter(queueItemAdapter: QueueItemAdapter) =
-            ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(queueItemAdapter))
+            ManagerRecyclerViewAdapter<UniqueListItem>(adapters = setOf(queueItemAdapter))
     }
 
     @Binds

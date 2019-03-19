@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.QueueView
+import com.chrynan.presentation.viewmodel.QueueItemViewModel
+import com.chrynan.presentation.viewmodel.UniqueListItem
+import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
-import com.chrynan.video.model.QueueItemViewModel
-import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
+import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_queue.*
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class QueueFragment : BaseFragment(),
     QueueOptionsListener {
 
     @Inject
-    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
+    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
 
     private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_queue_options) }
 
@@ -42,14 +43,14 @@ class QueueFragment : BaseFragment(),
             val videoInfo = VideoInfo(
                 videoId = "",
                 channelId = "",
-                providerUri = Uri.parse(""),
-                videoUri = Uri.parse("")
+                providerUri = Uri.parse("").asUri(),
+                videoUri = Uri.parse("").asUri()
             )
 
             managerAdapter.items = listOf(
                 QueueItemViewModel(
                     videoInfo = videoInfo,
-                    videoImageUri = Uri.parse(""),
+                    videoImageUri = Uri.parse("").asUri(),
                     title = "Test Title",
                     isActivated = false,
                     position = 0

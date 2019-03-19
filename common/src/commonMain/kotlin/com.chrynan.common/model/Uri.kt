@@ -5,7 +5,7 @@ data class Uri(
     val authority: String? = null,
     val userInfo: String? = null,
     val host: String? = null,
-    val port: String? = null,
+    val port: Int? = null,
     val path: String,
     val query: String? = null,
     val fragment: String? = null

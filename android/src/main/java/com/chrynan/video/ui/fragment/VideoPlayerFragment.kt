@@ -8,20 +8,17 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
+import com.chrynan.presentation.viewmodel.*
 import com.chrynan.video.R
-import com.chrynan.video.model.SectionHeaderViewModel
-import com.chrynan.video.model.VideoInfo
-import com.chrynan.video.model.VideoInfoViewModel
-import com.chrynan.video.model.VideoRecommendationViewModel
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
+import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
@@ -40,7 +37,7 @@ class VideoPlayerFragment : BaseFragment(),
     override lateinit var presenter: VideoPlayerPresenter
 
     @Inject
-    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
+    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
 
     @Inject
     lateinit var transitionListener: CollapsingVideoTransitionStateListener
@@ -118,8 +115,8 @@ class VideoPlayerFragment : BaseFragment(),
             val videoInfo = VideoInfo(
                 videoId = "VideoId",
                 channelId = "ChannelId",
-                providerUri = Uri.parse("ProviderUri"),
-                videoUri = Uri.parse("VideoUri")
+                providerUri = Uri.parse("ProviderUri").asUri(),
+                videoUri = Uri.parse("VideoUri").asUri()
             )
 
             managerAdapter.items = listOf(

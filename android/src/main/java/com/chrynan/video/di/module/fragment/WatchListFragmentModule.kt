@@ -1,8 +1,8 @@
 package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.WatchListView
+import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.ui.fragment.WatchListFragment
 import dagger.Binds
@@ -18,7 +18,7 @@ internal abstract class WatchListFragmentModule {
         @JvmStatic
         @Provides
         fun provideAdapter(watchListAdapter: WatchListItemAdapter) =
-            ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(watchListAdapter))
+            ManagerRecyclerViewAdapter<UniqueListItem>(adapters = setOf(watchListAdapter))
     }
 
     @Binds

@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.HomeView
+import com.chrynan.presentation.viewmodel.UniqueListItem
+import com.chrynan.presentation.viewmodel.VideoInfo
+import com.chrynan.presentation.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
-import com.chrynan.video.model.VideoInfo
-import com.chrynan.video.model.VideoShowcaseViewModel
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
+import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment(),
@@ -35,7 +36,7 @@ class HomeFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView?.apply {
             val managerAdapter =
-                ManagerRecyclerViewAdapter<UniqueAdapterItem>(
+                ManagerRecyclerViewAdapter<UniqueListItem>(
                     adapters = setOf(
                         SectionHeaderAdapter(),
                         VideoShowcaseAdapter(this@HomeFragment)
@@ -48,8 +49,8 @@ class HomeFragment : BaseFragment(),
             val videoInfo = VideoInfo(
                 videoId = "VideoId",
                 channelId = "ChannelId",
-                providerUri = Uri.parse("ProviderUri"),
-                videoUri = Uri.parse("VideoUri")
+                providerUri = Uri.parse("ProviderUri").asUri(),
+                videoUri = Uri.parse("VideoUri").asUri()
             )
 
             managerAdapter.items = listOf(

@@ -1,8 +1,8 @@
 package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.presentation.view.ChannelView
+import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.video.ui.adapter.ChannelInfoAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
@@ -25,7 +25,7 @@ internal abstract class ChannelFragmentModule {
             headerAdapter: SectionHeaderAdapter,
             videoAdapter: VideoRecommendationAdapter
         ) =
-            ManagerRecyclerViewAdapter<UniqueAdapterItem>(adapters = setOf(channelAdapter, headerAdapter, videoAdapter))
+            ManagerRecyclerViewAdapter<UniqueListItem>(adapters = setOf(channelAdapter, headerAdapter, videoAdapter))
     }
 
     @Binds

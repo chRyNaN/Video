@@ -1,10 +1,6 @@
-package com.chrynan.video.model
+package com.chrynan.presentation.viewmodel
 
-import android.net.Uri
-import com.chrynan.aaaah.UniqueAdapterItem
-import com.chrynan.aaaah.asUniqueAdapterId
-import com.chrynan.video.utils.ChannelId
-import com.chrynan.video.utils.ProviderUri
+import com.chrynan.common.model.Uri
 
 data class ChannelInfoViewModel(
     val name: String,
@@ -21,11 +17,11 @@ data class ChannelInfoViewModel(
     val channelImageUri: Uri,
     val isSubscribed: Boolean = false,
     val providerServiceName: String,
-    val channelId: ChannelId,
-    val providerUri: ProviderUri,
+    val channelId: String,
+    val providerUri: Uri,
     val channelUrl: String? = null
-) : UniqueAdapterItem {
+) : UniqueListItem {
 
-    override val uniqueAdapterId =
-        "Channel Info: channelId = $channelId; providerUri = $providerUri".asUniqueAdapterId()
+    override val uniqueListId =
+        "Channel Info: channelId = $channelId; providerUri = $providerUri".asUniqueListId()
 }

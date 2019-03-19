@@ -8,9 +8,9 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
+import com.chrynan.presentation.viewmodel.VideoInfo
+import com.chrynan.presentation.viewmodel.VideoInfoViewModel
 import com.chrynan.video.R
-import com.chrynan.video.model.VideoInfo
-import com.chrynan.video.model.VideoInfoViewModel
 import kotlinx.android.synthetic.main.adapter_video_info.view.*
 import javax.inject.Inject
 
