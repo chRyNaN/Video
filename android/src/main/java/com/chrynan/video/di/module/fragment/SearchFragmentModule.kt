@@ -2,12 +2,12 @@ package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.presentation.view.SearchView
 import com.chrynan.video.ui.adapter.FilterItemAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.SearchFragment
-import com.chrynan.video.ui.view.SearchView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

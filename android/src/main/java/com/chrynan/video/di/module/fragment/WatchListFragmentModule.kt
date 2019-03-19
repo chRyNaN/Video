@@ -2,9 +2,9 @@ package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.presentation.view.WatchListView
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.ui.fragment.WatchListFragment
-import com.chrynan.video.ui.view.WatchListView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

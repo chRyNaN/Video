@@ -2,14 +2,14 @@ package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.presentation.view.CollapsibleVideoView
+import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
-import com.chrynan.video.ui.view.CollapsibleVideoView
-import com.chrynan.video.ui.view.VideoPlayerView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

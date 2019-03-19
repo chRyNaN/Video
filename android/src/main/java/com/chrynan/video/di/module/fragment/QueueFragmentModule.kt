@@ -2,10 +2,10 @@ package com.chrynan.video.di.module.fragment
 
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.presentation.view.QueueView
 import com.chrynan.video.ui.adapter.QueueItemAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.fragment.QueueFragment
-import com.chrynan.video.ui.view.QueueView
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

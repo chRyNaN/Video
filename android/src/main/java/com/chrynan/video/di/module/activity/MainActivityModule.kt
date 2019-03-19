@@ -1,5 +1,6 @@
 package com.chrynan.video.di.module.activity
 
+import com.chrynan.presentation.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.controller.MainController
 import com.chrynan.video.controller.VideoPlayerController
@@ -11,7 +12,6 @@ import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.fragment.*
-import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import dagger.Binds
 import dagger.Module

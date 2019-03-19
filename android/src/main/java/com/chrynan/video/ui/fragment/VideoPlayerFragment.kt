@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.common.Inject
+import com.chrynan.presentation.view.CollapsibleVideoView
+import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.video.R
 import com.chrynan.video.model.SectionHeaderViewModel
 import com.chrynan.video.model.VideoInfo
@@ -20,8 +22,6 @@ import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
-import com.chrynan.video.ui.view.CollapsibleVideoView
-import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
 import kotlinx.android.synthetic.main.fragment_video.*
 

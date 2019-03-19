@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.common.Inject
+import com.chrynan.presentation.view.QueueView
 import com.chrynan.video.R
 import com.chrynan.video.model.QueueItemViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.ui.view.QueueView
 import kotlinx.android.synthetic.main.fragment_queue.*
 
 class QueueFragment : BaseFragment(),

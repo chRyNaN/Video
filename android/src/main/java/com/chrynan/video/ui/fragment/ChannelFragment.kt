@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.common.Inject
+import com.chrynan.presentation.view.ChannelView
 import com.chrynan.video.R
 import com.chrynan.video.model.ChannelInfoViewModel
 import com.chrynan.video.model.VideoInfo
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.video.ui.view.ChannelView
 import kotlinx.android.synthetic.main.fragment_channel.*
 
 class ChannelFragment : BaseFragment(),

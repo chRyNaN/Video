@@ -1,4 +1,4 @@
-package com.chrynan.video.ui.view
+package com.chrynan.presentation.view
 
 interface TopMenuView {
 
