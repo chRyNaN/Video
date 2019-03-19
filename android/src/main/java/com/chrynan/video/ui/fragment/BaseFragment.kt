@@ -2,7 +2,7 @@ package com.chrynan.video.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import com.chrynan.video.navigator.Navigator
+import com.chrynan.presentation.navigator.Navigator
 import com.chrynan.video.presenter.Presenter
 import com.chrynan.video.ui.activity.BaseActivity
 import dagger.android.support.DaggerFragment

@@ -1,8 +1,8 @@
 package com.chrynan.video.ui.activity
 
 import android.os.Bundle
+import com.chrynan.presentation.navigator.Navigator
 import com.chrynan.video.controller.Controller
-import com.chrynan.video.navigator.Navigator
 import dagger.android.support.DaggerAppCompatActivity
 
 abstract class BaseActivity : DaggerAppCompatActivity(),

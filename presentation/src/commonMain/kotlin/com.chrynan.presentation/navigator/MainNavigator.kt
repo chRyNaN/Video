@@ -1,4 +1,4 @@
-package com.chrynan.video.navigator
+package com.chrynan.presentation.navigator
 
 interface MainNavigator : Navigator {
 
