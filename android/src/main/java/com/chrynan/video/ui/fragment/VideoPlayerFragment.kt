@@ -13,6 +13,7 @@ import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.presentation.viewmodel.*
 import com.chrynan.video.R
+import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
@@ -37,7 +38,7 @@ class VideoPlayerFragment : BaseFragment(),
     override lateinit var presenter: VideoPlayerPresenter
 
     @Inject
-    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
+    lateinit var managerAdapter: RecyclerViewAdapter
 
     @Inject
     lateinit var transitionListener: CollapsingVideoTransitionStateListener

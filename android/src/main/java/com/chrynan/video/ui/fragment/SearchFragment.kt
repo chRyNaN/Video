@@ -13,6 +13,7 @@ import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.FilterItemAdapter
+import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
@@ -30,11 +31,11 @@ class SearchFragment : BaseFragment(),
 
     @Inject
     @field:Named("FilterItemAdapter")
-    lateinit var filterItemAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
+    lateinit var filterItemAdapter: RecyclerViewAdapter
 
     @Inject
     @field:Named("ResultAdapter")
-    lateinit var resultAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
+    lateinit var resultAdapter: RecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_search, container, false)

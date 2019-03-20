@@ -1,9 +1,8 @@
 package com.chrynan.video.di.module.fragment
 
-import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.presentation.view.SearchView
-import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.video.ui.adapter.FilterItemAdapter
+import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
@@ -23,7 +22,7 @@ internal abstract class SearchFragmentModule {
         @Provides
         @Named("FilterItemAdapter")
         fun provideFilterAdapter(filterItemAdapter: FilterItemAdapter) =
-            ManagerRecyclerViewAdapter<UniqueListItem>(adapters = setOf(filterItemAdapter))
+            RecyclerViewAdapter(adapters = setOf(filterItemAdapter))
 
         @JvmStatic
         @Provides
@@ -31,8 +30,7 @@ internal abstract class SearchFragmentModule {
         fun provideResultAdapter(
             headerAdapter: SectionHeaderAdapter,
             videoRecommendationAdapter: VideoRecommendationAdapter
-        ) =
-            ManagerRecyclerViewAdapter<UniqueListItem>(adapters = setOf(headerAdapter, videoRecommendationAdapter))
+        ) = RecyclerViewAdapter(adapters = setOf(headerAdapter, videoRecommendationAdapter))
     }
 
     @Binds

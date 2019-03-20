@@ -12,6 +12,7 @@ import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.presentation.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
+import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_watch_list.*
@@ -25,7 +26,7 @@ class WatchListFragment : BaseFragment(),
         fun newInstance() = WatchListFragment()
     }
 
-    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
+    lateinit var managerAdapter: RecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_watch_list, container, false)

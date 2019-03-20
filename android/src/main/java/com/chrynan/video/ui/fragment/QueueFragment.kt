@@ -12,6 +12,7 @@ import com.chrynan.presentation.viewmodel.QueueItemViewModel
 import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
+import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.utils.asUri
@@ -23,7 +24,7 @@ class QueueFragment : BaseFragment(),
     QueueOptionsListener {
 
     @Inject
-    lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueListItem>
+    lateinit var managerAdapter: RecyclerViewAdapter
 
     private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_queue_options) }
 
