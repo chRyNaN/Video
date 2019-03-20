@@ -38,14 +38,17 @@ type UserEdge implements Edge {
 type User {
   id: ID!
   provider: Provider!
+  created: String!
+  lastUpdated: String!
   name: String!
   email: String!
   username: String
   phoneNumber: String
+  imageUri(imageType: ImageType! = MAIN): Uri
   notesConnection(take: Int!, after: Cursor): NotesConnection!
   ratingsConnection(take: Int!, after: Cursor): RatingsConnection!
   subscribedChannelsConnection(take: Int!, after: Cursor): ChannelsConnection!
-	membershipsConnection(take: Int!, after: Cursor): PublishersConnection!
+  membershipsConnection(take: Int!, after: Cursor): PublishersConnection!
 }
 
 type Provider {
@@ -57,6 +60,8 @@ type Provider {
   details: String
   imageUri(imageType: ImageType! = MAIN): Uri
   website: Uri
+  contactEmail: String!
+  contactPhoneNumber: String!
   publishersConnection(take: Int!, after: Cursor): PublisherConnection!
 }
 
@@ -124,14 +129,16 @@ type Video {
   lastUpdated: String!
   name: String!
   description: String!
+  details: String
   imageUri: Uri
   category: String
   tags: [String!]!
   viewCount: Int
   supportsRating: Boolean!
+  videoDetails: VideoDetails!
   ratingsConnection(take: Int!, after: Cursor): RatingConnection!
   notesConnection(take: Int!, after: Cursor): NoteConnection!
-  videoDetails: VideoDetails!
+  videoContributorsConnection(take: Int!, after: Cursor): VideoContributorConnection!
 }
 
 type VideoDetails {
@@ -166,8 +173,12 @@ type Rating {
   lastUpdated: String!
   video: Video!
   user: User!
-  rateUp: Boolean!
-  rateDown: Boolean!
+  ratingType: RatingType!
+}
+
+type RatingType {
+  UP
+  DOWN
 }
 
 type NoteConnection implements Connection {
@@ -185,6 +196,38 @@ type Note {
   video: Video!
   user: User!
   content: String!
+}
+
+type VideoContributorConnection implements Connection {
+  edges: [VideoContributorEdge!]!
+}
+
+type VideoContributorEdge implements Edge {
+  node: VideoContributor!
+}
+
+type VideoContributor {
+  id: ID!,
+  name: String!
+  position: String!
+  role: VideoCreditRole!
+  imageUri(imageType: ImageType! = MAIN): Uri
+}
+
+enum VideoCreditRole {
+  CREATOR
+  OWNER
+  PUBLISHER
+  PRODUCER
+  DIRECTOR
+  WRITER
+  CONTRIBUTOR
+  COMPOSER
+  ACTOR
+  HOST
+  STAR
+  OTHER
+  UNKNOWN
 }
 
 enum VideoType {
