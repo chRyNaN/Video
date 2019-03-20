@@ -136,6 +136,7 @@ type Video {
   viewCount: Int
   supportsRating: Boolean!
   videoDetails: VideoDetails!
+  contentRating: ContentRating!
   ratingsConnection(take: Int!, after: Cursor): RatingConnection!
   notesConnection(take: Int!, after: Cursor): NoteConnection!
   videoContributorsConnection(take: Int!, after: Cursor): VideoContributorConnection!
@@ -212,6 +213,23 @@ type VideoContributor {
   position: String!
   role: VideoCreditRole!
   imageUri(imageType: ImageType! = MAIN): Uri
+}
+
+type ContentRating {
+  minAge: Int!
+  discretionAdvised: Boolean!
+  standard: String
+  issuer: String
+  type: ContentRatingType!
+}
+
+enum ContentRatingType {
+  G
+  PG
+  PG_13
+  R
+  OTHER
+  UNKNOWN
 }
 
 enum VideoCreditRole {

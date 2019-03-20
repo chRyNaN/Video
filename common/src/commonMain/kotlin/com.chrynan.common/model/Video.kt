@@ -13,5 +13,6 @@ data class Video(
     val tags: List<String> = emptyList(),
     val viewCount: Long,
     val supportsRating: Boolean,
-    val videoDetails: VideoDetails
+    val videoDetails: VideoDetails,
+    val contentRating: ContentRating
 )
