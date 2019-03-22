@@ -28,6 +28,8 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        // TODO Update this to the correct remote maven repository. JitPack doesn't seem to work with the new Kotlin Multiplatform Format.
+        mavenLocal()
         maven { url 'https://jitpack.io' }
     }
 }

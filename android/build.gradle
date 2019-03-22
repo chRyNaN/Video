@@ -23,6 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            matchingFallbacks = ['debug']
         }
     }
     compileOptions {
@@ -40,7 +41,9 @@ dependencies {
     
     implementation project(':common')
     implementation project(':presentation')
-    
+
+    implementation 'com.github.chRyNaN.strings:strings:v0.1.0'
+
     implementation 'androidx.core:core:1.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     implementation 'com.google.android.material:material:1.1.0-alpha04'
