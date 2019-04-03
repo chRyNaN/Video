@@ -3,6 +3,10 @@ package com.chrynan.video.ui.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import com.chrynan.expandable.ExpandableChildLayout
+import com.chrynan.expandable.ExpandableContainerView
+import com.chrynan.expandable.ExpandableState
+import com.chrynan.expandable.ExpandableStateListener
 import com.chrynan.kotlinutils.isTruthy
 import com.chrynan.presentation.navigator.MainNavigator
 import com.chrynan.presentation.view.TopMenuView
@@ -11,10 +15,6 @@ import com.chrynan.video.controller.MainController
 import com.chrynan.video.controller.VideoPlayerController
 import com.chrynan.video.controller.tab.MainTabs
 import com.chrynan.video.controller.tab.VideoPlayerTabs
-import com.chrynan.video.ui.widget.expandable.ExpandableChildLayout
-import com.chrynan.video.ui.widget.expandable.ExpandableContainerView
-import com.chrynan.video.ui.widget.expandable.ExpandableState
-import com.chrynan.video.ui.widget.expandable.ExpandableStateListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
@@ -51,6 +51,8 @@ class MainActivity : BaseActivity(),
 
     override val expandableChildLayout: ExpandableChildLayout?
         get() = videoFragmentContainer
+
+    override val endAsExpanded = true
 
     override var expandedInteractionView: View?
         get() = expandableChildLayout?.expandedInteractionView

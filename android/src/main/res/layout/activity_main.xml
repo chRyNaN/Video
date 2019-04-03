@@ -16,7 +16,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:nestedScrollingEnabled="true"/>
 
-    <com.chrynan.video.ui.widget.expandable.ExpandableMotionLayout
+    <com.chrynan.expandable.ExpandableMotionLayout
             android:id="@+id/expandableLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,7 +38,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.chrynan.video.ui.widget.expandable.ExpandableChildLayout
+        <com.chrynan.expandable.ExpandableChildLayout
                 android:id="@+id/videoFragmentContainer"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -49,7 +49,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-    </com.chrynan.video.ui.widget.expandable.ExpandableMotionLayout>
+    </com.chrynan.expandable.ExpandableMotionLayout>
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
