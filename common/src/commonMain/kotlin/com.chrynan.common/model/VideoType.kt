@@ -17,6 +17,7 @@ enum class VideoType {
     PODCAST,
     NEWS,
     VIDEO,
+    GAMING,
     OTHER,
     UNKNOWN
 }

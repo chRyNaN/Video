@@ -1,310 +1,355 @@
 scalar Cursor
 
 interface Edge {
-  cursor: Cursor!
+    cursor: Cursor!
 }
 
 interface Connection {
-  totalCount: Int!
-  pageInfo: PageInfo!
+    totalCount: Int!
+    pageInfo: PageInfo!
 }
 
 type PageInfo {
-  isFirstPage: Boolean!
-  isLastPage: Boolean!
-  startCursor: Cursor
-  endCursor: Cursor
+    isFirstPage: Boolean!
+    isLastPage: Boolean!
+    startCursor: Cursor
+    endCursor: Cursor
 }
 
 type Uri {
-  scheme: String!
-  authority: String
-  userInfo: String
-  host: String
-  port: String
-  path: String!
-  query: String
-  fragment: String
+    scheme: String!
+    authority: String
+    userInfo: String
+    host: String
+    port: String
+    path: String!
+    query: String
+    fragment: String
 }
 
 type UserConnection implements Connection {
-  edges: [UserEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [UserEdge!]!
 }
 
 type UserEdge implements Edge {
-  node: User!
+    cursor: Cursor!
+    node: User!
 }
 
 type User {
-  id: ID!
-  provider: Provider!
-  created: String!
-  lastUpdated: String!
-  name: String!
-  email: String!
-  username: String
-  phoneNumber: String
-  imageUri(imageType: ImageType! = MAIN): Uri
-  notesConnection(take: Int!, after: Cursor): NotesConnection!
-  ratingsConnection(take: Int!, after: Cursor): RatingsConnection!
-  subscribedChannelsConnection(take: Int!, after: Cursor): ChannelsConnection!
-  membershipsConnection(take: Int!, after: Cursor): PublishersConnection!
+    id: ID!
+    provider: Provider!
+    created: String!
+    lastUpdated: String!
+    name: String!
+    email: String!
+    username: String
+    phoneNumber: String
+    imageUri(imageType: ImageType! = MAIN): Uri
+    reactionsConnection(take: Int!, after: Cursor): ReactionConnection!
+    notesConnection(take: Int!, after: Cursor): NoteConnection!
+    ratingsConnection(take: Int!, after: Cursor): RatingConnection!
+    subscribedChannelsConnection(take: Int!, after: Cursor): ChannelConnection!
+    membershipsConnection(take: Int!, after: Cursor): PublisherConnection!
 }
 
 type Provider {
-  uri: Uri!
-  created: String!
-  lastUpdated: String!
-  name: String!
-  description: String!
-  details: String
-  imageUri(imageType: ImageType! = MAIN): Uri
-  website: Uri
-  contactEmail: String!
-  contactPhoneNumber: String!
-  publishersConnection(take: Int!, after: Cursor): PublisherConnection!
+    uri: Uri!
+    created: String!
+    lastUpdated: String!
+    name: String!
+    description: String!
+    details: String
+    imageUri(imageType: ImageType! = MAIN): Uri
+    website: Uri
+    contactEmail: String!
+    contactPhoneNumber: String!
+    publishersConnection(take: Int!, after: Cursor): PublisherConnection!
 }
 
 type PublisherConnection implements Connection {
-  edges: [PublisherEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [PublisherEdge!]!
 }
 
 type PublisherEdge implements Edge {
-  node: Publisher!
+    cursor: Cursor!
+    node: Publisher!
 }
 
 type Publisher {
-  id: ID!
-  provider: Provider!
-  created: String!
-  lastUpdated: String!
-  name: String!
-  description: String!
-  details: String
-  imageUri(imageType: ImageType! = MAIN): Uri
-  website: Uri
-  channelsConnection(take: Int!, after: Cursor): ChannelConnection!
-  membersConnection(take: Int!, after: Cursor): UserConnection!
+    id: ID!
+    provider: Provider!
+    created: String!
+    lastUpdated: String!
+    name: String!
+    description: String!
+    details: String
+    imageUri(imageType: ImageType! = MAIN): Uri
+    website: Uri
+    channelsConnection(take: Int!, after: Cursor): ChannelConnection!
+    membersConnection(take: Int!, after: Cursor): UserConnection!
 }
 
 type ChannelConnection implements Connection {
-  edges: [ChannelEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [ChannelEdge!]!
 }
 
 type ChannelEdge implements Edge {
-  node: Channel!
+    cursor: Cursor!
+    node: Channel!
 }
 
 type Channel {
-  id: ID!
-  provider: Provider!
-  publisher: Publisher!
-  created: String!
-  published: String!
-  lastUpdated: String!
-  name: String!
-  description: String!
-  details: String
-  imageUri(imageType: ImageType! = MAIN): Uri
-  website: Uri
-  videosConnection(take: Int!, after: Cursor): VideoConnection!
-  subscribersConnection(take: Int!, after: Cursor): UserConnection!
+    id: ID!
+    provider: Provider!
+    publisher: Publisher!
+    created: String!
+    published: String!
+    lastUpdated: String!
+    name: String!
+    description: String!
+    details: String
+    imageUri(imageType: ImageType! = MAIN): Uri
+    website: Uri
+    videosConnection(take: Int!, after: Cursor): VideoConnection!
+    subscribersConnection(take: Int!, after: Cursor): UserConnection!
 }
 
 type VideoConnection implements Connection {
-  edges: [VideoEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [VideoEdge!]!
 }
 
 type VideoEdge implements Edge {
-  node: Video!
+    cursor: Cursor!
+    node: Video!
 }
 
 type Video {
-  id: ID!
-  provider: Provider!
-  publisher: Publisher!
-  channel: Channel!
-  created: String!
-  published: String!
-  lastUpdated: String!
-  name: String!
-  description: String!
-  details: String
-  imageUri: Uri
-  category: String
-  tags: [String!]!
-  viewCount: Int
-  supportsRating: Boolean!
-  videoDetails: VideoDetails!
-  contentRating: ContentRating!
-  ratingsConnection(take: Int!, after: Cursor): RatingConnection!
-  notesConnection(take: Int!, after: Cursor): NoteConnection!
-  videoContributorsConnection(take: Int!, after: Cursor): VideoContributorConnection!
+    id: ID!
+    provider: Provider!
+    publisher: Publisher!
+    channel: Channel!
+    created: String!
+    published: String!
+    lastUpdated: String!
+    name: String!
+    description: String!
+    details: String
+    imageUri: Uri
+    category: String
+    tags: [String!]!
+    viewCount: Int
+    supportsRating: Boolean!
+    videoDetails: VideoDetails!
+    contentRating: ContentRating!
+    reactionsConnection(take: Int!, after: Cursor): ReactionConnection!
+    ratingsConnection(take: Int!, after: Cursor): RatingConnection!
+    notesConnection(take: Int!, after: Cursor): NoteConnection!
+    videoContributorsConnection(take: Int!, after: Cursor): VideoContributorConnection!
 }
 
 type VideoDetails {
-  isLive: Boolean!
-  initialDelay: Float
-  length: Float
-  formatType: FormatType!
-  containerFormat: ContainerFormat!
-  videoType: VideoType!
-  uri: Uri!
-  standaloneSubtitle: Subtitle
+    isLive: Boolean!
+    initialDelay: Float
+    length: Float
+    formatType: FormatType!
+    containerFormat: ContainerFormat!
+    videoType: VideoType!
+    uri: Uri!
+    standaloneSubtitle: Subtitle
 }
 
 type Subtitle {
-  uri: Uri!
-  format: SubtitleFormat!
+    uri: Uri!
+    format: SubtitleFormat!
 }
 
 type RatingConnection implements Connection {
-  rateUpCount: Int!
-  rateDownCount: Int!
-  edges: [RatingEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    rateUpCount: Int!
+    rateDownCount: Int!
+    edges: [RatingEdge!]!
 }
 
 type RatingEdge implements Edge {
-  node: Rating!
+    cursor: Cursor!
+    node: Rating!
 }
 
 type Rating {
-  id: ID!
-  created: String!
-  lastUpdated: String!
-  video: Video!
-  user: User!
-  ratingType: RatingType!
+    id: ID!
+    created: String!
+    lastUpdated: String!
+    video: Video!
+    user: User!
+    ratingType: RatingType!
 }
 
-type RatingType {
-  UP
-  DOWN
+enum RatingType {
+    UP
+    DOWN
+}
+
+type ReactionConnection implements Connection {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [ReactionEdge!]!
+}
+
+type ReactionEdge implements Edge {
+    cursor: Cursor!
+    node: Reaction!
+}
+
+type Reaction {
+    id: ID!
+    created: String!
+    lastUpdated: String!
+    video: Video!
+    user: User!
+    type: String
+    reaction: String!
 }
 
 type NoteConnection implements Connection {
-  edges: [NoteEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [NoteEdge!]!
 }
 
 type NoteEdge implements Edge {
-  node: Note!
+    cursor: Cursor!
+    node: Note!
 }
 
 type Note {
-  id: ID!
-  created: String!
-  lastUpdated: String!
-  video: Video!
-  user: User!
-  content: String!
+    id: ID!
+    created: String!
+    lastUpdated: String!
+    video: Video!
+    user: User!
+    content: String!
 }
 
 type VideoContributorConnection implements Connection {
-  edges: [VideoContributorEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [VideoContributorEdge!]!
 }
 
 type VideoContributorEdge implements Edge {
-  node: VideoContributor!
+    cursor: Cursor!
+    node: VideoContributor!
 }
 
 type VideoContributor {
-  id: ID!,
-  name: String!
-  position: String!
-  role: VideoCreditRole!
-  imageUri(imageType: ImageType! = MAIN): Uri
+    id: ID!,
+    name: String!
+    position: String!
+    role: VideoCreditRole!
+    imageUri(imageType: ImageType! = MAIN): Uri
 }
 
 type ContentRating {
-  minAge: Int!
-  discretionAdvised: Boolean!
-  standard: String
-  issuer: String
-  type: ContentRatingType!
+    minAge: Int!
+    discretionAdvised: Boolean!
+    standard: String
+    issuer: String
+    type: ContentRatingType!
 }
 
 enum ContentRatingType {
-  G
-  PG
-  PG_13
-  R
-  OTHER
-  UNKNOWN
+    G
+    PG
+    PG_13
+    R
+    OTHER
+    UNKNOWN
 }
 
 enum VideoCreditRole {
-  CREATOR
-  OWNER
-  PUBLISHER
-  PRODUCER
-  DIRECTOR
-  WRITER
-  CONTRIBUTOR
-  COMPOSER
-  ACTOR
-  HOST
-  STAR
-  OTHER
-  UNKNOWN
+    CREATOR
+    OWNER
+    PUBLISHER
+    PRODUCER
+    DIRECTOR
+    WRITER
+    CONTRIBUTOR
+    COMPOSER
+    ACTOR
+    HOST
+    STAR
+    OTHER
+    UNKNOWN
 }
 
 enum VideoType {
-  MOVIE
-  PREVIEW
-  SHOW
-  SHORT_SERIES
-  CLIP
-  HOME_VIDEO
-  RECORDING
-  SNIPPET
-  LIVE_STREAM
-  MUSIC_VIDEO
-  PRESENTATION
-  VLOG
-  PODCAST
-  NEWS
-  VIDEO
-  OTHER
-  UNKNOWN
+    MOVIE
+    PREVIEW
+    SHOW
+    SHORT_SERIES
+    CLIP
+    HOME_VIDEO
+    RECORDING
+    SNIPPET
+    LIVE_STREAM
+    MUSIC_VIDEO
+    PRESENTATION
+    VLOG
+    PODCAST
+    NEWS
+    VIDEO
+    GAMING
+    OTHER
+    UNKNOWN
 }
 
 enum FormatType {
-  PROGRESSIVE
-  DASH
-  SMOOTH_STREAMING
-  HLS
-  UNKNOWN
+    PROGRESSIVE
+    DASH
+    SMOOTH_STREAMING
+    HLS
+    UNKNOWN
 }
 
 enum ContainerFormat {
-  MP4
-  M4A
-  FMP4
-  WEBM
-  MATROSKA
-  MP3
-  OGG
-  WAV
-  MPEG_TS
-  MPEG_PS
-  FLV
-  ADTS_AAC
-  FLAC
-  AMR
-  UNKNOWN
+    MP4
+    M4A
+    FMP4
+    WEBM
+    MATROSKA
+    MP3
+    OGG
+    WAV
+    MPEG_TS
+    MPEG_PS
+    FLV
+    ADTS_AAC
+    FLAC
+    AMR
+    UNKNOWN
 }
 
 enum SubtitleFormat {
-  WEBVTT
-  TTML
-  SMPTE_TT
-  SUBRIP
-  SSA
-  ASS
-  UNKNOWN
+    WEBVTT
+    TTML
+    SMPTE_TT
+    SUBRIP
+    SSA
+    ASS
+    UNKNOWN
 }
 
 enum ImageType {
-  MAIN
-  HEADER
+    MAIN
+    HEADER
 }
