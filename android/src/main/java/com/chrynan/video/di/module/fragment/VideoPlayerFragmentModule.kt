@@ -2,8 +2,10 @@ package com.chrynan.video.di.module.fragment
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.aaaah.ItemListUpdater
 import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
+import com.chrynan.presentation.viewmodel.AdapterItem
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.*
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
@@ -37,20 +39,19 @@ internal abstract class VideoPlayerFragmentModule {
             videoRecommendationAdapter: VideoRecommendationAdapter,
             videoShowcaseAdapter: VideoShowcaseAdapter,
             layoutManager: LinearLayoutManager
-        ) =
-            RecyclerViewAdapter(
-                adapters = setOf(
-                    videoInfoHeaderAdapter,
-                    videoInfoChannelAdapter,
-                    videoInfoDescriptionAdapter,
-                    videoInfoDetailsAdapter,
-                    videoInfoProviderAdapter,
-                    sectionHeaderAdapter,
-                    videoRecommendationAdapter,
-                    videoShowcaseAdapter
-                ),
-                layoutManager = layoutManager
-            )
+        ) = RecyclerViewAdapter(
+            adapters = setOf(
+                videoInfoHeaderAdapter,
+                videoInfoChannelAdapter,
+                videoInfoDescriptionAdapter,
+                videoInfoDetailsAdapter,
+                videoInfoProviderAdapter,
+                sectionHeaderAdapter,
+                videoRecommendationAdapter,
+                videoShowcaseAdapter
+            ),
+            layoutManager = layoutManager
+        )
     }
 
     @Binds
@@ -64,4 +65,8 @@ internal abstract class VideoPlayerFragmentModule {
     @Binds
     @FragmentScope
     abstract fun bindVideoOptionsListener(fragment: VideoPlayerFragment): VideoOptionsListener
+
+    @Binds
+    @FragmentScope
+    abstract fun bindUpdateListener(adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 }

@@ -1,4 +1,4 @@
-package com.chrynan.video.ui.adapter.core
+package com.chrynan.presentation.adapter.core
 
 import com.chrynan.aaaah.DiffResult
 import com.chrynan.presentation.viewmodel.AdapterItem
