@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/spacing_horizontal_default"
+    android:paddingTop="@dimen/spacing_vertical_default"
+    android:paddingEnd="@dimen/spacing_horizontal_default"
+    android:paddingBottom="@dimen/spacing_vertical_default">
+
+    <TextView
+        android:id="@+id/providerHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/video_info_subtitle_provider"
+        android:textAppearance="@style/TextAppearance.Body.Subtle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/providerNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:textAppearance="@style/TextAppearance.Title.Accent"
+        android:textColor="@color/text_link_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/providerHeaderTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Provider Name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

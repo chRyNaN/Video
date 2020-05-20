@@ -11,7 +11,7 @@ import com.chrynan.aaaah.from
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.presentation.viewmodel.VideoInfoViewModel
 import com.chrynan.video.R
-import kotlinx.android.synthetic.main.adapter_video_info.view.*
+import kotlinx.android.synthetic.main.adapter_video_info_header.view.*
 import javax.inject.Inject
 
 class VideoInfoAdapter @Inject constructor(private val listener: VideoInfoAdapter.Listener) :
@@ -22,7 +22,7 @@ class VideoInfoAdapter @Inject constructor(private val listener: VideoInfoAdapte
     override fun onHandlesItem(item: Any) = item is VideoInfoViewModel
 
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View =
-        LayoutInflater.from(parent.context).inflate(R.layout.adapter_video_info, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.adapter_video_info_header, parent, false)
 
     override fun onBindItem(view: View, item: VideoInfoViewModel) {
         view.apply {

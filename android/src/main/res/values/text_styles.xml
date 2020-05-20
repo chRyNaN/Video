@@ -4,219 +4,501 @@
     <!-- Base -->
 
     <style name="Light" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">@font/open_sans_light</item>
         <item name="fontFamily">@font/open_sans_light</item>
+        <item name="android:fontFamily">@font/open_sans_light</item>
     </style>
 
     <style name="Regular" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">@font/open_sans</item>
         <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
     <style name="SemiBold" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
         <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
     <style name="Bold" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
         <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
     </style>
 
-    <!-- TextAppearances -->
+    <!-- Base Extensions -->
 
-    <style name="TextAppearance.Header" parent="Bold">
+    <style name="TextAppearance.H1" parent="Light">
+        <item name="android:textSize">@dimen/text_size_xxxxlarge</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.H2" parent="SemiBold">
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.H3" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_xxlarge</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.H4" parent="Regular">
         <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <style name="TextAppearance.SubHeader" parent="Bold">
+    <style name="TextAppearance.H5" parent="Bold">
         <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <style name="TextAppearance.Title" parent="SemiBold">
+    <style name="TextAppearance.H6" parent="Bold">
         <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <style name="TextAppearance.Button" parent="SemiBold">
-        <item name="android:textSize">@dimen/text_size_medium</item>
+    <style name="TextAppearance.SubHeader" parent="SemiBold">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_xsmall</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title" parent="Bold">
+        <item name="android:textSize">@dimen/text_size_xsmall</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="Bold">
+        <item name="android:textSize">@dimen/text_size_xsmall</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
     <style name="TextAppearance.Body" parent="Regular">
         <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <style name="TextAppearance.Label" parent="Regular">
-        <item name="android:textSize">@dimen/text_size_xsmall</item>
+    <style name="TextAppearance.Body2" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_xxsmall</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <!-- Extensions -->
-
-    <style name="TextAppearance.Header.Dark">
-        <item name="android:textColor">@color/text_dark_primary_color</item>
+    <style name="TextAppearance.Caption" parent="Regular">
+        <item name="android:textSize">@dimen/text_size_xxxsmall</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <style name="TextAppearance.Header.Dark.Secondary">
-        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    <style name="TextAppearance.Overline" parent="SemiBold">
+        <item name="android:textSize">@dimen/text_size_xxxsmall</item>
+        <item name="android:textColor">@color/text_primary_color</item>
     </style>
 
-    <style name="TextAppearance.Header.Light">
-        <item name="android:textColor">@color/text_light_primary_color</item>
+    <!-- Body Extensions -->
+
+    <style name="TextAppearance.Body.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
     </style>
 
-    <style name="TextAppearance.Header.Light.Secondary">
-        <item name="android:textColor">@color/text_light_secondary_color</item>
+    <style name="TextAppearance.Body.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
     </style>
 
-    <style name="TextAppearance.Header.Accent">
-        <item name="android:textColor">@color/text_accent_color</item>
-    </style>
-
-    <style name="TextAppearance.Header.Attention">
-        <item name="android:textColor">@color/text_accent_two_color</item>
-    </style>
-
-    <style name="TextAppearance.Header.Accent.Secondary">
-        <item name="android:textColor">@color/text_accent_three_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Dark">
-        <item name="android:textColor">@color/text_dark_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Dark.Secondary">
-        <item name="android:textColor">@color/text_dark_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Light">
-        <item name="android:textColor">@color/text_light_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Light.Secondary">
-        <item name="android:textColor">@color/text_light_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Accent">
-        <item name="android:textColor">@color/text_accent_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Attention">
-        <item name="android:textColor">@color/text_accent_two_color</item>
-    </style>
-
-    <style name="TextAppearance.SubHeader.Accent.Secondary">
-        <item name="android:textColor">@color/text_accent_three_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Dark">
-        <item name="android:textColor">@color/text_dark_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Dark.Secondary">
-        <item name="android:textColor">@color/text_dark_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Light">
-        <item name="android:textColor">@color/text_light_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Light.Secondary">
-        <item name="android:textColor">@color/text_light_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Accent">
-        <item name="android:textColor">@color/text_accent_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Attention">
-        <item name="android:textColor">@color/text_accent_two_color</item>
-    </style>
-
-    <style name="TextAppearance.Title.Accent.Secondary">
-        <item name="android:textColor">@color/text_accent_three_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Dark">
-        <item name="android:textColor">@color/text_dark_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Dark.Secondary">
-        <item name="android:textColor">@color/text_dark_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Light">
-        <item name="android:textColor">@color/text_light_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Light.Secondary">
-        <item name="android:textColor">@color/text_light_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Accent">
-        <item name="android:textColor">@color/text_accent_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Attention">
-        <item name="android:textColor">@color/text_accent_two_color</item>
-    </style>
-
-    <style name="TextAppearance.Button.Accent.Secondary">
-        <item name="android:textColor">@color/text_accent_three_color</item>
-    </style>
-
-    <style name="TextAppearance.Body.Dark">
-        <item name="android:textColor">@color/text_dark_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.Body.Dark.Secondary">
-        <item name="android:textColor">@color/text_dark_secondary_color</item>
-    </style>
-
-    <style name="TextAppearance.Body.Light">
-        <item name="android:textColor">@color/text_light_primary_color</item>
-    </style>
-
-    <style name="TextAppearance.Body.Light.Secondary">
-        <item name="android:textColor">@color/text_light_secondary_color</item>
+    <style name="TextAppearance.Body.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
     </style>
 
     <style name="TextAppearance.Body.Accent">
         <item name="android:textColor">@color/text_accent_color</item>
     </style>
 
-    <style name="TextAppearance.Body.Attention">
-        <item name="android:textColor">@color/text_accent_two_color</item>
-    </style>
-
     <style name="TextAppearance.Body.Accent.Secondary">
-        <item name="android:textColor">@color/text_accent_three_color</item>
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Dark">
-        <item name="android:textColor">@color/text_dark_primary_color</item>
+    <style name="TextAppearance.Body.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Dark.Secondary">
-        <item name="android:textColor">@color/text_dark_secondary_color</item>
+    <style name="TextAppearance.Body.Error">
+        <item name="android:textColor">@color/text_error_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Light">
-        <item name="android:textColor">@color/text_light_primary_color</item>
+    <style name="TextAppearance.Body2.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Light.Secondary">
-        <item name="android:textColor">@color/text_light_secondary_color</item>
+    <style name="TextAppearance.Body2.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Accent">
+    <style name="TextAppearance.Body2.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Body2.Accent">
         <item name="android:textColor">@color/text_accent_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Attention">
-        <item name="android:textColor">@color/text_accent_two_color</item>
+    <style name="TextAppearance.Body2.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
     </style>
 
-    <style name="TextAppearance.Label.Accent.Secondary">
-        <item name="android:textColor">@color/text_accent_three_color</item>
+    <style name="TextAppearance.Body2.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.Body2.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <!-- Title Extensions -->
+
+    <style name="TextAppearance.Title.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.Title.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <!-- Subheader Extensions -->
+
+    <style name="TextAppearance.SubHeader.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.SubHeader2.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <!-- Header Extensions -->
+
+    <style name="TextAppearance.H1.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H1.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H1.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H1.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.H1.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H1.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.H1.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.H2.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.H3.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.H4.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.H5.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.H6.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <!-- Button Extensions -->
+
+    <style name="TextAppearance.Button.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.Button.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <!-- LabelHeader Extensions -->
+
+    <style name="TextAppearance.Caption.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Caption.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Caption.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Caption.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Caption.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Caption.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.Caption.Error">
+        <item name="android:textColor">@color/text_error_color</item>
+    </style>
+
+    <!-- Label Extensions -->
+
+    <style name="TextAppearance.Overline.Subtle">
+        <item name="android:textColor">@color/text_primary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Overline.Secondary">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Overline.Secondary.Subtle">
+        <item name="android:textColor">@color/text_secondary_subtle_color</item>
+    </style>
+
+    <style name="TextAppearance.Overline.Accent">
+        <item name="android:textColor">@color/text_accent_color</item>
+    </style>
+
+    <style name="TextAppearance.Overline.Accent.Secondary">
+        <item name="android:textColor">@color/text_accent_secondary_color</item>
+    </style>
+
+    <style name="TextAppearance.Overline.Accent.Tertiary">
+        <item name="android:textColor">@color/text_accent_tertiary_color</item>
+    </style>
+
+    <style name="TextAppearance.Overline.Error">
+        <item name="android:textColor">@color/text_error_color</item>
     </style>
 
 </resources>
