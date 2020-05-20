@@ -1,5 +1,7 @@
 package com.chrynan.presentation.viewmodel
 
+import com.chrynan.aaaah.asUniqueAdapterId
+
 data class ChannelInfoViewModel(
     val name: String,
     val about: String,
@@ -18,8 +20,8 @@ data class ChannelInfoViewModel(
     val channelId: String,
     val providerUri: String,
     val channelUrl: String? = null
-) : UniqueListItem {
+) : AdapterItem {
 
-    override val uniqueListId =
-        "Channel Info: channelId = $channelId; providerUri = $providerUri".asUniqueListId()
+    override val uniqueAdapterId =
+        "Channel Info: channelId = $channelId; providerUri = $providerUri".asUniqueAdapterId()
 }

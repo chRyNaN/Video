@@ -9,7 +9,7 @@ import com.chrynan.presentation.view.ChannelView
 import com.chrynan.presentation.viewmodel.ChannelInfoViewModel
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject

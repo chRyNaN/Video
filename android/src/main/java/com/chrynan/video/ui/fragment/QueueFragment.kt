@@ -9,7 +9,7 @@ import com.chrynan.presentation.view.QueueView
 import com.chrynan.presentation.viewmodel.QueueItemViewModel
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_queue.*

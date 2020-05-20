@@ -1,12 +1,14 @@
 package com.chrynan.presentation.viewmodel
 
+import com.chrynan.aaaah.asUniqueAdapterId
+
 data class WatchListItemViewModel(
     val videoInfo: VideoInfo,
     val videoImageUri: String,
     val title: String,
     val description: String,
     val secondaryDescription: String
-) : UniqueListItem {
+) : AdapterItem {
 
-    override val uniqueListId = "Watch List Item: videoInfo = $videoInfo".asUniqueListId()
+    override val uniqueAdapterId = "Watch List Item: videoInfo = $videoInfo".asUniqueAdapterId()
 }

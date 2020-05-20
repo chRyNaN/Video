@@ -1,5 +1,7 @@
 package com.chrynan.presentation.viewmodel
 
+import com.chrynan.aaaah.asUniqueAdapterId
+
 data class VideoRecommendationViewModel(
     val title: String,
     val channelName: String,
@@ -7,8 +9,8 @@ data class VideoRecommendationViewModel(
     val videoInfo: VideoInfo,
     val videoImageUrl: String,
     val videoLength: String
-) : UniqueListItem {
+) : AdapterItem {
 
-    override val uniqueListId =
-        videoInfo.run { "Recommendation:$providerUri:$channelId:$videoId".asUniqueListId() }
+    override val uniqueAdapterId =
+        videoInfo.run { "Recommendation:$providerUri:$channelId:$videoId".asUniqueAdapterId() }
 }

@@ -28,7 +28,7 @@
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginBottom="@dimen/spacing_small"
-            android:textAppearance="@style/TextAppearance.Title.Light"
+            android:textAppearance="@style/TextAppearance.Title"
             android:singleLine="false"
             android:maxLines="2"
             android:ellipsize="end"

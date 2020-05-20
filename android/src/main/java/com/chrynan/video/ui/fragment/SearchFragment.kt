@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.presentation.view.SearchView
 import com.chrynan.presentation.viewmodel.FilterItemViewModel
 import com.chrynan.presentation.viewmodel.SectionHeaderViewModel
-import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.FilterItemAdapter
-import com.chrynan.video.ui.adapter.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject

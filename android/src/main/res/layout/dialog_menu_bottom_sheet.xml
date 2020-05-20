@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.navigation.NavigationView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/navigationView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_dark_secondary_color"
-        android:orientation="vertical"
-        app:itemTextAppearance="@style/TextAppearance.Title.Light"
-        app:itemTextColor="@color/text_menu_color"
-        app:itemIconTint="@color/icon_menu_color"/>
+<com.google.android.material.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigationView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark_secondary_color"
+    android:orientation="vertical"
+    app:itemIconTint="@color/icon_menu_color"
+    app:itemTextAppearance="@style/TextAppearance.Title"
+    app:itemTextColor="@color/text_menu_color" />

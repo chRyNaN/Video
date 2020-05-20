@@ -1,6 +1,8 @@
 package com.chrynan.presentation.viewmodel
 
-data class SectionHeaderViewModel(val header: String) : UniqueListItem {
+import com.chrynan.aaaah.asUniqueAdapterId
 
-    override val uniqueListId = "SectionHeader:$header".asUniqueListId()
+data class SectionHeaderViewModel(val header: String) : AdapterItem {
+
+    override val uniqueAdapterId = "SectionHeader:$header".asUniqueAdapterId()
 }

@@ -1,6 +1,6 @@
 package com.chrynan.presentation.view
 
-interface CollapsibleVideoView {
+interface CollapsibleVideoView : View {
 
     val containerWidth: Int
 

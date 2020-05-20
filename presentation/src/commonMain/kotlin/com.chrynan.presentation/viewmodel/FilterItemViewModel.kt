@@ -1,12 +1,14 @@
 package com.chrynan.presentation.viewmodel
 
+import com.chrynan.aaaah.asUniqueAdapterId
+
 data class FilterItemViewModel(
     val name: String,
     val filterLevel: Int,
     val isChecked: Boolean,
     val backgroundColorResId: Int
-) : UniqueListItem {
+) : AdapterItem {
 
-    override val uniqueListId =
-        "Filter Item: name = $name; filterLevel = $filterLevel; isChecked = $isChecked".asUniqueListId()
+    override val uniqueAdapterId =
+        "Filter Item: name = $name; filterLevel = $filterLevel; isChecked = $isChecked".asUniqueAdapterId()
 }

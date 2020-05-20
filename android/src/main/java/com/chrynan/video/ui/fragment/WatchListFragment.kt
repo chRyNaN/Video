@@ -1,6 +1,5 @@
 package com.chrynan.video.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import com.chrynan.presentation.view.WatchListView
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.presentation.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import kotlinx.android.synthetic.main.fragment_watch_list.*
 

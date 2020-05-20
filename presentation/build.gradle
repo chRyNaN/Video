@@ -13,6 +13,10 @@ kotlin {
                 implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
 
                 implementation project(":common")
+
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.7"
+
+                implementation "com.chrynan.aaaah:aaaah-core:0.7.0"
             }
         }
         jvmMain {
@@ -20,6 +24,10 @@ kotlin {
                 implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
                 implementation "javax.inject:javax.inject:1"
+
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
+
+                implementation "com.chrynan.aaaah:aaaah-core-jvm:0.7.0"
             }
         }
     }

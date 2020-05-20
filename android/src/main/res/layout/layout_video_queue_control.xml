@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            android:singleLine="false"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.SubHeader.Light"
-            android:text="Test Title"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomControlButtonBarrier"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:text="Test Title"
+        android:textAppearance="@style/TextAppearance.SubHeader"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomControlButtonBarrier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/bottomControlButtonBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="previousImageView, mainActionImageView, nextImageView"/>
+        android:id="@+id/bottomControlButtonBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="previousImageView, mainActionImageView, nextImageView" />
 
     <ImageView
-            android:id="@+id/previousImageView"
-            android:layout_width="@dimen/video_queue_controls_previous_next_size"
-            android:layout_height="@dimen/video_queue_controls_previous_next_size"
-            android:contentDescription="@string/cd_video_queue_action_previous"
-            android:src="@drawable/ic_previous"
-            android:tint="@color/icon_video_queue_control_color"
-            app:layout_constraintBottom_toBottomOf="@+id/mainActionImageView"
-            app:layout_constraintTop_toTopOf="@+id/mainActionImageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/mainActionImageView"/>
+        android:id="@+id/previousImageView"
+        android:layout_width="@dimen/video_queue_controls_previous_next_size"
+        android:layout_height="@dimen/video_queue_controls_previous_next_size"
+        android:contentDescription="@string/cd_video_queue_action_previous"
+        android:src="@drawable/ic_previous"
+        android:tint="@color/icon_video_queue_control_color"
+        app:layout_constraintBottom_toBottomOf="@+id/mainActionImageView"
+        app:layout_constraintEnd_toStartOf="@+id/mainActionImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainActionImageView" />
 
     <ImageView
-            android:id="@+id/mainActionImageView"
-            android:layout_width="@dimen/video_queue_controls_main_size"
-            android:layout_height="@dimen/video_queue_controls_main_size"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            android:contentDescription="@string/cd_video_queue_action_main"
-            android:src="@drawable/ic_play"
-            android:tint="@color/icon_video_queue_control_color"
-            app:layout_constraintStart_toEndOf="@+id/previousImageView"
-            app:layout_constraintBottom_toTopOf="@+id/bottomControlSeekBarBarrier"
-            app:layout_constraintEnd_toStartOf="@+id/nextImageView"/>
+        android:id="@+id/mainActionImageView"
+        android:layout_width="@dimen/video_queue_controls_main_size"
+        android:layout_height="@dimen/video_queue_controls_main_size"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:contentDescription="@string/cd_video_queue_action_main"
+        android:src="@drawable/ic_play"
+        android:tint="@color/icon_video_queue_control_color"
+        app:layout_constraintBottom_toTopOf="@+id/bottomControlSeekBarBarrier"
+        app:layout_constraintEnd_toStartOf="@+id/nextImageView"
+        app:layout_constraintStart_toEndOf="@+id/previousImageView" />
 
     <ImageView
-            android:id="@+id/nextImageView"
-            android:layout_width="@dimen/video_queue_controls_previous_next_size"
-            android:layout_height="@dimen/video_queue_controls_previous_next_size"
-            android:contentDescription="@string/cd_video_queue_action_next"
-            android:src="@drawable/ic_next"
-            android:tint="@color/icon_video_queue_control_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/mainActionImageView"
-            app:layout_constraintTop_toTopOf="@+id/mainActionImageView"
-            app:layout_constraintStart_toEndOf="@+id/mainActionImageView"/>
+        android:id="@+id/nextImageView"
+        android:layout_width="@dimen/video_queue_controls_previous_next_size"
+        android:layout_height="@dimen/video_queue_controls_previous_next_size"
+        android:contentDescription="@string/cd_video_queue_action_next"
+        android:src="@drawable/ic_next"
+        android:tint="@color/icon_video_queue_control_color"
+        app:layout_constraintBottom_toBottomOf="@+id/mainActionImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mainActionImageView"
+        app:layout_constraintTop_toTopOf="@+id/mainActionImageView" />
 
     <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/bottomControlSeekBarBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="currentTimeTextView, videoPositionSeekBar, endTimeTextView"/>
+        android:id="@+id/bottomControlSeekBarBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="currentTimeTextView, videoPositionSeekBar, endTimeTextView" />
 
     <TextView
-            android:id="@+id/currentTimeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5:00"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.Label.Light"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:id="@+id/currentTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5:00"
+        android:textAppearance="@style/TextAppearance.Caption"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <SeekBar
-            android:id="@+id/videoPositionSeekBar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_xsmall"
-            android:layout_marginEnd="@dimen/spacing_xsmall"
-            app:layout_constraintStart_toEndOf="@+id/currentTimeTextView"
-            app:layout_constraintEnd_toStartOf="@+id/endTimeTextView"
-            app:layout_constraintTop_toTopOf="@+id/currentTimeTextView"
-            app:layout_constraintBottom_toBottomOf="@+id/currentTimeTextView"/>
+        android:id="@+id/videoPositionSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xsmall"
+        android:layout_marginEnd="@dimen/spacing_xsmall"
+        app:layout_constraintBottom_toBottomOf="@+id/currentTimeTextView"
+        app:layout_constraintEnd_toStartOf="@+id/endTimeTextView"
+        app:layout_constraintStart_toEndOf="@+id/currentTimeTextView"
+        app:layout_constraintTop_toTopOf="@+id/currentTimeTextView" />
 
     <TextView
-            android:id="@+id/endTimeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10:00"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.Label.Light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:id="@+id/endTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="10:00"
+        android:textAppearance="@style/TextAppearance.Caption"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </merge>

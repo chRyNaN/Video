@@ -1,6 +1,5 @@
 package com.chrynan.video.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +12,10 @@ import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.presentation.viewmodel.SectionHeaderViewModel
 import com.chrynan.presentation.viewmodel.VideoInfo
-import com.chrynan.presentation.viewmodel.VideoInfoViewModel
+import com.chrynan.presentation.viewmodel.VideoInfoHeaderViewModel
 import com.chrynan.presentation.viewmodel.VideoRecommendationViewModel
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.RecyclerViewAdapter
-import com.chrynan.video.ui.adapter.VideoInfoAdapter
+import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
@@ -27,7 +25,6 @@ import javax.inject.Inject
 class VideoPlayerFragment : BaseFragment(),
     VideoPlayerView,
     CollapsibleVideoView,
-    VideoInfoAdapter.Listener,
     VideoOptionsListener {
 
     companion object {
@@ -122,28 +119,16 @@ class VideoPlayerFragment : BaseFragment(),
             )
 
             managerAdapter.items = listOf(
-                VideoInfoViewModel(
+                VideoInfoHeaderViewModel(
                     videoInfo = videoInfo,
-                    providerServiceName = "chRyNaN",
                     title = "A Really Cool Video",
                     viewCount = "225k",
-                    description = "This is a really cool video that you may enjoy watching.",
-                    publishedDate = "Today, 12pm",
-                    category = "Software Development",
-                    tags = listOf("Software", "Kotlin", "Android"),
                     supportsRating = true,
                     likeButtonText = "Like",
                     dislikeButtonText = "Dislike",
                     shareButtonText = "Share",
                     isLiked = false,
-                    isDisliked = false,
-                    channelName = "chRyNaN Codes",
-                    channelImageUrl = "www.chrynan.com",
-                    channelSubscriberCount = "250m",
-                    isSubscribedToChannel = false,
-                    showCategory = true,
-                    showTags = true,
-                    showChannelSubscribeCount = true
+                    isDisliked = false
                 ),
                 SectionHeaderViewModel(header = "Recommended Videos"),
                 VideoRecommendationViewModel(
@@ -156,31 +141,6 @@ class VideoPlayerFragment : BaseFragment(),
                 )
             )
         }
-    }
-
-    override fun likeButtonSelected(videoInfo: VideoInfo) {
-
-    }
-
-    override fun dislikeButtonSelected(videoInfo: VideoInfo) {
-    }
-
-    override fun shareButtonSelected(videoInfo: VideoInfo) {
-    }
-
-    override fun channelSelected(videoInfo: VideoInfo) {
-    }
-
-    override fun subscribeButtonSelected(videoInfo: VideoInfo) {
-    }
-
-    override fun providerSelected(videoInfo: VideoInfo) {
-    }
-
-    override fun categorySelected(category: String) {
-    }
-
-    override fun tagSelected(tag: String) {
     }
 
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {

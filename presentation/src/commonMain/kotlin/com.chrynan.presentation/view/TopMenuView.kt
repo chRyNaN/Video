@@ -1,6 +1,6 @@
 package com.chrynan.presentation.view
 
-interface TopMenuView {
+interface TopMenuView : View {
 
     var topMenuTitle: CharSequence?
 

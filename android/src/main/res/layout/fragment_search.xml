@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.chrynan.video.ui.widget.SearchWidget
-            android:id="@+id/searchWidget"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Title.Light"
-            android:textColor="@color/text_light_primary_color"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_horizontal_default"
-            android:layout_marginEnd="@dimen/spacing_horizontal_default"
-            android:padding="@dimen/spacing_small"
-            android:focusable="true"
-            android:clickable="true"
-            android:focusedByDefault="true"
-            android:hint="@string/search_hint"
-            android:textColorHint="@color/text_light_secondary_color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="UnusedAttribute"/>
+        android:id="@+id/searchWidget"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusedByDefault="true"
+        android:hint="@string/search_hint"
+        android:padding="@dimen/spacing_small"
+        android:textAppearance="@style/TextAppearance.Title"
+        android:textColor="@color/text_light_primary_color"
+        android:textColorHint="@color/text_light_secondary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute" />
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/filterItemRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginEnd="@dimen/spacing_horizontal_default"
-            android:layout_marginStart="@dimen/spacing_horizontal_default"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchWidget"/>
+        android:id="@+id/filterItemRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchWidget" />
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/searchResultsRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:paddingBottom="@dimen/recycler_view_bottom_padding"
-            android:clipToPadding="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filterItemRecyclerView"/>
+        android:id="@+id/searchResultsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/recycler_view_bottom_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterItemRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

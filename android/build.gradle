@@ -40,6 +40,13 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72"
 
+    // Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
+
+    // Kotlin Coroutine Android Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
     // Project Modules
     implementation project(":common")
     implementation project(":presentation")
@@ -51,9 +58,13 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     // Utilities
-    implementation "com.github.chRyNaN.aaaah:libraryx:0.2.4"
     implementation "com.github.chRyNaN.kotlin-utils:platform-jvm:0.1.3"
     implementation "com.github.chRyNaN:expandable:v1.0.2"
+
+    // Adapter - Aaaah
+    implementation "com.chrynan.aaaah:aaaah-libraryx:0.7.0"
+    implementation "com.chrynan.aaaah:aaaah-annotation:0.7.0"
+    kapt "com.chrynan.aaaah:aaaah-compiler:0.7.0"
 
     // Circle Image View
     implementation "de.hdodenhof:circleimageview:3.0.1"

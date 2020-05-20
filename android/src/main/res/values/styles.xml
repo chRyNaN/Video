@@ -8,15 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/background_dark_color</item>
         <item name="android:popupMenuStyle">@style/PopupMenu</item>
-        <item name="android:textAppearanceLargePopupMenu">@style/TextAppearance.Title.Light</item>
-        <item name="android:textAppearanceSmallPopupMenu">@style/TextAppearance.Body.Light</item>
-        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.Title.Light</item>
-        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.Body.Light</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/TextAppearance.Title</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/TextAppearance.Body</item>
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.Title</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.Body</item>
     </style>
 
     <style name="PopupMenu" parent="Base.Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/background_dark_secondary_color</item>
-        <item name="android:textAppearance">@style/TextAppearance.Body.Light</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
     </style>
 
 </resources>

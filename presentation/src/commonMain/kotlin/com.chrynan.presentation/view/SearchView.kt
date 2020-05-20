@@ -1,3 +1,3 @@
 package com.chrynan.presentation.view
 
-interface SearchView
+interface SearchView : View

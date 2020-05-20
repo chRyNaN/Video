@@ -32,7 +32,7 @@
             android:id="@+id/channelTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.SubHeader.Light"
+            android:textAppearance="@style/TextAppearance.SubHeader"
             android:singleLine="false"
             android:maxLines="2"
             android:ellipsize="end"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Title.Subtle"
             android:singleLine="false"
             android:maxLines="2"
             android:ellipsize="end"
@@ -86,7 +86,7 @@
             android:singleLine="false"
             android:maxLines="2"
             android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Title.Subtle"
             android:text="5,000,000 Views"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/viewSubscriberCountCenterGuideline"
@@ -108,7 +108,7 @@
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:text="@string/video_info_button_subscribe"
             android:background="@android:color/transparent"
-            android:textAppearance="@style/TextAppearance.Button.Attention"
+            android:textAppearance="@style/TextAppearance.Button.Accent.Secondary"
             android:textColor="@color/button_subscription_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viewSubscriberCountBarrier"/>
@@ -131,7 +131,7 @@
             android:layout_marginStart="@dimen/spacing_horizontal_default"
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:text="@string/video_info_subtitle_provider"
-            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Body.Subtle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/providerTopDivider"/>
 
@@ -168,7 +168,7 @@
 
     <TextView
             android:id="@+id/aboutHeaderTextView"
-            android:textAppearance="@style/TextAppearance.SubHeader.Light"
+            android:textAppearance="@style/TextAppearance.SubHeader"
             android:text="@string/channel_info_header_about"
             android:paddingTop="@dimen/spacing_small"
             android:paddingStart="@dimen/spacing_horizontal_default"
@@ -187,7 +187,7 @@
             android:layout_marginStart="@dimen/spacing_horizontal_default"
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:text="@string/channel_info_subtitle_created"
-            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Body.Subtle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/aboutHeaderTextView"/>
 
@@ -198,7 +198,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:layout_marginStart="@dimen/spacing_horizontal_default"
-            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Title.Subtle"
             android:text="Yesterday"
             app:layout_constraintStart_toEndOf="@+id/createdHeaderTextView"
             app:layout_constraintTop_toBottomOf="@+id/aboutHeaderTextView"
@@ -219,7 +219,7 @@
             android:layout_marginStart="@dimen/spacing_horizontal_default"
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:text="@string/channel_info_subtitle_last_updated"
-            android:textAppearance="@style/TextAppearance.Body.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Body.Subtle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/createdBarrier"/>
 
@@ -230,7 +230,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:layout_marginStart="@dimen/spacing_horizontal_default"
-            android:textAppearance="@style/TextAppearance.Title.Light.Secondary"
+            android:textAppearance="@style/TextAppearance.Title.Subtle"
             android:text="Today"
             app:layout_constraintStart_toEndOf="@+id/lastUpdatedHeaderTextView"
             app:layout_constraintTop_toBottomOf="@+id/createdBarrier"
@@ -247,7 +247,7 @@
             android:id="@+id/aboutTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Body.Light"
+            android:textAppearance="@style/TextAppearance.Body"
             android:layout_marginStart="@dimen/spacing_horizontal_default"
             android:layout_marginEnd="@dimen/spacing_horizontal_default"
             android:layout_marginTop="@dimen/spacing_small"

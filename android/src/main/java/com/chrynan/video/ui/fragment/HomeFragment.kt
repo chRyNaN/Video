@@ -1,6 +1,5 @@
 package com.chrynan.video.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.presentation.view.HomeView
-import com.chrynan.presentation.viewmodel.UniqueListItem
+import com.chrynan.presentation.viewmodel.AdapterItem
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.presentation.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
+import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
@@ -35,10 +35,10 @@ class HomeFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView?.apply {
             val managerAdapter =
-                ManagerRecyclerViewAdapter<UniqueListItem>(
+                ManagerRecyclerViewAdapter<AdapterItem>(
                     adapters = setOf(
-                        SectionHeaderAdapter(),
-                        VideoShowcaseAdapter(this@HomeFragment)
+                        SectionHeaderAdapter(AndroidCoroutineDispatchers()),
+                        VideoShowcaseAdapter(AndroidCoroutineDispatchers(), this@HomeFragment)
                     )
                 )
 

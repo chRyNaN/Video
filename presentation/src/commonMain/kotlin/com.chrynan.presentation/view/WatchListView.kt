@@ -1,3 +1,3 @@
 package com.chrynan.presentation.view
 
-interface WatchListView
+interface WatchListView : View
