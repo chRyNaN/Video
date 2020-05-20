@@ -1,7 +1,5 @@
 package com.chrynan.presentation.resources
 
-import com.chrynan.strings.StringResourceIdentifier
-
 enum class StringIds : StringResourceIdentifier {
 
     APP_NAME,
