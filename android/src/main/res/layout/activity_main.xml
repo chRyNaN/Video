@@ -61,7 +61,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
             android:layout_gravity="top"
-            android:elevation="@dimen/elevation_toolbar"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:titleTextAppearance="@style/TextAppearance.Title" />
 

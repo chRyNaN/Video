@@ -1,5 +1,7 @@
 package com.chrynan.common.model
 
+import com.chrynan.common.model.core.UriString
+
 data class VideoDetails(
     val isLive: Boolean,
     val initialDelay: Float? = null,
@@ -7,6 +9,6 @@ data class VideoDetails(
     val formatType: FormatType,
     val containerFormat: ContainerFormat,
     val videoType: VideoType,
-    val uri: Uri,
+    val uri: UriString,
     val standaloneSubtitle: Subtitle? = null
 )
