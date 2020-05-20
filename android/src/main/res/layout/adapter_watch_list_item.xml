@@ -7,7 +7,7 @@
     android:background="?android:attr/selectableItemBackground">
 
     <ImageView
-        android:id="@+id/videoImageView"
+        android:id="@+id/adapterWatchlistVideoImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/adapterWatchlistTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
@@ -28,24 +28,24 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Title"
-        app:layout_constraintEnd_toStartOf="@+id/removeFromWatchListImageView"
-        app:layout_constraintStart_toEndOf="@+id/videoImageView"
+        app:layout_constraintEnd_toStartOf="@+id/adapterWatchlistRemoveFromWatchListImageView"
+        app:layout_constraintStart_toEndOf="@+id/adapterWatchlistVideoImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/descriptionTextView"
+        android:id="@+id/adapterWatchlistDescriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
-        app:layout_constraintEnd_toStartOf="@+id/removeFromWatchListImageView"
-        app:layout_constraintStart_toEndOf="@+id/videoImageView"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintEnd_toStartOf="@+id/adapterWatchlistRemoveFromWatchListImageView"
+        app:layout_constraintStart_toEndOf="@+id/adapterWatchlistVideoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterWatchlistTitleTextView" />
 
     <TextView
-        android:id="@+id/secondaryDescriptionTextView"
+        android:id="@+id/adapterWatchlistSecondaryDescriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/spacing_small"
@@ -53,12 +53,12 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
-        app:layout_constraintEnd_toStartOf="@+id/removeFromWatchListImageView"
-        app:layout_constraintStart_toEndOf="@+id/videoImageView"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+        app:layout_constraintEnd_toStartOf="@+id/adapterWatchlistRemoveFromWatchListImageView"
+        app:layout_constraintStart_toEndOf="@+id/adapterWatchlistVideoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterWatchlistDescriptionTextView" />
 
     <ImageView
-        android:id="@+id/removeFromWatchListImageView"
+        android:id="@+id/adapterWatchlistRemoveFromWatchListImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cd_video_watch_list_remove"

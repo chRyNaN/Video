@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/spacing_vertical_default">
 
     <TextView
-        android:id="@+id/providerHeaderTextView"
+        android:id="@+id/adapterVideoInfoProviderHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/video_info_subtitle_provider"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/providerNameTextView"
+        android:id="@+id/adapterVideoInfoProviderNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -28,7 +28,7 @@
         android:textColor="@color/text_link_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/providerHeaderTextView"
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoProviderHeaderTextView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Provider Name" />
 

@@ -10,47 +10,47 @@
     android:paddingBottom="@dimen/spacing_vertical_default">
 
     <TextView
-        android:id="@+id/publishedHeaderTextView"
+        android:id="@+id/adapterVideoInfoPublishedHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/video_info_subtitle_published"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
-        app:layout_constraintEnd_toStartOf="@+id/publishedTimeTextView"
+        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoPublishedTimeTextView"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/publishedTimeTextView"
+        android:id="@+id/adapterVideoInfoPublishedTimeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
         android:textAppearance="@style/TextAppearance.Body"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/publishedHeaderTextView"
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoPublishedHeaderTextView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Today" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/publishedBarrier"
+        android:id="@+id/adapterVideoInfoPublishedBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="publishedHeaderTextView, publishedTimeTextView" />
+        app:constraint_referenced_ids="adapterVideoInfoPublishedHeaderTextView, adapterVideoInfoPublishedTimeTextView" />
 
     <TextView
-        android:id="@+id/categoryHeaderTextView"
+        android:id="@+id/adapterVideoInfoCategoryHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
         android:text="@string/video_info_subtitle_category"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
-        app:layout_constraintEnd_toStartOf="@+id/categoryTextView"
+        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoCategoryTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/publishedBarrier" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoPublishedBarrier" />
 
     <TextView
-        android:id="@+id/categoryTextView"
+        android:id="@+id/adapterVideoInfoCategoryTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -58,31 +58,31 @@
         android:textAppearance="@style/TextAppearance.Body.Accent"
         android:textColor="@color/text_link_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/categoryHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/publishedBarrier"
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoCategoryHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoPublishedBarrier"
         tools:text="Category" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/categoryBarrier"
+        android:id="@+id/adapterVideoInfoCategoryBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="categoryHeaderTextView, categoryTextView" />
+        app:constraint_referenced_ids="adapterVideoInfoCategoryHeaderTextView, adapterVideoInfoCategoryTextView" />
 
     <TextView
-        android:id="@+id/tagsHeaderTextView"
+        android:id="@+id/adapterVideoInfoTagsHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
         android:text="@string/video_info_subtitle_tags"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tagsTextView"
+        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoTagsTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryBarrier" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoCategoryBarrier" />
 
     <TextView
-        android:id="@+id/tagsTextView"
+        android:id="@+id/adapterVideoInfoTagsTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -90,8 +90,8 @@
         android:textAppearance="@style/TextAppearance.Body"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tagsHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/categoryBarrier"
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoTagsHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoCategoryBarrier"
         tools:text="[TagOne, TagTwo]" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

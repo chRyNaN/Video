@@ -11,7 +11,7 @@
     android:paddingBottom="@dimen/spacing_vertical_default">
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/adapterVideoInfoHeaderTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.SubHeader"
@@ -21,17 +21,17 @@
         tools:text="Title" />
 
     <TextView
-        android:id="@+id/viewCountTextView"
+        android:id="@+id/adapterVideoInfoHeaderViewCountTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_xxsmall"
         android:textAppearance="@style/TextAppearance.Body2.Subtle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderTitleTextView"
         tools:text="250k" />
 
     <Button
-        android:id="@+id/likeButton"
+        android:id="@+id/adapterVideoInfoHeaderLikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
@@ -42,12 +42,12 @@
         android:text="@string/video_info_button_like"
         android:textAppearance="@style/TextAppearance.Button.Subtle"
         android:textColor="@color/text_action_color"
-        app:layout_constraintEnd_toStartOf="@+id/dislikeButton"
+        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoHeaderDislikeButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewCountTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
 
     <Button
-        android:id="@+id/dislikeButton"
+        android:id="@+id/adapterVideoInfoHeaderDislikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
@@ -58,12 +58,12 @@
         android:text="@string/video_info_button_dislike"
         android:textAppearance="@style/TextAppearance.Button.Subtle"
         android:textColor="@color/text_action_color"
-        app:layout_constraintEnd_toStartOf="@+id/shareButton"
-        app:layout_constraintStart_toEndOf="@+id/likeButton"
-        app:layout_constraintTop_toBottomOf="@+id/viewCountTextView" />
+        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoHeaderShareButton"
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoHeaderLikeButton"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
 
     <Button
-        android:id="@+id/shareButton"
+        android:id="@+id/adapterVideoInfoHeaderShareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
@@ -75,7 +75,7 @@
         android:textAppearance="@style/TextAppearance.Button.Subtle"
         android:textColor="@color/text_action_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dislikeButton"
-        app:layout_constraintTop_toBottomOf="@+id/viewCountTextView" />
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoHeaderDislikeButton"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

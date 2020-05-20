@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <View
-        android:id="@+id/videoShowcaseBackgroundView"
+        android:id="@+id/adapterVideoShowcaseBackgroundView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="?android:attr/selectableItemBackground"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/videoShowcaseImageView"
+        android:id="@+id/adapterVideoShowcaseImageView"
         android:layout_width="0dp"
         android:layout_height="@dimen/video_showcase_image_default_height"
         android:background="#000000"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/videoLengthTextView"
+        android:id="@+id/adapterVideoShowcaseVideoLengthTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/spacing_xsmall"
@@ -34,11 +34,11 @@
         android:padding="@dimen/spacing_xxsmall"
         android:text="5:30"
         android:textAppearance="@style/TextAppearance.Body"
-        app:layout_constraintBottom_toBottomOf="@+id/videoShowcaseImageView"
-        app:layout_constraintEnd_toEndOf="@+id/videoShowcaseImageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/adapterVideoShowcaseImageView"
+        app:layout_constraintEnd_toEndOf="@+id/adapterVideoShowcaseImageView" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/channelImageView"
+        android:id="@+id/adapterVideoShowcaseChannelImageView"
         android:layout_width="@dimen/video_info_channel_image_size"
         android:layout_height="@dimen/video_info_channel_image_size"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -46,10 +46,10 @@
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
         android:contentDescription="@string/cd_video_info_channel_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseImageView" />
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/adapterVideoShowcaseTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -60,22 +60,22 @@
         android:singleLine="false"
         android:text="Test Title"
         android:textAppearance="@style/TextAppearance.SubHeader"
-        app:layout_constraintEnd_toStartOf="@+id/overflowOptionsImageView"
-        app:layout_constraintStart_toEndOf="@+id/channelImageView"
-        app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView" />
+        app:layout_constraintEnd_toStartOf="@+id/adapterVideoShowcaseOverflowOptionsImageView"
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoShowcaseChannelImageView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseImageView" />
 
     <ImageView
-        android:id="@+id/overflowOptionsImageView"
+        android:id="@+id/adapterVideoShowcaseOverflowOptionsImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cd_video_recommendation_overflow_options"
         android:padding="@dimen/spacing_small"
         android:src="@drawable/ic_overflow_options"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoShowcaseImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseImageView" />
 
     <TextView
-        android:id="@+id/detailsTextView"
+        android:id="@+id/adapterVideoShowcaseDetailsTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -87,11 +87,11 @@
         android:text="Details Text"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/channelImageView"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoShowcaseChannelImageView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseTitleTextView" />
 
     <TextView
-        android:id="@+id/providerTextView"
+        android:id="@+id/adapterVideoShowcaseProviderTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -100,17 +100,17 @@
         android:text="Provided by chRyNaN"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/channelImageView"
-        app:layout_constraintTop_toBottomOf="@+id/detailsTextView" />
+        app:layout_constraintStart_toEndOf="@+id/adapterVideoShowcaseChannelImageView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseDetailsTextView" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/adapterVideoShowcaseDivider"
         android:layout_width="0dp"
         android:layout_height="@dimen/horizontal_divider_height"
         android:layout_marginTop="@dimen/spacing_small"
         android:background="@color/divider_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/providerTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseProviderTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

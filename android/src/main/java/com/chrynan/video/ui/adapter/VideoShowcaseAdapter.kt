@@ -32,22 +32,22 @@ class VideoShowcaseAdapter @Inject constructor(
         LayoutInflater.from(parent.context).inflate(R.layout.adapter_video_showcase, parent, false)
 
     override fun View.onBindItem(item: VideoShowcaseViewModel, position: Int) {
-        titleTextView?.text = item.title
-        detailsTextView?.text = item.details
-        providerTextView?.text = item.provider
-        videoLengthTextView?.text = item.videoLength
+        adapterVideoShowcaseTitleTextView?.text = item.title
+        adapterVideoShowcaseDetailsTextView?.text = item.details
+        adapterVideoShowcaseProviderTextView?.text = item.provider
+        adapterVideoShowcaseVideoLengthTextView?.text = item.videoLength
 
         Glide.with(context)
             .load(item.videoImageUrl)
-            .into(videoShowcaseImageView)
+            .into(adapterVideoShowcaseImageView)
 
         Glide.with(context)
             .load(item.channelImageUrl)
-            .into(channelImageView)
+            .into(adapterVideoShowcaseChannelImageView)
 
-        videoShowcaseBackgroundView?.setOnClickListener {}
+        adapterVideoShowcaseBackgroundView?.setOnClickListener {}
 
-        overflowOptionsImageView?.setOnClickListener {
+        adapterVideoShowcaseOverflowOptionsImageView?.setOnClickListener {
             listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
         }
     }

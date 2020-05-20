@@ -30,6 +30,6 @@ class SectionHeaderAdapter @Inject constructor(dispatchers: CoroutineDispatchers
         LayoutInflater.from(parent.context).inflate(R.layout.adapter_section_header, parent, false)
 
     override fun View.onBindItem(item: SectionHeaderViewModel, position: Int) {
-        sectionHeaderTextView?.text = item.header
+        adapterSectionHeaderTextView?.text = item.header
     }
 }

@@ -29,12 +29,12 @@ class VideoInfoHeaderAdapter @Inject constructor(
         .inflate(R.layout.adapter_video_info_header, parent, false)
 
     override fun View.onBindItem(item: VideoInfoHeaderViewModel, position: Int) {
-        titleTextView?.text = item.title
-        viewCountTextView?.text = item.viewCount
-        likeButton?.text = item.likeButtonText
-        likeButton?.isActivated = item.isLiked
-        dislikeButton?.text = item.dislikeButtonText
-        dislikeButton?.isActivated = item.isDisliked
-        shareButton?.text = item.shareButtonText
+        adapterVideoInfoHeaderTitleTextView?.text = item.title
+        adapterVideoInfoHeaderViewCountTextView?.text = item.viewCount
+        adapterVideoInfoHeaderLikeButton?.text = item.likeButtonText
+        adapterVideoInfoHeaderLikeButton?.isActivated = item.isLiked
+        adapterVideoInfoHeaderDislikeButton?.text = item.dislikeButtonText
+        adapterVideoInfoHeaderDislikeButton?.isActivated = item.isDisliked
+        adapterVideoInfoHeaderShareButton?.text = item.shareButtonText
     }
 }

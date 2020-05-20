@@ -29,8 +29,8 @@ class VideoInfoDetailsAdapter @Inject constructor(dispatchers: CoroutineDispatch
     ): View = inflater.inflate(R.layout.adapter_video_info_details, parent, false)
 
     override fun View.onBindItem(item: VideoInfoDetailsViewModel, position: Int) {
-        categoryTextView?.text = item.category
-        publishedTimeTextView?.text = item.publishedDate
-        tagsTextView?.text = item.tags.toString()
+        adapterVideoInfoCategoryTextView?.text = item.category
+        adapterVideoInfoPublishedTimeTextView?.text = item.publishedDate
+        adapterVideoInfoTagsTextView?.text = item.tags.toString()
     }
 }

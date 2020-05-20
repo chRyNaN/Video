@@ -29,6 +29,6 @@ class VideoInfoDescriptionAdapter @Inject constructor(dispatchers: CoroutineDisp
     ): View = inflater.inflate(R.layout.adapter_video_info_description, parent, false)
 
     override fun View.onBindItem(item: VideoInfoDescriptionViewModel, position: Int) {
-        descriptionTextView?.text = item.description
+        adapterVideoInfoDescriptionTextView?.text = item.description
     }
 }

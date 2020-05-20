@@ -27,17 +27,18 @@ class VideoRecommendationAdapter @Inject constructor(
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: ViewType
-    ): View = LayoutInflater.from(parent.context).inflate(R.layout.adapter_video_recommendation, parent, false)
+    ): View = LayoutInflater.from(parent.context)
+        .inflate(R.layout.adapter_video_recommendation, parent, false)
 
     override fun View.onBindItem(item: VideoRecommendationViewModel, position: Int) {
-        titleTextView?.text = item.title
-        channelNameTextView?.text = item.channelName
-        detailsTextView?.text = item.detailText
-        videoLengthTextView?.text = item.videoLength
+        adapterVideoRecommendationTitleTextView?.text = item.title
+        adapterVideoRecommendationChannelNameTextView?.text = item.channelName
+        adapterVideoRecommendationDetailsTextView?.text = item.detailText
+        adapterVideoRecommendationVideoLengthTextView?.text = item.videoLength
 
-        videoRecommendationBackgroundView?.setOnClickListener {}
+        adapterVideoRecommendationBackgroundView?.setOnClickListener {}
 
-        overflowOptionsImageView?.setOnClickListener {
+        adapterVideoRecommendationOverflowOptionsImageView?.setOnClickListener {
             listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
         }
     }

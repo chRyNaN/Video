@@ -33,15 +33,15 @@ class QueueItemAdapter @Inject constructor(
     ): View = inflater.inflate(R.layout.adapter_queue_item, parent, false)
 
     override fun View.onBindItem(item: QueueItemViewModel, position: Int) {
-        titleTextView?.text = item.title
+        adapterQueueTitleTextView?.text = item.title
 
         Glide.with(context)
             .load(item.videoImageUri)
-            .into(videoImageView)
+            .into(adapterQueueVideoImageView)
 
         queueItemContainer?.isActivated = item.isActivated
 
-        overflowOptionsImageView?.setOnClickListener {
+        adapterQueueOverflowOptionsImageView?.setOnClickListener {
             listener.queueOptionsMenuSelected(videoInfo = item.videoInfo)
         }
     }

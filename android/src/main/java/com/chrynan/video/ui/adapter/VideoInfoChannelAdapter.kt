@@ -30,9 +30,9 @@ class VideoInfoChannelAdapter @Inject constructor(dispatchers: CoroutineDispatch
     ): View = inflater.inflate(R.layout.adapter_video_info_channel, parent, false)
 
     override fun View.onBindItem(item: VideoInfoChannelViewModel, position: Int) {
-        channelImageView?.setImageURI(Uri.parse(item.channelImageUrl))
-        channelNameTextView?.text = item.channelName
-        channelSubscribeCountTextView?.text = item.channelSubscriberCount
-        channelSubscribeButton?.setOnClickListener { }
+        adapterVideoInfoChannelImageView?.setImageURI(Uri.parse(item.channelImageUrl))
+        adapterVideoInfoChannelNameTextView?.text = item.channelName
+        adapterVideoInfoChannelSubscribeCountTextView?.text = item.channelSubscriberCount
+        adapterVideoInfoChannelSubscribeButton?.setOnClickListener { }
     }
 }

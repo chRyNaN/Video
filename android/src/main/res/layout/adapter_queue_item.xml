@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/queueItemContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/background_queue_item_color">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/queueItemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/background_queue_item_color">
 
     <ImageView
-            android:id="@+id/videoImageView"
-            android:layout_width="@dimen/video_queue_item_image_size"
-            android:layout_height="@dimen/video_queue_item_image_size"
-            android:layout_marginStart="@dimen/spacing_horizontal_default"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_small"
-            android:contentDescription="@string/cd_video_queue_item_image"
-            android:background="@color/primary_color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:id="@+id/adapterQueueVideoImageView"
+        android:layout_width="@dimen/video_queue_item_image_size"
+        android:layout_height="@dimen/video_queue_item_image_size"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:background="@color/primary_color"
+        android:contentDescription="@string/cd_video_queue_item_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_horizontal_default"
-            android:layout_marginEnd="@dimen/spacing_horizontal_default"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_small"
-            android:textAppearance="@style/TextAppearance.Title"
-            android:singleLine="false"
-            android:maxLines="2"
-            android:ellipsize="end"
-            app:layout_constraintStart_toEndOf="@+id/videoImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/overflowOptionsImageView"/>
+        android:id="@+id/adapterQueueTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/adapterQueueOverflowOptionsImageView"
+        app:layout_constraintStart_toEndOf="@+id/adapterQueueVideoImageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-            android:id="@+id/overflowOptionsImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/cd_video_queue_item_overflow_options"
-            android:padding="@dimen/spacing_small"
-            android:src="@drawable/ic_overflow_options"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        android:id="@+id/adapterQueueOverflowOptionsImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_video_queue_item_overflow_options"
+        android:padding="@dimen/spacing_small"
+        android:src="@drawable/ic_overflow_options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

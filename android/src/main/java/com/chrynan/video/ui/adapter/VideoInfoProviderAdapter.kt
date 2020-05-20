@@ -29,6 +29,6 @@ class VideoInfoProviderAdapter @Inject constructor(dispatchers: CoroutineDispatc
     ): View = inflater.inflate(R.layout.adapter_video_info_provider, parent, false)
 
     override fun View.onBindItem(item: VideoInfoProviderViewModel, position: Int) {
-        providerNameTextView?.text = item.providerServiceName
+        adapterVideoInfoProviderNameTextView?.text = item.providerServiceName
     }
 }

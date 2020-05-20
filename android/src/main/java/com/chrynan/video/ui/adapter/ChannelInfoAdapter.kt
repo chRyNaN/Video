@@ -29,12 +29,12 @@ class ChannelInfoAdapter @Inject constructor(dispatchers: CoroutineDispatchers) 
     ): View = inflater.inflate(R.layout.adapter_channel_info, parent, false)
 
     override fun View.onBindItem(item: ChannelInfoViewModel, position: Int) {
-        channelTitleTextView?.text = item.name
-        totalVideoViewCountTextView?.text = item.totalVideoViewCount
-        subscriberCountTextView?.text = item.subscriberCount
-        providerNameTextView?.text = item.providerServiceName
-        createdTimeTextView?.text = item.created
-        lastUpdatedTimeTextView?.text = item.lastUpdated
-        aboutTextView?.text = item.about
+        adapterChannelListChannelTitleTextView?.text = item.name
+        adapterChannelListTotalVideoViewCountTextView?.text = item.totalVideoViewCount
+        adapterChannelListSubscriberCountTextView?.text = item.subscriberCount
+        adapterChannelListProviderNameTextView?.text = item.providerServiceName
+        adapterChannelListCreatedTimeTextView?.text = item.created
+        adapterChannelListLastUpdatedTimeTextView?.text = item.lastUpdated
+        adapterChannelListAboutTextView?.text = item.about
     }
 }

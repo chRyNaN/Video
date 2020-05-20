@@ -32,13 +32,13 @@ class WatchListItemAdapter @Inject constructor(
         LayoutInflater.from(parent.context).inflate(R.layout.adapter_watch_list_item, parent, false)
 
     override fun View.onBindItem(item: WatchListItemViewModel, position: Int) {
-        titleTextView?.text = item.title
-        descriptionTextView?.text = item.description
-        secondaryDescriptionTextView?.text = item.secondaryDescription
+        adapterWatchlistTitleTextView?.text = item.title
+        adapterWatchlistDescriptionTextView?.text = item.description
+        adapterWatchlistSecondaryDescriptionTextView?.text = item.secondaryDescription
 
         Glide.with(context)
             .load(item.videoImageUri)
-            .into(videoImageView)
+            .into(adapterWatchlistVideoImageView)
 
         watchListItemContainer?.setOnClickListener { listener.onWatchListItemSelected(videoInfo = item.videoInfo) }
     }

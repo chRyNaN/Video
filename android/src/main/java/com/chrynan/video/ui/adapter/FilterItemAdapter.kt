@@ -31,7 +31,7 @@ class FilterItemAdapter @Inject constructor(
     ): View = inflater.inflate(R.layout.adapter_filter_item, parent, false)
 
     override fun View.onBindItem(item: FilterItemViewModel, position: Int) {
-        filterItemChip?.let { chip ->
+        adapterFilterItemChip?.let { chip ->
             chip.setChipBackgroundColorResource(item.backgroundColorResId)
             chip.text = item.name
             chip.isChecked = item.isChecked
