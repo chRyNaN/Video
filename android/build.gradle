@@ -77,6 +77,7 @@ dependencies {
 
     // Video Player - ExoPlayer
     implementation "com.google.android.exoplayer:exoplayer:2.9.6"
+    implementation "com.google.android.exoplayer:exoplayer-ui:2.9.6"
 
     // Dependency Injection - Dagger
     kapt "com.google.dagger:dagger-compiler:2.19"
