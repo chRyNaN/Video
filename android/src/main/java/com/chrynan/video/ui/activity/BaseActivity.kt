@@ -1,35 +1,72 @@
 package com.chrynan.video.ui.activity
 
 import android.os.Bundle
+import androidx.lifecycle.coroutineScope
 import com.chrynan.presentation.navigator.Navigator
-import com.chrynan.video.controller.Controller
+import com.chrynan.presentation.presenter.BasePresenter
+import com.chrynan.presentation.view.View
+import com.chrynan.video.R
+import com.chrynan.video.coroutine.ActivityCoroutineScope
+import com.chrynan.video.ui.fragment.BaseFragment
 import dagger.android.support.DaggerAppCompatActivity
+import kotlin.coroutines.CoroutineContext
 
 abstract class BaseActivity : DaggerAppCompatActivity(),
-    Navigator {
+    ActivityCoroutineScope,
+    Navigator,
+    View {
 
-    protected abstract val controller: Controller<*>
+    override val coroutineContext: CoroutineContext
+        get() = lifecycle.coroutineScope.coroutineContext
 
-    private var lastSavedInstanceState: Bundle? = null
+    protected open val presenter: BasePresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lastSavedInstanceState = savedInstanceState
+
+        presenter?.bind()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        presenter?.bind()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
+        presenter?.unbind()
+
         super.onSaveInstanceState(outState)
-        controller.lastSavedInstanceState = outState
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        lastSavedInstanceState = savedInstanceState
-    }
+    override fun onDestroy() {
+        presenter?.unbind()
 
-    override fun onBackPressed() = goBack()
+        super.onDestroy()
+    }
 
     override fun goBack() {
-        if (controller.isAtRootTabFragment) super.onBackPressed() else controller.popFragment()
+        with(supportFragmentManager) {
+            if (!isStateSaved && backStackEntryCount > 0) {
+                popBackStack()
+            } else {
+                defaultGoBack()
+            }
+        }
     }
+
+    fun goToFragment(
+        fragment: BaseFragment,
+        fragmentContainerId: Int = R.id.fragmentContainer
+    ) {
+        supportFragmentManager.let {
+            it.beginTransaction().apply {
+                replace(fragmentContainerId, fragment)
+
+                commitNow()
+            }
+        }
+    }
+
+    private fun defaultGoBack() = super.onBackPressed()
 }

@@ -1,4 +1,4 @@
-package com.chrynan.video.coroutine
+package com.chrynan.presentation.coroutine
 
 import kotlinx.coroutines.CoroutineScope
 

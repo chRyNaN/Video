@@ -33,7 +33,7 @@ internal abstract class MainActivityModule {
         ): MainController =
             MainController(
                 activity = activity,
-                containerId = R.id.baseFragmentContainer,
+                containerId = R.id.fragmentContainer,
                 tabProvider = tabsProvider
             )
 

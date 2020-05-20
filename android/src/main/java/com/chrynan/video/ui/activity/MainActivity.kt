@@ -11,10 +11,12 @@ import com.chrynan.kotlinutils.isTruthy
 import com.chrynan.presentation.navigator.MainNavigator
 import com.chrynan.presentation.view.TopMenuView
 import com.chrynan.video.R
-import com.chrynan.video.controller.MainController
 import com.chrynan.video.controller.VideoPlayerController
-import com.chrynan.video.controller.tab.MainTabs
 import com.chrynan.video.controller.tab.VideoPlayerTabs
+import com.chrynan.video.ui.fragment.HomeFragment
+import com.chrynan.video.ui.fragment.SearchFragment
+import com.chrynan.video.ui.fragment.SettingsFragment
+import com.chrynan.video.ui.fragment.UserContentFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
@@ -25,9 +27,6 @@ class MainActivity : BaseActivity(),
     ExpandableContainerView,
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener {
-
-    @Inject
-    override lateinit var controller: MainController
 
     @Inject
     lateinit var videoPlayerController: VideoPlayerController
@@ -70,8 +69,6 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        controller.startAtTab(MainTabs.HOME)
-
         toolbar?.let { setSupportActionBar(it) }
 
         bottomNavigationView?.setOnNavigationItemSelectedListener(this)
@@ -104,13 +101,13 @@ class MainActivity : BaseActivity(),
         expandableLayout?.collapse()
     }
 
-    override fun goToHome() = controller.switchToTab(MainTabs.HOME)
+    override fun goToHome() = goToFragment(HomeFragment.newInstance())
 
-    override fun goToSearch() = controller.switchToTab(MainTabs.SEARCH)
+    override fun goToSearch() = goToFragment(SearchFragment.newInstance())
 
-    override fun goToUserContent() = controller.switchToTab(MainTabs.USER_CONTENT)
+    override fun goToUserContent() = goToFragment(UserContentFragment.newInstance())
 
-    override fun goToSettings() = controller.switchToTab(MainTabs.SETTINGS)
+    override fun goToSettings() = goToFragment(SettingsFragment.newInstance())
 
     override fun goToVideo() {
         // Later, when you need to pass in parameters, consider using sealed classes

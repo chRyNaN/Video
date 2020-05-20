@@ -2,7 +2,7 @@ package com.chrynan.presentation.presenter
 
 interface Presenter {
 
-    fun onAttachToView()
+    fun bind()
 
-    fun onDetachFromView()
+    fun unbind()
 }
