@@ -44,7 +44,11 @@ class VideoPlayerFragment : BaseFragment(),
     @Inject
     lateinit var expandableView: ExpandableContainerView
 
-    private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options) }
+    private val videoOptionsMenuBottomSheet by lazy {
+        MenuBottomSheetDialogFragment.newInstance(
+            menuResId = R.menu.menu_video_options
+        )
+    }
 
     override val containerWidth: Int
         get() = containerView?.measuredWidth ?: 0
@@ -99,10 +103,16 @@ class VideoPlayerFragment : BaseFragment(),
             recyclerView?.alpha = value
         }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
         inflater.inflate(R.layout.fragment_video, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         expandableView.addStateListener(listener = transitionListener)
         transitionListener.onExpandableStateChange(expandableView.currentExpandableState)
         expandableView.expandedInteractionView = videoPlayerView
@@ -110,37 +120,10 @@ class VideoPlayerFragment : BaseFragment(),
         recyclerView?.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
-
-            val videoInfo = VideoInfo(
-                videoId = "VideoId",
-                channelId = "ChannelId",
-                providerUri = "ProviderUri",
-                videoUri = "VideoUri"
-            )
-
-            managerAdapter.items = listOf(
-                VideoInfoHeaderViewModel(
-                    videoInfo = videoInfo,
-                    title = "A Really Cool Video",
-                    viewCount = "225k",
-                    supportsRating = true,
-                    likeButtonText = "Like",
-                    dislikeButtonText = "Dislike",
-                    shareButtonText = "Share",
-                    isLiked = false,
-                    isDisliked = false
-                ),
-                SectionHeaderViewModel(header = "Recommended Videos"),
-                VideoRecommendationViewModel(
-                    title = "A Really Cool Video",
-                    channelName = "chRyNaN Codes",
-                    detailText = "Provided by chRyNaN",
-                    videoInfo = videoInfo,
-                    videoImageUrl = "",
-                    videoLength = "10:00"
-                )
-            )
         }
+
+        presenter.loadVideo()
+        presenter.loadExtras()
     }
 
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
