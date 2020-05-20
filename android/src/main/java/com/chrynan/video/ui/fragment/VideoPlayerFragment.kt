@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.common.model.core.UriString
 import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.presentation.presenter.VideoPlayerPresenter
 import com.chrynan.presentation.view.CollapsibleVideoView
@@ -16,11 +17,15 @@ import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.presentation.viewmodel.VideoInfoHeaderViewModel
 import com.chrynan.presentation.viewmodel.VideoRecommendationViewModel
 import com.chrynan.video.R
+import com.chrynan.video.media.MediaController
+import com.chrynan.video.media.MediaPlayerView
+import com.chrynan.video.media.MediaSourceCreator
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
 import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
@@ -32,6 +37,7 @@ import javax.inject.Inject
 
 class VideoPlayerFragment : BaseFragment(),
     VideoPlayerView,
+    MediaPlayerView,
     CollapsibleVideoView,
     VideoOptionsListener {
 
@@ -51,6 +57,12 @@ class VideoPlayerFragment : BaseFragment(),
 
     @Inject
     lateinit var expandableView: ExpandableContainerView
+
+    @Inject
+    lateinit var mediaController: MediaController
+
+    @Inject
+    lateinit var mediaSourceCreator: MediaSourceCreator
 
     private val videoOptionsMenuBottomSheet by lazy {
         MenuBottomSheetDialogFragment.newInstance(
@@ -130,18 +142,11 @@ class VideoPlayerFragment : BaseFragment(),
             adapter = managerAdapter
         }
 
-        val player = ExoPlayerFactory.newSimpleInstance(context!!)
+        val source = mediaSourceCreator.fromUri("https://www.w3schools.com/html/mov_bbb.mp4")
 
-        videoPlayerView?.videoPlayerWidgetPlayerView?.player = player
-
-        val dataSourceFactory: DataSource.Factory =
-            DefaultDataSourceFactory(context, Util.getUserAgent(context!!, "Chat"))
-
-        val source = ProgressiveMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(Uri.parse("https://www.w3schools.com/html/mov_bbb.mp4"))
-
-        player.prepare(source)
-        player.playWhenReady = true
+        attachPlayer(mediaController.player)
+        mediaController.load(source)
+        mediaController.resume()
 
         presenter.loadVideo()
         presenter.loadExtras()
@@ -149,5 +154,21 @@ class VideoPlayerFragment : BaseFragment(),
 
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
         videoOptionsMenuBottomSheet.show(childFragmentManager, null)
+    }
+
+    override fun attachPlayer(player: Player) {
+        videoPlayerView?.attachPlayer(player)
+    }
+
+    override fun detachPlayer() {
+        videoPlayerView?.detachPlayer()
+    }
+
+    override fun showThumbnail(thumbnailUri: UriString?) {
+        videoPlayerView?.showThumbnail(thumbnailUri)
+    }
+
+    override fun showVideo() {
+        videoPlayerView?.showVideo()
     }
 }

@@ -9,6 +9,7 @@ import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.presentation.viewmodel.AdapterItem
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.media.MediaPlayerView
 import com.chrynan.video.ui.adapter.*
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
@@ -90,6 +91,10 @@ internal abstract class VideoPlayerFragmentModule {
     @Binds
     @FragmentScope
     abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
+
+    @Binds
+    @FragmentScope
+    abstract fun bindMediaPlayerView(fragment: VideoPlayerFragment): MediaPlayerView
 
     @Binds
     @FragmentScope

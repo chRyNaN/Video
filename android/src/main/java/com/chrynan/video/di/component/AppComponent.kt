@@ -2,6 +2,7 @@ package com.chrynan.video.di.component
 
 import com.chrynan.video.di.module.ActivityModule
 import com.chrynan.video.di.module.AppModule
+import com.chrynan.video.di.module.MediaModule
 import com.chrynan.video.ui.VideoApplication
 import dagger.BindsInstance
 import dagger.Component
@@ -14,6 +15,7 @@ import javax.inject.Singleton
     modules = [
         AppModule::class,
         ActivityModule::class,
+        MediaModule::class,
         AndroidSupportInjectionModule::class
     ]
 )
