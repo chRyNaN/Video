@@ -1,10 +1,8 @@
 package com.chrynan.presentation.viewmodel
 
-import com.chrynan.common.model.Uri
-
 data class QueueItemViewModel(
     val videoInfo: VideoInfo,
-    val videoImageUri: Uri,
+    val videoImageUri: String,
     val title: String,
     val isActivated: Boolean,
     val position: Int

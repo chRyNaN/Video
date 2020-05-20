@@ -1,6 +1,5 @@
 package com.chrynan.video.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 
@@ -28,7 +26,11 @@ class ChannelFragment : BaseFragment(),
     @Inject
     lateinit var managerAdapter: RecyclerViewAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
         layoutInflater.inflate(R.layout.fragment_channel, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,12 +50,12 @@ class ChannelFragment : BaseFragment(),
                     showSubscriberCount = true,
                     showTotalVideoViewCount = true,
                     showVideoCount = true,
-                    headerImageUri = Uri.parse("").asUri(),
-                    channelImageUri = Uri.parse("").asUri(),
+                    headerImageUri = "",
+                    channelImageUri = "",
                     isSubscribed = false,
                     providerServiceName = "chRyNaN Codes",
                     channelId = "",
-                    providerUri = Uri.parse("").asUri(),
+                    providerUri = "",
                     channelUrl = ""
                 )
             )

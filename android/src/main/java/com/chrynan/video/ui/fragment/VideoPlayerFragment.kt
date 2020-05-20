@@ -21,7 +21,6 @@ import com.chrynan.video.ui.adapter.VideoInfoAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
-import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
@@ -118,8 +117,8 @@ class VideoPlayerFragment : BaseFragment(),
             val videoInfo = VideoInfo(
                 videoId = "VideoId",
                 channelId = "ChannelId",
-                providerUri = Uri.parse("ProviderUri").asUri(),
-                videoUri = Uri.parse("VideoUri").asUri()
+                providerUri = "ProviderUri",
+                videoUri = "VideoUri"
             )
 
             managerAdapter.items = listOf(

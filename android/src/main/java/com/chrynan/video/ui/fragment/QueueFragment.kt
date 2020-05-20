@@ -1,21 +1,17 @@
 package com.chrynan.video.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.presentation.view.QueueView
 import com.chrynan.presentation.viewmodel.QueueItemViewModel
-import com.chrynan.presentation.viewmodel.UniqueListItem
 import com.chrynan.presentation.viewmodel.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.utils.asUri
 import kotlinx.android.synthetic.main.fragment_queue.*
 import javax.inject.Inject
 
@@ -44,14 +40,14 @@ class QueueFragment : BaseFragment(),
             val videoInfo = VideoInfo(
                 videoId = "",
                 channelId = "",
-                providerUri = Uri.parse("").asUri(),
-                videoUri = Uri.parse("").asUri()
+                providerUri = "",
+                videoUri = ""
             )
 
             managerAdapter.items = listOf(
                 QueueItemViewModel(
                     videoInfo = videoInfo,
-                    videoImageUri = Uri.parse("").asUri(),
+                    videoImageUri = "",
                     title = "Test Title",
                     isActivated = false,
                     position = 0

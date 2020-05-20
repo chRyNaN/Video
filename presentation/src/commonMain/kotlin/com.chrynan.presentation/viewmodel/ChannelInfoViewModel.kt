@@ -1,7 +1,5 @@
 package com.chrynan.presentation.viewmodel
 
-import com.chrynan.common.model.Uri
-
 data class ChannelInfoViewModel(
     val name: String,
     val about: String,
@@ -13,12 +11,12 @@ data class ChannelInfoViewModel(
     val showSubscriberCount: Boolean = false,
     val showVideoCount: Boolean = false,
     val showTotalVideoViewCount: Boolean = false,
-    val headerImageUri: Uri,
-    val channelImageUri: Uri,
+    val headerImageUri: String,
+    val channelImageUri: String,
     val isSubscribed: Boolean = false,
     val providerServiceName: String,
     val channelId: String,
-    val providerUri: Uri,
+    val providerUri: String,
     val channelUrl: String? = null
 ) : UniqueListItem {
 
