@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_dark_color">
 
-    <com.google.android.exoplayer2.ui.PlayerView
+    <com.chrynan.video.ui.widget.VideoPlayerWidget
         android:id="@+id/videoPlayerView"
         android:layout_width="0dp"
         android:layout_height="@dimen/video_expanded_default_height"

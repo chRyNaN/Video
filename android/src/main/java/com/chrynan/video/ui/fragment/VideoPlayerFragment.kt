@@ -1,5 +1,6 @@
 package com.chrynan.video.ui.fragment
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +20,14 @@ import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util
 import kotlinx.android.synthetic.main.fragment_video.*
+import kotlinx.android.synthetic.main.widget_video_player.view.*
 import javax.inject.Inject
 
 class VideoPlayerFragment : BaseFragment(),
@@ -121,6 +129,19 @@ class VideoPlayerFragment : BaseFragment(),
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
         }
+
+        val player = ExoPlayerFactory.newSimpleInstance(context!!)
+
+        videoPlayerView?.videoPlayerWidgetPlayerView?.player = player
+
+        val dataSourceFactory: DataSource.Factory =
+            DefaultDataSourceFactory(context, Util.getUserAgent(context!!, "Chat"))
+
+        val source = ProgressiveMediaSource.Factory(dataSourceFactory)
+            .createMediaSource(Uri.parse("https://www.w3schools.com/html/mov_bbb.mp4"))
+
+        player.prepare(source)
+        player.playWhenReady = true
 
         presenter.loadVideo()
         presenter.loadExtras()

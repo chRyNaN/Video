@@ -19,4 +19,36 @@
         <item name="android:textAppearance">@style/TextAppearance.Body</item>
     </style>
 
+    <!-- Slider -->
+
+    <!-- Apply this Theme to a Slider Component with the android:theme attribute -->
+    <style name="SliderTheme" parent="AppTheme">
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorSurface">@color/colorPrimary</item>
+    </style>
+
+    <!-- Apply this Style to a Slider Component with the style attribute -->
+    <style name="SliderStyle" parent="Widget.MaterialComponents.Slider">
+        <item name="android:theme">@style/SliderTheme</item>
+        <item name="labelStyle">@style/TextAppearance.Caption</item>
+        <item name="thumbColor">@color/slider_active_color</item>
+        <item name="trackColorActive">@color/slider_active_color</item>
+        <item name="tickColorActive">@color/slider_active_color</item>
+        <item name="trackColorInactive">@color/slider_track_inactive_color</item>
+        <item name="tickColorInactive">@color/slider_tick_inactive_color</item>
+        <item name="haloColor">@color/slider_halo_color</item>
+        <item name="labelBehavior">gone</item>
+    </style>
+
+    <!-- TimeBar -->
+
+    <style name="TimeBar">
+        <item name="played_color">@color/time_bar_played_color</item>
+        <item name="unplayed_color">@color/time_bar_unplayed_color</item>
+        <item name="scrubber_color">@color/time_bar_scrubber_color</item>
+        <item name="buffered_color">@color/time_bar_buffered_color</item>
+        <item name="ad_marker_color">@color/time_bar_ad_marker_color</item>
+        <item name="played_ad_marker_color">@color/time_bar_played_ad_marker_color</item>
+    </style>
+
 </resources>

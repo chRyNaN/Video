@@ -22,10 +22,12 @@
     <color name="off_white_color">#F5F5F5</color>
     <color name="black">#000000</color>
 
+    <!-- Transparency Colors -->
     <color name="white_transparency_50_percent">#80FFFFFF</color>
     <color name="primary_dark_transparency_50_percent">#80313640</color>
     <color name="background_medium_transparency_50_percent">#80E9E9E9</color>
     <color name="background_dark_transparency_75_percent">#BF313640</color>
+    <color name="accent_one_transparency_50_percent">#8040B0F9</color>
 
     <color name="divider_color">@color/background_medium_transparency_50_percent</color>
 
@@ -48,8 +50,23 @@
 
     <color name="search_widget_default_background_color">@color/primary_color</color>
 
+    <!-- Bottom Navigation Bar -->
     <color name="bottom_navbar_icon_color">@color/white</color>
     <color name="bottom_navbar_icon_selected_color">@color/colorAccent</color>
     <color name="bottom_navbar_background_color">@color/primary_color</color>
+
+    <!-- Slider -->
+    <color name="slider_active_color">@color/accent_one_color</color>
+    <color name="slider_tick_inactive_color">@color/divider_color</color>
+    <color name="slider_track_inactive_color">@color/primary_dark_transparency_50_percent</color>
+    <color name="slider_halo_color">@color/accent_one_transparency_50_percent</color>
+
+    <!-- TimeBar -->
+    <color name="time_bar_played_color">@color/accent_one_color</color>
+    <color name="time_bar_unplayed_color">@color/primary_dark_transparency_50_percent</color>
+    <color name="time_bar_buffered_color">@color/accent_one_transparency_50_percent</color>
+    <color name="time_bar_ad_marker_color">@color/accent_two_color</color>
+    <color name="time_bar_played_ad_marker_color">@color/accent_three_color</color>
+    <color name="time_bar_scrubber_color">@color/accent_one_color</color>
 
 </resources>
