@@ -10,7 +10,7 @@ import com.chrynan.video.viewmodel.ChannelInfoViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.video.viewmodel.VideoInfo
+import com.chrynan.common.model.VideoInfo
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 

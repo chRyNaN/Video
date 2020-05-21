@@ -50,20 +50,4 @@
 
     </com.chrynan.expandable.ExpandableMotionLayout>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/toolbar_height"
-            android:layout_gravity="top"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:titleTextAppearance="@style/TextAppearance.Title" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

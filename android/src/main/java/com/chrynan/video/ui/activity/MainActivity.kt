@@ -32,17 +32,15 @@ class MainActivity : BaseActivity(),
     lateinit var videoPlayerController: VideoPlayerController
 
     override var topMenuTitle: CharSequence?
-        get() = toolbar?.title
+        get() = null
         set(value) {
-            toolbar?.title = value
+
         }
 
     override var showTopMenu: Boolean
-        get() = toolbar?.let { (it.visibility == View.VISIBLE) and (it.alpha != 0f) } ?: false
+        get() = false
         set(value) {
-            toolbar?.animate()
-                ?.alpha(if (value) 1f else 0f)
-                ?.start()
+
         }
 
     override val currentExpandableState: ExpandableState
@@ -68,8 +66,6 @@ class MainActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        toolbar?.let { setSupportActionBar(it) }
 
         bottomNavigationView?.setOnNavigationItemSelectedListener(this)
 

@@ -17,10 +17,11 @@ import com.chrynan.video.media.MediaController
 import com.chrynan.video.media.MediaPlayerView
 import com.chrynan.video.media.MediaSourceCreator
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
-import com.chrynan.video.viewmodel.VideoInfo
+import com.chrynan.common.model.VideoInfo
 import com.google.android.exoplayer2.Player
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
@@ -46,6 +47,10 @@ class VideoPlayerFragment : BaseFragment(),
     @Inject
     @field:VideoPlayerQualifier.LayoutManager
     lateinit var linearLayoutManager: LinearLayoutManager
+
+    @Inject
+    @field:VideoPlayerQualifier.Decorator
+    lateinit var listDecorator: VideoPlayerListDecorator
 
     @Inject
     lateinit var transitionListener: CollapsingVideoTransitionStateListener
@@ -135,6 +140,7 @@ class VideoPlayerFragment : BaseFragment(),
         recyclerView?.apply {
             layoutManager = linearLayoutManager
             adapter = managerAdapter
+            addItemDecoration(listDecorator)
         }
 
         val source = mediaSourceCreator.fromUri("https://www.w3schools.com/html/mov_bbb.mp4")

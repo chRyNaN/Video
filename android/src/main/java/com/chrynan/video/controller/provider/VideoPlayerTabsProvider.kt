@@ -8,7 +8,8 @@ class VideoPlayerTabsProvider @Inject constructor() : TabFragmentProvider<VideoP
 
     override val rootTabCount = VideoPlayerTabs.values().size
 
-    override fun getTabFromIndex(index: Int) = VideoPlayerTabs.values().firstOrNull { it.index == index }
+    override fun getTabFromIndex(index: Int) =
+        VideoPlayerTabs.values().firstOrNull { it.index == index }
 
     override fun getRootTabFragment(tab: VideoPlayerTabs) =
         when (tab) {

@@ -15,6 +15,7 @@ import com.chrynan.video.ui.adapter.*
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.viewmodel.AdapterItem
@@ -29,6 +30,12 @@ internal abstract class VideoPlayerFragmentModule {
     companion object {
 
         // Adapter
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @VideoPlayerQualifier.Decorator
+        fun provideDecorator(context: Context) = VideoPlayerListDecorator(context)
 
         @Provides
         @JvmStatic
@@ -79,7 +86,6 @@ internal abstract class VideoPlayerFragmentModule {
             videoInfoChannelAdapter: VideoInfoChannelAdapter,
             videoInfoDescriptionAdapter: VideoInfoDescriptionAdapter,
             videoInfoDetailsAdapter: VideoInfoDetailsAdapter,
-            videoInfoProviderAdapter: VideoInfoProviderAdapter,
             sectionHeaderAdapter: SectionHeaderAdapter,
             videoRecommendationAdapter: VideoRecommendationAdapter,
             videoShowcaseAdapter: VideoShowcaseAdapter,
@@ -90,7 +96,6 @@ internal abstract class VideoPlayerFragmentModule {
                 videoInfoChannelAdapter,
                 videoInfoDescriptionAdapter,
                 videoInfoDetailsAdapter,
-                videoInfoProviderAdapter,
                 sectionHeaderAdapter,
                 videoRecommendationAdapter,
                 videoShowcaseAdapter
@@ -159,10 +164,11 @@ internal abstract class VideoPlayerFragmentModule {
         @FragmentScope
         @VideoActionQualifier.Adapter
         fun provideVideoActionAdapter(
+            videoInfoProviderAdapter: VideoInfoProviderAdapter,
             videoInfoActionAdapter: VideoInfoActionAdapter,
             @VideoActionQualifier.LayoutManager layoutManager: LinearLayoutManager
         ) = RecyclerViewAdapter(
-            adapters = setOf(videoInfoActionAdapter),
+            adapters = setOf(videoInfoProviderAdapter, videoInfoActionAdapter),
             layoutManager = layoutManager
         )
     }

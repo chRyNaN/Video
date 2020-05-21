@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
+@Adapter
 class VideoInfoHeaderAdapter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     @VideoActionQualifier.Adapter private val actionAdapter: RecyclerViewAdapter,
@@ -28,7 +30,7 @@ class VideoInfoHeaderAdapter @Inject constructor(
     @VideoActionQualifier.AdapterItemHandler private val adapterItemHandler: AdapterItemHandler<AdapterItem>
 ) : BaseAdapter<VideoInfoHeaderViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(VideoInfoHeaderAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is VideoInfoHeaderViewModel
 
@@ -41,13 +43,14 @@ class VideoInfoHeaderAdapter @Inject constructor(
 
     override fun View.onBindItem(item: VideoInfoHeaderViewModel, position: Int) {
         adapterVideoInfoHeaderTitleTextView?.text = item.title
-        adapterVideoInfoHeaderViewCountTextView?.text = item.viewCount
+        adapterVideoInfoHeaderDetailTextView?.text = item.detail
+
         adapterVideoInfoHeaderRecyclerView?.apply {
             adapter = actionAdapter
             layoutManager = linearLayoutManager
         }
 
-        flowOf(item.actions)
+        flowOf(listOf(item.provider) + item.actions)
             .calculateAndDispatchDiff(adapterItemHandler)
             .launchIn(this@VideoInfoHeaderAdapter)
     }

@@ -10,7 +10,7 @@ import com.chrynan.video.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
-import com.chrynan.video.viewmodel.VideoInfo
+import com.chrynan.common.model.VideoInfo
 import kotlinx.android.synthetic.main.fragment_watch_list.*
 
 class WatchListFragment : BaseFragment(),

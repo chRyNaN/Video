@@ -15,7 +15,7 @@ import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.viewmodel.AdapterItem
-import com.chrynan.video.viewmodel.VideoInfo
+import com.chrynan.common.model.VideoInfo
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment(),

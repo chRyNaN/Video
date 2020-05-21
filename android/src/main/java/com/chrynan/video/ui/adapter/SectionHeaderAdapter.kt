@@ -18,7 +18,7 @@ import javax.inject.Inject
 class SectionHeaderAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
     BaseAdapter<SectionHeaderViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(SectionHeaderAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is SectionHeaderViewModel
 

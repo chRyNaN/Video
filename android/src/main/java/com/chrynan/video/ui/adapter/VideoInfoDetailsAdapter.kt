@@ -11,6 +11,7 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.VideoInfoDetailsViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
+import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.adapter_video_info_details.view.*
 import javax.inject.Inject
 
@@ -30,7 +31,15 @@ class VideoInfoDetailsAdapter @Inject constructor(dispatchers: CoroutineDispatch
 
     override fun View.onBindItem(item: VideoInfoDetailsViewModel, position: Int) {
         adapterVideoInfoCategoryTextView?.text = item.category
-        adapterVideoInfoPublishedTimeTextView?.text = item.publishedDate
-        adapterVideoInfoTagsTextView?.text = item.tags.toString()
+
+        adapterVideoInfoDetailsTagsChipGroup?.let { group ->
+            item.tags.forEach {
+                val chip = Chip(group.context).apply {
+                    text = it
+                }
+
+                group.addView(chip)
+            }
+        }
     }
 }

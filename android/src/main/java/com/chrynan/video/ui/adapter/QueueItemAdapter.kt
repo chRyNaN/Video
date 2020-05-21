@@ -22,7 +22,7 @@ class QueueItemAdapter @Inject constructor(
     private val listener: QueueOptionsListener
 ) : BaseAdapter<QueueItemViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(QueueItemAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is QueueItemViewModel
 

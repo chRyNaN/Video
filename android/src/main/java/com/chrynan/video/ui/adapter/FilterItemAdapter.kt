@@ -20,7 +20,7 @@ class FilterItemAdapter @Inject constructor(
     private val listener: FilterItemCheckedListener
 ) : BaseAdapter<FilterItemViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(FilterItemAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is FilterItemViewModel
 

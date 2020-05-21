@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
@@ -11,16 +12,17 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.viewmodel.VideoInfo
+import com.chrynan.common.model.VideoInfo
 import kotlinx.android.synthetic.main.adapter_watch_list_item.view.*
 import javax.inject.Inject
 
+@Adapter
 class WatchListItemAdapter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val listener: WatchListItemSelectedListener
 ) : BaseAdapter<WatchListItemViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(WatchListItemAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is WatchListItemViewModel
 

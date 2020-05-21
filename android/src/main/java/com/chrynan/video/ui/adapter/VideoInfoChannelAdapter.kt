@@ -1,9 +1,9 @@
 package com.chrynan.video.ui.adapter
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -30,7 +30,14 @@ class VideoInfoChannelAdapter @Inject constructor(dispatchers: CoroutineDispatch
     ): View = inflater.inflate(R.layout.adapter_video_info_channel, parent, false)
 
     override fun View.onBindItem(item: VideoInfoChannelViewModel, position: Int) {
-        adapterVideoInfoChannelImageView?.setImageURI(Uri.parse(item.channelImageUrl))
+        val imageUrl = item.channelImageUrl
+
+        if (!imageUrl.isNullOrBlank()) {
+            Glide.with(this)
+                .load(imageUrl)
+                .into(adapterVideoInfoChannelImageView)
+        }
+
         adapterVideoInfoChannelNameTextView?.text = item.channelName
         adapterVideoInfoChannelSubscribeCountTextView?.text = item.channelSubscriberCount
         adapterVideoInfoChannelSubscribeButton?.setOnClickListener { }

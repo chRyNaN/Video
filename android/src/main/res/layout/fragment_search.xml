@@ -5,18 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.chrynan.video.ui.widget.SearchWidget
+    <EditText
         android:id="@+id/searchWidget"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_vertical_default"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:autofillHints=""
+        android:background="@color/primary_transparency_50_percent"
         android:clickable="true"
         android:focusable="true"
         android:focusedByDefault="true"
         android:hint="@string/search_hint"
+        android:inputType="text"
         android:padding="@dimen/spacing_small"
+        android:paddingStart="@dimen/spacing_small"
+        android:paddingTop="@dimen/spacing_xxsmall"
+        android:paddingEnd="@dimen/spacing_small"
+        android:paddingBottom="@dimen/spacing_xxsmall"
         android:textAppearance="@style/TextAppearance.Title"
         android:textColor="@color/text_light_primary_color"
         android:textColorHint="@color/text_light_secondary_color"

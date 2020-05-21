@@ -18,7 +18,7 @@ import javax.inject.Inject
 class ChannelInfoAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
     BaseAdapter<ChannelInfoViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(ChannelInfoAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is ChannelInfoViewModel
 

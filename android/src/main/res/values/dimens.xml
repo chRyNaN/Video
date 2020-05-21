@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="spacing_horizontal_default">@dimen/spacing_medium</dimen>
+    <dimen name="spacing_horizontal_default">@dimen/spacing_small</dimen>
     <dimen name="spacing_vertical_default">@dimen/spacing_small</dimen>
 
     <dimen name="spacing_xxsmall">4dp</dimen>
@@ -46,5 +46,12 @@
 
     <dimen name="elevation_toolbar">4dp</dimen>
     <dimen name="elevation_bottom_navigation">8dp</dimen>
+
+    <dimen name="video_action_height">56dp</dimen>
+    <dimen name="video_action_width">56dp</dimen>
+    <dimen name="video_action_provider_height">56dp</dimen>
+    <dimen name="video_action_provider_min_width">80dp</dimen>
+
+    <dimen name="divider_height">2dp</dimen>
 
 </resources>

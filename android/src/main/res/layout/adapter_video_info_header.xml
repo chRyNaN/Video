@@ -21,7 +21,7 @@
         tools:text="Title" />
 
     <TextView
-        android:id="@+id/adapterVideoInfoHeaderViewCountTextView"
+        android:id="@+id/adapterVideoInfoHeaderDetailTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_xxsmall"
@@ -34,9 +34,10 @@
         android:id="@+id/adapterVideoInfoHeaderRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/spacing_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderDetailTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

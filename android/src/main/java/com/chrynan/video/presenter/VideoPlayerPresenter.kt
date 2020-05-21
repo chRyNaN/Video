@@ -2,6 +2,8 @@ package com.chrynan.video.presenter
 
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.model.VideoAction
+import com.chrynan.common.model.VideoInfo
+import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
 import com.chrynan.video.viewmodel.*
@@ -22,7 +24,7 @@ class VideoPlayerPresenter(
         )
 
         val shareAction = VideoAction.LocalAction(
-            icon = 0,
+            icon = R.drawable.ic_share,
             localType = VideoAction.LocalAction.LocalType.SHARE
         )
 
@@ -30,31 +32,29 @@ class VideoPlayerPresenter(
             VideoInfoHeaderViewModel(
                 videoInfo = videoInfo,
                 title = "A Really Cool Video",
-                viewCount = "225k",
-                actions = listOf(VideoInfoActionViewModel(videoInfo, shareAction))
+                detail = "225k Published Today at 5:00pm",
+                actions = listOf(VideoInfoActionViewModel(videoInfo, shareAction)),
+                provider = VideoInfoProviderViewModel(
+                    videoInfo = videoInfo,
+                    providerServiceName = "chRyNaN Video Provider"
+                )
             ),
             VideoInfoChannelViewModel(
                 videoInfo = videoInfo,
                 channelName = "chRyNaN",
-                channelImageUrl = "",
+                channelImageUrl = null,
                 channelSubscriberCount = "250k",
                 showChannelSubscribeCount = true,
                 isSubscribedToChannel = true
             ),
-            VideoInfoProviderViewModel(
-                videoInfo = videoInfo,
-                providerServiceName = "chRyNaN Video Provider"
-            ),
-            VideoInfoDetailsViewModel(
-                videoInfo = videoInfo,
-                publishedDate = "Today",
-                category = "Category",
-                showCategory = true,
-                tags = listOf("TagOne", "TagTwo")
-            ),
             VideoInfoDescriptionViewModel(
                 videoInfo = videoInfo,
                 description = "Description"
+            ),
+            VideoInfoDetailsViewModel(
+                videoInfo = videoInfo,
+                category = "Category",
+                tags = listOf("TagOne", "TagTwo")
             ),
             SectionHeaderViewModel(header = "Recommended Videos"),
             VideoRecommendationViewModel(

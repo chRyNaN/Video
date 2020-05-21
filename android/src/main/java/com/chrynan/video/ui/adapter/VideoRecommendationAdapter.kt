@@ -3,6 +3,7 @@ package com.chrynan.video.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
@@ -14,12 +15,13 @@ import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_recommendation.view.*
 import javax.inject.Inject
 
+@Adapter
 class VideoRecommendationAdapter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val listener: VideoOptionsListener
 ) : BaseAdapter<VideoRecommendationViewModel>(dispatchers) {
 
-    override val viewType = AdapterViewType.from(this::class.java)
+    override val viewType = AdapterViewType.from(VideoRecommendationAdapter::class.java)
 
     override fun onHandlesItem(item: Any) = item is VideoRecommendationViewModel
 

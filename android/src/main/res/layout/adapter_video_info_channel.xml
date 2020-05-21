@@ -15,10 +15,10 @@
         android:layout_height="@dimen/video_info_channel_image_size"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
         android:contentDescription="@string/cd_video_info_channel_image"
+        android:src="@drawable/ic_default_user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/adapterVideoInfoChannelNameTextView"
