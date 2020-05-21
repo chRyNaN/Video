@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.presentation.view.UserContentView
+import com.chrynan.video.ui.view.UserContentView
 import com.chrynan.video.R
 
 class UserContentFragment : BaseFragment(),

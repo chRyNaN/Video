@@ -8,10 +8,10 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.presentation.viewmodel.VideoInfo
-import com.chrynan.presentation.viewmodel.WatchListItemViewModel
+import com.chrynan.video.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
+import com.chrynan.video.viewmodel.VideoInfo
 import kotlinx.android.synthetic.main.adapter_watch_list_item.view.*
 import javax.inject.Inject
 

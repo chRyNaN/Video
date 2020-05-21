@@ -8,7 +8,7 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.presentation.viewmodel.SectionHeaderViewModel
+import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
 import kotlinx.android.synthetic.main.adapter_section_header.view.*

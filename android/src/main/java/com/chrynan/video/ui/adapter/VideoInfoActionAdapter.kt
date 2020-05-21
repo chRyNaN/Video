@@ -10,9 +10,9 @@ import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.model.VideoAction
-import com.chrynan.presentation.viewmodel.VideoInfoActionViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
+import com.chrynan.video.viewmodel.VideoInfoActionViewModel
 import kotlinx.android.synthetic.main.adapter_video_info_action.view.*
 import javax.inject.Inject
 

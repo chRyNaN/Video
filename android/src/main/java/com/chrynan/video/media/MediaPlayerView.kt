@@ -1,7 +1,7 @@
 package com.chrynan.video.media
 
 import com.chrynan.common.model.core.UriString
-import com.chrynan.presentation.view.View
+import com.chrynan.video.ui.view.View
 import com.google.android.exoplayer2.Player
 
 interface MediaPlayerView : View {

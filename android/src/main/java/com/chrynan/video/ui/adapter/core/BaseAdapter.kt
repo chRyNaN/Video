@@ -5,8 +5,8 @@ import androidx.annotation.CallSuper
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.presentation.viewmodel.AdapterItem
 import com.chrynan.video.coroutine.AdapterCoroutineScope
+import com.chrynan.video.viewmodel.AdapterItem
 import kotlinx.coroutines.SupervisorJob
 import kotlin.coroutines.CoroutineContext
 

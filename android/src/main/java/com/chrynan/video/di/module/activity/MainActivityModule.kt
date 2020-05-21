@@ -1,8 +1,8 @@
 package com.chrynan.video.di.module.activity
 
 import com.chrynan.expandable.ExpandableContainerView
-import com.chrynan.presentation.navigator.MainNavigator
-import com.chrynan.presentation.view.TopMenuView
+import com.chrynan.video.navigator.MainNavigator
+import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.controller.MainController
 import com.chrynan.video.controller.VideoPlayerController

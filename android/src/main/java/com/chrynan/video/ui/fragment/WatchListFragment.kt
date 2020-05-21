@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.presentation.view.WatchListView
-import com.chrynan.presentation.viewmodel.VideoInfo
-import com.chrynan.presentation.viewmodel.WatchListItemViewModel
+import com.chrynan.video.ui.view.WatchListView
+import com.chrynan.video.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
+import com.chrynan.video.viewmodel.VideoInfo
 import kotlinx.android.synthetic.main.fragment_watch_list.*
 
 class WatchListFragment : BaseFragment(),

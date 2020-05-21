@@ -4,8 +4,7 @@ import com.chrynan.aaaah.DiffDispatcher
 import com.chrynan.aaaah.DiffProcessor
 import com.chrynan.aaaah.DiffResult
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.presentation.adapter.core.AdapterItemHandler
-import com.chrynan.presentation.viewmodel.AdapterItem
+import com.chrynan.video.viewmodel.AdapterItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.presentation.viewmodel.AdapterItem
+import com.chrynan.video.viewmodel.AdapterItem
 
 open class BaseManagerAdapter<VM : AdapterItem>(
     private val adapters: Set<BaseAdapter<out VM>>,

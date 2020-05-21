@@ -2,7 +2,7 @@ package com.chrynan.video.ui.transition
 
 import com.chrynan.expandable.ExpandableState
 import com.chrynan.expandable.ExpandableStateListener
-import com.chrynan.presentation.view.CollapsibleVideoView
+import com.chrynan.video.ui.view.CollapsibleVideoView
 import com.chrynan.video.utils.AppContext
 import javax.inject.Inject
 

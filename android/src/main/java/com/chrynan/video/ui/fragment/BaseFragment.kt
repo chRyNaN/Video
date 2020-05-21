@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.chrynan.kotlinutils.perform
-import com.chrynan.presentation.navigator.Navigator
-import com.chrynan.presentation.presenter.BasePresenter
-import com.chrynan.presentation.view.SnackbarView
+import com.chrynan.video.ui.view.SnackbarView
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.FragmentCoroutineScope
+import com.chrynan.video.navigator.Navigator
+import com.chrynan.video.presenter.BasePresenter
 import com.chrynan.video.ui.activity.BaseActivity
 import com.chrynan.video.utils.snackbarOf
 import com.google.android.material.snackbar.Snackbar

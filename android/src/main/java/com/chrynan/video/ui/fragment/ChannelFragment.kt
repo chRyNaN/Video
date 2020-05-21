@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.presentation.view.ChannelView
-import com.chrynan.presentation.viewmodel.ChannelInfoViewModel
-import com.chrynan.presentation.viewmodel.VideoInfo
+import com.chrynan.video.ui.view.ChannelView
+import com.chrynan.video.viewmodel.ChannelInfoViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
+import com.chrynan.video.viewmodel.VideoInfo
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 

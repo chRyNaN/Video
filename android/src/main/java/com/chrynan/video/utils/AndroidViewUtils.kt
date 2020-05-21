@@ -1,7 +1,7 @@
 package com.chrynan.video.utils
 
 import android.view.View
-import com.chrynan.presentation.view.SnackbarView
+import com.chrynan.video.ui.view.SnackbarView
 import com.chrynan.video.R
 import com.google.android.material.snackbar.Snackbar
 

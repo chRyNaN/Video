@@ -2,7 +2,7 @@ package com.chrynan.video.di.module.fragment
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.presentation.view.ChannelView
+import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.ChannelInfoAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter

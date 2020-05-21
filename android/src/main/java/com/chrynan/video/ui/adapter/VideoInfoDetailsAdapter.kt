@@ -8,7 +8,7 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.presentation.viewmodel.VideoInfoDetailsViewModel
+import com.chrynan.video.viewmodel.VideoInfoDetailsViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
 import kotlinx.android.synthetic.main.adapter_video_info_details.view.*

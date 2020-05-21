@@ -1,6 +1,6 @@
 package com.chrynan.video.di.module.fragment
 
-import com.chrynan.presentation.view.UserContentView
+import com.chrynan.video.ui.view.UserContentView
 import com.chrynan.video.ui.fragment.UserContentFragment
 import dagger.Binds
 import dagger.Module

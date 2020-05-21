@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.presentation.view.QueueView
-import com.chrynan.presentation.viewmodel.QueueItemViewModel
-import com.chrynan.presentation.viewmodel.VideoInfo
+import com.chrynan.video.ui.view.QueueView
+import com.chrynan.video.viewmodel.QueueItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
+import com.chrynan.video.viewmodel.VideoInfo
 import kotlinx.android.synthetic.main.fragment_queue.*
 import javax.inject.Inject
 

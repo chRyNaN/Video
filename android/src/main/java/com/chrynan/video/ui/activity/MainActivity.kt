@@ -8,8 +8,8 @@ import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.expandable.ExpandableState
 import com.chrynan.expandable.ExpandableStateListener
 import com.chrynan.kotlinutils.isTruthy
-import com.chrynan.presentation.navigator.MainNavigator
-import com.chrynan.presentation.view.TopMenuView
+import com.chrynan.video.navigator.MainNavigator
+import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.controller.VideoPlayerController
 import com.chrynan.video.controller.tab.VideoPlayerTabs

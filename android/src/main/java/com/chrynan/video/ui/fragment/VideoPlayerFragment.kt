@@ -8,10 +8,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.common.model.core.UriString
 import com.chrynan.expandable.ExpandableContainerView
-import com.chrynan.presentation.presenter.VideoPlayerPresenter
-import com.chrynan.presentation.view.CollapsibleVideoView
-import com.chrynan.presentation.view.VideoPlayerView
-import com.chrynan.presentation.viewmodel.VideoInfo
+import com.chrynan.video.presenter.VideoPlayerPresenter
+import com.chrynan.video.ui.view.CollapsibleVideoView
+import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.R
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.media.MediaController
@@ -21,6 +20,7 @@ import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
+import com.chrynan.video.viewmodel.VideoInfo
 import com.google.android.exoplayer2.Player
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject

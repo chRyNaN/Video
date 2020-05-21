@@ -2,12 +2,12 @@ package com.chrynan.video.ui.activity
 
 import android.os.Bundle
 import androidx.lifecycle.coroutineScope
-import com.chrynan.presentation.navigator.Navigator
-import com.chrynan.presentation.presenter.BasePresenter
-import com.chrynan.presentation.view.View
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.ActivityCoroutineScope
+import com.chrynan.video.navigator.Navigator
+import com.chrynan.video.presenter.BasePresenter
 import com.chrynan.video.ui.fragment.BaseFragment
+import com.chrynan.video.ui.view.View
 import dagger.android.support.DaggerAppCompatActivity
 import kotlin.coroutines.CoroutineContext
 

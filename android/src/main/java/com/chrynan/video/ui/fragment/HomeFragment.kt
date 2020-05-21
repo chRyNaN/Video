@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.presentation.view.HomeView
-import com.chrynan.presentation.viewmodel.AdapterItem
-import com.chrynan.presentation.viewmodel.VideoInfo
-import com.chrynan.presentation.viewmodel.VideoShowcaseViewModel
+import com.chrynan.video.ui.view.HomeView
+import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
+import com.chrynan.video.viewmodel.AdapterItem
+import com.chrynan.video.viewmodel.VideoInfo
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment(),

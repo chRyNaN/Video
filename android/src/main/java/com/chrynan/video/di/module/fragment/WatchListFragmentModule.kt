@@ -2,7 +2,7 @@ package com.chrynan.video.di.module.fragment
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.presentation.view.WatchListView
+import com.chrynan.video.ui.view.WatchListView
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
@@ -10,7 +10,6 @@ import com.chrynan.video.ui.fragment.WatchListFragment
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
 
 @Module
 internal abstract class WatchListFragmentModule {

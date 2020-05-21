@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.presentation.view.ContentProviderView
+import com.chrynan.video.ui.view.ContentProviderView
 import com.chrynan.video.R
 
 class ContentProviderFragment : BaseFragment(),
