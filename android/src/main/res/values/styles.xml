@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -49,6 +49,65 @@
         <item name="buffered_color">@color/time_bar_buffered_color</item>
         <item name="ad_marker_color">@color/time_bar_ad_marker_color</item>
         <item name="played_ad_marker_color">@color/time_bar_played_ad_marker_color</item>
+    </style>
+
+    <!-- Search Widget -->
+
+    <style name="SearchBar" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@color/primary_transparency_50_percent</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusedByDefault" tools:targetApi="o">true</item>
+        <item name="android:hint">@string/search_hint</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingStart">@dimen/spacing_small</item>
+        <item name="android:paddingEnd">@dimen/spacing_small</item>
+        <item name="android:paddingTop">@dimen/spacing_xsmall</item>
+        <item name="android:paddingBottom">@dimen/spacing_xsmall</item>
+        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textColorHint">@color/text_primary_subtle_color</item>
+    </style>
+
+    <!-- Chips -->
+
+    <style name="ChipAction" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+        <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="ChipEntry" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+        <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="ChipFilter" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+        <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="ChipChoice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textColor">@color/text_primary_color</item>
+        <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
+        <item name="checkedIcon">@null</item>
     </style>
 
 </resources>

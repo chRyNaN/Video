@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <View
-        android:id="@+id/adapterVideoRecommendationBackgroundView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingStart="@dimen/spacing_horizontal_default"
+    android:paddingTop="@dimen/spacing_vertical_default"
+    android:paddingEnd="@dimen/spacing_horizontal_default"
+    android:paddingBottom="@dimen/spacing_vertical_default">
 
     <ImageView
         android:id="@+id/adapterVideoRecommendationVideoPlayerView"
         android:layout_width="@dimen/video_recommendation_image_width"
         android:layout_height="@dimen/video_recommendation_image_height"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginBottom="@dimen/spacing_small"
         android:background="@color/white"
         android:contentDescription="@string/cd_video_recommendation_image"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,34 +24,38 @@
         android:id="@+id/adapterVideoRecommendationVideoLengthTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacing_xsmall"
-        android:layout_marginBottom="@dimen/spacing_xsmall"
+        android:layout_marginEnd="@dimen/spacing_xxsmall"
+        android:layout_marginBottom="@dimen/spacing_xxsmall"
         android:background="@color/background_dark_transparency_75_percent"
-        android:padding="@dimen/spacing_xxsmall"
+        android:padding="@dimen/spacing_xxxsmall"
         android:textAppearance="@style/TextAppearance.Caption"
         app:layout_constraintBottom_toBottomOf="@+id/adapterVideoRecommendationVideoPlayerView"
-        app:layout_constraintEnd_toEndOf="@+id/adapterVideoRecommendationVideoPlayerView" />
+        app:layout_constraintEnd_toEndOf="@+id/adapterVideoRecommendationVideoPlayerView"
+        tools:text="1:00" />
 
     <TextView
         android:id="@+id/adapterVideoRecommendationTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
         android:ellipsize="end"
         android:maxLines="3"
         android:singleLine="false"
         android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintBottom_toTopOf="@+id/adapterVideoRecommendationChannelNameTextView"
         app:layout_constraintEnd_toStartOf="@+id/adapterVideoRecommendationOverflowOptionsImageView"
         app:layout_constraintStart_toEndOf="@+id/adapterVideoRecommendationVideoPlayerView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/adapterVideoRecommendationOverflowOptionsImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cd_video_recommendation_overflow_options"
-        android:padding="@dimen/spacing_small"
+        android:paddingStart="@dimen/spacing_xxxsmall"
+        android:paddingEnd="@dimen/spacing_xxxsmall"
+        android:paddingBottom="@dimen/spacing_xxxsmall"
         android:src="@drawable/ic_overflow_options"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,11 +64,12 @@
         android:id="@+id/adapterVideoRecommendationChannelNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_xxxsmall"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Caption.Subtle"
+        app:layout_constraintBottom_toTopOf="@+id/adapterVideoRecommendationDetailsTextView"
         app:layout_constraintEnd_toEndOf="@+id/adapterVideoRecommendationTitleTextView"
         app:layout_constraintStart_toStartOf="@+id/adapterVideoRecommendationTitleTextView"
         app:layout_constraintTop_toBottomOf="@+id/adapterVideoRecommendationTitleTextView" />
@@ -80,7 +78,7 @@
         android:id="@+id/adapterVideoRecommendationDetailsTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_xxxsmall"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"

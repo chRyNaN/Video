@@ -2,18 +2,22 @@ package com.chrynan.video.di.module.fragment
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.aaaah.*
+import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.ui.adapter.FilterItemAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.core.AdapterItemHandler
+import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.SearchFragment
+import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 
 @Module
 internal abstract class SearchFragmentModule {
@@ -21,34 +25,56 @@ internal abstract class SearchFragmentModule {
     @Module
     companion object {
 
+        // Search Results Adapter
+
         @Provides
         @JvmStatic
         @FragmentScope
+        @SearchQualifier.DiffCalculator
+        fun provideDiffCalculator() = DiffUtilCalculator<AdapterItem>()
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @SearchQualifier.DiffProcessor
+        fun provideDiffProcessor(@SearchQualifier.DiffCalculator calculator: DiffUtilCalculator<AdapterItem>): DiffProcessor<AdapterItem> =
+            AndroidDiffProcessor(calculator)
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @SearchQualifier.DiffDispatcher
+        fun provideDiffDispatcher(@SearchQualifier.ItemListUpdater listener: ItemListUpdater<AdapterItem>): DiffDispatcher<AdapterItem> =
+            AndroidDiffDispatcher(listener)
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @SearchQualifier.AdapterItemHandler
+        fun provideAdapterItemHandler(
+            @SearchQualifier.DiffProcessor diffProcessor: DiffProcessor<AdapterItem>,
+            @SearchQualifier.DiffDispatcher diffDispatcher: DiffDispatcher<AdapterItem>,
+            coroutineDispatchers: CoroutineDispatchers
+        ): AdapterItemHandler<AdapterItem> = BaseAdapterItemHandler(
+            diffProcessor = diffProcessor,
+            diffDispatcher = diffDispatcher,
+            coroutineDispatchers = coroutineDispatchers
+        )
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @SearchQualifier.LayoutManager
         fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
 
         @JvmStatic
         @Provides
-        @Named("FilterItemAdapter")
-        @FragmentScope
-        fun provideFilterAdapter(
-            filterItemAdapter: FilterItemAdapter,
-            layoutManager: LinearLayoutManager
-        ) =
-            RecyclerViewAdapter(
-                adapters = setOf(
-                    filterItemAdapter
-                ),
-                layoutManager = layoutManager
-            )
-
-        @JvmStatic
-        @Provides
-        @Named("ResultAdapter")
+        @SearchQualifier.Adapter
         @FragmentScope
         fun provideResultAdapter(
             headerAdapter: SectionHeaderAdapter,
             videoRecommendationAdapter: VideoRecommendationAdapter,
-            layoutManager: LinearLayoutManager
+            @SearchQualifier.LayoutManager layoutManager: LinearLayoutManager
         ) = RecyclerViewAdapter(
             adapters = setOf(
                 headerAdapter,
@@ -64,9 +90,10 @@ internal abstract class SearchFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindFilterItemCheckedChangeListener(fragment: SearchFragment): FilterItemAdapter.FilterItemCheckedListener
+    abstract fun bindVideoInfoAdapterListener(fragment: SearchFragment): VideoOptionsListener
 
     @Binds
     @FragmentScope
-    abstract fun bindVideoInfoAdapterListener(fragment: SearchFragment): VideoOptionsListener
+    @SearchQualifier.ItemListUpdater
+    abstract fun bindUpdateListener(@SearchQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 }

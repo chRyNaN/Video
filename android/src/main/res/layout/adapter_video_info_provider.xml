@@ -9,4 +9,4 @@
     android:minWidth="@dimen/video_action_provider_min_width"
     android:textAppearance="@style/TextAppearance.Title"
     app:checkedIcon="@null"
-    app:chipBackgroundColor="@color/bg_chip_provider_color" />
+    app:chipBackgroundColor="@color/bg_chip_item_primary_color" />

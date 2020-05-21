@@ -4,8 +4,9 @@
     <dimen name="spacing_horizontal_default">@dimen/spacing_small</dimen>
     <dimen name="spacing_vertical_default">@dimen/spacing_small</dimen>
 
-    <dimen name="spacing_xxsmall">4dp</dimen>
-    <dimen name="spacing_xsmall">8dp</dimen>
+    <dimen name="spacing_xxxsmall">4dp</dimen>
+    <dimen name="spacing_xxsmall">8dp</dimen>
+    <dimen name="spacing_xsmall">12dp</dimen>
     <dimen name="spacing_small">16dp</dimen>
     <dimen name="spacing_medium">24dp</dimen>
 

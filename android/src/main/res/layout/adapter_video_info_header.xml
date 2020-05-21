@@ -24,7 +24,7 @@
         android:id="@+id/adapterVideoInfoHeaderDetailTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_xxxsmall"
         android:textAppearance="@style/TextAppearance.Body2.Subtle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderTitleTextView"

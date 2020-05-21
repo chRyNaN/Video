@@ -7,33 +7,20 @@
 
     <EditText
         android:id="@+id/searchWidget"
+        style="@style/SearchBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_vertical_default"
+        android:layout_marginTop="@dimen/spacing_medium"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
         android:autofillHints=""
-        android:background="@color/primary_transparency_50_percent"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusedByDefault="true"
-        android:hint="@string/search_hint"
-        android:inputType="text"
-        android:padding="@dimen/spacing_small"
-        android:paddingStart="@dimen/spacing_small"
-        android:paddingTop="@dimen/spacing_xxsmall"
-        android:paddingEnd="@dimen/spacing_small"
-        android:paddingBottom="@dimen/spacing_xxsmall"
-        android:textAppearance="@style/TextAppearance.Title"
-        android:textColor="@color/text_light_primary_color"
-        android:textColorHint="@color/text_light_secondary_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnusedAttribute" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/filterItemRecyclerView"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/searchFilterItemChipGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -41,7 +28,8 @@
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchWidget" />
+        app:layout_constraintTop_toBottomOf="@+id/searchWidget"
+        app:singleLine="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchResultsRecyclerView"
@@ -53,6 +41,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterItemRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchFilterItemChipGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

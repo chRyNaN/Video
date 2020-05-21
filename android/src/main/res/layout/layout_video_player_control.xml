@@ -52,7 +52,7 @@
         android:id="@+id/exo_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_xsmall"
+        android:layout_marginStart="@dimen/spacing_xxsmall"
         android:textAppearance="@style/TextAppearance.Caption.Subtle"
         app:layout_constraintBottom_toBottomOf="@+id/exo_position"
         app:layout_constraintStart_toEndOf="@+id/exo_position"

@@ -38,10 +38,10 @@ class VideoRecommendationAdapter @Inject constructor(
         adapterVideoRecommendationDetailsTextView?.text = item.detailText
         adapterVideoRecommendationVideoLengthTextView?.text = item.videoLength
 
-        adapterVideoRecommendationBackgroundView?.setOnClickListener {}
-
         adapterVideoRecommendationOverflowOptionsImageView?.setOnClickListener {
             listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
         }
+
+        setOnClickListener { }
     }
 }

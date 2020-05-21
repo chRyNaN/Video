@@ -6,23 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.SearchView
-import com.chrynan.video.viewmodel.FilterItemViewModel
 import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.FilterItemAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.VideoInfo
-import com.chrynan.video.ui.widget.BackgroundShape
-import com.chrynan.video.ui.widget.setBackgroundShape
+import com.chrynan.video.di.qualifier.SearchQualifier
+import com.chrynan.video.ui.widget.*
+import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
-import javax.inject.Named
 
 class SearchFragment : BaseFragment(),
     SearchView,
-    VideoOptionsListener,
-    FilterItemAdapter.FilterItemCheckedListener {
+    VideoOptionsListener {
 
     companion object {
 
@@ -30,12 +27,12 @@ class SearchFragment : BaseFragment(),
     }
 
     @Inject
-    @field:Named("FilterItemAdapter")
-    lateinit var filterItemAdapter: RecyclerViewAdapter
+    @field:SearchQualifier.Adapter
+    lateinit var resultAdapter: RecyclerViewAdapter
 
     @Inject
-    @field:Named("ResultAdapter")
-    lateinit var resultAdapter: RecyclerViewAdapter
+    @field:SearchQualifier.LayoutManager
+    lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,56 +44,38 @@ class SearchFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         searchWidget?.setBackgroundShape(BackgroundShape.Round)
 
-        filterItemRecyclerView?.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = filterItemAdapter
+        searchFilterItemChipGroup?.let { group ->
+            val chipOne = chipOf(group, ChipStyle.FILTER, "One", ChipBackgroundColor.ACCENT_ONE)
+            val chipTwo = chipOf(group, ChipStyle.FILTER, "Two", ChipBackgroundColor.ACCENT_TWO)
+            val chipThree =
+                chipOf(group, ChipStyle.FILTER, "Three", ChipBackgroundColor.ACCENT_THREE)
 
-            filterItemAdapter.items = listOf(
-                FilterItemViewModel(
-                    name = "Movie",
-                    filterLevel = 0,
-                    isChecked = false,
-                    backgroundColorResId = R.color.bg_chip_filter_item_one_color
-                ),
-                FilterItemViewModel(
-                    name = "TV Series",
-                    filterLevel = 0,
-                    isChecked = false,
-                    backgroundColorResId = R.color.bg_chip_filter_item_two_color
-                ),
-                FilterItemViewModel(
-                    name = "Video Clip",
-                    filterLevel = 0,
-                    isChecked = false,
-                    backgroundColorResId = R.color.bg_chip_filter_item_three_color
-                ),
-                FilterItemViewModel(
-                    name = "Live",
-                    filterLevel = 0,
-                    isChecked = false,
-                    backgroundColorResId = R.color.bg_chip_filter_item_one_color
-                ),
-                FilterItemViewModel(
-                    name = "Music Video",
-                    filterLevel = 0,
-                    isChecked = false,
-                    backgroundColorResId = R.color.bg_chip_filter_item_two_color
-                )
-            )
+            group.addView(chipOne)
+            group.addView(chipTwo)
+            group.addView(chipThree)
         }
 
         searchResultsRecyclerView?.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = linearLayoutManager
             adapter = resultAdapter
 
             resultAdapter.items = listOf(
-                SectionHeaderViewModel(header = "Results")
+                SectionHeaderViewModel(header = "Results"),
+                VideoRecommendationViewModel(
+                    title = "Test Title",
+                    channelName = "Test Channel Name",
+                    detailText = "Test Detail Text",
+                    videoInfo = VideoInfo(
+                        videoId = "",
+                        channelId = "",
+                        videoUri = "",
+                        providerUri = ""
+                    ),
+                    videoLength = "1:00",
+                    videoImageUrl = ""
+                )
             )
         }
-    }
-
-    override fun onFilterItemCheckChange(isChecked: Boolean, filterItem: FilterItemViewModel) {
-
     }
 
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
