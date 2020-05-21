@@ -1,22 +1,12 @@
 package com.chrynan.presentation.viewmodel
 
 import com.chrynan.aaaah.asUniqueAdapterId
-import com.chrynan.presentation.model.ResourceID
+import com.chrynan.common.model.VideoAction
 
 data class VideoInfoActionViewModel(
     val videoInfo: VideoInfo,
-    val text: String,
-    val icon: ResourceID,
-    val isSelected: Boolean,
-    val type: ActionType
+    val action: VideoAction
 ) : AdapterItem {
 
-    override val uniqueAdapterId = "VideoAction:$videoInfo".asUniqueAdapterId()
-
-    enum class ActionType {
-
-        LIKE,
-        DISLIKE,
-        SHARE
-    }
+    override val uniqueAdapterId = "VideoAction:$videoInfo$action".asUniqueAdapterId()
 }

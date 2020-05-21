@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.presentation.adapter.core.AdapterItemHandler
+import com.chrynan.presentation.presenter.VideoPlayerPresenter
 import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
 import com.chrynan.presentation.viewmodel.AdapterItem
+import com.chrynan.video.di.qualifier.VideoActionQualifier
+import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.media.MediaPlayerView
 import com.chrynan.video.ui.adapter.*
@@ -25,29 +28,35 @@ internal abstract class VideoPlayerFragmentModule {
     @Module
     companion object {
 
+        // Adapter
+
         @Provides
         @JvmStatic
         @FragmentScope
+        @VideoPlayerQualifier.DiffCalculator
         fun provideDiffCalculator() = DiffUtilCalculator<AdapterItem>()
 
         @Provides
         @JvmStatic
         @FragmentScope
-        fun provideDiffProcessor(calculator: DiffUtilCalculator<AdapterItem>): DiffProcessor<AdapterItem> =
+        @VideoPlayerQualifier.DiffProcessor
+        fun provideDiffProcessor(@VideoPlayerQualifier.DiffCalculator calculator: DiffUtilCalculator<AdapterItem>): DiffProcessor<AdapterItem> =
             AndroidDiffProcessor(calculator)
 
         @Provides
         @JvmStatic
         @FragmentScope
-        fun provideDiffDispatcher(listener: ItemListUpdater<AdapterItem>): DiffDispatcher<AdapterItem> =
+        @VideoPlayerQualifier.DiffDispatcher
+        fun provideDiffDispatcher(@VideoPlayerQualifier.ItemListUpdater listener: ItemListUpdater<AdapterItem>): DiffDispatcher<AdapterItem> =
             AndroidDiffDispatcher(listener)
 
         @Provides
         @JvmStatic
         @FragmentScope
+        @VideoPlayerQualifier.AdapterItemHandler
         fun provideAdapterItemHandler(
-            diffProcessor: DiffProcessor<AdapterItem>,
-            diffDispatcher: DiffDispatcher<AdapterItem>,
+            @VideoPlayerQualifier.DiffProcessor diffProcessor: DiffProcessor<AdapterItem>,
+            @VideoPlayerQualifier.DiffDispatcher diffDispatcher: DiffDispatcher<AdapterItem>,
             coroutineDispatchers: CoroutineDispatchers
         ): AdapterItemHandler<AdapterItem> = BaseAdapterItemHandler(
             diffProcessor = diffProcessor,
@@ -58,11 +67,13 @@ internal abstract class VideoPlayerFragmentModule {
         @Provides
         @JvmStatic
         @FragmentScope
+        @VideoPlayerQualifier.LayoutManager
         fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
 
         @JvmStatic
         @Provides
         @FragmentScope
+        @VideoPlayerQualifier.Adapter
         fun provideAdapter(
             videoInfoHeaderAdapter: VideoInfoHeaderAdapter,
             videoInfoChannelAdapter: VideoInfoChannelAdapter,
@@ -72,7 +83,7 @@ internal abstract class VideoPlayerFragmentModule {
             sectionHeaderAdapter: SectionHeaderAdapter,
             videoRecommendationAdapter: VideoRecommendationAdapter,
             videoShowcaseAdapter: VideoShowcaseAdapter,
-            layoutManager: LinearLayoutManager
+            @VideoPlayerQualifier.LayoutManager layoutManager: LinearLayoutManager
         ) = RecyclerViewAdapter(
             adapters = setOf(
                 videoInfoHeaderAdapter,
@@ -84,6 +95,74 @@ internal abstract class VideoPlayerFragmentModule {
                 videoRecommendationAdapter,
                 videoShowcaseAdapter
             ),
+            layoutManager = layoutManager
+        )
+
+        // Presenter
+
+        @JvmStatic
+        @Provides
+        @FragmentScope
+        fun provideVideoPlayerPresenter(
+            coroutineDispatchers: CoroutineDispatchers,
+            @VideoPlayerQualifier.AdapterItemHandler adapterItemHandler: AdapterItemHandler<AdapterItem>
+        ) = VideoPlayerPresenter(
+            dispatchers = coroutineDispatchers,
+            adapterHandler = adapterItemHandler
+        )
+
+        // Video Action Adapter
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @VideoActionQualifier.DiffCalculator
+        fun provideActionAdapterDiffCalculator() = DiffUtilCalculator<AdapterItem>()
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @VideoActionQualifier.DiffProcessor
+        fun provideActionAdapterDiffProcessor(@VideoActionQualifier.DiffCalculator calculator: DiffUtilCalculator<AdapterItem>): DiffProcessor<AdapterItem> =
+            AndroidDiffProcessor(calculator)
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @VideoActionQualifier.DiffDispatcher
+        fun provideActionAdapterDiffDispatcher(@VideoActionQualifier.ItemListUpdater listener: ItemListUpdater<AdapterItem>): DiffDispatcher<AdapterItem> =
+            AndroidDiffDispatcher(listener)
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @VideoActionQualifier.AdapterItemHandler
+        fun provideActionAdapterAdapterItemHandler(
+            @VideoActionQualifier.DiffProcessor diffProcessor: DiffProcessor<AdapterItem>,
+            @VideoActionQualifier.DiffDispatcher diffDispatcher: DiffDispatcher<AdapterItem>,
+            coroutineDispatchers: CoroutineDispatchers
+        ): AdapterItemHandler<AdapterItem> = BaseAdapterItemHandler(
+            diffProcessor = diffProcessor,
+            diffDispatcher = diffDispatcher,
+            coroutineDispatchers = coroutineDispatchers
+        )
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @VideoActionQualifier.LayoutManager
+        fun provideActionAdapterLayoutManager(context: Context) =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        @JvmStatic
+        @Provides
+        @FragmentScope
+        @VideoActionQualifier.Adapter
+        fun provideVideoActionAdapter(
+            videoInfoActionAdapter: VideoInfoActionAdapter,
+            @VideoActionQualifier.LayoutManager layoutManager: LinearLayoutManager
+        ) = RecyclerViewAdapter(
+            adapters = setOf(videoInfoActionAdapter),
             layoutManager = layoutManager
         )
     }
@@ -106,5 +185,11 @@ internal abstract class VideoPlayerFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindUpdateListener(adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
+    @VideoPlayerQualifier.ItemListUpdater
+    abstract fun bindUpdateListener(@VideoPlayerQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
+
+    @Binds
+    @FragmentScope
+    @VideoActionQualifier.ItemListUpdater
+    abstract fun bindActionAdapterUpdateListener(@VideoActionQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 }

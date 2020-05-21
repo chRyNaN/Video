@@ -24,6 +24,7 @@
 
     <!-- Transparency Colors -->
     <color name="white_transparency_50_percent">#80FFFFFF</color>
+    <color name="primary_transparency_50_percent">#80474E5D</color>
     <color name="primary_dark_transparency_50_percent">#80313640</color>
     <color name="background_medium_transparency_50_percent">#80E9E9E9</color>
     <color name="background_dark_transparency_75_percent">#BF313640</color>

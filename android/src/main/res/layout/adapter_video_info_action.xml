@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adapterVideoInfoActionButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    android:drawablePadding="@dimen/spacing_xxsmall"
-    android:drawableTint="@color/button_action_color"
+    android:background="@color/bg_video_info_action_color"
+    android:contentDescription="@string/cd_adapter_video_info_action"
+    android:padding="@dimen/spacing_small"
     android:textAppearance="@style/TextAppearance.Button.Subtle"
     android:textColor="@color/text_action_color"
-    tools:drawableTop="@drawable/ic_thumbs_up"
-    tools:text="@string/video_info_button_like" />
+    android:tint="@color/button_action_color"
+    tools:src="@drawable/ic_thumbs_up" />

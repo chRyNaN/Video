@@ -1,6 +1,5 @@
 package com.chrynan.video.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +11,9 @@ import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.presentation.presenter.VideoPlayerPresenter
 import com.chrynan.presentation.view.CollapsibleVideoView
 import com.chrynan.presentation.view.VideoPlayerView
-import com.chrynan.presentation.viewmodel.SectionHeaderViewModel
 import com.chrynan.presentation.viewmodel.VideoInfo
-import com.chrynan.presentation.viewmodel.VideoInfoHeaderViewModel
-import com.chrynan.presentation.viewmodel.VideoRecommendationViewModel
 import com.chrynan.video.R
+import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.media.MediaController
 import com.chrynan.video.media.MediaPlayerView
 import com.chrynan.video.media.MediaSourceCreator
@@ -24,15 +21,8 @@ import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.ui.transition.CollapsingVideoTransitionStateListener
-import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.upstream.DataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.util.Util
 import kotlinx.android.synthetic.main.fragment_video.*
-import kotlinx.android.synthetic.main.widget_video_player.view.*
 import javax.inject.Inject
 
 class VideoPlayerFragment : BaseFragment(),
@@ -50,7 +40,12 @@ class VideoPlayerFragment : BaseFragment(),
     override lateinit var presenter: VideoPlayerPresenter
 
     @Inject
+    @field:VideoPlayerQualifier.Adapter
     lateinit var managerAdapter: RecyclerViewAdapter
+
+    @Inject
+    @field:VideoPlayerQualifier.LayoutManager
+    lateinit var linearLayoutManager: LinearLayoutManager
 
     @Inject
     lateinit var transitionListener: CollapsingVideoTransitionStateListener
@@ -138,7 +133,7 @@ class VideoPlayerFragment : BaseFragment(),
         expandableView.expandedInteractionView = videoPlayerView
 
         recyclerView?.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = linearLayoutManager
             adapter = managerAdapter
         }
 

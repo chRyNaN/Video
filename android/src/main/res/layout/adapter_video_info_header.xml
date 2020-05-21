@@ -30,52 +30,13 @@
         app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderTitleTextView"
         tools:text="250k" />
 
-    <Button
-        android:id="@+id/adapterVideoInfoHeaderLikeButton"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adapterVideoInfoHeaderRecyclerView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:background="@android:color/transparent"
-        android:drawableTop="@drawable/ic_thumbs_up"
-        android:drawablePadding="@dimen/spacing_xxsmall"
-        android:drawableTint="@color/button_action_color"
-        android:text="@string/video_info_button_like"
-        android:textAppearance="@style/TextAppearance.Button.Subtle"
-        android:textColor="@color/text_action_color"
-        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoHeaderDislikeButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
-
-    <Button
-        android:id="@+id/adapterVideoInfoHeaderDislikeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:background="@android:color/transparent"
-        android:drawableTop="@drawable/ic_thumbs_down"
-        android:drawablePadding="@dimen/spacing_xxsmall"
-        android:drawableTint="@color/button_action_color"
-        android:text="@string/video_info_button_dislike"
-        android:textAppearance="@style/TextAppearance.Button.Subtle"
-        android:textColor="@color/text_action_color"
-        app:layout_constraintEnd_toStartOf="@+id/adapterVideoInfoHeaderShareButton"
-        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoHeaderLikeButton"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
-
-    <Button
-        android:id="@+id/adapterVideoInfoHeaderShareButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:background="@android:color/transparent"
-        android:drawableTop="@drawable/ic_share"
-        android:drawablePadding="@dimen/spacing_xxsmall"
-        android:drawableTint="@color/button_action_color"
-        android:text="@string/video_info_button_share"
-        android:textAppearance="@style/TextAppearance.Button.Subtle"
-        android:textColor="@color/text_action_color"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterVideoInfoHeaderDislikeButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adapterVideoInfoHeaderViewCountTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

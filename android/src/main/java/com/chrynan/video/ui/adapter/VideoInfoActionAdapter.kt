@@ -3,11 +3,13 @@ package com.chrynan.video.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.common.model.VideoAction
 import com.chrynan.presentation.viewmodel.VideoInfoActionViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
@@ -29,13 +31,15 @@ class VideoInfoActionAdapter @Inject constructor(dispatchers: CoroutineDispatche
     ): View = inflater.inflate(R.layout.adapter_video_info_action, parent, false)
 
     override fun View.onBindItem(item: VideoInfoActionViewModel, position: Int) {
-        adapterVideoInfoActionButton?.text = item.text
-        adapterVideoInfoActionButton?.setCompoundDrawablesRelativeWithIntrinsicBounds(
-            0,
-            item.icon,
-            0,
-            0
-        )
-        adapterVideoInfoActionButton?.isActivated = item.isSelected
+        val action = item.action
+
+        if (action is VideoAction.LocalAction) {
+            adapterVideoInfoActionButton?.setImageResource(action.icon)
+        } else if (action is VideoAction.BinaryAction) {
+            Glide.with(adapterVideoInfoActionButton)
+                .load(action.icon)
+                .into(adapterVideoInfoActionButton)
+            adapterVideoInfoActionButton?.isActivated = action.isSelected
+        }
     }
 }

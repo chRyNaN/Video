@@ -6,12 +6,7 @@ data class VideoInfoHeaderViewModel(
     val videoInfo: VideoInfo,
     val title: String,
     val viewCount: String,
-    val supportsRating: Boolean = false,
-    val likeButtonText: String,
-    val dislikeButtonText: String,
-    val shareButtonText: String,
-    val isLiked: Boolean = false,
-    val isDisliked: Boolean = false
+    val actions: List<VideoInfoActionViewModel> = emptyList()
 ) : AdapterItem {
 
     override val uniqueAdapterId = "HeaderInfo:$videoInfo".asUniqueAdapterId()

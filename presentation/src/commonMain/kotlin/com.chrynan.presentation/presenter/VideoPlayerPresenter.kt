@@ -1,14 +1,14 @@
 package com.chrynan.presentation.presenter
 
-import com.chrynan.common.Inject
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.common.model.VideoAction
 import com.chrynan.presentation.adapter.core.AdapterItemHandler
 import com.chrynan.presentation.adapter.core.calculateAndDispatchDiff
 import com.chrynan.presentation.viewmodel.*
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 
-class VideoPlayerPresenter @Inject constructor(
+class VideoPlayerPresenter(
     dispatchers: CoroutineDispatchers,
     private val adapterHandler: AdapterItemHandler<AdapterItem>
 ) : BasePresenter(dispatchers) {
@@ -21,17 +21,17 @@ class VideoPlayerPresenter @Inject constructor(
             videoUri = "VideoUri"
         )
 
+        val shareAction = VideoAction.LocalAction(
+            icon = 0,
+            localType = VideoAction.LocalAction.LocalType.SHARE
+        )
+
         val items = listOf(
             VideoInfoHeaderViewModel(
                 videoInfo = videoInfo,
                 title = "A Really Cool Video",
                 viewCount = "225k",
-                supportsRating = true,
-                likeButtonText = "Like",
-                dislikeButtonText = "Dislike",
-                shareButtonText = "Share",
-                isLiked = false,
-                isDisliked = false
+                actions = listOf(VideoInfoActionViewModel(videoInfo, shareAction))
             ),
             VideoInfoChannelViewModel(
                 videoInfo = videoInfo,
