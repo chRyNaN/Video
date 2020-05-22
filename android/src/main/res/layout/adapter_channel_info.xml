@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/adapterChannelInfoAboutHeaderTextView"
+        android:id="@+id/adapterChannelInfoAboutTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/spacing_horizontal_default"
-        android:paddingTop="@dimen/spacing_small"
-        android:paddingEnd="@dimen/spacing_horizontal_default"
-        android:text="@string/channel_info_header_about"
-        android:textAppearance="@style/TextAppearance.SubHeader"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:textAppearance="@style/TextAppearance.Body"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Example About Text" />
 
     <TextView
         android:id="@+id/adapterChannelInfoCreatedHeaderTextView"
@@ -28,7 +28,7 @@
         android:text="@string/channel_info_subtitle_created"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoAboutHeaderTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoAboutTextView" />
 
     <TextView
         android:id="@+id/adapterChannelInfoCreatedTimeTextView"
@@ -40,7 +40,7 @@
         android:textAppearance="@style/TextAppearance.Title.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/adapterChannelInfoCreatedHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoAboutHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoAboutTextView"
         tools:text="Yesterday" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -74,25 +74,5 @@
         app:layout_constraintStart_toEndOf="@+id/adapterChannelInfoLastUpdatedHeaderTextView"
         app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoCreatedBarrier"
         tools:text="Today" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/adapterChannelInfoLastUpdatedBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adapterChannelInfoLastUpdatedHeaderTextView, @+id/adapterChannelInfoLastUpdatedTimeTextView" />
-
-    <TextView
-        android:id="@+id/adapterChannelInfoAboutTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:textAppearance="@style/TextAppearance.Body"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoLastUpdatedBarrier"
-        tools:text="Example About Text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

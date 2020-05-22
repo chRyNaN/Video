@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/spacing_horizontal_default"
-    android:paddingTop="@dimen/spacing_small"
+    android:paddingTop="@dimen/spacing_medium"
     android:paddingEnd="@dimen/spacing_horizontal_default"
     android:paddingBottom="@dimen/spacing_xxxsmall"
     android:textAppearance="@style/TextAppearance.SubHeader" />

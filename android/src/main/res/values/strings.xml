@@ -33,6 +33,9 @@
     <string name="channel_info_subtitle_created">Created</string>
     <string name="channel_info_subtitle_last_updated">Last Updated</string>
 
+    <string name="channel_header_subscriber_count">Subscribers</string>
+    <string name="channel_header_video_view_count">Video Views</string>
+
     <string name="search_hint">Search</string>
 
 </resources>

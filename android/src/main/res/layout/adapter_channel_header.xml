@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/spacing_vertical_default">
 
     <ImageView
         android:id="@+id/adapterChannelHeaderImageView"
@@ -12,7 +13,7 @@
         android:background="@color/primary_color"
         android:contentDescription="@string/cd_channel_header_image"
         android:minHeight="@dimen/header_image_default_height"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,20 +58,38 @@
         app:constraint_referenced_ids="adapterChannelHeaderCircleImageView, @+id/adapterChannelHeaderTitleTextView" />
 
     <TextView
-        android:id="@+id/adapterChannelHeaderSubscriberCountTextView"
-        android:layout_width="0dp"
+        android:id="@+id/adapterChannelHeaderSubscriberCountHeaderTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_xxsmall"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/channel_header_subscriber_count"
+        android:textAppearance="@style/TextAppearance.Caption.Subtle"
+        app:layout_constraintEnd_toStartOf="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageNameBarrier" />
+
+    <TextView
+        android:id="@+id/adapterChannelHeaderSubscriberCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginEnd="@dimen/spacing_xxsmall"
         android:ellipsize="end"
         android:gravity="center_horizontal"
         android:maxLines="2"
         android:singleLine="false"
-        android:textAppearance="@style/TextAppearance.Title.Subtle"
-        app:layout_constraintEnd_toStartOf="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageNameBarrier"
-        tools:text="1,000,000 Subscribers" />
+        android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintEnd_toEndOf="@+id/adapterChannelHeaderSubscriberCountHeaderTextView"
+        app:layout_constraintStart_toStartOf="@+id/adapterChannelHeaderSubscriberCountHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderSubscriberCountHeaderTextView"
+        tools:text="1,000,000" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
@@ -80,21 +99,38 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <TextView
+        android:id="@+id/adapterChannelHeaderTotalVideoViewCountHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_xxsmall"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/channel_header_video_view_count"
+        android:textAppearance="@style/TextAppearance.Caption.Subtle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageNameBarrier" />
+
+    <TextView
         android:id="@+id/adapterChannelHeaderTotalVideoViewCountTextView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginEnd="@dimen/spacing_xxsmall"
         android:ellipsize="end"
         android:gravity="center_horizontal"
         android:maxLines="2"
         android:singleLine="false"
-        android:textAppearance="@style/TextAppearance.Title.Subtle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageNameBarrier"
-        tools:text="5,000,000 Views" />
+        android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintEnd_toEndOf="@+id/adapterChannelHeaderTotalVideoViewCountHeaderTextView"
+        app:layout_constraintStart_toStartOf="@+id/adapterChannelHeaderTotalVideoViewCountHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderTotalVideoViewCountHeaderTextView"
+        tools:text="5,000,000" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/adapterChannelHeaderViewSubscriberCountBarrier"
@@ -108,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
         android:background="@android:color/transparent"
         android:text="@string/video_info_button_subscribe"

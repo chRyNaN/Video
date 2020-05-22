@@ -5,18 +5,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ChannelQualifier
+import com.chrynan.video.di.qualifier.ChannelVideoListQualifier
 import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.ui.adapter.channel.ChannelInfoAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
+import com.chrynan.video.ui.adapter.channel.*
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
-import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
-import com.chrynan.video.ui.adapter.channel.ChannelProviderAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
+import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
+import com.chrynan.video.ui.adapter.video.VideoInfoProviderAdapter
 import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
@@ -28,6 +29,8 @@ internal abstract class ChannelFragmentModule {
 
     @Module
     companion object {
+
+        // Channel Adapter
 
         @Provides
         @JvmStatic
@@ -82,6 +85,7 @@ internal abstract class ChannelFragmentModule {
         fun provideAdapter(
             channelHeaderAdapter: ChannelHeaderAdapter,
             channelProviderAdapter: ChannelProviderAdapter,
+            channelListAdapter: ChannelVideoListAdapter,
             channelAdapter: ChannelInfoAdapter,
             headerAdapter: SectionHeaderAdapter,
             videoAdapter: VideoRecommendationAdapter,
@@ -90,10 +94,66 @@ internal abstract class ChannelFragmentModule {
             adapters = setOf(
                 channelHeaderAdapter,
                 channelProviderAdapter,
+                channelListAdapter,
                 channelAdapter,
                 headerAdapter,
                 videoAdapter
             ),
+            layoutManager = layoutManager
+        )
+
+        // Channel Video List Adapter
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @ChannelVideoListQualifier.DiffCalculator
+        fun provideActionAdapterDiffCalculator() = DiffUtilCalculator<AdapterItem>()
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @ChannelVideoListQualifier.DiffProcessor
+        fun provideActionAdapterDiffProcessor(@ChannelVideoListQualifier.DiffCalculator calculator: DiffUtilCalculator<AdapterItem>): DiffProcessor<AdapterItem> =
+            AndroidDiffProcessor(calculator)
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @ChannelVideoListQualifier.DiffDispatcher
+        fun provideActionAdapterDiffDispatcher(@ChannelVideoListQualifier.ItemListUpdater listener: ItemListUpdater<AdapterItem>): DiffDispatcher<AdapterItem> =
+            AndroidDiffDispatcher(listener)
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @ChannelVideoListQualifier.AdapterItemHandler
+        fun provideActionAdapterAdapterItemHandler(
+            @ChannelVideoListQualifier.DiffProcessor diffProcessor: DiffProcessor<AdapterItem>,
+            @ChannelVideoListQualifier.DiffDispatcher diffDispatcher: DiffDispatcher<AdapterItem>,
+            coroutineDispatchers: CoroutineDispatchers
+        ): AdapterItemHandler<AdapterItem> = BaseAdapterItemHandler(
+            diffProcessor = diffProcessor,
+            diffDispatcher = diffDispatcher,
+            coroutineDispatchers = coroutineDispatchers
+        )
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        @ChannelVideoListQualifier.LayoutManager
+        fun provideActionAdapterLayoutManager(context: Context) =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        @JvmStatic
+        @Provides
+        @FragmentScope
+        @ChannelVideoListQualifier.Adapter
+        fun provideVideoActionAdapter(
+            listItemAdapter: ChannelVideoListItemAdapter,
+            @ChannelVideoListQualifier.LayoutManager layoutManager: LinearLayoutManager
+        ) = RecyclerViewAdapter(
+            adapters = setOf(listItemAdapter),
             layoutManager = layoutManager
         )
     }
@@ -110,4 +170,9 @@ internal abstract class ChannelFragmentModule {
     @FragmentScope
     @ChannelQualifier.ItemListUpdater
     abstract fun bindUpdateListener(@ChannelQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
+
+    @Binds
+    @FragmentScope
+    @ChannelVideoListQualifier.ItemListUpdater
+    abstract fun bindActionAdapterUpdateListener(@ChannelVideoListQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 }

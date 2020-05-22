@@ -9,6 +9,9 @@
     <dimen name="spacing_xsmall">12dp</dimen>
     <dimen name="spacing_small">16dp</dimen>
     <dimen name="spacing_medium">24dp</dimen>
+    <dimen name="spacing_large">36dp</dimen>
+    <dimen name="spacing_xlarge">48dp</dimen>
+    <dimen name="spacing_xxlarge">56dp</dimen>
 
     <dimen name="text_size_xxxsmall">12sp</dimen>
     <dimen name="text_size_xxsmall">14sp</dimen>
@@ -52,6 +55,12 @@
     <dimen name="video_action_width">56dp</dimen>
     <dimen name="video_action_provider_height">56dp</dimen>
     <dimen name="video_action_provider_min_width">80dp</dimen>
+
+    <dimen name="channel_recyclerview_bottom_padding">200dp</dimen>
+
+    <dimen name="channel_video_list_item_corner_radius">8dp</dimen>
+    <dimen name="channel_video_list_item_image_height">200dp</dimen>
+    <dimen name="channel_video_list_item_image_width">320dp</dimen>
 
     <dimen name="divider_height">2dp</dimen>
 

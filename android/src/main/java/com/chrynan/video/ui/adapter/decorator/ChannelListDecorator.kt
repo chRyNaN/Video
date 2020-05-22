@@ -8,6 +8,6 @@ class ChannelListDecorator @Inject constructor(context: Context) :
     HorizontalDividerListDecorator(context) {
 
     override fun shouldDrawTopDividerForViewType(viewType: Int?): Boolean =
-        (viewType == AdapterViewTypes.CHANNEL_INFO_ADAPTER) or
-                (viewType == AdapterViewTypes.CHANNEL_PROVIDER_ADAPTER)
+        (viewType == AdapterViewTypes.SECTION_HEADER_ADAPTER) or
+                (viewType == AdapterViewTypes.CHANNEL_VIDEO_LIST_ADAPTER)
 }

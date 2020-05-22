@@ -70,4 +70,6 @@
     <color name="time_bar_played_ad_marker_color">@color/accent_three_color</color>
     <color name="time_bar_scrubber_color">@color/accent_one_color</color>
 
+    <color name="channel_video_list_item_background_color">@color/primary_color</color>
+
 </resources>

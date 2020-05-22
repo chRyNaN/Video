@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.ChannelView
-import com.chrynan.video.viewmodel.ChannelInfoViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.VideoInfo
 import com.chrynan.video.di.qualifier.ChannelQualifier
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
-import com.chrynan.video.viewmodel.ChannelHeaderViewModel
-import com.chrynan.video.viewmodel.ChannelProviderViewModel
+import com.chrynan.video.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 
@@ -55,6 +53,14 @@ class ChannelFragment : BaseFragment(),
             adapter = managerAdapter
             addItemDecoration(decorator)
 
+            val videoInfo = VideoInfo(
+                videoId = "",
+                channelId = "",
+                providerUri = "",
+                videoUri = "",
+                previewImageUri = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1"
+            )
+
             val header = ChannelHeaderViewModel(
                 name = "chRyNaN",
                 subscriberCount = "1,000,000",
@@ -70,9 +76,28 @@ class ChannelFragment : BaseFragment(),
                 providerUri = ""
             )
 
+            val listItemOne = ChannelVideoListViewModel.ChannelVideoListItemViewModel(
+                videoInfo = videoInfo,
+                title = "Title One",
+                description = "Description One"
+            )
+
+            val listItemTwo = ChannelVideoListViewModel.ChannelVideoListItemViewModel(
+                videoInfo = videoInfo,
+                title = "Title Two",
+                description = "Description Two"
+            )
+
+            val videoList = ChannelVideoListViewModel(
+                channelId = "",
+                providerUri = "",
+                listName = "List Name",
+                items = listOf(listItemOne, listItemTwo)
+            )
+
             managerAdapter.items = listOf(
                 header,
-                provider,
+                SectionHeaderViewModel("About"),
                 ChannelInfoViewModel(
                     about = "A Channel you might like.",
                     created = "Today",
@@ -83,7 +108,9 @@ class ChannelFragment : BaseFragment(),
                     channelId = "",
                     providerUri = "",
                     channelUrl = ""
-                )
+                ),
+                provider,
+                videoList
             )
         }
     }
