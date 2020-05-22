@@ -1,172 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/adapterChannelListChannelHeaderImageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color"
-        android:contentDescription="@string/cd_channel_header_image"
-        android:minHeight="@dimen/header_image_default_height"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/adapterChannelListChannelImageView"
-        android:layout_width="@dimen/channel_info_image_size"
-        android:layout_height="@dimen/channel_info_image_size"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginBottom="@dimen/spacing_small"
-        android:background="@color/primary_color"
-        android:contentDescription="@string/cd_channel_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListChannelHeaderImageView" />
-
     <TextView
-        android:id="@+id/adapterChannelListChannelTitleTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:layout_marginBottom="@dimen/spacing_small"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:singleLine="false"
-        android:text="Test Title"
-        android:textAppearance="@style/TextAppearance.SubHeader"
-        app:layout_constraintBottom_toBottomOf="@+id/adapterChannelListChannelImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterChannelListChannelImageView"
-        app:layout_constraintTop_toTopOf="@+id/adapterChannelListChannelImageView" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/adapterChannelListChannelImageNameBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adapterChannelListChannelImageView, adapterChannelListChannelTitleTextView" />
-
-    <TextView
-        android:id="@+id/adapterChannelListSubscriberCountTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:ellipsize="end"
-        android:gravity="center_horizontal"
-        android:maxLines="2"
-        android:singleLine="false"
-        android:text="1,000,000 Subscribers"
-        android:textAppearance="@style/TextAppearance.Title.Subtle"
-        app:layout_constraintEnd_toStartOf="@+id/adapterChannelListViewSubscriberCountCenterGuideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListChannelImageNameBarrier" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/adapterChannelListViewSubscriberCountCenterGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/adapterChannelListTotalVideoViewCountTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:ellipsize="end"
-        android:gravity="center_horizontal"
-        android:maxLines="2"
-        android:singleLine="false"
-        android:text="5,000,000 Views"
-        android:textAppearance="@style/TextAppearance.Title.Subtle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterChannelListViewSubscriberCountCenterGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListChannelImageNameBarrier" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/adapterChannelListViewSubscriberCountBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adapterChannelListSubscriberCountTextView, adapterChannelListTotalVideoViewCountTextView" />
-
-    <Button
-        android:id="@+id/adapterChannelListChannelSubscribeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_xxsmall"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:background="@android:color/transparent"
-        android:text="@string/video_info_button_subscribe"
-        android:textAppearance="@style/TextAppearance.Button.Accent.Secondary"
-        android:textColor="@color/button_subscription_text_color"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/adapterChannelListViewSubscriberCountBarrier" />
-
-    <View
-        android:id="@+id/adapterChannelListProviderTopDivider"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/horizontal_divider_height"
-        android:layout_marginTop="@dimen/spacing_xxsmall"
-        android:background="@color/divider_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListChannelSubscribeButton" />
-
-    <TextView
-        android:id="@+id/adapterChannelListProviderHeaderTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:text="@string/video_info_subtitle_provider"
-        android:textAppearance="@style/TextAppearance.Body.Subtle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListProviderTopDivider" />
-
-    <TextView
-        android:id="@+id/adapterChannelListProviderNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:text="chRyNaN Codes"
-        android:textAppearance="@style/TextAppearance.Title.Accent"
-        android:textColor="@color/text_link_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterChannelListProviderHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListProviderTopDivider" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/adapterChannelListProviderBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adapterChannelListProviderHeaderTextView, adapterChannelListProviderNameTextView" />
-
-    <View
-        android:id="@+id/adapterChannelListProviderBottomDivider"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/horizontal_divider_height"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:background="@color/divider_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListProviderBarrier" />
-
-    <TextView
-        android:id="@+id/adapterChannelListAboutHeaderTextView"
+        android:id="@+id/adapterChannelInfoAboutHeaderTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/spacing_horizontal_default"
@@ -176,10 +16,10 @@
         android:textAppearance="@style/TextAppearance.SubHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListProviderBottomDivider" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/adapterChannelListCreatedHeaderTextView"
+        android:id="@+id/adapterChannelInfoCreatedHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -188,30 +28,30 @@
         android:text="@string/channel_info_subtitle_created"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListAboutHeaderTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoAboutHeaderTextView" />
 
     <TextView
-        android:id="@+id/adapterChannelListCreatedTimeTextView"
+        android:id="@+id/adapterChannelInfoCreatedTimeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
         android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:text="Yesterday"
         android:textAppearance="@style/TextAppearance.Title.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterChannelListCreatedHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListAboutHeaderTextView" />
+        app:layout_constraintStart_toEndOf="@+id/adapterChannelInfoCreatedHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoAboutHeaderTextView"
+        tools:text="Yesterday" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/adapterChannelListCreatedBarrier"
+        android:id="@+id/adapterChannelInfoCreatedBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adapterChannelListCreatedHeaderTextView, adapterChannelListCreatedTimeTextView" />
+        app:constraint_referenced_ids="adapterChannelInfoCreatedHeaderTextView, @+id/adapterChannelInfoCreatedTimeTextView" />
 
     <TextView
-        android:id="@+id/adapterChannelListLastUpdatedHeaderTextView"
+        android:id="@+id/adapterChannelInfoLastUpdatedHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
@@ -220,49 +60,39 @@
         android:text="@string/channel_info_subtitle_last_updated"
         android:textAppearance="@style/TextAppearance.Body.Subtle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListCreatedBarrier" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoCreatedBarrier" />
 
     <TextView
-        android:id="@+id/adapterChannelListLastUpdatedTimeTextView"
+        android:id="@+id/adapterChannelInfoLastUpdatedTimeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
         android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:text="Today"
         android:textAppearance="@style/TextAppearance.Title.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapterChannelListLastUpdatedHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListCreatedBarrier" />
+        app:layout_constraintStart_toEndOf="@+id/adapterChannelInfoLastUpdatedHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoCreatedBarrier"
+        tools:text="Today" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/adapterChannelListLastUpdatedBarrier"
+        android:id="@+id/adapterChannelInfoLastUpdatedBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adapterChannelListLastUpdatedHeaderTextView, adapterChannelListLastUpdatedTimeTextView" />
+        app:constraint_referenced_ids="adapterChannelInfoLastUpdatedHeaderTextView, @+id/adapterChannelInfoLastUpdatedTimeTextView" />
 
     <TextView
-        android:id="@+id/adapterChannelListAboutTextView"
+        android:id="@+id/adapterChannelInfoAboutTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_horizontal_default"
         android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:text="Example About Text"
         android:textAppearance="@style/TextAppearance.Body"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListLastUpdatedBarrier" />
-
-    <View
-        android:id="@+id/adapterChannelListAboutBottomDivider"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/horizontal_divider_height"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:background="@color/divider_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterChannelListAboutTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelInfoLastUpdatedBarrier"
+        tools:text="Example About Text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

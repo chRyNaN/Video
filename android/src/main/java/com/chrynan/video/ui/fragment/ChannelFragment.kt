@@ -1,6 +1,7 @@
 package com.chrynan.video.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,10 @@ import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.VideoInfo
+import com.chrynan.video.di.qualifier.ChannelQualifier
+import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
+import com.chrynan.video.viewmodel.ChannelHeaderViewModel
+import com.chrynan.video.viewmodel.ChannelProviderViewModel
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 
@@ -24,7 +29,16 @@ class ChannelFragment : BaseFragment(),
     }
 
     @Inject
+    @field:ChannelQualifier.Adapter
     lateinit var managerAdapter: RecyclerViewAdapter
+
+    @Inject
+    @field:ChannelQualifier.LayoutManager
+    lateinit var linearLayoutManager: LinearLayoutManager
+
+    @Inject
+    @field:ChannelQualifier.Decorator
+    lateinit var decorator: ChannelListDecorator
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,26 +48,38 @@ class ChannelFragment : BaseFragment(),
         layoutInflater.inflate(R.layout.fragment_channel, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         channelRecyclerView?.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = linearLayoutManager
             adapter = managerAdapter
+            addItemDecoration(decorator)
+
+            val header = ChannelHeaderViewModel(
+                name = "chRyNaN",
+                subscriberCount = "1,000,000",
+                videoCountString = "5,000,000",
+                totalVideoViewCount = "5,000,000",
+                channelId = "",
+                providerUri = ""
+            )
+
+            val provider = ChannelProviderViewModel(
+                providerServiceName = "chRyNaN Codes",
+                channelId = "",
+                providerUri = ""
+            )
 
             managerAdapter.items = listOf(
+                header,
+                provider,
                 ChannelInfoViewModel(
-                    name = "chRyNaN",
                     about = "A Channel you might like.",
                     created = "Today",
                     lastUpdated = "Today",
-                    subscriberCount = "1,000,000",
-                    videoCountString = "5,000,000",
-                    totalVideoViewCount = "5,000,000",
-                    showSubscriberCount = true,
-                    showTotalVideoViewCount = true,
-                    showVideoCount = true,
                     headerImageUri = "",
                     channelImageUri = "",
                     isSubscribed = false,
-                    providerServiceName = "chRyNaN Codes",
                     channelId = "",
                     providerUri = "",
                     channelUrl = ""

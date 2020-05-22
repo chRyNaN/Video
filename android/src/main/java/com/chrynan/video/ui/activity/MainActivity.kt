@@ -13,10 +13,7 @@ import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.controller.VideoPlayerController
 import com.chrynan.video.controller.tab.VideoPlayerTabs
-import com.chrynan.video.ui.fragment.HomeFragment
-import com.chrynan.video.ui.fragment.SearchFragment
-import com.chrynan.video.ui.fragment.SettingsFragment
-import com.chrynan.video.ui.fragment.UserContentFragment
+import com.chrynan.video.ui.fragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
@@ -123,7 +120,7 @@ class MainActivity : BaseActivity(),
         when (item.itemId) {
             R.id.action_home -> goToHome()
             R.id.action_search -> goToSearch()
-            R.id.action_user_content -> goToUserContent()
+            R.id.action_user_content -> goToFragment(ChannelFragment.newInstance())
             R.id.action_settings -> goToSettings()
         }
 

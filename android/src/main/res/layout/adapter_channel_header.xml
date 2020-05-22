@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/adapterChannelHeaderImageView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_image_default_height"
+        android:background="@color/primary_color"
+        android:contentDescription="@string/cd_channel_header_image"
+        android:minHeight="@dimen/header_image_default_height"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/adapterChannelHeaderCircleImageView"
+        android:layout_width="@dimen/channel_info_image_size"
+        android:layout_height="@dimen/channel_info_image_size"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:background="@color/primary_color"
+        android:contentDescription="@string/cd_channel_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageView"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/adapterChannelHeaderTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.SubHeader"
+        app:layout_constraintBottom_toBottomOf="@+id/adapterChannelHeaderCircleImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adapterChannelHeaderCircleImageView"
+        app:layout_constraintTop_toTopOf="@+id/adapterChannelHeaderCircleImageView"
+        tools:text="Test Title" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/adapterChannelHeaderImageNameBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="adapterChannelHeaderCircleImageView, @+id/adapterChannelHeaderTitleTextView" />
+
+    <TextView
+        android:id="@+id/adapterChannelHeaderSubscriberCountTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.Title.Subtle"
+        app:layout_constraintEnd_toStartOf="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageNameBarrier"
+        tools:text="1,000,000 Subscribers" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/adapterChannelHeaderTotalVideoViewCountTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.Title.Subtle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adapterChannelHeaderSubscriberCountCenterGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageNameBarrier"
+        tools:text="5,000,000 Views" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/adapterChannelHeaderViewSubscriberCountBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="adapterChannelHeaderSubscriberCountTextView, @+id/adapterChannelHeaderTotalVideoViewCountTextView" />
+
+    <Button
+        android:id="@+id/adapterChannelHeaderChannelSubscribeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:background="@android:color/transparent"
+        android:text="@string/video_info_button_subscribe"
+        android:textAppearance="@style/TextAppearance.Button.Accent.Secondary"
+        android:textColor="@color/button_subscription_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/adapterChannelHeaderViewSubscriberCountBarrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
