@@ -54,7 +54,6 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/cd_video_recommendation_overflow_options"
         android:paddingStart="@dimen/spacing_xxxsmall"
-        android:paddingEnd="@dimen/spacing_xxxsmall"
         android:paddingBottom="@dimen/spacing_xxxsmall"
         android:src="@drawable/ic_overflow_options"
         app:layout_constraintEnd_toEndOf="parent"
