@@ -11,12 +11,15 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.ChannelInfoViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
+import io.noties.markwon.Markwon
 import kotlinx.android.synthetic.main.adapter_channel_info.view.*
 import javax.inject.Inject
 
 @Adapter
-class ChannelInfoAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<ChannelInfoViewModel>(dispatchers) {
+class ChannelInfoAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val markdownParser: Markwon
+) : BaseAdapter<ChannelInfoViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(ChannelInfoAdapter::class.java)
 
@@ -31,6 +34,7 @@ class ChannelInfoAdapter @Inject constructor(dispatchers: CoroutineDispatchers) 
     override fun View.onBindItem(item: ChannelInfoViewModel, position: Int) {
         adapterChannelInfoCreatedTimeTextView?.text = item.created
         adapterChannelInfoLastUpdatedTimeTextView?.text = item.lastUpdated
-        adapterChannelInfoAboutTextView?.text = item.about
+
+        adapterChannelInfoAboutTextView?.let { markdownParser.setMarkdown(it, item.about) }
     }
 }

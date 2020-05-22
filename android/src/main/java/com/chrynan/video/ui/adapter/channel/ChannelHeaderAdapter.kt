@@ -3,6 +3,7 @@ package com.chrynan.video.ui.adapter.channel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -32,5 +33,9 @@ class ChannelHeaderAdapter @Inject constructor(dispatchers: CoroutineDispatchers
         adapterChannelHeaderTitleTextView?.text = item.name
         adapterChannelHeaderTotalVideoViewCountTextView?.text = item.totalVideoViewCount
         adapterChannelHeaderSubscriberCountTextView?.text = item.subscriberCount
+        adapterChannelHeaderCircleImageView?.load(item.channelImage) {
+            placeholder(R.drawable.ic_default_user)
+            error(R.drawable.ic_default_user)
+        }
     }
 }

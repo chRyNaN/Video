@@ -76,8 +76,10 @@ dependencies {
     implementation "de.hdodenhof:circleimageview:3.0.1"
 
     // Image Loading - Coil
-    implementation "com.github.bumptech.glide:glide:4.11.0"
     implementation "io.coil-kt:coil:0.11.0"
+    implementation "io.coil-kt:coil-gif:0.11.0"
+    implementation "io.coil-kt:coil-svg:0.11.0"
+    implementation "io.coil-kt:coil-video:0.11.0"
 
     // Video Player - ExoPlayer
     implementation "com.google.android.exoplayer:exoplayer:2.11.1"
@@ -109,5 +111,5 @@ dependencies {
 
 configurations {
     cleanedAnnotations
-    compile.exclude group: 'org.jetbrains' , module:'annotations'
+    compile.exclude group: 'org.jetbrains', module: 'annotations'
 }

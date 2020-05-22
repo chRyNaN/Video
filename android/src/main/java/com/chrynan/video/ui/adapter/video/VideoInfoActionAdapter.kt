@@ -3,7 +3,7 @@ package com.chrynan.video.ui.adapter.video
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -36,9 +36,7 @@ class VideoInfoActionAdapter @Inject constructor(dispatchers: CoroutineDispatche
         if (action is VideoAction.LocalAction) {
             adapterVideoInfoActionButton?.setImageResource(action.icon)
         } else if (action is VideoAction.BinaryAction) {
-            Glide.with(adapterVideoInfoActionButton)
-                .load(action.icon)
-                .into(adapterVideoInfoActionButton)
+            adapterVideoInfoActionButton?.load(action.icon)
             adapterVideoInfoActionButton?.isActivated = action.isSelected
         }
     }

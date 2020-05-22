@@ -3,7 +3,7 @@ package com.chrynan.video.ui.adapter.video
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -39,13 +39,9 @@ class VideoShowcaseAdapter @Inject constructor(
         adapterVideoShowcaseProviderTextView?.text = item.provider
         adapterVideoShowcaseVideoLengthTextView?.text = item.videoLength
 
-        Glide.with(context)
-            .load(item.videoImageUrl)
-            .into(adapterVideoShowcaseImageView)
+        adapterVideoShowcaseImageView?.load(item.videoImageUrl)
 
-        Glide.with(context)
-            .load(item.channelImageUrl)
-            .into(adapterVideoShowcaseChannelImageView)
+        adapterVideoShowcaseChannelImageView?.load(item.channelImageUrl)
 
         adapterVideoShowcaseBackgroundView?.setOnClickListener {}
 

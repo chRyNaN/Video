@@ -3,7 +3,7 @@ package com.chrynan.video.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -38,9 +38,7 @@ class WatchListItemAdapter @Inject constructor(
         adapterWatchlistDescriptionTextView?.text = item.description
         adapterWatchlistSecondaryDescriptionTextView?.text = item.secondaryDescription
 
-        Glide.with(context)
-            .load(item.videoImageUri)
-            .into(adapterWatchlistVideoImageView)
+        adapterWatchlistVideoImageView?.load(item.videoImageUri)
 
         watchListItemContainer?.setOnClickListener { listener.onWatchListItemSelected(videoInfo = item.videoInfo) }
     }

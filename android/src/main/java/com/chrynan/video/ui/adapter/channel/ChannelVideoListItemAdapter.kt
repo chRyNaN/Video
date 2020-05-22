@@ -3,7 +3,7 @@ package com.chrynan.video.ui.adapter.channel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -34,10 +34,7 @@ class ChannelVideoListItemAdapter @Inject constructor(dispatchers: CoroutineDisp
         item: ChannelVideoListViewModel.ChannelVideoListItemViewModel,
         position: Int
     ) {
-        Glide.with(this)
-            .load(item.videoInfo.previewImageUri)
-            .into(adapterChannelVideoListItemImageView)
-
+        adapterChannelVideoListItemImageView?.load(item.videoInfo.previewImageUri)
         adapterChannelVideoListItemTitleTextView?.text = item.title
         adapterChannelVideoListItemDescriptionTextView?.text = item.description
     }

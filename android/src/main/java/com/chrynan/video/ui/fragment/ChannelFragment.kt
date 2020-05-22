@@ -64,7 +64,6 @@ class ChannelFragment : BaseFragment(),
             val header = ChannelHeaderViewModel(
                 name = "chRyNaN",
                 subscriberCount = "1,000,000",
-                videoCountString = "5,000,000",
                 totalVideoViewCount = "5,000,000",
                 channelId = "",
                 providerUri = ""
@@ -99,7 +98,7 @@ class ChannelFragment : BaseFragment(),
                 header,
                 SectionHeaderViewModel("About"),
                 ChannelInfoViewModel(
-                    about = "A Channel you might like.",
+                    about = "A **Channel** *you* might like.",
                     created = "Today",
                     lastUpdated = "Today",
                     headerImageUri = "",

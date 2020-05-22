@@ -26,8 +26,8 @@
         android:layout_marginStart="@dimen/spacing_horizontal_default"
         android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginBottom="@dimen/spacing_small"
-        android:background="@color/primary_color"
         android:contentDescription="@string/cd_channel_image"
+        android:src="@drawable/ic_default_user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adapterChannelHeaderImageView"
         tools:src="@tools:sample/avatars" />

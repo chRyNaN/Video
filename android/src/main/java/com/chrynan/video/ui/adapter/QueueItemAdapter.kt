@@ -3,7 +3,7 @@ package com.chrynan.video.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
@@ -35,9 +35,7 @@ class QueueItemAdapter @Inject constructor(
     override fun View.onBindItem(item: QueueItemViewModel, position: Int) {
         adapterQueueTitleTextView?.text = item.title
 
-        Glide.with(context)
-            .load(item.videoImageUri)
-            .into(adapterQueueVideoImageView)
+        adapterQueueVideoImageView?.load(item.videoImageUri)
 
         queueItemContainer?.isActivated = item.isActivated
 
