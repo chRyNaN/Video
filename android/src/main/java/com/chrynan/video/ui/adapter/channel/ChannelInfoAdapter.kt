@@ -1,4 +1,4 @@
-package com.chrynan.video.ui.adapter
+package com.chrynan.video.ui.adapter.channel
 
 import android.view.LayoutInflater
 import android.view.View

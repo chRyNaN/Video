@@ -7,10 +7,10 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ChannelQualifier
 import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.ui.adapter.ChannelInfoAdapter
+import com.chrynan.video.ui.adapter.channel.ChannelInfoAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
-import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
 import com.chrynan.video.ui.adapter.channel.ChannelProviderAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler

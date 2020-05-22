@@ -17,6 +17,7 @@ import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
+import com.chrynan.video.ui.adapter.video.*
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds

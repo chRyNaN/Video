@@ -9,7 +9,7 @@ import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
-import com.chrynan.video.ui.adapter.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener

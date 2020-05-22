@@ -11,7 +11,7 @@ import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
-import com.chrynan.video.ui.adapter.VideoShowcaseAdapter
+import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.viewmodel.AdapterItem
@@ -38,7 +38,10 @@ class HomeFragment : BaseFragment(),
                 ManagerRecyclerViewAdapter<AdapterItem>(
                     adapters = setOf(
                         SectionHeaderAdapter(AndroidCoroutineDispatchers()),
-                        VideoShowcaseAdapter(AndroidCoroutineDispatchers(), this@HomeFragment)
+                        VideoShowcaseAdapter(
+                            AndroidCoroutineDispatchers(),
+                            this@HomeFragment
+                        )
                     )
                 )
 
