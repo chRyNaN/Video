@@ -3,11 +3,6 @@ package com.chrynan.video.di.module.activity
 import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
-import com.chrynan.video.R
-import com.chrynan.video.controller.MainController
-import com.chrynan.video.controller.VideoPlayerController
-import com.chrynan.video.controller.provider.MainTabsProvider
-import com.chrynan.video.controller.provider.VideoPlayerTabsProvider
 import com.chrynan.video.di.module.fragment.*
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
@@ -15,7 +10,6 @@ import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.fragment.*
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 
 @Module
@@ -23,32 +17,6 @@ internal abstract class MainActivityModule {
 
     @Module
     companion object {
-
-        @JvmStatic
-        @Provides
-        @ActivityScope
-        fun provideMainController(
-            activity: MainActivity,
-            tabsProvider: MainTabsProvider
-        ): MainController =
-            MainController(
-                activity = activity,
-                containerId = R.id.fragmentContainer,
-                tabProvider = tabsProvider
-            )
-
-        @JvmStatic
-        @Provides
-        @ActivityScope
-        fun provideVideoPlayerController(
-            activity: MainActivity,
-            tabsProvider: VideoPlayerTabsProvider
-        ): VideoPlayerController =
-            VideoPlayerController(
-                activity = activity,
-                containerId = R.id.videoFragmentContainer,
-                tabProvider = tabsProvider
-            )
     }
 
     @Binds

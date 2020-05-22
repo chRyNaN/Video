@@ -7,26 +7,19 @@ import com.chrynan.expandable.ExpandableChildLayout
 import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.expandable.ExpandableState
 import com.chrynan.expandable.ExpandableStateListener
-import com.chrynan.kotlinutils.isTruthy
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
-import com.chrynan.video.controller.VideoPlayerController
-import com.chrynan.video.controller.tab.VideoPlayerTabs
 import com.chrynan.video.ui.fragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
-import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
     TopMenuView,
     ExpandableContainerView,
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener {
-
-    @Inject
-    lateinit var videoPlayerController: VideoPlayerController
 
     override var topMenuTitle: CharSequence?
         get() = null
@@ -71,8 +64,6 @@ class MainActivity : BaseActivity(),
             expandedInteractionView = this.videoPlayerView
         }
 
-        videoPlayerController.startAtTab(VideoPlayerTabs.VIDEO)
-
         goToHome()
 
         goToVideo()
@@ -103,17 +94,7 @@ class MainActivity : BaseActivity(),
     override fun goToSettings() = goToFragment(SettingsFragment.newInstance())
 
     override fun goToVideo() {
-        // Later, when you need to pass in parameters, consider using sealed classes
-        // instead of enum classes as tabs? Maybe that way you can provide information to them? Not sure if that would work
-        videoPlayerController.switchToTab(VideoPlayerTabs.VIDEO)
-    }
 
-    override fun goBack() {
-        if (expandableLayout?.currentExpandableState?.isExpanded.isTruthy()) {
-            expandableLayout?.collapse()
-        } else {
-            super.goBack()
-        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
