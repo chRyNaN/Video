@@ -23,7 +23,11 @@ android {
         }
     }
     compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     packagingOptions {
         exclude "META-INF/common.kotlin_module"
@@ -71,11 +75,15 @@ dependencies {
     // Circle Image View
     implementation "de.hdodenhof:circleimageview:3.0.1"
 
-    // Image Loading - Glide
+    // Image Loading - Coil
     implementation "com.github.bumptech.glide:glide:4.11.0"
+    implementation "io.coil-kt:coil:0.11.0"
 
     // Video Player - ExoPlayer
     implementation "com.google.android.exoplayer:exoplayer:2.11.1"
+
+    // HTTP - OkHttp
+    implementation "com.squareup.okhttp3:okhttp:4.7.2"
 
     // Dependency Injection - Dagger
     kapt "com.google.dagger:dagger-compiler:2.19"
@@ -83,8 +91,23 @@ dependencies {
     implementation "com.google.dagger:dagger:2.23.2"
     implementation "com.google.dagger:dagger-android-support:2.19"
 
+    // Markdown Support
+    implementation "io.noties.markwon:core:4.4.0"
+    implementation "io.noties.markwon:ext-strikethrough:4.4.0"
+    implementation "io.noties.markwon:ext-tables:4.4.0"
+    implementation "io.noties.markwon:ext-tasklist:4.4.0"
+    implementation "io.noties.markwon:html:4.4.0"
+    implementation "io.noties.markwon:image-coil:4.4.0"
+    implementation "io.noties.markwon:linkify:4.4.0"
+    implementation "io.noties.markwon:syntax-highlight:4.4.0"
+
     // Testing
     testImplementation "junit:junit:4.12"
     androidTestImplementation "com.android.support.test:runner:1.0.2"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.2"
+}
+
+configurations {
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains' , module:'annotations'
 }

@@ -3,6 +3,7 @@ package com.chrynan.video.di.component
 import com.chrynan.video.di.module.ActivityModule
 import com.chrynan.video.di.module.AppModule
 import com.chrynan.video.di.module.MediaModule
+import com.chrynan.video.di.module.WebModule
 import com.chrynan.video.ui.VideoApplication
 import dagger.BindsInstance
 import dagger.Component
@@ -16,6 +17,7 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityModule::class,
         MediaModule::class,
+        WebModule::class,
         AndroidSupportInjectionModule::class
     ]
 )
