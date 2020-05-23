@@ -11,6 +11,7 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.SettingsListDecorator
+import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
 import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.view.SettingsView
 import com.chrynan.video.viewmodel.AdapterItem
@@ -76,10 +77,12 @@ internal abstract class SettingsFragmentModule {
         @SettingsQualifier.Adapter
         fun provideAdapter(
             sectionHeaderAdapter: SectionHeaderAdapter,
+            settingsItemAdapter: SettingsItemAdapter,
             @SettingsQualifier.LayoutManager layoutManager: LinearLayoutManager
         ) = RecyclerViewAdapter(
             adapters = setOf(
-                sectionHeaderAdapter
+                sectionHeaderAdapter,
+                settingsItemAdapter
             ),
             layoutManager = layoutManager
         )

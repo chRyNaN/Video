@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/spacing_horizontal_default"
+    android:paddingTop="@dimen/spacing_vertical_default"
+    android:paddingEnd="@dimen/spacing_horizontal_default"
+    android:paddingBottom="@dimen/spacing_vertical_default">
+
+    <ImageView
+        android:id="@+id/adapterSettingsItemIconImageView"
+        android:layout_width="@dimen/settings_item_icon_size"
+        android:layout_height="@dimen/settings_item_icon_size"
+        android:contentDescription="@string/cd_settings_item_icon"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/adapterSettingsItemEndTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Body2.Subtle"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="End Text" />
+
+    <TextView
+        android:id="@+id/adapterSettingsItemTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintBottom_toTopOf="@+id/adapterSettingsItemDescriptionTextView"
+        app:layout_constraintEnd_toStartOf="@+id/adapterSettingsItemEndTextView"
+        app:layout_constraintStart_toEndOf="@+id/adapterSettingsItemIconImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_goneMarginStart="0dp"
+        tools:text="Title Text" />
+
+    <TextView
+        android:id="@+id/adapterSettingsItemDescriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adapterSettingsItemIconImageView"
+        app:layout_constraintTop_toBottomOf="@+id/adapterSettingsItemTitleTextView"
+        app:layout_goneMarginStart="0dp"
+        tools:text="Description Text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

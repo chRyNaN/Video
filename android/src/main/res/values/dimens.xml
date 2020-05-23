@@ -68,4 +68,6 @@
 
     <dimen name="divider_height">2dp</dimen>
 
+    <dimen name="settings_item_icon_size">24dp</dimen>
+
 </resources>

@@ -52,5 +52,7 @@ class SettingsFragment : BaseFragment(),
             layoutManager = linearLayoutManager
             addItemDecoration(decorator)
         }
+
+        presenter.getSettings()
     }
 }

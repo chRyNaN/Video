@@ -27,4 +27,6 @@
 
     <string name="cd_video_preview_image">Video Preview Image</string>
 
+    <string name="cd_settings_item_icon">Settings Item Icon</string>
+
 </resources>
