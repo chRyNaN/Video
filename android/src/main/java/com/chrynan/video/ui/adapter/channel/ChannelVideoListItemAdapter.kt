@@ -37,5 +37,7 @@ class ChannelVideoListItemAdapter @Inject constructor(dispatchers: CoroutineDisp
         adapterChannelVideoListItemImageView?.load(item.videoInfo.previewImageUri)
         adapterChannelVideoListItemTitleTextView?.text = item.title
         adapterChannelVideoListItemDescriptionTextView?.text = item.description
+
+        setOnClickListener {  }
     }
 }

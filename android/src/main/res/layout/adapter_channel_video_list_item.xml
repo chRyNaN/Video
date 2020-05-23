@@ -8,6 +8,9 @@
     android:layout_marginTop="@dimen/spacing_xxsmall"
     android:layout_marginEnd="@dimen/spacing_xxsmall"
     android:layout_marginBottom="@dimen/spacing_xxsmall"
+    android:clickable="true"
+    android:focusable="true"
+    android:stateListAnimator="@animator/card_view_click"
     app:cardBackgroundColor="@color/channel_video_list_item_background_color"
     app:cardCornerRadius="@dimen/channel_video_list_item_corner_radius">
 

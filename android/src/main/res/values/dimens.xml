@@ -58,9 +58,13 @@
 
     <dimen name="channel_recyclerview_bottom_padding">200dp</dimen>
 
-    <dimen name="channel_video_list_item_corner_radius">8dp</dimen>
+    <dimen name="channel_video_list_item_corner_radius">@dimen/card_view_corner_radius</dimen>
     <dimen name="channel_video_list_item_image_height">200dp</dimen>
     <dimen name="channel_video_list_item_image_width">320dp</dimen>
+
+    <dimen name="card_view_corner_radius">8dp</dimen>
+    <dimen name="card_view_elevation_normal">2dp</dimen>
+    <dimen name="card_view_elevation_pressed">8dp</dimen>
 
     <dimen name="divider_height">2dp</dimen>
 
