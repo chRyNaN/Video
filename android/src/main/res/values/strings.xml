@@ -22,12 +22,13 @@
     <string name="video_info_button_like">Like</string>
     <string name="video_info_button_dislike">Dislike</string>
     <string name="video_info_button_share">Share</string>
-    <string name="video_info_button_subscribe">Subscribe</string>
-    <string name="video_info_button_unsubscribe">Unsubscribe</string>
     <string name="video_info_subtitle_published">Published</string>
     <string name="video_info_subtitle_category">Category</string>
     <string name="video_info_subtitle_tags">Tags</string>
     <string name="video_info_subtitle_provider">Provider</string>
+
+    <string name="button_subscribe">Subscribe</string>
+    <string name="button_unsubscribe">Unsubscribe</string>
 
     <string name="channel_info_header_about">About</string>
     <string name="channel_info_subtitle_created">Created</string>

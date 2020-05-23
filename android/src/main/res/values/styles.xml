@@ -110,4 +110,14 @@
         <item name="checkedIcon">@null</item>
     </style>
 
+    <!-- Subscribe Button -->
+
+    <style name="SubscribeButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextAppearance.Button.Accent.Secondary</item>
+        <item name="android:textColor">@color/button_subscription_text_color</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textOn">@string/button_unsubscribe</item>
+        <item name="android:textOff">@string/button_subscribe</item>
+    </style>
+
 </resources>
