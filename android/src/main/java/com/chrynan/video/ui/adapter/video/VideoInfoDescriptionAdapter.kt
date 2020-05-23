@@ -11,12 +11,15 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.VideoInfoDescriptionViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
+import io.noties.markwon.Markwon
 import kotlinx.android.synthetic.main.adapter_video_info_description.view.*
 import javax.inject.Inject
 
 @Adapter
-class VideoInfoDescriptionAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<VideoInfoDescriptionViewModel>(dispatchers) {
+class VideoInfoDescriptionAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val markdownParser: Markwon
+) : BaseAdapter<VideoInfoDescriptionViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(VideoInfoDescriptionAdapter::class.java)
 
@@ -29,6 +32,11 @@ class VideoInfoDescriptionAdapter @Inject constructor(dispatchers: CoroutineDisp
     ): View = inflater.inflate(R.layout.adapter_video_info_description, parent, false)
 
     override fun View.onBindItem(item: VideoInfoDescriptionViewModel, position: Int) {
-        adapterVideoInfoDescriptionTextView?.text = item.description
+        adapterVideoInfoDescriptionTextView?.let {
+            markdownParser.setMarkdown(
+                it,
+                item.description
+            )
+        }
     }
 }
