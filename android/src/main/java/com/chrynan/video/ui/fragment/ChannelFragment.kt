@@ -98,7 +98,7 @@ class ChannelFragment : BaseFragment(),
                 header,
                 SectionHeaderViewModel("About"),
                 ChannelInfoViewModel(
-                    about = "A **Channel** *you* might like.",
+                    about = "A **Channel** *you* might like.\n\n ![Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1)",
                     created = "Today",
                     lastUpdated = "Today",
                     headerImageUri = "",

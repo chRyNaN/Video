@@ -31,12 +31,7 @@ internal abstract class AppModule {
             context: ApplicationContext,
             imageLoader: ImageLoader
         ) = Markwon.builder(context)
-            .usePlugin(
-                CoilImagesPlugin.create(
-                    context,
-                    imageLoader
-                )
-            )
+            .usePlugin(CoilImagesPlugin.create(context, imageLoader))
             .usePlugin(HtmlPlugin.create())
             .usePlugin(StrikethroughPlugin.create())
             .usePlugin(TablePlugin.create(context))
