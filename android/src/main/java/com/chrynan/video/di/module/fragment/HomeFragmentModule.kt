@@ -96,4 +96,9 @@ internal abstract class HomeFragmentModule {
     @Binds
     @FragmentScope
     abstract fun bindVideoOptionsListener(fragment: HomeFragment): VideoOptionsListener
+
+    @Binds
+    @FragmentScope
+    @HomeQualifier.ItemListUpdater
+    abstract fun bindUpdateListener(@HomeQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 }
