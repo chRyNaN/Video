@@ -10,7 +10,7 @@ interface MediaPlayerView : View {
 
     fun detachPlayer()
 
-    fun showThumbnail(thumbnailUri: UriString?)
+    fun showPreviewImage(previewImageUri: UriString?)
 
     fun showVideo()
 }

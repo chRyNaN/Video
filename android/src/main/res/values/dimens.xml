@@ -46,8 +46,6 @@
 
     <dimen name="toolbar_height">56dp</dimen>
 
-    <dimen name="recycler_view_bottom_padding">@dimen/spacing_medium</dimen>
-
     <dimen name="elevation_toolbar">4dp</dimen>
     <dimen name="elevation_bottom_navigation">8dp</dimen>
 
@@ -56,7 +54,7 @@
     <dimen name="video_action_provider_height">56dp</dimen>
     <dimen name="video_action_provider_min_width">80dp</dimen>
 
-    <dimen name="channel_recyclerview_bottom_padding">200dp</dimen>
+    <dimen name="recyclerview_default_bottom_padding">200dp</dimen>
 
     <dimen name="channel_video_list_item_corner_radius">@dimen/card_view_corner_radius</dimen>
     <dimen name="channel_video_list_item_image_height">200dp</dimen>

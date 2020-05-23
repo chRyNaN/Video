@@ -165,8 +165,8 @@ class VideoPlayerFragment : BaseFragment(),
         videoPlayerView?.detachPlayer()
     }
 
-    override fun showThumbnail(thumbnailUri: UriString?) {
-        videoPlayerView?.showThumbnail(thumbnailUri)
+    override fun showPreviewImage(previewImageUri: UriString?) {
+        videoPlayerView?.showPreviewImage(previewImageUri)
     }
 
     override fun showVideo() {

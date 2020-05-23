@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingBottom="@dimen/spacing_small">
 
-    <View
-        android:id="@+id/adapterVideoShowcaseBackgroundView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
+    <com.chrynan.video.ui.widget.ListVideoPlayerWidget
         android:id="@+id/adapterVideoShowcaseImageView"
         android:layout_width="0dp"
         android:layout_height="@dimen/video_showcase_image_default_height"
-        android:background="#000000"
-        android:contentDescription="@string/cd_video_showcase_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,10 +23,10 @@
         android:layout_marginBottom="@dimen/spacing_xxsmall"
         android:background="@color/background_dark_transparency_75_percent"
         android:padding="@dimen/spacing_xxxsmall"
-        android:text="5:30"
-        android:textAppearance="@style/TextAppearance.Body"
+        android:textAppearance="@style/TextAppearance.Body2"
         app:layout_constraintBottom_toBottomOf="@+id/adapterVideoShowcaseImageView"
-        app:layout_constraintEnd_toEndOf="@+id/adapterVideoShowcaseImageView" />
+        app:layout_constraintEnd_toEndOf="@+id/adapterVideoShowcaseImageView"
+        tools:text="5:30" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/adapterVideoShowcaseChannelImageView"
@@ -58,11 +49,11 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:singleLine="false"
-        android:text="Test Title"
         android:textAppearance="@style/TextAppearance.SubHeader"
         app:layout_constraintEnd_toStartOf="@+id/adapterVideoShowcaseOverflowOptionsImageView"
         app:layout_constraintStart_toEndOf="@+id/adapterVideoShowcaseChannelImageView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseImageView"
+        tools:text="Test Title" />
 
     <ImageView
         android:id="@+id/adapterVideoShowcaseOverflowOptionsImageView"
@@ -84,11 +75,11 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:singleLine="false"
-        android:text="Details Text"
-        android:textAppearance="@style/TextAppearance.Body.Subtle"
+        android:textAppearance="@style/TextAppearance.Body2.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/adapterVideoShowcaseChannelImageView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseTitleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseTitleTextView"
+        tools:text="Details Text" />
 
     <TextView
         android:id="@+id/adapterVideoShowcaseProviderTextView"
@@ -97,20 +88,10 @@
         android:layout_marginStart="@dimen/spacing_horizontal_default"
         android:layout_marginTop="@dimen/spacing_xxxsmall"
         android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:text="Provided by chRyNaN"
-        android:textAppearance="@style/TextAppearance.Body.Subtle"
+        android:textAppearance="@style/TextAppearance.Body2.Subtle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/adapterVideoShowcaseChannelImageView"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseDetailsTextView" />
-
-    <View
-        android:id="@+id/adapterVideoShowcaseDivider"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/horizontal_divider_height"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:background="@color/divider_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseProviderTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adapterVideoShowcaseDetailsTextView"
+        tools:text="Provided by chRyNaN" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

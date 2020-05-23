@@ -44,7 +44,7 @@ class VideoPlayerWidget @JvmOverloads constructor(
         videoPlayerWidgetPlayerView?.player = null
     }
 
-    override fun showThumbnail(thumbnailUri: UriString?) {
+    override fun showPreviewImage(previewImageUri: UriString?) {
         // TODO
     }
 

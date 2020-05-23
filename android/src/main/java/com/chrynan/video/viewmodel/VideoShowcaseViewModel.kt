@@ -2,6 +2,7 @@ package com.chrynan.video.viewmodel
 
 import com.chrynan.aaaah.asUniqueAdapterId
 import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.core.UriString
 
 data class VideoShowcaseViewModel(
     val videoInfo: VideoInfo,
@@ -9,8 +10,7 @@ data class VideoShowcaseViewModel(
     val details: String,
     val provider: String,
     val videoLength: String,
-    val videoImageUrl: String,
-    val channelImageUrl: String
+    val channelImageUrl: UriString
 ) : AdapterItem {
 
     override val uniqueAdapterId =

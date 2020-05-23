@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.video.ui.view.HomeView
 import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
-import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
-import com.chrynan.video.ui.adapter.SectionHeaderAdapter
-import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.viewmodel.AdapterItem
 import com.chrynan.common.model.VideoInfo
+import com.chrynan.video.di.qualifier.HomeQualifier
+import com.chrynan.video.presenter.HomePresenter
+import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.decorator.HomeListDecorator
 import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
 
 class HomeFragment : BaseFragment(),
     HomeView,
@@ -27,69 +27,82 @@ class HomeFragment : BaseFragment(),
         fun newInstance() = HomeFragment()
     }
 
-    private val videoOptionsMenuBottomSheet by lazy { MenuBottomSheetDialogFragment.newInstance(menuResId = R.menu.menu_video_options) }
+    @Inject
+    override lateinit var presenter: HomePresenter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    @Inject
+    @field:HomeQualifier.Adapter
+    lateinit var managerAdapter: RecyclerViewAdapter
+
+    @Inject
+    @field:HomeQualifier.LayoutManager
+    lateinit var linearLayoutManager: LinearLayoutManager
+
+    @Inject
+    @field:HomeQualifier.Decorator
+    lateinit var decorator: HomeListDecorator
+
+    private val videoOptionsMenuBottomSheet by lazy {
+        MenuBottomSheetDialogFragment.newInstance(
+            menuResId = R.menu.menu_video_options
+        )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
         inflater.inflate(R.layout.fragment_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView?.apply {
-            val managerAdapter =
-                ManagerRecyclerViewAdapter<AdapterItem>(
-                    adapters = setOf(
-                        SectionHeaderAdapter(AndroidCoroutineDispatchers()),
-                        VideoShowcaseAdapter(
-                            AndroidCoroutineDispatchers(),
-                            this@HomeFragment
-                        )
-                    )
-                )
+        super.onViewCreated(view, savedInstanceState)
 
-            layoutManager = LinearLayoutManager(context)
+        recyclerView?.apply {
+
+            layoutManager = linearLayoutManager
             adapter = managerAdapter
+            addItemDecoration(decorator)
 
             val videoInfo = VideoInfo(
                 videoId = "VideoId",
                 channelId = "ChannelId",
                 providerUri = "ProviderUri",
-                videoUri = "VideoUri"
+                videoUri = "VideoUri",
+                previewImageUri = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1"
             )
 
             managerAdapter.items = listOf(
                 VideoShowcaseViewModel(
                     videoInfo = videoInfo,
-                    title = "Another Video Title",
+                    title = "Video Title One",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
                     videoLength = "5:30",
-                    videoImageUrl = "",
                     channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
                     videoInfo = videoInfo,
-                    title = "Another Video Title",
+                    title = "Video Title Two",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
                     videoLength = "5:30",
-                    videoImageUrl = "",
                     channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
                     videoInfo = videoInfo,
-                    title = "Another Video Title",
+                    title = "Video Title Three",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
                     videoLength = "5:30",
-                    videoImageUrl = "",
                     channelImageUrl = ""
                 ),
                 VideoShowcaseViewModel(
                     videoInfo = videoInfo,
-                    title = "Another Video Title",
+                    title = "Video Title Four",
                     details = "Some Video Details Here",
                     provider = "chRyNaN",
                     videoLength = "5:30",
-                    videoImageUrl = "",
                     channelImageUrl = ""
                 )
             )

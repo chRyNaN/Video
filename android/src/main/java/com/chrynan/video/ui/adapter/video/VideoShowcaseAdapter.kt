@@ -39,14 +39,14 @@ class VideoShowcaseAdapter @Inject constructor(
         adapterVideoShowcaseProviderTextView?.text = item.provider
         adapterVideoShowcaseVideoLengthTextView?.text = item.videoLength
 
-        adapterVideoShowcaseImageView?.load(item.videoImageUrl)
+        adapterVideoShowcaseImageView?.showPreviewImage(item.videoInfo.previewImageUri)
 
         adapterVideoShowcaseChannelImageView?.load(item.channelImageUrl)
-
-        adapterVideoShowcaseBackgroundView?.setOnClickListener {}
 
         adapterVideoShowcaseOverflowOptionsImageView?.setOnClickListener {
             listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
         }
+
+        setOnClickListener { }
     }
 }
