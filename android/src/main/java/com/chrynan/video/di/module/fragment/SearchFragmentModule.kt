@@ -9,6 +9,7 @@ import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
+import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
@@ -74,11 +75,13 @@ internal abstract class SearchFragmentModule {
         fun provideResultAdapter(
             headerAdapter: SectionHeaderAdapter,
             videoRecommendationAdapter: VideoRecommendationAdapter,
+            channelListItemAdapter: ChannelListItemAdapter,
             @SearchQualifier.LayoutManager layoutManager: LinearLayoutManager
         ) = RecyclerViewAdapter(
             adapters = setOf(
                 headerAdapter,
-                videoRecommendationAdapter
+                videoRecommendationAdapter,
+                channelListItemAdapter
             ),
             layoutManager = layoutManager
         )

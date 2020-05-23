@@ -33,7 +33,10 @@ class VideoInfoChannelAdapter @Inject constructor(dispatchers: CoroutineDispatch
         val imageUrl = item.channelImageUrl
 
         if (!imageUrl.isNullOrBlank()) {
-            adapterVideoInfoChannelImageView?.load(imageUrl)
+            adapterVideoInfoChannelImageView?.load(imageUrl) {
+                placeholder(R.drawable.ic_default_user)
+                error(R.drawable.ic_default_user)
+            }
         }
 
         adapterVideoInfoChannelNameTextView?.text = item.channelName

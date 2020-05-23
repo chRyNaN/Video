@@ -13,6 +13,7 @@ import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.VideoInfo
 import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.ui.widget.*
+import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
@@ -55,6 +56,15 @@ class SearchFragment : BaseFragment(),
             group.addView(chipThree)
         }
 
+        val channel = ChannelListItemViewModel(
+            channelId = "",
+            providerUri = "",
+            title = "Channel Title with Long Name",
+            description = "Channel Description",
+            channelImageUri = "",
+            isSubscribed = false
+        )
+
         searchResultsRecyclerView?.apply {
             layoutManager = linearLayoutManager
             adapter = resultAdapter
@@ -73,7 +83,8 @@ class SearchFragment : BaseFragment(),
                     ),
                     videoLength = "1:00",
                     videoImageUrl = ""
-                )
+                ),
+                channel
             )
         }
     }
