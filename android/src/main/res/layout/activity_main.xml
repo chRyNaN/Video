@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainCoordinatorLayout"
@@ -10,44 +10,21 @@
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:nestedScrollingEnabled="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.chrynan.expandable.ExpandableMotionLayout
-        android:id="@+id/expandableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutDescription="@xml/video_scene"
-        app:progress="@integer/expandable_layout_collapsed">
+    <com.chrynan.video.ui.widget.VideoOverlayWidget
+        android:id="@+id/videoOverlayWidget"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/bottom_navigation_bar_height"
-            android:background="@color/background_dark_color"
-            android:elevation="@dimen/elevation_bottom_navigation"
-            app:itemIconTint="@color/icon_menu_color"
-            app:itemTextAppearanceActive="@style/TextAppearance.Title.Accent"
-            app:itemTextAppearanceInactive="@style/TextAppearance.Title"
-            app:itemTextColor="@color/text_menu_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_bottom_navigation" />
-
-        <com.chrynan.expandable.ExpandableChildLayout
-            android:id="@+id/videoFragmentContainer"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:background="@color/white"
-            android:elevation="@dimen/elevation_bottom_navigation"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:transitionOnClick="false" />
-
-    </com.chrynan.expandable.ExpandableMotionLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

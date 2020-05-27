@@ -1,0 +1,81 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.motion.widget.MotionLayout">
+
+    <View
+        android:id="@+id/videoOverlayBackgroundView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/video_collapsed_default_height"
+        android:background="@color/accent_one_color"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/videoOverlayBottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.chrynan.video.ui.widget.VideoPlayerWidget
+        android:id="@+id/videoOverlayVideoPlayerWidget"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
+    <TextView
+        android:id="@+id/videoOverlayTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xsmall"
+        android:layout_marginEnd="@dimen/spacing_xsmall"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Title"
+        android:text="Title Test"
+        app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+        app:layout_constraintEnd_toStartOf="@+id/videoOverlayPlayPauseImageView"
+        app:layout_constraintStart_toEndOf="@+id/videoOverlayVideoPlayerWidget"
+        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView"
+        tools:text="Test Title that's too long" />
+
+    <ImageView
+        android:id="@+id/videoOverlayPlayPauseImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:contentDescription="@string/cd_video_overlay_play_pause_button"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+        app:layout_constraintEnd_toStartOf="@+id/videoOverlayCloseImageView"
+        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
+    <ImageView
+        android:id="@+id/videoOverlayCloseImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:contentDescription="@string/cd_video_overlay_close_button"
+        android:src="@drawable/ic_video_overlay_close"
+        app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/videoOverlayBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_navigation_bar_height"
+        android:layout_gravity="bottom"
+        android:background="@color/background_dark_color"
+        android:elevation="@dimen/elevation_bottom_navigation"
+        app:itemIconTint="@color/icon_menu_color"
+        app:itemTextAppearanceActive="@style/TextAppearance.Title.Accent"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Title"
+        app:itemTextColor="@color/text_menu_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
+
+</merge>

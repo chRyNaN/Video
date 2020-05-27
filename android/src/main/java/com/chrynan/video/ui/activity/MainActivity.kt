@@ -11,15 +11,16 @@ import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.ui.fragment.*
+import com.chrynan.video.ui.widget.BaseExpandableOverlayWidget
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_video.view.*
 
 class MainActivity : BaseActivity(),
     TopMenuView,
     ExpandableContainerView,
     MainNavigator,
-    BottomNavigationView.OnNavigationItemSelectedListener {
+    BottomNavigationView.OnNavigationItemSelectedListener,
+    BaseExpandableOverlayWidget.ExpandableProgressChangedListener {
 
     override var topMenuTitle: CharSequence?
         get() = null
@@ -34,10 +35,10 @@ class MainActivity : BaseActivity(),
         }
 
     override val currentExpandableState: ExpandableState
-        get() = expandableLayout?.currentExpandableState ?: ExpandableState.Collapsed
+        get() = ExpandableState.Collapsed // expandableLayout?.currentExpandableState ?: ExpandableState.Collapsed
 
     override val expandableChildLayout: ExpandableChildLayout?
-        get() = videoFragmentContainer
+        get() = null // videoFragmentContainer
 
     override val endAsExpanded = true
 
@@ -57,12 +58,16 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottomNavigationView?.setOnNavigationItemSelectedListener(this)
+        //bottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
-        videoFragmentContainer?.apply {
-            collapsedInteractionView = this
-            expandedInteractionView = this.videoPlayerView
-        }
+        //videoFragmentContainer?.apply {
+        //    collapsedInteractionView = this
+        //    expandedInteractionView = this.videoPlayerView
+        // }
+
+        videoOverlayWidget?.setup()
+
+        videoOverlayWidget?.expandableProgressChangedListeners?.add(this)
 
         goToHome()
 
@@ -70,19 +75,19 @@ class MainActivity : BaseActivity(),
     }
 
     override fun addStateListener(listener: ExpandableStateListener) {
-        expandableLayout?.expandableStateListeners?.add(listener)
+        // expandableLayout?.expandableStateListeners?.add(listener)
     }
 
     override fun removeStateListener(listener: ExpandableStateListener) {
-        expandableLayout?.expandableStateListeners?.remove(listener)
+        // expandableLayout?.expandableStateListeners?.remove(listener)
     }
 
     override fun expand() {
-        expandableLayout?.expand()
+        // expandableLayout?.expand()
     }
 
     override fun collapse() {
-        expandableLayout?.collapse()
+        // expandableLayout?.collapse()
     }
 
     override fun goToHome() = goToFragment(HomeFragment.newInstance())
@@ -106,5 +111,8 @@ class MainActivity : BaseActivity(),
         }
 
         return true
+    }
+
+    override fun onExpandableProgressChanged(oldProgress: Float, newProgress: Float) {
     }
 }
