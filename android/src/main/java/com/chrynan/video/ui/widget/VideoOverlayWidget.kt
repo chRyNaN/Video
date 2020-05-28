@@ -3,7 +3,6 @@ package com.chrynan.video.ui.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import androidx.constraintlayout.motion.widget.KeyFrames
 import androidx.constraintlayout.widget.ConstraintSet
 import com.chrynan.video.R
 import kotlinx.android.synthetic.main.widget_video_overlay.view.*
