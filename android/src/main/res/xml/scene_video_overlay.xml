@@ -4,7 +4,7 @@
     <Transition
         app:constraintSetEnd="@+id/expanded"
         app:constraintSetStart="@+id/collapsed"
-        app:duration="1000"
+        app:duration="500"
         app:motionInterpolator="linear">
 
         <KeyFrameSet>
@@ -14,28 +14,43 @@
                 app:framePosition="10"
                 app:keyPositionType="deltaRelative"
                 app:motionTarget="@+id/videoOverlayVideoPlayerWidget"
-                app:percentWidth="0.9" />
+                app:percentWidth="1.5" />
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="10"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@+id/videoOverlayTitleTextView"
+                app:percentWidth="1"
+                app:percentX="0.9" />
 
             <KeyPosition
                 app:curveFit="linear"
                 app:framePosition="10"
                 app:keyPositionType="deltaRelative"
-                app:motionTarget="@+id/videoOverlayTitleTextView"
-                app:percentWidth="0.8" />
+                app:motionTarget="@+id/videoOverlayCloseImageView"
+                app:percentX="0.9" />
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="10"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@+id/videoOverlayPlayPauseImageView"
+                app:percentX="0.9" />
 
             <KeyAttribute
                 android:alpha="0.10"
-                app:framePosition="90"
+                app:framePosition="10"
                 app:motionTarget="@+id/videoOverlayTitleTextView" />
 
             <KeyAttribute
                 android:alpha="0.10"
-                app:framePosition="90"
+                app:framePosition="10"
                 app:motionTarget="@+id/videoOverlayCloseImageView" />
 
             <KeyAttribute
                 android:alpha="0.10"
-                app:framePosition="90"
+                app:framePosition="10"
                 app:motionTarget="@+id/videoOverlayPlayPauseImageView" />
 
         </KeyFrameSet>
@@ -120,7 +135,7 @@
             android:layout_marginStart="@dimen/spacing_xsmall"
             android:layout_marginEnd="@dimen/spacing_xsmall"
             app:layout_constraintBottom_toBottomOf="@+id/videoOverlayVideoPlayerWidget"
-            app:layout_constraintEnd_toStartOf="@+id/videoOverlayPlayPauseImageView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/videoOverlayVideoPlayerWidget" />
 

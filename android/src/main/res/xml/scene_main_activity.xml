@@ -7,11 +7,6 @@
         app:constraintSetStart="@+id/collapsed"
         app:duration="1000">
 
-        <OnSwipe
-            app:dragDirection="dragUp"
-            app:touchAnchorId="@+id/videoFragmentContainer"
-            app:touchAnchorSide="top" />
-
     </Transition>
 
     <ConstraintSet android:id="@+id/collapsed">
