@@ -2,6 +2,7 @@ package com.chrynan.video.ui.widget
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import com.chrynan.video.R
 import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 
@@ -16,7 +17,7 @@ class VideoOverlayWidget @JvmOverloads constructor(
     override val sceneResourceID = R.xml.scene_video_overlay
 
     override val expandedHeight: Int
-        get() = 1000 // TODO update
+        get() = (parent as View).height
 
     override val collapsedHeight by lazy { context.resources.getDimensionPixelSize(R.dimen.video_collapsed_default_height) }
 

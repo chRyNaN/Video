@@ -19,13 +19,13 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/videoOverlayBottomNavigationView"
+            app:layout_constraintBottom_toTopOf="@+id/mainBottomNavigationView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
-            android:id="@+id/videoOverlayBottomNavigationView"
+            android:id="@+id/mainBottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navigation_bar_height"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
-            android:id="@+id/videoOverlayBottomNavigationView"
+            android:id="@+id/mainBottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navigation_bar_height"
             app:layout_constraintEnd_toEndOf="parent"

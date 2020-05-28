@@ -24,6 +24,8 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
 
         const val PROGRESS_EXPANDED = 1F
         const val PROGRESS_COLLAPSED = 0F
+
+        private const val VELOCITY_MAX = 10F
     }
 
     abstract val layoutResourceID: ResourceID
@@ -40,6 +42,17 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
     val isCollapsed: Boolean
         get() = progress == PROGRESS_COLLAPSED
 
+    var progressChangedListener: ProgressChangedListener? = null
+        set(value) {
+            field = value
+
+            if (value != null) {
+                setTransitionListener(ProgressChangedTransitionListener(value))
+            } else {
+                setTransitionListener(null)
+            }
+        }
+
     private val gestureDetector by lazy { CompleteGestureDetector(context, this) }
 
     private val interpolator by lazy { AccelerateDecelerateInterpolator() }
@@ -51,6 +64,7 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
     private val roundedSlop by lazy { 0.01F }
 
     private var downY = 0
+    private var downIsInBounds = false
     private var lastY = 0
     private var downProgress = 0F
     private var isScrolling = false
@@ -65,16 +79,9 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         loadLayoutDescription(sceneResourceID)
     }
 
-    fun expand() {
-        animateToTransitionState(
-            isExpanding = true,
-            velocity = 10F
-        ) // TODO update arbitrarily high velocity
-    }
+    fun expand() = animateToTransitionState(isExpanding = true, velocity = VELOCITY_MAX)
 
-    fun collapse() {
-        animateToTransitionState(isExpanding = false, velocity = 10F)
-    }
+    fun collapse() = animateToTransitionState(isExpanding = false, velocity = VELOCITY_MAX)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
@@ -83,7 +90,7 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         // touch events, child views will delegate back up to the onTouchEvent function.
         val isInBounds = isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
 
-        if (!isInBounds && event.action == MotionEvent.ACTION_DOWN) return false
+        //if (!isInBounds && event.action == MotionEvent.ACTION_DOWN) return false
 
         return true
     }
@@ -95,9 +102,23 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         // receive touch events, child views will delegate back up to this function.
         val isInBounds = isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
 
-        if (!isInBounds && event.action == MotionEvent.ACTION_DOWN) return false
+        if (isInBounds && event.action == MotionEvent.ACTION_DOWN) {
+            downIsInBounds = true
+            return gestureDetector.onTouch(event)
+        } else if (!isInBounds && event.action == MotionEvent.ACTION_DOWN) {
+            downIsInBounds = false
+            return super.onTouchEvent(event)
+        }
 
-        return gestureDetector.onTouch(event)
+        if (downIsInBounds) {
+            if (event.action != MotionEvent.ACTION_MOVE) {
+                super.onTouchEvent(event)
+            }
+
+            return gestureDetector.onTouch(event)
+        }
+
+        return super.onTouchEvent(event)
     }
 
     override fun onDown(event: MotionEvent): Boolean {
@@ -125,6 +146,7 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         }
 
         isScrolling = false
+        downIsInBounds = false
 
         return true
     }
@@ -205,6 +227,38 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
             transitionToStart()
         } else {
             transitionToEnd()
+        }
+    }
+
+    interface ProgressChangedListener {
+
+        fun onProgressChanged(progress: Float)
+    }
+
+    private class ProgressChangedTransitionListener(private val listener: ProgressChangedListener) :
+        TransitionListener {
+
+        override fun onTransitionTrigger(
+            layout: MotionLayout?,
+            triggerId: Int,
+            positive: Boolean,
+            progress: Float
+        ) {
+        }
+
+        override fun onTransitionStarted(layout: MotionLayout?, startId: Int, endId: Int) {}
+
+        override fun onTransitionChange(
+            layout: MotionLayout?,
+            startId: Int,
+            endId: Int,
+            progress: Float
+        ) {
+            listener.onProgressChanged(progress = progress)
+        }
+
+        override fun onTransitionCompleted(layout: MotionLayout, currentId: Int) {
+            listener.onProgressChanged(progress = layout.progress)
         }
     }
 }

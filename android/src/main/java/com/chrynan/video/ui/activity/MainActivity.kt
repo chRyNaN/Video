@@ -11,14 +11,17 @@ import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.ui.fragment.*
+import com.chrynan.video.ui.widget.BaseExpandableOverlayWidget
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 
 class MainActivity : BaseActivity(),
     TopMenuView,
     ExpandableContainerView,
     MainNavigator,
-    BottomNavigationView.OnNavigationItemSelectedListener {
+    BottomNavigationView.OnNavigationItemSelectedListener,
+    BaseExpandableOverlayWidget.ProgressChangedListener {
 
     override var topMenuTitle: CharSequence?
         get() = null
@@ -56,9 +59,11 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        videoOverlayBottomNavigationView?.setOnNavigationItemSelectedListener(this)
+        mainBottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
         videoOverlayWidget?.setup()
+        videoOverlayWidget?.progressChangedListener = this
+        videoOverlayWidget?.videoOverlayPlayPauseImageView?.setOnClickListener {}
 
         goToHome()
 
@@ -101,6 +106,13 @@ class MainActivity : BaseActivity(),
             R.id.action_settings -> goToSettings()
         }
 
+        // There's an odd issue with the overlays when changing fragments, so this is a hack to fix it
+        mainContainerLayout?.progress = BaseExpandableOverlayWidget.PROGRESS_COLLAPSED
+
         return true
+    }
+
+    override fun onProgressChanged(progress: Float) {
+        mainContainerLayout?.progress = progress
     }
 }
