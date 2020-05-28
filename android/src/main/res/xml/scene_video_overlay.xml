@@ -2,14 +2,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetEnd="@+id/end"
-        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/expanded"
+        app:constraintSetStart="@+id/collapsed"
         app:duration="1000"
         app:motionInterpolator="linear">
 
+        <KeyFrameSet>
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="10"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@+id/videoOverlayVideoPlayerWidget"
+                app:percentWidth="0.9" />
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="10"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@+id/videoOverlayTitleTextView"
+                app:percentWidth="0.8" />
+
+            <KeyAttribute
+                android:alpha="0.10"
+                app:framePosition="90"
+                app:motionTarget="@+id/videoOverlayTitleTextView" />
+
+            <KeyAttribute
+                android:alpha="0.10"
+                app:framePosition="90"
+                app:motionTarget="@+id/videoOverlayCloseImageView" />
+
+            <KeyAttribute
+                android:alpha="0.10"
+                app:framePosition="90"
+                app:motionTarget="@+id/videoOverlayPlayPauseImageView" />
+
+        </KeyFrameSet>
+
     </Transition>
 
-    <ConstraintSet android:id="@+id/start">
+    <!-- Collapsed -->
+    <ConstraintSet android:id="@+id/collapsed">
 
         <Constraint
             android:id="@+id/videoOverlayBackgroundView"
@@ -20,16 +54,47 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
-            android:id="@+id/videoOverlayBottomNavigationView"
+            android:id="@+id/videoOverlayVideoPlayerWidget"
+            android:layout_width="140dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
+        <Constraint
+            android:id="@+id/videoOverlayTitleTextView"
             android:layout_width="0dp"
-            android:layout_height="@dimen/bottom_navigation_bar_height"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_xsmall"
+            android:layout_marginEnd="@dimen/spacing_xsmall"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+            app:layout_constraintEnd_toStartOf="@+id/videoOverlayPlayPauseImageView"
+            app:layout_constraintStart_toEndOf="@+id/videoOverlayVideoPlayerWidget"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
+        <Constraint
+            android:id="@+id/videoOverlayPlayPauseImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+            app:layout_constraintEnd_toStartOf="@+id/videoOverlayCloseImageView"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
+        <Constraint
+            android:id="@+id/videoOverlayCloseImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+
 
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/end">
+    <!-- Expanded -->
+    <ConstraintSet android:id="@+id/expanded">
 
         <Constraint
             android:id="@+id/videoOverlayBackgroundView"
@@ -41,12 +106,41 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
-            android:id="@+id/videoOverlayBottomNavigationView"
+            android:id="@+id/videoOverlayVideoPlayerWidget"
             android:layout_width="0dp"
-            android:layout_height="@dimen/bottom_navigation_bar_height"
+            android:layout_height="@dimen/video_expanded_default_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/videoOverlayBackgroundView" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/videoOverlayTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_xsmall"
+            android:layout_marginEnd="@dimen/spacing_xsmall"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayVideoPlayerWidget"
+            app:layout_constraintEnd_toStartOf="@+id/videoOverlayPlayPauseImageView"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayVideoPlayerWidget" />
+
+        <Constraint
+            android:id="@+id/videoOverlayPlayPauseImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayVideoPlayerWidget"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayVideoPlayerWidget" />
+
+        <Constraint
+            android:id="@+id/videoOverlayCloseImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayVideoPlayerWidget"
+            app:layout_constraintStart_toEndOf="@+id/videoOverlayPlayPauseImageView"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayVideoPlayerWidget" />
 
     </ConstraintSet>
 

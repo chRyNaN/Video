@@ -7,8 +7,8 @@ class ViewConstraintBuilder internal constructor(private val thisView: View?) {
 
     private val connections = mutableMapOf<ConstraintSide, ConstraintConnection>()
 
-    var width: Int? = null
-    var height: Int? = null
+    var width: ConstraintSize? = null
+    var height: ConstraintSize? = null
 
     infix fun ConstraintSide.toStartOf(view: View?) =
         addConnection(

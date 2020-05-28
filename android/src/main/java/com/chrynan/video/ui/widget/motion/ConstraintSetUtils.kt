@@ -15,11 +15,23 @@ fun Constraints.toConstraintLayoutSet(): ConstraintSet {
 
     constraints.forEach { constraint ->
         if (constraint.width != null) {
-            set.constrainWidth(constraint.id, constraint.width)
+            val value = when (constraint.width) {
+                ConstraintSize.WrapContent -> ConstraintSet.WRAP_CONTENT
+                ConstraintSize.MatchConstraint -> ConstraintSet.MATCH_CONSTRAINT
+                is ConstraintSize.ExactValue -> constraint.width.value
+            }
+
+            set.constrainWidth(constraint.id, value)
         }
 
         if (constraint.height != null) {
-            set.constrainHeight(constraint.id, constraint.height)
+            val value = when (constraint.height) {
+                ConstraintSize.WrapContent -> ConstraintSet.WRAP_CONTENT
+                ConstraintSize.MatchConstraint -> ConstraintSet.MATCH_CONSTRAINT
+                is ConstraintSize.ExactValue -> constraint.height.value
+            }
+
+            set.constrainHeight(constraint.id, value)
         }
 
         constraint.connections.forEach { connection ->

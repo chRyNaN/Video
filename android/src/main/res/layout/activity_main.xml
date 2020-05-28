@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainCoordinatorLayout"
+    android:id="@+id/mainContainerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/video_scene"
+    app:layoutDescription="@xml/scene_main_activity"
     tools:context=".ui.activity.MainActivity">
 
     <FrameLayout
@@ -22,9 +22,25 @@
         android:id="@+id/videoOverlayWidget"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/videoOverlayBottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/videoOverlayBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_navigation_bar_height"
+        android:layout_gravity="bottom"
+        android:background="@color/background_dark_color"
+        android:elevation="@dimen/elevation_bottom_navigation"
+        app:itemIconTint="@color/icon_menu_color"
+        app:itemTextAppearanceActive="@style/TextAppearance.Title.Accent"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Title"
+        app:itemTextColor="@color/text_menu_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

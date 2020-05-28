@@ -1,17 +1,14 @@
 package com.chrynan.video.ui.widget
 
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.view.ViewConfiguration
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.motion.widget.MotionScene
-import androidx.constraintlayout.motion.widget.TransitionBuilder
-import androidx.constraintlayout.widget.ConstraintSet
+import com.chrynan.video.model.ResourceID
 import com.chrynan.video.ui.widget.gesture.CompleteGestureDetector
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
@@ -29,6 +26,10 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         const val PROGRESS_COLLAPSED = 0F
     }
 
+    abstract val layoutResourceID: ResourceID
+
+    abstract val sceneResourceID: ResourceID
+
     abstract val expandedHeight: Int
 
     abstract val collapsedHeight: Int
@@ -38,8 +39,6 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
 
     val isCollapsed: Boolean
         get() = progress == PROGRESS_COLLAPSED
-
-    val expandableProgressChangedListeners = mutableSetOf<ExpandableProgressChangedListener>()
 
     private val gestureDetector by lazy { CompleteGestureDetector(context, this) }
 
@@ -58,12 +57,12 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
 
     abstract fun isInExpandableWidgetBounds(x: Float, y: Float, progress: Float): Boolean
 
-    abstract fun getExpandedConstraints(): ConstraintSet
-
-    abstract fun getCollapsedConstraints(): ConstraintSet
-
     fun setup() {
-        setupScene()
+        LayoutInflater.from(context).inflate(layoutResourceID, this)
+
+        progress == PROGRESS_COLLAPSED
+
+        loadLayoutDescription(sceneResourceID)
     }
 
     fun expand() {
@@ -170,14 +169,7 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
                 newProgress = PROGRESS_EXPANDED
             }
 
-            val oldProgress = progress
-
             progress = newProgress
-
-            expandableProgressChangedListeners.notifyExpandableProgressChanged(
-                oldProgress = oldProgress,
-                newProgress = newProgress
-            )
         }
 
         return true
@@ -197,33 +189,6 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         return true
     }
 
-    private fun setupScene() {
-        val scene = MotionScene(this)
-
-        val expandedConstraints = getExpandedConstraints()
-        val collapsedConstraints = getCollapsedConstraints()
-
-        collapsedConstraints.applyTo(this)
-
-        val transition = TransitionBuilder.buildTransition(
-            scene, // Motion Scene
-            View.generateViewId(), // Transition ID - Could be anything
-            View.generateViewId(), // Start ConstraintSet ID - Could be anything
-            collapsedConstraints, // Start ConstraintSet
-            View.generateViewId(), // End ConstraintSet ID - Could be anything
-            expandedConstraints // End ConstraintSet
-        )
-
-        transition.setEnable(true)
-
-        scene.addTransition(transition)
-        scene.setTransition(transition)
-
-        setScene(scene)
-
-        progress = PROGRESS_COLLAPSED
-    }
-
     private fun animateToTransitionState(isExpanding: Boolean, velocity: Float = 1F) {
         val currentVerticalPosition = maxVerticalMotionDistance * progress
         val midVerticalPosition = maxVerticalMotionDistance / 2F
@@ -236,27 +201,10 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
             else -> PROGRESS_EXPANDED
         }
 
-        ValueAnimator.ofFloat(progress, endProgressValue).apply {
-            interpolator = this@BaseExpandableOverlayWidget.interpolator
-            startDelay = 0L
-            duration = 250L
-            addUpdateListener { progress = it.animatedValue as Float }
-            start()
+        if (endProgressValue == PROGRESS_COLLAPSED) {
+            transitionToStart()
+        } else {
+            transitionToEnd()
         }
-    }
-
-    private fun Collection<ExpandableProgressChangedListener>.notifyExpandableProgressChanged(
-        oldProgress: Float,
-        newProgress: Float
-    ) = forEach {
-        it.onExpandableProgressChanged(
-            oldProgress = oldProgress,
-            newProgress = newProgress
-        )
-    }
-
-    interface ExpandableProgressChangedListener {
-
-        fun onExpandableProgressChanged(oldProgress: Float, newProgress: Float)
     }
 }

@@ -11,7 +11,6 @@ import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.ui.fragment.*
-import com.chrynan.video.ui.widget.BaseExpandableOverlayWidget
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,8 +18,7 @@ class MainActivity : BaseActivity(),
     TopMenuView,
     ExpandableContainerView,
     MainNavigator,
-    BottomNavigationView.OnNavigationItemSelectedListener,
-    BaseExpandableOverlayWidget.ExpandableProgressChangedListener {
+    BottomNavigationView.OnNavigationItemSelectedListener {
 
     override var topMenuTitle: CharSequence?
         get() = null
@@ -58,16 +56,9 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //bottomNavigationView?.setOnNavigationItemSelectedListener(this)
-
-        //videoFragmentContainer?.apply {
-        //    collapsedInteractionView = this
-        //    expandedInteractionView = this.videoPlayerView
-        // }
+        videoOverlayBottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
         videoOverlayWidget?.setup()
-
-        videoOverlayWidget?.expandableProgressChangedListeners?.add(this)
 
         goToHome()
 
@@ -111,8 +102,5 @@ class MainActivity : BaseActivity(),
         }
 
         return true
-    }
-
-    override fun onExpandableProgressChanged(oldProgress: Float, newProgress: Float) {
     }
 }
