@@ -4,10 +4,13 @@ import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.di.module.fragment.*
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.fragment.*
+import com.chrynan.video.ui.view.VideoOverlayView
+import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -15,9 +18,10 @@ import dagger.android.ContributesAndroidInjector
 @Module
 internal abstract class MainActivityModule {
 
-    @Module
-    companion object {
-    }
+    @Binds
+    @ActivityScope
+    @ActivityContextQualifier
+    abstract fun bindActivityContext(activity: MainActivity): ActivityContext
 
     @Binds
     @ActivityScope
@@ -30,6 +34,10 @@ internal abstract class MainActivityModule {
     @Binds
     @ActivityScope
     abstract fun bindMainNavigator(activity: MainActivity): MainNavigator
+
+    @Binds
+    @ActivityScope
+    abstract fun bindVideoOverlayView(activity: MainActivity): VideoOverlayView
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [HomeFragmentModule::class])

@@ -1,16 +1,15 @@
 package com.chrynan.video.di.module.fragment
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.presenter.VideoPlayerPresenter
-import com.chrynan.video.ui.view.CollapsibleVideoView
-import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.di.qualifier.VideoActionQualifier
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.media.MediaPlayerView
+import com.chrynan.video.media.MediaController
+import com.chrynan.video.media.MediaSourceCreator
 import com.chrynan.video.ui.adapter.*
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
@@ -19,6 +18,8 @@ import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.adapter.video.*
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
+import com.chrynan.video.ui.view.VideoOverlayView
+import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
 import dagger.Module
@@ -36,7 +37,8 @@ internal abstract class VideoPlayerFragmentModule {
         @JvmStatic
         @FragmentScope
         @VideoPlayerQualifier.Decorator
-        fun provideDecorator(context: Context) = VideoPlayerListDecorator(context)
+        fun provideDecorator(@ActivityContextQualifier context: ActivityContext) =
+            VideoPlayerListDecorator(context)
 
         @Provides
         @JvmStatic
@@ -76,7 +78,8 @@ internal abstract class VideoPlayerFragmentModule {
         @JvmStatic
         @FragmentScope
         @VideoPlayerQualifier.LayoutManager
-        fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
+        fun provideLayoutManager(@ActivityContextQualifier context: ActivityContext) =
+            LinearLayoutManager(context)
 
         @JvmStatic
         @Provides
@@ -111,10 +114,22 @@ internal abstract class VideoPlayerFragmentModule {
         @FragmentScope
         fun provideVideoPlayerPresenter(
             coroutineDispatchers: CoroutineDispatchers,
-            @VideoPlayerQualifier.AdapterItemHandler adapterItemHandler: AdapterItemHandler<AdapterItem>
+            @VideoPlayerQualifier.AdapterItemHandler adapterItemHandler: AdapterItemHandler<AdapterItem>,
+            @VideoPlayerQualifier.Adapter adapter: RecyclerViewAdapter,
+            @VideoPlayerQualifier.LayoutManager layoutManager: LinearLayoutManager,
+            @VideoPlayerQualifier.Decorator decorator: VideoPlayerListDecorator,
+            mediaController: MediaController,
+            mediaSourceCreator: MediaSourceCreator,
+            view: VideoOverlayView
         ) = VideoPlayerPresenter(
             dispatchers = coroutineDispatchers,
-            adapterHandler = adapterItemHandler
+            adapterHandler = adapterItemHandler,
+            adapter = adapter,
+            layoutManager = layoutManager,
+            decorator = decorator,
+            mediaController = mediaController,
+            mediaSourceCreator = mediaSourceCreator,
+            view = view
         )
 
         // Video Action Adapter
@@ -157,7 +172,7 @@ internal abstract class VideoPlayerFragmentModule {
         @JvmStatic
         @FragmentScope
         @VideoActionQualifier.LayoutManager
-        fun provideActionAdapterLayoutManager(context: Context) =
+        fun provideActionAdapterLayoutManager(@ActivityContextQualifier context: ActivityContext) =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         @JvmStatic
@@ -173,18 +188,6 @@ internal abstract class VideoPlayerFragmentModule {
             layoutManager = layoutManager
         )
     }
-
-    @Binds
-    @FragmentScope
-    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
-
-    @Binds
-    @FragmentScope
-    abstract fun bindMediaPlayerView(fragment: VideoPlayerFragment): MediaPlayerView
-
-    @Binds
-    @FragmentScope
-    abstract fun bindCollapsibleVideoView(fragment: VideoPlayerFragment): CollapsibleVideoView
 
     @Binds
     @FragmentScope
