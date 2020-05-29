@@ -64,7 +64,7 @@
             android:id="@+id/videoOverlayBackgroundView"
             android:layout_width="0dp"
             android:layout_height="@dimen/video_collapsed_default_height"
-            app:layout_constraintBottom_toTopOf="@+id/mainBottomNavigationView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
