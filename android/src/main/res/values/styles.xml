@@ -121,4 +121,16 @@
         <item name="android:textOff">@string/button_subscribe</item>
     </style>
 
+    <!-- CollapsingToolbarLayout -->
+
+    <style name="CollapsingToolbarLayout">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="contentScrim">?attr/colorPrimary</item>
+        <item name="scrimAnimationDuration">@integer/collapsible_toolbar_scrim_anim_duration</item>
+        <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
+        <item name="collapsedTitleTextAppearance">@style/TextAppearance.Title</item>
+        <item name="expandedTitleTextAppearance">@style/TextAppearance.H5</item>
+        <item name="expandedTitleMargin">@dimen/spacing_small</item>
+    </style>
+
 </resources>

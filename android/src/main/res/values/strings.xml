@@ -39,4 +39,6 @@
 
     <string name="search_hint">Search</string>
 
+    <string name="settings_title">Settings</string>
+
 </resources>

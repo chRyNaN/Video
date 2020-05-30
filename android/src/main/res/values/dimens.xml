@@ -75,4 +75,6 @@
 
     <dimen name="chip_group_min_height">32dp</dimen>
 
+    <dimen name="collapsible_toolbar_expanded_appbar_height">128dp</dimen>
+
 </resources>

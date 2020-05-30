@@ -7,4 +7,4 @@
     android:paddingTop="@dimen/spacing_medium"
     android:paddingEnd="@dimen/spacing_horizontal_default"
     android:paddingBottom="@dimen/spacing_xxxsmall"
-    android:textAppearance="@style/TextAppearance.SubHeader" />
+    android:textAppearance="@style/TextAppearance.SubHeader.Subtle" />
