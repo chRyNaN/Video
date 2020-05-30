@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <EditText
+        android:id="@+id/searchWidgetEditText"
+        style="@style/SearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="Autofill,LabelFor,UnusedAttribute" />
+
+    <HorizontalScrollView
+        android:id="@+id/searchWidgetChipScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:minHeight="@dimen/chip_group_min_height">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/searchWidgetFilterItemChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true" />
+
+    </HorizontalScrollView>
+
+</merge>

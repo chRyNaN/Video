@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionManager
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.R
@@ -16,6 +18,7 @@ import com.chrynan.video.ui.widget.*
 import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.widget_search.view.*
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(),
@@ -43,9 +46,24 @@ class SearchFragment : BaseFragment(),
         inflater.inflate(R.layout.fragment_search, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        searchWidget?.setBackgroundShape(BackgroundShape.Round)
+        searchWidget?.viewTreeObserver?.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
 
-        searchFilterItemChipGroup?.let { group ->
+            override fun onGlobalLayout() {
+                searchWidget?.viewTreeObserver?.removeOnGlobalLayoutListener(this)
+                searchResultsRecyclerView?.apply {
+                    setPadding(
+                        paddingLeft,
+                        searchWidget?.height ?: paddingTop,
+                        paddingRight,
+                        paddingBottom
+                    )
+                    smoothScrollToPosition(0)
+                }
+            }
+        })
+
+        searchWidget?.searchWidgetFilterItemChipGroup?.let { group ->
             val chipOne = chipOf(group, ChipStyle.FILTER, "One", ChipBackgroundColor.ACCENT_ONE)
             val chipTwo = chipOf(group, ChipStyle.FILTER, "Two", ChipBackgroundColor.ACCENT_TWO)
             val chipThree =
@@ -55,6 +73,20 @@ class SearchFragment : BaseFragment(),
             group.addView(chipTwo)
             group.addView(chipThree)
         }
+
+        val recommendation = VideoRecommendationViewModel(
+            title = "Test Title",
+            channelName = "Test Channel Name",
+            detailText = "Test Detail Text",
+            videoInfo = VideoInfo(
+                videoId = "",
+                channelId = "",
+                videoUri = "",
+                providerUri = ""
+            ),
+            videoLength = "1:00",
+            videoImageUrl = ""
+        )
 
         val channel = ChannelListItemViewModel(
             channelId = "",
@@ -71,19 +103,11 @@ class SearchFragment : BaseFragment(),
 
             resultAdapter.items = listOf(
                 SectionHeaderViewModel(header = "Results"),
-                VideoRecommendationViewModel(
-                    title = "Test Title",
-                    channelName = "Test Channel Name",
-                    detailText = "Test Detail Text",
-                    videoInfo = VideoInfo(
-                        videoId = "",
-                        channelId = "",
-                        videoUri = "",
-                        providerUri = ""
-                    ),
-                    videoLength = "1:00",
-                    videoImageUrl = ""
-                ),
+                recommendation,
+                recommendation,
+                channel,
+                recommendation,
+                channel,
                 channel
             )
         }

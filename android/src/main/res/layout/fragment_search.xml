@@ -1,46 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/searchWidget"
-        style="@style/SearchBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        android:autofillHints=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnusedAttribute" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/searchFilterItemChipGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_horizontal_default"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_horizontal_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchWidget"
-        app:singleLine="true" />
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchResultsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
+        android:paddingTop="@dimen/spacing_xxlarge"
         android:paddingBottom="@dimen/recyclerview_default_bottom_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchFilterItemChipGroup" />
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.chrynan.video.ui.widget.SearchWidget
+        android:id="@+id/searchWidget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/spacing_xxsmall"
+        android:paddingTop="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_xxsmall"
+        app:layout_behavior=".ui.widget.behavior.SearchWidgetBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

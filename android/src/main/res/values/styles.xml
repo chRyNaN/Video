@@ -54,7 +54,7 @@
     <!-- Search Widget -->
 
     <style name="SearchBar" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@color/primary_transparency_50_percent</item>
+        <item name="android:background">@color/primary_color</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:focusedByDefault" tools:targetApi="o">true</item>
@@ -66,6 +66,7 @@
         <item name="android:paddingBottom">@dimen/spacing_xsmall</item>
         <item name="android:textAppearance">@style/TextAppearance.Title</item>
         <item name="android:textColorHint">@color/text_primary_subtle_color</item>
+        <item name="android:elevation">@dimen/search_bar_elevation</item>
     </style>
 
     <!-- Chips -->
