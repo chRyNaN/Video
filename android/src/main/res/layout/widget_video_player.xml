@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:controller_layout_id="@layout/layout_video_player_control"
-        app:surface_type="texture_view" />
+        app:surface_type="texture_view"
+        app:resize_mode="fill" />
 
 </merge>

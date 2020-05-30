@@ -18,7 +18,7 @@ import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.adapter.video.*
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
-import com.chrynan.video.ui.view.VideoOverlayView
+import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
@@ -115,18 +115,12 @@ internal abstract class VideoPlayerFragmentModule {
         fun provideVideoPlayerPresenter(
             coroutineDispatchers: CoroutineDispatchers,
             @VideoPlayerQualifier.AdapterItemHandler adapterItemHandler: AdapterItemHandler<AdapterItem>,
-            @VideoPlayerQualifier.Adapter adapter: RecyclerViewAdapter,
-            @VideoPlayerQualifier.LayoutManager layoutManager: LinearLayoutManager,
-            @VideoPlayerQualifier.Decorator decorator: VideoPlayerListDecorator,
             mediaController: MediaController,
             mediaSourceCreator: MediaSourceCreator,
-            view: VideoOverlayView
+            view: VideoPlayerView
         ) = VideoPlayerPresenter(
             dispatchers = coroutineDispatchers,
             adapterHandler = adapterItemHandler,
-            adapter = adapter,
-            layoutManager = layoutManager,
-            decorator = decorator,
             mediaController = mediaController,
             mediaSourceCreator = mediaSourceCreator,
             view = view
@@ -192,6 +186,10 @@ internal abstract class VideoPlayerFragmentModule {
     @Binds
     @FragmentScope
     abstract fun bindVideoOptionsListener(fragment: VideoPlayerFragment): VideoOptionsListener
+
+    @Binds
+    @FragmentScope
+    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
 
     @Binds
     @FragmentScope

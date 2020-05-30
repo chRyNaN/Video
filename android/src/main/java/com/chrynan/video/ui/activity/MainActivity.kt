@@ -3,8 +3,6 @@ package com.chrynan.video.ui.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
-import com.chrynan.common.model.core.UriString
 import com.chrynan.expandable.ExpandableChildLayout
 import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.expandable.ExpandableState
@@ -12,22 +10,17 @@ import com.chrynan.expandable.ExpandableStateListener
 import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.fragment.*
-import com.chrynan.video.ui.view.VideoOverlayView
 import com.chrynan.video.ui.widget.BaseExpandableOverlayWidget
-import com.google.android.exoplayer2.Player
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 
 class MainActivity : BaseActivity(),
     TopMenuView,
     ExpandableContainerView,
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener,
-    BaseExpandableOverlayWidget.ProgressChangedListener,
-    VideoOverlayView {
+    BaseExpandableOverlayWidget.ProgressChangedListener {
 
     override var topMenuTitle: CharSequence?
         get() = null
@@ -67,10 +60,6 @@ class MainActivity : BaseActivity(),
 
         mainBottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
-        videoOverlayWidget?.setup()
-        videoOverlayWidget?.progressChangedListener = this
-        videoOverlayWidget?.videoOverlayPlayPauseImageView?.setOnClickListener {}
-
         goToHome()
 
         goToVideo()
@@ -101,13 +90,7 @@ class MainActivity : BaseActivity(),
     override fun goToSettings() = goToFragment(SettingsFragment.newInstance())
 
     override fun goToVideo() {
-        supportFragmentManager.let {
-            it.beginTransaction().apply {
-                add(VideoPlayerFragment.newInstance(), "VideoPlayerFragment")
 
-                commitNow()
-            }
-        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -125,30 +108,6 @@ class MainActivity : BaseActivity(),
     }
 
     override fun onProgressChanged(progress: Float) {
-        mainContainerLayout?.progress = progress
-    }
-
-    override fun setupAdapter(
-        adapter: RecyclerViewAdapter,
-        layoutManager: RecyclerView.LayoutManager,
-        decorator: RecyclerView.ItemDecoration
-    ) {
-        videoOverlayWidget?.setupAdapter(adapter, layoutManager, decorator)
-    }
-
-    override fun attachPlayer(player: Player) {
-        videoOverlayWidget?.attachPlayer(player)
-    }
-
-    override fun detachPlayer() {
-        videoOverlayWidget?.detachPlayer()
-    }
-
-    override fun showPreviewImage(previewImageUri: UriString?) {
-        videoOverlayWidget?.showPreviewImage(previewImageUri)
-    }
-
-    override fun showVideo() {
-        videoOverlayWidget?.showVideo()
+        //mainContainerLayout?.progress = progress
     }
 }

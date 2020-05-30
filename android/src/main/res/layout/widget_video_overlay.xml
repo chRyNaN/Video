@@ -19,9 +19,12 @@
         android:layout_width="140dp"
         android:layout_height="0dp"
         android:background="@color/black"
+        app:controller_layout_id="@layout/layout_video_player_control"
         app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView"
+        app:resize_mode="fixed_width"
+        app:surface_type="texture_view" />
 
     <TextView
         android:id="@+id/videoOverlayTitleTextView"

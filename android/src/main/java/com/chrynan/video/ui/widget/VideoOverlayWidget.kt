@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.view.OverlayView
 import com.chrynan.video.ui.view.VideoOverlayView
+import com.chrynan.video.ui.view.VideoPlayerView
 import com.google.android.exoplayer2.Player
 import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 
@@ -16,7 +18,9 @@ class VideoOverlayWidget @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : BaseExpandableOverlayWidget(context, attrs, defStyleAttr),
-    VideoOverlayView {
+    OverlayView,
+    VideoOverlayView,
+    VideoPlayerView {
 
     override val layoutResourceID = R.layout.widget_video_overlay
 

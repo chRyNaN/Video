@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 
 interface VideoOverlayView : View,
-    VideoPlayerView {
+    OverlayView {
 
     fun setupAdapter(
         adapter: RecyclerViewAdapter,

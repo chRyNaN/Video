@@ -9,7 +9,6 @@ import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.fragment.*
-import com.chrynan.video.ui.view.VideoOverlayView
 import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
 import dagger.Module
@@ -34,10 +33,6 @@ internal abstract class MainActivityModule {
     @Binds
     @ActivityScope
     abstract fun bindMainNavigator(activity: MainActivity): MainNavigator
-
-    @Binds
-    @ActivityScope
-    abstract fun bindVideoOverlayView(activity: MainActivity): VideoOverlayView
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [HomeFragmentModule::class])
