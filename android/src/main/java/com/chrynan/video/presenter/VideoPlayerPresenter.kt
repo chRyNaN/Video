@@ -39,9 +39,40 @@ class VideoPlayerPresenter(
             videoUri = "VideoUri"
         )
 
-        val shareAction = VideoAction.LocalAction(
-            icon = R.drawable.ic_share,
-            localType = VideoAction.LocalAction.LocalType.SHARE
+        val shareAction = VideoInfoActionViewModel(
+            videoInfo = videoInfo,
+            action = VideoAction.Share(),
+            icon = R.drawable.ic_video_action_share
+        )
+
+        val castAction = VideoInfoActionViewModel(
+            videoInfo = videoInfo,
+            action = VideoAction.Cast,
+            icon = R.drawable.ic_video_action_cast
+        )
+
+        val downloadAction = VideoInfoActionViewModel(
+            videoInfo = videoInfo,
+            action = VideoAction.Download(""),
+            icon = R.drawable.ic_video_action_download
+        )
+
+        val ratingUpAction = VideoInfoActionViewModel(
+            videoInfo = videoInfo,
+            action = VideoAction.RatingUp(true),
+            icon = R.drawable.ic_video_action_rating_up
+        )
+
+        val ratingDownAction = VideoInfoActionViewModel(
+            videoInfo = videoInfo,
+            action = VideoAction.RatingDown(false),
+            icon = R.drawable.ic_video_action_rating_down
+        )
+
+        val flagAction = VideoInfoActionViewModel(
+            videoInfo = videoInfo,
+            action = VideoAction.Flag(false),
+            icon = R.drawable.ic_video_action_flag
         )
 
         val items = listOf(
@@ -49,7 +80,14 @@ class VideoPlayerPresenter(
                 videoInfo = videoInfo,
                 title = "A Really Cool Video",
                 detail = "225k Published Today at 5:00pm",
-                actions = listOf(VideoInfoActionViewModel(videoInfo, shareAction)),
+                actions = listOf(
+                    shareAction,
+                    castAction,
+                    downloadAction,
+                    ratingUpAction,
+                    ratingDownAction,
+                    flagAction
+                ),
                 provider = VideoInfoProviderViewModel(
                     videoInfo = videoInfo,
                     providerServiceName = "chRyNaN Video Provider"

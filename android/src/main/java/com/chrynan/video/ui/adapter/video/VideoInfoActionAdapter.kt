@@ -9,6 +9,7 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.common.model.SelectableAction
 import com.chrynan.common.model.VideoAction
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
@@ -17,8 +18,10 @@ import kotlinx.android.synthetic.main.adapter_video_info_action.view.*
 import javax.inject.Inject
 
 @Adapter
-class VideoInfoActionAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<VideoInfoActionViewModel>(dispatchers) {
+class VideoInfoActionAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val listener: VideoActionSelectedListener
+) : BaseAdapter<VideoInfoActionViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(VideoInfoActionAdapter::class.java)
 
@@ -33,11 +36,15 @@ class VideoInfoActionAdapter @Inject constructor(dispatchers: CoroutineDispatche
     override fun View.onBindItem(item: VideoInfoActionViewModel, position: Int) {
         val action = item.action
 
-        if (action is VideoAction.LocalAction) {
-            adapterVideoInfoActionButton?.setImageResource(action.icon)
-        } else if (action is VideoAction.BinaryAction) {
-            adapterVideoInfoActionButton?.load(action.icon)
-            adapterVideoInfoActionButton?.isActivated = action.isSelected
+        adapterVideoInfoActionButton?.load(item.icon)
+        adapterVideoInfoActionButton?.isActivated = action is SelectableAction && action.isSelected
+        adapterVideoInfoActionButton?.setOnClickListener {
+            listener.onVideoActionSelected(action)
         }
+    }
+
+    interface VideoActionSelectedListener {
+
+        fun onVideoActionSelected(action: VideoAction)
     }
 }

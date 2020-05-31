@@ -49,9 +49,11 @@
 
     <dimen name="elevation_toolbar">4dp</dimen>
     <dimen name="elevation_bottom_navigation">8dp</dimen>
+    <dimen name="elevation_action_button">4dp</dimen>
 
     <dimen name="video_action_height">56dp</dimen>
     <dimen name="video_action_width">56dp</dimen>
+    <dimen name="video_action_button_padding">@dimen/spacing_small</dimen>
     <dimen name="video_action_provider_height">56dp</dimen>
     <dimen name="video_action_provider_min_width">80dp</dimen>
 

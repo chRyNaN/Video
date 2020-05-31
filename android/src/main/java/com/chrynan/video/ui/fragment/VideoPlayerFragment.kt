@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.common.model.VideoAction
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
@@ -14,14 +15,16 @@ import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
+import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
 import com.chrynan.video.ui.view.VideoPlayerView
 import com.google.android.exoplayer2.Player
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
 class VideoPlayerFragment : BaseFragment(),
+    VideoPlayerView,
     VideoOptionsListener,
-    VideoPlayerView {
+    VideoInfoActionAdapter.VideoActionSelectedListener {
 
     companion object {
 
@@ -84,5 +87,9 @@ class VideoPlayerFragment : BaseFragment(),
 
     override fun showVideo() {
         videoOverlayWidget?.showVideo()
+    }
+
+    override fun onVideoActionSelected(action: VideoAction) {
+
     }
 }

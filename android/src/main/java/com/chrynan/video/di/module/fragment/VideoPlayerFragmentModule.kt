@@ -185,11 +185,15 @@ internal abstract class VideoPlayerFragmentModule {
 
     @Binds
     @FragmentScope
+    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
+
+    @Binds
+    @FragmentScope
     abstract fun bindVideoOptionsListener(fragment: VideoPlayerFragment): VideoOptionsListener
 
     @Binds
     @FragmentScope
-    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
+    abstract fun bindVideoActionSelectedListener(fragment: VideoPlayerFragment): VideoInfoActionAdapter.VideoActionSelectedListener
 
     @Binds
     @FragmentScope

@@ -88,11 +88,8 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         // We have to check this in both onTouchEvent and here in onInterceptTouchEvent, because
         // while returning false from this function will allow lower Views on the z-axis to receive
         // touch events, child views will delegate back up to the onTouchEvent function.
-        val isInBounds = isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
 
-        //if (!isInBounds && event.action == MotionEvent.ACTION_DOWN) return false
-
-        return true
+        return isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
     }
 
     @SuppressLint("ClickableViewAccessibility")

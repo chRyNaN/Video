@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
 
-    <solid android:color="@color/bg_video_info_action_color" />
+    <solid android:color="@color/accent_one_color" />
 
 </shape>

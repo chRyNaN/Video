@@ -6,25 +6,51 @@ sealed class VideoAction {
 
     abstract val type: String
 
-    data class BinaryAction(
-        val name: String,
-        val icon: UriString,
-        val isSelected: Boolean
-    ) : VideoAction() {
+    object Cast : VideoAction(),
+        LocalAction {
 
-        override val type = "binary"
+        override val type = "cast"
     }
 
-    data class LocalAction(
-        val icon: Int,
-        val localType: LocalType
-    ) : VideoAction() {
+    data class Share(val shareUri: UriString? = null) : VideoAction(),
+        LocalAction {
 
-        override val type = "local"
+        override val type = "share"
+    }
 
-        enum class LocalType {
+    data class Download(val downloadUri: UriString) : VideoAction(),
+        LocalAction {
 
-            SHARE
-        }
+        override val type = "download"
+    }
+
+    data class RatingUp(override val isSelected: Boolean) : VideoAction(),
+        SelectableAction,
+        RemoteAction {
+
+        override val type = "rating_up"
+    }
+
+    data class RatingDown(override val isSelected: Boolean) : VideoAction(),
+        SelectableAction,
+        RemoteAction {
+
+        override val type = "rating_down"
+    }
+
+    data class Flag(override val isSelected: Boolean) : VideoAction(),
+        SelectableAction,
+        RemoteAction {
+
+        override val type = "flag"
     }
 }
+
+interface SelectableAction {
+
+    val isSelected: Boolean
+}
+
+interface LocalAction
+
+interface RemoteAction

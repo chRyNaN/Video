@@ -121,6 +121,18 @@
         <item name="android:textOff">@string/button_subscribe</item>
     </style>
 
+    <!-- Action Button -->
+    <style name="ActionButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">@dimen/video_action_width</item>
+        <item name="android:layout_height">@dimen/video_action_height</item>
+        <item name="android:background">@drawable/bg_video_action</item>
+        <item name="android:padding">@dimen/video_action_button_padding</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button.Subtle</item>
+        <item name="android:tint">@color/white</item>
+        <item name="android:backgroundTint">@color/bg_video_info_action_color</item>
+        <item name="android:elevation">@dimen/elevation_action_button</item>
+    </style>
+
     <!-- CollapsingToolbarLayout -->
 
     <style name="CollapsingToolbarLayout">
