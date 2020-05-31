@@ -57,10 +57,10 @@ dependencies {
     implementation project(":presentation")
 
     // Android Components
-    implementation "androidx.core:core:1.2.0"
+    implementation "androidx.core:core:1.3.0"
     // When upgrading, verify that the overlay's work correctly. The last checked newer version doesn't work.
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta3"
-    implementation "com.google.android.material:material:1.2.0-alpha06"
+    implementation "com.google.android.material:material:1.2.0-beta01"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
 

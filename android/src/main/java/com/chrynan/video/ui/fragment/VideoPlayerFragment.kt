@@ -32,15 +32,15 @@ class VideoPlayerFragment : BaseFragment(),
     override lateinit var presenter: VideoPlayerPresenter
 
     @Inject
-    @VideoPlayerQualifier.Adapter
+    @field:VideoPlayerQualifier.Adapter
     lateinit var adapter: RecyclerViewAdapter
 
     @Inject
-    @VideoPlayerQualifier.LayoutManager
+    @field:VideoPlayerQualifier.LayoutManager
     lateinit var layoutManager: LinearLayoutManager
 
     @Inject
-    @VideoPlayerQualifier.Decorator
+    @field:VideoPlayerQualifier.Decorator
     lateinit var decorator: VideoPlayerListDecorator
 
     private val videoOptionsMenuBottomSheet by lazy {

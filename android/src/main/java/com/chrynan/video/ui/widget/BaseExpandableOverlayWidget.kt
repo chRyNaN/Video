@@ -74,7 +74,7 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
     fun setup() {
         LayoutInflater.from(context).inflate(layoutResourceID, this)
 
-        progress == PROGRESS_COLLAPSED
+        progress = PROGRESS_COLLAPSED
 
         loadLayoutDescription(sceneResourceID)
     }

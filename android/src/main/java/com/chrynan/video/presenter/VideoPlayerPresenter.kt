@@ -11,9 +11,7 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.viewmodel.*
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 
 class VideoPlayerPresenter(
     dispatchers: CoroutineDispatchers,
@@ -32,7 +30,7 @@ class VideoPlayerPresenter(
     }
 
     fun loadExtras() {
-        Log.w("ADAPTER", "loadExtras")
+        Log.w("ADAPTER", "loadExtras; isBound = $isBound; context = $coroutineContext")
 
         val videoInfo = VideoInfo(
             videoId = "VideoId",
@@ -85,9 +83,14 @@ class VideoPlayerPresenter(
             )
         )
 
-        flowOf(items)
+        Log.w("ADAPTER", "items = $items")
+
+        val job = flowOf(items)
             .onEach { Log.w("ADAPTER", "onEach: it = $it") }
+            .flowOn(dispatchers.io)
             .calculateAndDispatchDiff(adapterHandler)
             .launchIn(this)
+
+        Log.w("ADAPTER", "job = $job")
     }
 }

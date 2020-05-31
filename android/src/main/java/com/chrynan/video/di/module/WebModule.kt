@@ -1,6 +1,5 @@
 package com.chrynan.video.di.module
 
-import android.content.Context
 import coil.util.CoilUtils
 import com.chrynan.video.di.qualifier.OkHttpQualifier
 import com.chrynan.video.utils.ApplicationContext
