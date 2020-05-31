@@ -1,0 +1,37 @@
+scalar ID
+scalar Cursor
+scalar UriString
+scalar Moment
+
+interface Node {
+
+    id: ID!
+}
+
+interface Edge {
+
+    cursor: Cursor!
+    node: Node
+}
+
+type PageInfo {
+
+    startCursor: Cursor
+    endCursor: Cursor
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+}
+
+interface TimeDetail {
+
+    created: Moment
+    lastUpdated: Moment
+}
+
+interface Connection {
+
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [Edge!]!
+    nodes: [Node!]!
+}

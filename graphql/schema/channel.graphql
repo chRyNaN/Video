@@ -1,0 +1,45 @@
+type ChannelConnection implements Connection {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [ChannelEdge!]!
+    nodes: [Channel!]!
+}
+
+type ChannelEdge implements Edge {
+    cursor: Cursor!
+    node: Channel!
+}
+
+type Channel implements Node, TimeDetail {
+    id: ID!
+    created: Moment!
+    lastUpdated: Moment!
+    published: String!
+    name: String!
+    description: String
+    about: String
+    website: UriString
+    images: ChannelImageInfo!
+    count: ChannelCountInfo!
+    isSubscribed: Boolean!
+    lists(take: Int!, after: Cursor): [ChannelVideoListConnection]!
+    videos(take: Int!, after: Cursor): VideoConnection!
+}
+
+type ChannelImageInfo {
+    thumbnail: UriString
+    banner: UriString
+}
+
+type ChannelCountInfo {
+    totalSubscribers: Int!
+    totalVideoViews: Int!
+}
+
+type ChannelVideoListConnection implements Connection {
+    name: String!
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [VideoEdge!]!
+    nodes: [Video!]!
+}

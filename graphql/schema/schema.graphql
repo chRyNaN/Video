@@ -1,36 +1,8 @@
-scalar Cursor
-
-interface Edge {
-    cursor: Cursor!
-}
-
-interface Connection {
-    totalCount: Int!
-    pageInfo: PageInfo!
-}
-
-type PageInfo {
-    isFirstPage: Boolean!
-    isLastPage: Boolean!
-    startCursor: Cursor
-    endCursor: Cursor
-}
-
-type Uri {
-    scheme: String!
-    authority: String
-    userInfo: String
-    host: String
-    port: String
-    path: String!
-    query: String
-    fragment: String
-}
-
 type UserConnection implements Connection {
     pageInfo: PageInfo!
     totalCount: Int!
     edges: [UserEdge!]!
+    nodes: [User!]!
 }
 
 type UserEdge implements Edge {
@@ -38,7 +10,7 @@ type UserEdge implements Edge {
     node: User!
 }
 
-type User {
+type User implements Node {
     id: ID!
     provider: Provider!
     created: String!
@@ -47,78 +19,24 @@ type User {
     email: String!
     username: String
     phoneNumber: String
-    imageUri(imageType: ImageType! = MAIN): Uri
+    imageUri(imageType: ImageType! = MAIN): UriString
     reactionsConnection(take: Int!, after: Cursor): ReactionConnection!
     notesConnection(take: Int!, after: Cursor): NoteConnection!
     ratingsConnection(take: Int!, after: Cursor): RatingConnection!
     subscribedChannelsConnection(take: Int!, after: Cursor): ChannelConnection!
-    membershipsConnection(take: Int!, after: Cursor): PublisherConnection!
 }
 
 type Provider {
-    uri: Uri!
+    uri: UriString!
     created: String!
     lastUpdated: String!
     name: String!
     description: String!
     details: String
-    imageUri(imageType: ImageType! = MAIN): Uri
-    website: Uri
+    imageUri(imageType: ImageType! = MAIN): UriString
+    website: UriString
     contactEmail: String!
     contactPhoneNumber: String!
-    publishersConnection(take: Int!, after: Cursor): PublisherConnection!
-}
-
-type PublisherConnection implements Connection {
-    pageInfo: PageInfo!
-    totalCount: Int!
-    edges: [PublisherEdge!]!
-}
-
-type PublisherEdge implements Edge {
-    cursor: Cursor!
-    node: Publisher!
-}
-
-type Publisher {
-    id: ID!
-    provider: Provider!
-    created: String!
-    lastUpdated: String!
-    name: String!
-    description: String!
-    details: String
-    imageUri(imageType: ImageType! = MAIN): Uri
-    website: Uri
-    channelsConnection(take: Int!, after: Cursor): ChannelConnection!
-    membersConnection(take: Int!, after: Cursor): UserConnection!
-}
-
-type ChannelConnection implements Connection {
-    pageInfo: PageInfo!
-    totalCount: Int!
-    edges: [ChannelEdge!]!
-}
-
-type ChannelEdge implements Edge {
-    cursor: Cursor!
-    node: Channel!
-}
-
-type Channel {
-    id: ID!
-    provider: Provider!
-    publisher: Publisher!
-    created: String!
-    published: String!
-    lastUpdated: String!
-    name: String!
-    description: String!
-    details: String
-    imageUri(imageType: ImageType! = MAIN): Uri
-    website: Uri
-    videosConnection(take: Int!, after: Cursor): VideoConnection!
-    subscribersConnection(take: Int!, after: Cursor): UserConnection!
 }
 
 type VideoConnection implements Connection {
@@ -132,7 +50,7 @@ type VideoEdge implements Edge {
     node: Video!
 }
 
-type Video {
+type Video implements Node{
     id: ID!
     provider: Provider!
     publisher: Publisher!

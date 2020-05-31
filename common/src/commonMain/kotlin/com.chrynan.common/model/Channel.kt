@@ -8,7 +8,7 @@ data class Channel(
     override val lastUpdated: Moment,
     val published: Moment,
     val name: String,
-    val description: String,
+    val description: String? = null,
     val about: String? = null,
     val website: UriString? = null,
     val images: ChannelImageInfo = ChannelImageInfo(),
