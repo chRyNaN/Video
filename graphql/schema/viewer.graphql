@@ -1,0 +1,17 @@
+type Viewer implements Node, TimeDetail {
+    id: ID!
+    created: Moment!
+    lastUpdated: Moment!
+    name: String!
+    email: String
+    username: String
+    namePreference: NamePreference!
+    isAuthenticated: Boolean!
+    subscribedChannels(take: Int!, after: Cursor): ChannelConnection!
+}
+
+enum NamePreference {
+    NAME
+    EMAIL
+    USERNAME
+}
