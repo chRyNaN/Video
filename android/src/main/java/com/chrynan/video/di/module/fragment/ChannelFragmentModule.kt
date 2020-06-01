@@ -1,9 +1,9 @@
 package com.chrynan.video.di.module.fragment
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.ChannelQualifier
 import com.chrynan.video.di.qualifier.ChannelVideoListQualifier
 import com.chrynan.video.ui.view.ChannelView
@@ -16,9 +16,8 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
-import com.chrynan.video.ui.adapter.video.VideoInfoProviderAdapter
 import com.chrynan.video.ui.fragment.ChannelFragment
+import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
 import dagger.Module
@@ -36,7 +35,8 @@ internal abstract class ChannelFragmentModule {
         @JvmStatic
         @FragmentScope
         @ChannelQualifier.Decorator
-        fun provideDecorator(context: Context) = ChannelListDecorator(context)
+        fun provideDecorator(@ActivityContextQualifier context: ActivityContext) =
+            ChannelListDecorator(context)
 
         @Provides
         @JvmStatic
@@ -76,7 +76,8 @@ internal abstract class ChannelFragmentModule {
         @JvmStatic
         @FragmentScope
         @ChannelQualifier.LayoutManager
-        fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
+        fun provideLayoutManager(@ActivityContextQualifier context: ActivityContext) =
+            LinearLayoutManager(context)
 
         @JvmStatic
         @Provides
@@ -142,7 +143,7 @@ internal abstract class ChannelFragmentModule {
         @JvmStatic
         @FragmentScope
         @ChannelVideoListQualifier.LayoutManager
-        fun provideActionAdapterLayoutManager(context: Context) =
+        fun provideActionAdapterLayoutManager(@ActivityContextQualifier context: ActivityContext) =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         @JvmStatic

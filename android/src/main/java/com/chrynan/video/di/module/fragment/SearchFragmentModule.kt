@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.di.scope.FragmentScope
@@ -15,6 +16,7 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.SearchFragment
+import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
 import dagger.Module
@@ -66,7 +68,8 @@ internal abstract class SearchFragmentModule {
         @JvmStatic
         @FragmentScope
         @SearchQualifier.LayoutManager
-        fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
+        fun provideLayoutManager(@ActivityContextQualifier context: ActivityContext) =
+            LinearLayoutManager(context)
 
         @JvmStatic
         @Provides

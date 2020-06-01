@@ -7,6 +7,7 @@ import coil.decode.ImageDecoderDecoder
 import coil.decode.SvgDecoder
 import coil.fetch.VideoFrameFileFetcher
 import coil.fetch.VideoFrameUriFetcher
+import com.chrynan.video.di.qualifier.ApplicationContextQualifier
 import com.chrynan.video.di.qualifier.OkHttpQualifier
 import com.chrynan.video.media.AndroidMediaSourceCreator
 import com.chrynan.video.media.MediaController
@@ -29,14 +30,14 @@ internal abstract class MediaModule {
         @Provides
         @JvmStatic
         @Singleton
-        fun provideSimpleExoPlayer(context: ApplicationContext): SimpleExoPlayer =
+        fun provideSimpleExoPlayer(@ApplicationContextQualifier context: ApplicationContext): SimpleExoPlayer =
             SimpleExoPlayer.Builder(context).build()
 
         @Provides
         @JvmStatic
         @Singleton
         fun provideImageLoader(
-            context: ApplicationContext,
+            @ApplicationContextQualifier context: ApplicationContext,
             @OkHttpQualifier.Coil coilOkHttpClient: OkHttpClient
         ) = ImageLoader.Builder(context)
             .crossfade(true)

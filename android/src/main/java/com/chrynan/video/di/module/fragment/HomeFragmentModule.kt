@@ -1,9 +1,9 @@
 package com.chrynan.video.di.module.fragment
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.HomeQualifier
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
@@ -15,6 +15,7 @@ import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.view.HomeView
+import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
 import dagger.Module
@@ -30,7 +31,8 @@ internal abstract class HomeFragmentModule {
         @JvmStatic
         @FragmentScope
         @HomeQualifier.Decorator
-        fun provideDecorator(context: Context) = HomeListDecorator(context)
+        fun provideDecorator(@ActivityContextQualifier context: ActivityContext) =
+            HomeListDecorator(context)
 
         @Provides
         @JvmStatic
@@ -70,7 +72,8 @@ internal abstract class HomeFragmentModule {
         @JvmStatic
         @FragmentScope
         @HomeQualifier.LayoutManager
-        fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
+        fun provideLayoutManager(@ActivityContextQualifier context: ActivityContext) =
+            LinearLayoutManager(context)
 
         @JvmStatic
         @Provides

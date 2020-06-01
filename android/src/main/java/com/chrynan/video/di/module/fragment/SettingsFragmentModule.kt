@@ -1,9 +1,9 @@
 package com.chrynan.video.di.module.fragment
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.SettingsQualifier
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
@@ -14,6 +14,7 @@ import com.chrynan.video.ui.adapter.decorator.SettingsListDecorator
 import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
 import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.view.SettingsView
+import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
 import dagger.Binds
 import dagger.Module
@@ -29,7 +30,8 @@ internal abstract class SettingsFragmentModule {
         @JvmStatic
         @FragmentScope
         @SettingsQualifier.Decorator
-        fun provideDecorator(context: Context) = SettingsListDecorator(context)
+        fun provideDecorator(@ActivityContextQualifier context: ActivityContext) =
+            SettingsListDecorator(context)
 
         @Provides
         @JvmStatic
@@ -69,7 +71,8 @@ internal abstract class SettingsFragmentModule {
         @JvmStatic
         @FragmentScope
         @SettingsQualifier.LayoutManager
-        fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
+        fun provideLayoutManager(@ActivityContextQualifier context: ActivityContext) =
+            LinearLayoutManager(context)
 
         @JvmStatic
         @Provides

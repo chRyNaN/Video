@@ -1,9 +1,11 @@
 package com.chrynan.video.di.module
 
-import android.content.Context
 import coil.ImageLoader
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
+import com.chrynan.video.di.qualifier.ApplicationContextQualifier
+import com.chrynan.video.resources.ResourceAccessor
+import com.chrynan.video.resources.ResourceProvider
 import com.chrynan.video.ui.VideoApplication
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Binds
@@ -28,7 +30,7 @@ internal abstract class AppModule {
         @Provides
         @Singleton
         fun provideMarkWon(
-            context: ApplicationContext,
+            @ApplicationContextQualifier context: ApplicationContext,
             imageLoader: ImageLoader
         ) = Markwon.builder(context)
             .usePlugin(CoilImagesPlugin.create(context, imageLoader))
@@ -42,9 +44,14 @@ internal abstract class AppModule {
 
     @Binds
     @Singleton
+    @ApplicationContextQualifier
     abstract fun bindAppContext(application: VideoApplication): ApplicationContext
 
     @Binds
     @Singleton
     abstract fun bindCoroutineDispatchers(dispatchers: AndroidCoroutineDispatchers): CoroutineDispatchers
+
+    @Binds
+    @Singleton
+    abstract fun bindResourceAccessor(provider: ResourceProvider): ResourceAccessor
 }

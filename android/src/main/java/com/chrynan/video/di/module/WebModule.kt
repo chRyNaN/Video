@@ -1,6 +1,7 @@
 package com.chrynan.video.di.module
 
 import coil.util.CoilUtils
+import com.chrynan.video.di.qualifier.ApplicationContextQualifier
 import com.chrynan.video.di.qualifier.OkHttpQualifier
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Module
@@ -18,7 +19,7 @@ internal abstract class WebModule {
         @Provides
         @Singleton
         @OkHttpQualifier.Coil
-        fun provideCoilOkHttpClient(context: ApplicationContext) =
+        fun provideCoilOkHttpClient(@ApplicationContextQualifier context: ApplicationContext) =
             OkHttpClient.Builder()
                 .cache(CoilUtils.createDefaultCache(context))
                 .build()

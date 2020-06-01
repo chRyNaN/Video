@@ -1,12 +1,13 @@
 package com.chrynan.video.di.module.fragment
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.ui.view.WatchListView
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.ui.fragment.WatchListFragment
+import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,7 +21,8 @@ internal abstract class WatchListFragmentModule {
         @Provides
         @JvmStatic
         @FragmentScope
-        fun provideLayoutManager(context: Context) = LinearLayoutManager(context)
+        fun provideLayoutManager(@ActivityContextQualifier context: ActivityContext) =
+            LinearLayoutManager(context)
 
         @JvmStatic
         @Provides
