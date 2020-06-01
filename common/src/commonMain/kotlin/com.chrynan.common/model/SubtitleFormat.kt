@@ -2,11 +2,8 @@ package com.chrynan.common.model
 
 enum class SubtitleFormat {
 
-    WEBVTT,
+    WEB_VTT,
     TTML,
-    SMPTE_TT,
-    SUBRIP,
-    SSA,
-    ASS,
-    UNKNOWN
+    SUB_RIP,
+    SUB_STATION_ALPHA
 }

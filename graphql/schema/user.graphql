@@ -1,0 +1,23 @@
+type UserConnection implements Connection {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [UserEdge!]!
+    nodes: [User!]!
+}
+
+type UserEdge implements Edge {
+    cursor: Cursor!
+    node: User!
+}
+
+type User implements Node {
+    id: ID!
+    provider: Provider!
+    created: String!
+    lastUpdated: String!
+    name: String!
+    email: String!
+    username: String
+    phoneNumber: String
+    subscribedChannelsConnection(take: Int!, after: Cursor): ChannelConnection!
+}

@@ -19,7 +19,7 @@ sealed class VideoAction {
     }
 
     data class Download(val downloadUri: UriString) : VideoAction(),
-        LocalAction {
+        RemoteAction {
 
         override val type = "download"
     }

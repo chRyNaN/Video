@@ -1,10 +1,9 @@
 package com.chrynan.common.model
 
-enum class FormatType {
+enum class VideoStreamType {
 
     PROGRESSIVE,
     DASH,
     SMOOTH_STREAMING,
-    HLS,
-    UNKNOWN
+    HLS
 }

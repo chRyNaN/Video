@@ -1,22 +1,25 @@
 package com.chrynan.common.model
 
-import com.chrynan.common.model.core.ID
-import com.chrynan.common.model.core.Node
-import com.chrynan.common.model.core.UriString
+import com.chrynan.common.model.core.*
 
 data class Video(
     override val id: ID,
-    val created: String,
-    val published: String,
-    val lastUpdated: String,
+    override val created: Moment,
+    override val lastUpdated: Moment,
+    val published: Moment,
+    val uri: UriString,
     val name: String,
-    val description: String,
-    val details: String? = null,
-    val imageUri: UriString? = null,
+    val description: String? = null,
+    val about: String? = null,
+    val previewImage: UriString? = null,
     val category: String? = null,
     val tags: List<String> = emptyList(),
-    val viewCount: Long,
-    val supportsRating: Boolean,
-    val videoDetails: VideoDetails,
-    val contentRating: ContentRating
-) : Node
+    val viewCount: Long? = null,
+    val isLive: Boolean = false,
+    val lengthInMilliseconds: Long,
+    val streamType: VideoStreamType = VideoStreamType.PROGRESSIVE,
+    val standaloneSubtitles: List<Subtitle> = emptyList(),
+    val drmInfo: DrmInfo,
+    val actions: List<VideoAction> = emptyList()
+) : Node,
+    TimeDetail

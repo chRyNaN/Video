@@ -1,0 +1,96 @@
+type VideoConnection implements Connection {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [VideoEdge!]!
+    nodes: [Video!]!
+}
+
+type VideoEdge implements Edge {
+    cursor: Cursor!
+    node: Video!
+}
+
+type Video implements Node, TimeDetail {
+    id: ID!
+    created: Moment!
+    lastUpdated: Moment!
+    published: Moment!
+    uri: UriString!
+    name: String!
+    description: String
+    about: String
+    previewImage: UriString
+    category: String
+    tags: [String!]!
+    viewCount: Int
+    isLive: Boolean!
+    lengthInMilliseconds: Int!
+    streamType: VideoStreamType!
+    standaloneSubtitles: [Subtitle!]!
+    drmInfo: DrmInfo
+    actions: [VideoAction!]!
+}
+
+enum VideoStreamType {
+    PROGRESSIVE
+    DASH
+    SMOOTH_STREAMING
+    HLS
+}
+
+interface VideoAction {
+    type: String!
+}
+
+interface SelectableAction {
+    isSelected: Boolean!
+}
+
+type DownloadAction implements VideoAction {
+    type: String!
+    downloadUri: UriString!
+}
+
+type RatingUpAction implements VideoAction, SelectableAction {
+    type: String!
+    isSelected: Boolean!
+}
+
+type RatingDownAction implements VideoAction, SelectableAction {
+    type: String!
+    isSelected: Boolean!
+}
+
+type FlagAction implements VideoAction, SelectableAction {
+    type: String!
+    isSelected: Boolean!
+}
+
+type Subtitle {
+    locale: String!
+    uri: UriString!
+    format: SubtitleFormat!
+}
+
+enum SubtitleFormat {
+    WEB_VTT
+    TTML
+    SUB_RIP
+    SUB_STATION_ALPHA
+}
+
+enum DrmScheme {
+    CENC
+    CBCS
+    CBC1
+    CENS
+    CLEAR_KEY
+    PLAYREADY_SL2000
+}
+
+type DrmInfo {
+    licenseServerUrl: UriString!
+    scheme: DrmScheme!
+    multiSession: Boolean!
+    offlineLicenseKeySetId: String
+}

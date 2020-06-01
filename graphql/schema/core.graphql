@@ -11,7 +11,7 @@ interface Node {
 interface Edge {
 
     cursor: Cursor!
-    node: Node
+    node: Node!
 }
 
 type PageInfo {
@@ -24,8 +24,8 @@ type PageInfo {
 
 interface TimeDetail {
 
-    created: Moment
-    lastUpdated: Moment
+    created: Moment!
+    lastUpdated: Moment!
 }
 
 interface Connection {

@@ -7,10 +7,9 @@ data class Provider(
     val created: String,
     val lastUpdated: String,
     val name: String,
-    val description: String,
-    val details: String? = null,
+    val description: String? = null,
+    val about: String? = null,
     val website: UriString? = null,
-    val contactEmail: String,
-    val contactPhoneNumber: String,
+    val contactEmail: String? = null,
     val imageUri: UriString? = null
 )

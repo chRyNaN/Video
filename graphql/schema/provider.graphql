@@ -1,0 +1,16 @@
+type Provider implements TimeDetail {
+    created: Moment!
+    lastUpdated: Moment!
+    uri: UriString!
+    name: String!
+    description: String
+    about: String
+    website: String
+    contactEmail: String
+    images: ProviderImageInfo!
+}
+
+type ProviderImageInfo {
+    thumbnail: UriString
+    banner: UriString
+}
