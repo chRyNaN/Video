@@ -9,7 +9,7 @@
     android:paddingEnd="@dimen/spacing_horizontal_default"
     android:paddingBottom="@dimen/spacing_vertical_default">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.chrynan.video.ui.widget.ChannelThumbnailWidget
         android:id="@+id/adapterVideoInfoChannelImageView"
         android:layout_width="@dimen/video_info_channel_image_size"
         android:layout_height="@dimen/video_info_channel_image_size"

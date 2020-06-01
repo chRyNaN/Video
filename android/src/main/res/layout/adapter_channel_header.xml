@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.chrynan.video.ui.widget.ChannelThumbnailWidget
         android:id="@+id/adapterChannelHeaderCircleImageView"
         android:layout_width="@dimen/channel_info_image_size"
         android:layout_height="@dimen/channel_info_image_size"

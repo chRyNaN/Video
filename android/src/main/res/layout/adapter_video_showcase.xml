@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="@+id/adapterVideoShowcaseImageView"
         tools:text="5:30" />
 
-    <ImageView
+    <com.chrynan.video.ui.widget.ChannelThumbnailWidget
         android:id="@+id/adapterVideoShowcaseChannelImageView"
         android:layout_width="@dimen/video_info_channel_image_size"
         android:layout_height="@dimen/video_info_channel_image_size"

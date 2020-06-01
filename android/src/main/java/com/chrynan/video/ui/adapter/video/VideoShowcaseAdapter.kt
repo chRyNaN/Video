@@ -41,7 +41,10 @@ class VideoShowcaseAdapter @Inject constructor(
 
         adapterVideoShowcaseImageView?.showPreviewImage(item.videoInfo.previewImageUri)
 
-        adapterVideoShowcaseChannelImageView?.load(item.channelImageUrl)
+        adapterVideoShowcaseChannelImageView?.load(item.channelImageUrl) {
+            placeholder(R.drawable.ic_default_user)
+            error(R.drawable.ic_default_user)
+        }
 
         adapterVideoShowcaseOverflowOptionsImageView?.setOnClickListener {
             listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
