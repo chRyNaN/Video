@@ -33,6 +33,8 @@ class VideoInfoDetailsAdapter @Inject constructor(dispatchers: CoroutineDispatch
         adapterVideoInfoCategoryTextView?.text = item.category
 
         adapterVideoInfoDetailsTagsChipGroup?.let { group ->
+            group.removeAllViews()
+
             item.tags.forEach {
                 val chip = Chip(group.context).apply {
                     text = it
