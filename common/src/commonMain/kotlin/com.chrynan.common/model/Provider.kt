@@ -11,5 +11,5 @@ data class Provider(
     val about: String? = null,
     val website: UriString? = null,
     val contactEmail: String? = null,
-    val imageUri: UriString? = null
+    val images: ProviderImageInfo = ProviderImageInfo()
 )
