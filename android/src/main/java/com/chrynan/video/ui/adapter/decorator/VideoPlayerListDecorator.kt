@@ -9,6 +9,6 @@ class VideoPlayerListDecorator @Inject constructor(context: Context) :
 
     override fun shouldDrawTopDividerForViewType(viewType: Int?): Boolean =
         (viewType == AdapterViewTypes.VIDEO_INFO_CHANNEL_ADAPTER) or
-                (viewType == AdapterViewTypes.VIDEO_INFO_DESCRIPTION_ADAPTER) or
+                (viewType == AdapterViewTypes.VIDEO_INFO_ABOUT_ADAPTER) or
                 (viewType == AdapterViewTypes.SECTION_HEADER_ADAPTER)
 }
