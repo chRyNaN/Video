@@ -10,7 +10,7 @@ data class VideoShowcaseViewModel(
     val details: String,
     val provider: String,
     val videoLength: String,
-    val channelImageUrl: UriString
+    val channelImageUrl: UriString? = null
 ) : AdapterItem {
 
     override val uniqueAdapterId =
