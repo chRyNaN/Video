@@ -1,10 +1,12 @@
-package com.chrynan.video.mapper
+package com.chrynan.video.mapper.video
 
 import com.chrynan.common.model.VideoResult
+import com.chrynan.video.mapper.Mapper
 import com.chrynan.video.viewmodel.VideoInfoDetailsViewModel
 import javax.inject.Inject
 
-class VideoDetailsMapper @Inject constructor() : Mapper<VideoResult, VideoInfoDetailsViewModel> {
+class VideoDetailsMapper @Inject constructor() :
+    Mapper<VideoResult, VideoInfoDetailsViewModel> {
 
     override suspend fun map(model: VideoResult): VideoInfoDetailsViewModel =
         VideoInfoDetailsViewModel(

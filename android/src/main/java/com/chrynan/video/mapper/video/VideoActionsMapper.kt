@@ -1,9 +1,10 @@
-package com.chrynan.video.mapper
+package com.chrynan.video.mapper.video
 
 import com.chrynan.common.model.VideoAction
 import com.chrynan.common.model.VideoInfo
 import com.chrynan.common.model.VideoResult
 import com.chrynan.video.R
+import com.chrynan.video.mapper.Mapper
 import com.chrynan.video.viewmodel.VideoInfoActionViewModel
 import javax.inject.Inject
 

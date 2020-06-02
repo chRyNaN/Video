@@ -1,6 +1,7 @@
-package com.chrynan.video.mapper
+package com.chrynan.video.mapper.video
 
 import com.chrynan.common.model.VideoResult
+import com.chrynan.video.mapper.Mapper
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import javax.inject.Inject
 
