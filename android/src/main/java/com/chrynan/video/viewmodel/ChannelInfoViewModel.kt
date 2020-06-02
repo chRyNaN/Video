@@ -3,11 +3,11 @@ package com.chrynan.video.viewmodel
 import com.chrynan.aaaah.asUniqueAdapterId
 
 data class ChannelInfoViewModel(
-    val about: String,
+    val about: String? = null,
     val created: String,
     val lastUpdated: String,
-    val headerImageUri: String,
-    val channelImageUri: String,
+    val headerImageUri: String? = null,
+    val channelImageUri: String? = null,
     val isSubscribed: Boolean = false,
     val channelId: String,
     val providerUri: String,
