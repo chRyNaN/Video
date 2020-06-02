@@ -35,6 +35,13 @@ class ChannelInfoAdapter @Inject constructor(
         adapterChannelInfoCreatedTimeTextView?.text = item.created
         adapterChannelInfoLastUpdatedTimeTextView?.text = item.lastUpdated
 
-        adapterChannelInfoAboutTextView?.let { markdownParser.setMarkdown(it, item.about) }
+        if (item.about != null) {
+            adapterChannelInfoAboutTextView?.let {
+                it.visibility = View.VISIBLE
+                markdownParser.setMarkdown(it, item.about)
+            }
+        } else {
+            adapterChannelInfoAboutTextView?.visibility = View.GONE
+        }
     }
 }
