@@ -98,7 +98,6 @@ class VideoPlayerPresenter(
                 channelName = "chRyNaN",
                 channelImageUrl = null,
                 channelSubscriberCount = "250k",
-                showChannelSubscribeCount = true,
                 isSubscribedToChannel = true
             ),
             VideoInfoAboutViewModel(

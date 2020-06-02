@@ -9,7 +9,6 @@ data class VideoInfoChannelViewModel(
     val channelName: String,
     val channelImageUrl: String? = null,
     val channelSubscriberCount: String,
-    val showChannelSubscribeCount: Boolean = false,
     val isSubscribedToChannel: Boolean = false
 ) : AdapterItem {
 
