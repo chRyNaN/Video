@@ -5,6 +5,7 @@ import com.chrynan.video.model.ResourceID
 
 data class SettingsItemViewModel(
     val title: String,
+    val type: SettingsType,
     val description: String? = null,
     val iconResourceID: ResourceID? = null,
     val endText: String? = null,
@@ -12,4 +13,14 @@ data class SettingsItemViewModel(
 ) : AdapterItem {
 
     override val uniqueAdapterId = "SettingsItem:$title".asUniqueAdapterId()
+
+    enum class SettingsType {
+
+        SERVICES,
+        ADD_SERVICE,
+        APP,
+        SOURCE_CODE,
+        LICENSE,
+        OPEN_SOURCE_LICENSES
+    }
 }
