@@ -101,9 +101,9 @@ class VideoPlayerPresenter(
                 showChannelSubscribeCount = true,
                 isSubscribedToChannel = true
             ),
-            VideoInfoDescriptionViewModel(
+            VideoInfoAboutViewModel(
                 videoInfo = videoInfo,
-                description = "Description"
+                about = "Description"
             ),
             VideoInfoDetailsViewModel(
                 videoInfo = videoInfo,

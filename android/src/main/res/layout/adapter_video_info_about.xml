@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/spacing_vertical_default">
 
     <TextView
-        android:id="@+id/adapterVideoInfoDescriptionTextView"
+        android:id="@+id/adapterVideoInfoAboutTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Body"

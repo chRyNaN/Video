@@ -4,9 +4,9 @@ import com.chrynan.aaaah.AdapterId
 import com.chrynan.aaaah.asUniqueAdapterId
 import com.chrynan.common.model.VideoInfo
 
-data class VideoInfoDescriptionViewModel(
+data class VideoInfoAboutViewModel(
     val videoInfo: VideoInfo,
-    val description: String
+    val about: String?
 ) : AdapterItem {
 
     override val uniqueAdapterId: AdapterId = "VideoDescription:${videoInfo}".asUniqueAdapterId()

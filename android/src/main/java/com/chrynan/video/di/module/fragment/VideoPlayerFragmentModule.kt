@@ -88,7 +88,7 @@ internal abstract class VideoPlayerFragmentModule {
         fun provideAdapter(
             videoInfoHeaderAdapter: VideoInfoHeaderAdapter,
             videoInfoChannelAdapter: VideoInfoChannelAdapter,
-            videoInfoDescriptionAdapter: VideoInfoDescriptionAdapter,
+            videoInfoDescriptionAdapter: VideoInfoAboutAdapter,
             videoInfoDetailsAdapter: VideoInfoDetailsAdapter,
             sectionHeaderAdapter: SectionHeaderAdapter,
             videoRecommendationAdapter: VideoRecommendationAdapter,
