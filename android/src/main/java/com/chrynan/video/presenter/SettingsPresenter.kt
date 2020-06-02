@@ -22,17 +22,38 @@ class SettingsPresenter @Inject constructor(
     fun getSettings() {
         val items = listOf(
             SectionHeaderViewModel(header = "Content"),
-            SettingsItemViewModel(title = "Services", isSelectable = true),
-            SettingsItemViewModel(title = "Add Service", isSelectable = true),
+            SettingsItemViewModel(
+                title = "Services",
+                isSelectable = true,
+                type = SettingsItemViewModel.SettingsType.SERVICES
+            ),
+            SettingsItemViewModel(
+                title = "Add Service",
+                isSelectable = true,
+                type = SettingsItemViewModel.SettingsType.ADD_SERVICE
+            ),
             SectionHeaderViewModel(header = "About"),
             SettingsItemViewModel(
                 title = "App Version",
                 description = BuildConfig.VERSION_NAME,
-                isSelectable = true
+                isSelectable = true,
+                type = SettingsItemViewModel.SettingsType.APP
             ),
-            SettingsItemViewModel(title = "Source Code", isSelectable = true),
-            SettingsItemViewModel(title = "License", isSelectable = true),
-            SettingsItemViewModel(title = "Open Source Licenses", isSelectable = true)
+            SettingsItemViewModel(
+                title = "Source Code",
+                isSelectable = true,
+                type = SettingsItemViewModel.SettingsType.SOURCE_CODE
+            ),
+            SettingsItemViewModel(
+                title = "License",
+                isSelectable = true,
+                type = SettingsItemViewModel.SettingsType.LICENSE
+            ),
+            SettingsItemViewModel(
+                title = "Open Source Licenses",
+                isSelectable = true,
+                type = SettingsItemViewModel.SettingsType.OPEN_SOURCE_LICENSES
+            )
         )
 
         flowOf(items)
