@@ -1,5 +1,6 @@
 package com.chrynan.video.resources
 
+import android.graphics.drawable.Drawable
 import com.chrynan.video.di.qualifier.ApplicationContextQualifier
 import com.chrynan.video.model.ResourceID
 import com.chrynan.video.utils.ApplicationContext
@@ -10,4 +11,7 @@ class ResourceProvider @Inject constructor(@ApplicationContextQualifier private 
 
     override fun string(resourceID: ResourceID): Lazy<String> =
         lazy { context.resources.getString(resourceID) }
+
+    override fun drawable(resourceID: ResourceID): Lazy<Drawable?> =
+        lazy { context.resources.getDrawable(resourceID, null) }
 }
