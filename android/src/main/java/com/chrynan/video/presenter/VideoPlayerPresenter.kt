@@ -115,7 +115,6 @@ class VideoPlayerPresenter(
                 channelName = "chRyNaN Codes",
                 detailText = "Provided by chRyNaN",
                 videoInfo = videoInfo,
-                videoImageUrl = "",
                 videoLength = "10:00"
             )
         )

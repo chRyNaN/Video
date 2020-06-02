@@ -84,8 +84,7 @@ class SearchFragment : BaseFragment(),
                 videoUri = "",
                 providerUri = ""
             ),
-            videoLength = "1:00",
-            videoImageUrl = ""
+            videoLength = "1:00"
         )
 
         val channel = ChannelListItemViewModel(

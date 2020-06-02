@@ -8,7 +8,6 @@ data class VideoRecommendationViewModel(
     val channelName: String,
     val detailText: String,
     val videoInfo: VideoInfo,
-    val videoImageUrl: String,
     val videoLength: String
 ) : AdapterItem {
 
