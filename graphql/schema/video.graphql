@@ -66,6 +66,12 @@ type FlagAction implements VideoAction, SelectableAction {
     isSelected: Boolean!
 }
 
+enum SelectableVideoActionType {
+    RATING_UP
+    RATING_DOWN
+    FLAG
+}
+
 type Subtitle {
     locale: String!
     uri: UriString!
