@@ -1,0 +1,6 @@
+type Query {
+    apiVersion: String!
+    provider: Provider!
+    viewer: Viewer!
+    search(query: String!, take: Int!, after: Cursor): SearchResultConnection!
+}

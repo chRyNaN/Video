@@ -15,6 +15,7 @@ data class Channel(
     val count: ChannelCountInfo = ChannelCountInfo(),
     val isSubscribed: Boolean = false,
     val lists: List<ChannelVideoListConnection> = emptyList(),
-    val videos: VideoConnection = VideoConnection()
+    val videos: VideoConnection = VideoConnection(),
+    val video: Video? = null
 ) : Node,
     TimeDetail

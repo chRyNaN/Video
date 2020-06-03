@@ -8,6 +8,8 @@ type Provider implements TimeDetail {
     website: String
     contactEmail: String
     images: ProviderImageInfo!
+    channels(take: Int!, after: Cursor): ChannelConnection!
+    channel(id: ID!): Channel
 }
 
 type ProviderImageInfo {

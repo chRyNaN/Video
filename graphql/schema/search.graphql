@@ -1,0 +1,13 @@
+union SearchResultItem = Video | Channel
+
+type SearchResultEdge {
+    cursor: Cursor!
+    node: SearchResultItem!
+}
+
+type SearchResultConnection {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [SearchResultEdge!]!
+    nodes: [SearchResultItem!]!
+}
