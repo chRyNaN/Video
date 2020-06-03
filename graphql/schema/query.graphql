@@ -3,4 +3,5 @@ type Query {
     provider: Provider!
     viewer: Viewer!
     search(query: String!, take: Int!, after: Cursor): SearchResultConnection!
+    feed(take: Int!, after: Cursor): FeedConnection!
 }

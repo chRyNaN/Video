@@ -1,0 +1,13 @@
+union FeedItem = Video
+
+type FeedEdge {
+    cursor: Cursor!
+    node: FeedItem!
+}
+
+type FeedConnection {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [FeedEdge!]!
+    nodes: [FeedItem!]!
+}
