@@ -1,5 +1,6 @@
-package com.chrynan.common.model
+package com.chrynan.common.model.api
 
+import com.chrynan.common.model.api.FeedItem
 import com.chrynan.common.model.core.Cursor
 import com.chrynan.common.model.core.Edge
 

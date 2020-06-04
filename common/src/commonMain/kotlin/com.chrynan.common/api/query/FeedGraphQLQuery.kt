@@ -2,6 +2,7 @@ package com.chrynan.common.api.query
 
 import com.chrynan.common.Inject
 import com.chrynan.common.model.core.Cursor
+import com.chrynan.common.model.graphql.GraphQLQuery
 
 class FeedGraphQLQuery @Inject constructor() {
 
@@ -85,6 +86,9 @@ class FeedGraphQLQuery @Inject constructor() {
 
         val headers = mapOf<String, Any?>("take" to take, "after" to after)
 
-        return GraphQLQuery(stringQuery, headers)
+        return GraphQLQuery(
+            stringQuery,
+            headers
+        )
     }
 }

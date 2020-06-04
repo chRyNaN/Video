@@ -1,5 +1,7 @@
-package com.chrynan.common.model
+package com.chrynan.common.model.api
 
+import com.chrynan.common.model.api.ChannelConnection
+import com.chrynan.common.model.api.NamePreference
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.Moment
 import com.chrynan.common.model.core.Node

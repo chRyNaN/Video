@@ -1,7 +1,7 @@
 package com.chrynan.video.mapper.video
 
-import com.chrynan.common.model.Video
-import com.chrynan.common.model.VideoResult
+import com.chrynan.common.model.api.Video
+import com.chrynan.common.model.api.VideoResult
 import com.chrynan.video.mapper.Mapper
 import com.chrynan.video.viewmodel.VideoInfoHeaderViewModel
 import javax.inject.Inject

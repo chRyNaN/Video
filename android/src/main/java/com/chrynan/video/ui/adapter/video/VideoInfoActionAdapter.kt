@@ -9,8 +9,8 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.model.SelectableAction
-import com.chrynan.common.model.VideoAction
+import com.chrynan.common.model.api.SelectableAction
+import com.chrynan.common.model.api.VideoAction
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
 import com.chrynan.video.viewmodel.VideoInfoActionViewModel

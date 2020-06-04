@@ -10,7 +10,7 @@ import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.di.qualifier.HomeQualifier
 import com.chrynan.video.presenter.HomePresenter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter

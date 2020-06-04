@@ -2,8 +2,8 @@ package com.chrynan.video.presenter
 
 import android.util.Log
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.model.VideoAction
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoAction
+import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.media.MediaController
 import com.chrynan.video.media.MediaSourceCreator

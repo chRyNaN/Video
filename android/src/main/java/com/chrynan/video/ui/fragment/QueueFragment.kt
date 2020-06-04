@@ -11,7 +11,7 @@ import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoInfo
 import kotlinx.android.synthetic.main.fragment_queue.*
 import javax.inject.Inject
 

@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.common.model.VideoAction
+import com.chrynan.common.model.api.VideoAction
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter

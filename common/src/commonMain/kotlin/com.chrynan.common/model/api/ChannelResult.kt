@@ -1,4 +1,4 @@
-package com.chrynan.common.model
+package com.chrynan.common.model.api
 
 data class ChannelResult(
     val channel: Channel,

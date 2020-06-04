@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.TransitionManager
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.ui.widget.*
 import com.chrynan.video.viewmodel.ChannelListItemViewModel

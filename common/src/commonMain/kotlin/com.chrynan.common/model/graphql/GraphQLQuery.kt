@@ -1,4 +1,4 @@
-package com.chrynan.common.api.query
+package com.chrynan.common.model.graphql
 
 data class GraphQLQuery(
     val queryString: String,

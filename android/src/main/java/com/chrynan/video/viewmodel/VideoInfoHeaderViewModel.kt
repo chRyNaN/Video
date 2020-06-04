@@ -1,7 +1,7 @@
 package com.chrynan.video.viewmodel
 
 import com.chrynan.aaaah.asUniqueAdapterId
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoInfo
 
 data class VideoInfoHeaderViewModel(
     val videoInfo: VideoInfo,

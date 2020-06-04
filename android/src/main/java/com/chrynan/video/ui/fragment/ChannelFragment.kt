@@ -1,7 +1,6 @@
 package com.chrynan.video.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.common.model.VideoInfo
+import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.di.qualifier.ChannelQualifier
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
 import com.chrynan.video.viewmodel.*
