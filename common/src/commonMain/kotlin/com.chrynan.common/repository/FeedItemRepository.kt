@@ -1,8 +1,6 @@
 package com.chrynan.common.repository
 
-import com.chrynan.common.model.api.FeedItem
-import com.chrynan.common.model.api.FeedItemConnection
-import com.chrynan.common.model.api.FeedItemEdge
-import com.chrynan.common.repository.core.PaginatedRepository
+import com.chrynan.common.model.result.FeedResultItem
+import com.chrynan.common.repository.core.StatefulFlowRepository
 
-interface FeedItemRepository : PaginatedRepository<FeedItem, FeedItemEdge, FeedItemConnection>
+interface FeedItemRepository : StatefulFlowRepository<List<FeedResultItem>>

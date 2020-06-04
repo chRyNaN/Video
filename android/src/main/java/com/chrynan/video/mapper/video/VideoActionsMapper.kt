@@ -4,7 +4,7 @@ import com.chrynan.common.model.api.VideoAction
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.api.VideoResult
 import com.chrynan.video.R
-import com.chrynan.video.mapper.Mapper
+import com.chrynan.common.mapper.Mapper
 import com.chrynan.video.viewmodel.VideoInfoActionViewModel
 import javax.inject.Inject
 

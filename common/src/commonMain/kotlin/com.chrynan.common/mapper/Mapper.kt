@@ -1,4 +1,4 @@
-package com.chrynan.video.mapper
+package com.chrynan.common.mapper
 
 interface Mapper<IN, OUT> {
 

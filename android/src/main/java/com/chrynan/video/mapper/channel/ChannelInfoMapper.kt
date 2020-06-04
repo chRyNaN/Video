@@ -1,11 +1,12 @@
 package com.chrynan.video.mapper.channel
 
 import com.chrynan.common.model.api.ChannelResult
-import com.chrynan.video.mapper.Mapper
+import com.chrynan.common.mapper.Mapper
 import com.chrynan.video.viewmodel.ChannelInfoViewModel
 import javax.inject.Inject
 
-class ChannelInfoMapper @Inject constructor() : Mapper<ChannelResult, ChannelInfoViewModel> {
+class ChannelInfoMapper @Inject constructor() :
+    Mapper<ChannelResult, ChannelInfoViewModel> {
 
     override suspend fun map(model: ChannelResult): ChannelInfoViewModel =
         ChannelInfoViewModel(

@@ -1,7 +1,7 @@
 package com.chrynan.video.mapper.channel
 
 import com.chrynan.common.model.api.ChannelResult
-import com.chrynan.video.mapper.Mapper
+import com.chrynan.common.mapper.Mapper
 import com.chrynan.video.viewmodel.ChannelProviderViewModel
 import javax.inject.Inject
 
