@@ -22,5 +22,4 @@ data class Video(
     val drmInfo: DrmInfo,
     val actions: List<VideoAction> = emptyList()
 ) : Node,
-    TimeDetail,
-    FeedItem
+    TimeDetail

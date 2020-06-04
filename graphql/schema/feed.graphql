@@ -1,4 +1,9 @@
-union FeedItem = Video
+union FeedItem = VideoFeedItem
+
+type VideoFeedItem {
+    channel: Channel!
+    video: Video!
+}
 
 type FeedEdge {
     cursor: Cursor!
