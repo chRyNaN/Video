@@ -2,12 +2,12 @@ package com.chrynan.common.api.query
 
 import com.chrynan.common.Inject
 import com.chrynan.common.model.core.Cursor
-import com.chrynan.common.model.graphql.GraphQLQuery
+import com.chrynan.common.model.graphql.GraphQLRequest
 
 class FeedGraphQLQuery @Inject constructor() {
 
-    operator fun invoke(take: Int, after: Cursor? = null): GraphQLQuery {
-        val stringQuery =
+    operator fun invoke(take: Int, after: Cursor? = null): GraphQLRequest {
+        val query =
             """
                 query FeedQuery(${'$'}take: Int!, ${'$'}after: Cursor) {
                     feed(take: ${'$'}take, after: ${'$'}after) {
@@ -84,11 +84,12 @@ class FeedGraphQLQuery @Inject constructor() {
                 }
             """.trimIndent()
 
-        val headers = mapOf<String, Any?>("take" to take, "after" to after)
+        val variables = mapOf<String, Any?>("take" to take, "after" to after)
 
-        return GraphQLQuery(
-            stringQuery,
-            headers
+        return GraphQLRequest(
+            query = query,
+            operationName = "FeedQuery",
+            variables = variables
         )
     }
 }

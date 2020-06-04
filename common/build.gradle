@@ -1,4 +1,5 @@
 apply plugin: "kotlin-multiplatform"
+apply plugin: "kotlinx-serialization"
 
 group rootProject.libraryGroup
 version rootProject.libraryVersion
