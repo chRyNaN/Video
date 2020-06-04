@@ -4,10 +4,14 @@ import com.chrynan.common.model.FeedItem
 import com.chrynan.common.model.FeedItemConnection
 import com.chrynan.common.model.core.Cursor
 import com.chrynan.common.repository.FeedItemRepository
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import io.ktor.client.request.headers
 import kotlinx.coroutines.flow.Flow
 
 class FeedItemWebSource(
-    baseUrl: String
+    baseUrl: String,
+    private val client: HttpClient
 ) : FeedItemRepository {
 
     override val currentConnection: FeedItemConnection?
@@ -18,6 +22,10 @@ class FeedItemWebSource(
     }
 
     override suspend fun load(next: Int) {
-        TODO("Not yet implemented")
+        client.get<String> {
+            this.headers {
+
+            }
+        }
     }
 }
