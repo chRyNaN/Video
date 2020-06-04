@@ -6,8 +6,7 @@ import com.chrynan.common.model.core.Edge
 import com.chrynan.common.model.core.Node
 import kotlinx.coroutines.flow.Flow
 
-interface PaginatedRepository<N : Node, E : Edge<N>, C : Connection<N, E>> :
-    Repository<N> {
+interface PaginatedRepository<N : Node, E : Edge<N>, C : Connection<N, E>> {
 
     val currentConnection: C?
 

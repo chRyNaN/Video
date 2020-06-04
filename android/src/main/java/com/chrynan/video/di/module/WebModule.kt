@@ -6,6 +6,13 @@ import com.chrynan.video.di.qualifier.OkHttpQualifier
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Module
 import dagger.Provides
+import io.ktor.client.HttpClient
+import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.features.json.serializer.KotlinxSerializer
+import io.ktor.client.features.logging.DEFAULT
+import io.ktor.client.features.logging.LogLevel
+import io.ktor.client.features.logging.Logger
+import io.ktor.client.features.logging.Logging
 import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
@@ -23,5 +30,18 @@ internal abstract class WebModule {
             OkHttpClient.Builder()
                 .cache(CoilUtils.createDefaultCache(context))
                 .build()
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun provideKtorHttpClient(): HttpClient = HttpClient(io.ktor.client.engine.okhttp.OkHttp) {
+            install(JsonFeature) {
+                serializer = KotlinxSerializer()
+            }
+            install(Logging) {
+                logger = Logger.DEFAULT
+                level = LogLevel.HEADERS
+            }
+        }
     }
 }
