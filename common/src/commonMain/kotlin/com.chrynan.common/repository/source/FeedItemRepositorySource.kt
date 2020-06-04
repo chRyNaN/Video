@@ -2,52 +2,74 @@ package com.chrynan.common.repository.source
 
 import com.chrynan.common.Inject
 import com.chrynan.common.api.WebApi
+import com.chrynan.common.coroutine.RepositoryCoroutineScope
 import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.model.core.PageInfo
 import com.chrynan.common.model.core.UriString
 import com.chrynan.common.model.result.FeedResultItem
 import com.chrynan.common.repository.FeedItemRepository
 import com.chrynan.common.repository.ServiceRepository
+import com.chrynan.logger.Logger
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.onStart
 
 @ExperimentalCoroutinesApi
 class FeedItemRepositorySource @Inject constructor(
     private val webApi: WebApi,
     private val serviceRepository: ServiceRepository,
-    private val mapper: FeedResultItemMapper
+    private val mapper: FeedResultItemMapper,
+    private val coroutineScope: RepositoryCoroutineScope
 ) : FeedItemRepository {
+
+    companion object {
+
+        private const val DEFAULT_TAKE_COUNT = 10
+    }
 
     private val mutableStateFlow = MutableStateFlow(emptyList<FeedResultItem>())
 
     private val pageInfoMap = mutableMapOf<UriString, PageInfo?>()
 
-    override fun openSubscription(): Flow<List<FeedResultItem>> = mutableStateFlow
+    private var isLoading = false
+
+    override fun openSubscription(): Flow<List<FeedResultItem>> =
+        mutableStateFlow.onStart { if (!isLoading && pageInfoMap.isEmpty()) loadMore() }
 
     override suspend fun loadMore() {
-        val services = serviceRepository.getAll()
+        if (!isLoading) {
+            isLoading = true
 
-        for (service in services) {
-            val pageInfo = pageInfoMap[service.providerUri]
+            val services = serviceRepository.getAll()
 
-            if (pageInfo.canLoadMore()) {
-                // TODO update to load these using async block
-                val response = webApi.getFeed(
-                    providerUri = service.providerUri,
-                    token = service.token,
-                    take = 10,
-                    after = pageInfo?.endCursor
-                )
+            services.map { service ->
+                coroutineScope.async {
+                    val pageInfo = pageInfoMap[service.providerUri]
 
-                pageInfoMap[service.providerUri] = response.data?.connection?.pageInfo
+                    if (pageInfo.canLoadMore()) {
+                        val response = webApi.getFeed(
+                            providerUri = service.providerUri,
+                            token = service.token,
+                            take = DEFAULT_TAKE_COUNT,
+                            after = pageInfo?.endCursor
+                        )
 
-                if (!response.isError && response.data != null) {
-                    val items = mapper.map(response.data)
+                        pageInfoMap[service.providerUri] = response.data?.connection?.pageInfo
 
-                    mutableStateFlow.value = mutableStateFlow.value + items
+                        if (!response.isError && response.data != null) {
+                            val items = mapper.map(response.data)
+
+                            mutableStateFlow.value = mutableStateFlow.value + items
+                        } else {
+                            Logger.logError("Error fetching feed for Service Provider: ${service.providerUri}. Errors: ${response.errors}")
+                        }
+                    }
                 }
-            }
+            }.forEach { it.await() }
+
+            isLoading = false
         }
     }
 
