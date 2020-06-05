@@ -5,8 +5,8 @@ import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.repository.FeedItemRepository
 import com.chrynan.common.repository.ServiceRepository
 import com.chrynan.common.repository.source.FeedItemRepositorySource
-import com.chrynan.common.repository.source.ServiceRepositorySource
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
+import com.chrynan.video.database.source.ServiceRepositorySource
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

@@ -2,6 +2,7 @@ package com.chrynan.video.di.component
 
 import com.chrynan.video.di.module.ActivityModule
 import com.chrynan.video.di.module.AppModule
+import com.chrynan.video.di.module.DatabaseModule
 import com.chrynan.video.di.module.MediaModule
 import com.chrynan.video.di.module.RepositoryModule
 import com.chrynan.video.di.module.WebModule
@@ -20,6 +21,7 @@ import javax.inject.Singleton
         MediaModule::class,
         WebModule::class,
         RepositoryModule::class,
+        DatabaseModule::class,
         AndroidSupportInjectionModule::class
     ]
 )
@@ -29,7 +31,7 @@ interface AppComponent : AndroidInjector<VideoApplication> {
     interface Builder {
 
         @BindsInstance
-        fun application(app: VideoApplication): AppComponent.Builder
+        fun application(app: VideoApplication): Builder
 
         fun build(): AppComponent
     }
