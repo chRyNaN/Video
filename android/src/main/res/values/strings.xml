@@ -43,5 +43,6 @@
 
     <string name="service_provider_list_toolbar_title">Service Providers</string>
     <string name="service_provider_list_add_new_label">Add New</string>
+    <string name="service_provider_list_empty_text">There are no Service Providers. Add one to begin watching videos.</string>
 
 </resources>

@@ -55,6 +55,16 @@ class ServiceProviderListFragment : BaseFragment(),
         presenter.loadItems()
     }
 
+    override fun showEmptyState() {
+        serviceProviderListRecyclerView?.visibility = View.GONE
+        serviceProviderListEmptyTextView?.visibility = View.VISIBLE
+    }
+
+    override fun showListState() {
+        serviceProviderListRecyclerView?.visibility = View.VISIBLE
+        serviceProviderListEmptyTextView?.visibility = View.GONE
+    }
+
     override fun goToAddNewService() = goToFragment(NewServiceProviderFragment.newInstance())
 
     override fun goToServiceDetails(providerUri: UriString) =

@@ -10,7 +10,20 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/recyclerview_default_bottom_padding"
+        android:visibility="gone"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+    <TextView
+        android:id="@+id/serviceProviderListEmptyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/spacing_horizontal_default"
+        android:layout_marginEnd="@dimen/spacing_horizontal_default"
+        android:gravity="center_horizontal"
+        android:singleLine="false"
+        android:text="@string/service_provider_list_empty_text"
+        android:textAppearance="@style/TextAppearance.SubHeader" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/serviceProviderListAppBarLayout"
