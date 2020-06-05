@@ -41,4 +41,7 @@
 
     <string name="settings_title">Settings</string>
 
+    <string name="service_provider_list_toolbar_title">Service Providers</string>
+    <string name="service_provider_list_add_new_label">Add New</string>
+
 </resources>
