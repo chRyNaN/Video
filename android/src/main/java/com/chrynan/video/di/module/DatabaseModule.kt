@@ -6,6 +6,7 @@ import com.chrynan.video.di.qualifier.ApplicationContextQualifier
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Module
 import dagger.Provides
+import net.sqlcipher.database.SupportFactory
 
 @Module
 internal abstract class DatabaseModule {
@@ -15,8 +16,17 @@ internal abstract class DatabaseModule {
 
         @JvmStatic
         @Provides
-        fun provideApplicationDatabase(@ApplicationContextQualifier context: ApplicationContext): ApplicationDatabase =
+        fun provideEncryptionDatabaseFactory() =
+            SupportFactory("".toByteArray()) // TODO update passphrase
+
+        @JvmStatic
+        @Provides
+        fun provideApplicationDatabase(
+            @ApplicationContextQualifier context: ApplicationContext,
+            encryptionDatabaseFactory: SupportFactory
+        ): ApplicationDatabase =
             Room.databaseBuilder(context, ApplicationDatabase::class.java, "video")
+                .openHelperFactory(encryptionDatabaseFactory)
                 .build()
 
         @JvmStatic
