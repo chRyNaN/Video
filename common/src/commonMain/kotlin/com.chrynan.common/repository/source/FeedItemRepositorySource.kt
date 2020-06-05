@@ -1,8 +1,6 @@
 package com.chrynan.common.repository.source
 
-import com.chrynan.common.Inject
 import com.chrynan.common.api.WebApi
-import com.chrynan.common.coroutine.RepositoryCoroutineScope
 import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.model.core.PageInfo
 import com.chrynan.common.model.core.UriString
@@ -10,6 +8,7 @@ import com.chrynan.common.model.result.FeedResultItem
 import com.chrynan.common.repository.FeedItemRepository
 import com.chrynan.common.repository.ServiceRepository
 import com.chrynan.logger.Logger
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
@@ -17,11 +16,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.onStart
 
 @ExperimentalCoroutinesApi
-class FeedItemRepositorySource @Inject constructor(
+class FeedItemRepositorySource(
     private val webApi: WebApi,
     private val serviceRepository: ServiceRepository,
     private val mapper: FeedResultItemMapper,
-    private val coroutineScope: RepositoryCoroutineScope
+    private val coroutineScope: CoroutineScope
 ) : FeedItemRepository {
 
     companion object {

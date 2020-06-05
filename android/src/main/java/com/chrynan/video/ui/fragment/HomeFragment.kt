@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.HomeView
-import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
@@ -59,54 +58,12 @@ class HomeFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView?.apply {
-
             layoutManager = linearLayoutManager
             adapter = managerAdapter
             addItemDecoration(decorator)
-
-            val videoInfo = VideoInfo(
-                videoId = "VideoId",
-                channelId = "ChannelId",
-                providerUri = "ProviderUri",
-                videoUri = "VideoUri",
-                previewImageUri = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1"
-            )
-
-            managerAdapter.items = listOf(
-                VideoShowcaseViewModel(
-                    videoInfo = videoInfo,
-                    title = "Video Title One",
-                    details = "Some Video Details Here",
-                    provider = "chRyNaN",
-                    videoLength = "5:30",
-                    channelImageUrl = ""
-                ),
-                VideoShowcaseViewModel(
-                    videoInfo = videoInfo,
-                    title = "Video Title Two",
-                    details = "Some Video Details Here",
-                    provider = "chRyNaN",
-                    videoLength = "5:30",
-                    channelImageUrl = ""
-                ),
-                VideoShowcaseViewModel(
-                    videoInfo = videoInfo,
-                    title = "Video Title Three",
-                    details = "Some Video Details Here",
-                    provider = "chRyNaN",
-                    videoLength = "5:30",
-                    channelImageUrl = ""
-                ),
-                VideoShowcaseViewModel(
-                    videoInfo = videoInfo,
-                    title = "Video Title Four",
-                    details = "Some Video Details Here",
-                    provider = "chRyNaN",
-                    videoLength = "5:30",
-                    channelImageUrl = ""
-                )
-            )
         }
+
+        presenter.loadFeed()
     }
 
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
