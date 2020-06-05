@@ -9,6 +9,8 @@ import com.chrynan.video.model.ServiceProviderScreen
 import com.chrynan.video.navigator.ServiceProviderNavigator
 import com.chrynan.video.parcel.model.getScreen
 import com.chrynan.video.parcel.model.putScreen
+import com.chrynan.video.ui.fragment.NewServiceProviderFragment
+import com.chrynan.video.ui.fragment.ServiceProviderDetailsFragment
 import com.chrynan.video.ui.fragment.ServiceProviderListFragment
 
 class ServiceProviderActivity : BaseActivity(),
@@ -41,10 +43,8 @@ class ServiceProviderActivity : BaseActivity(),
 
     override fun goToServiceList() = goToFragment(ServiceProviderListFragment.newInstance())
 
-    override fun goToAddNewService() {
-    }
+    override fun goToAddNewService() = goToFragment(NewServiceProviderFragment.newInstance())
 
-    override fun goToServiceDetails(providerUri: UriString) {
-
-    }
+    override fun goToServiceDetails(providerUri: UriString) =
+        goToFragment(ServiceProviderDetailsFragment.newInstance(providerUri))
 }

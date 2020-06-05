@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chrynan.common.model.core.UriString
 import com.chrynan.video.ui.view.ServiceProviderDetailsView
 import com.chrynan.video.R
 import com.chrynan.video.navigator.ServiceProviderDetailsNavigator
@@ -16,7 +17,7 @@ class ServiceProviderDetailsFragment : BaseFragment(),
 
     companion object {
 
-        fun newInstance() = ServiceProviderDetailsFragment()
+        fun newInstance(providerUri: UriString) = ServiceProviderDetailsFragment()
     }
 
     @Inject

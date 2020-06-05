@@ -66,6 +66,9 @@ class SettingsFragment : BaseFragment(),
     override fun goToServiceProviderList() =
         startActivitySafely { ServiceProviderActivity.newIntent(it, ServiceProviderScreen.List) }
 
+    override fun goToAddNewServiceProvider() =
+        startActivitySafely { ServiceProviderActivity.newIntent(it, ServiceProviderScreen.New) }
+
     override fun onSettingsItemSelected(type: SettingsItemViewModel.SettingsType) {
         if (type == SettingsItemViewModel.SettingsType.SERVICES) goToServiceProviderList()
     }

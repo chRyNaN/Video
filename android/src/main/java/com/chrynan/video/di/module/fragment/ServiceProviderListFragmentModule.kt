@@ -93,4 +93,8 @@ internal abstract class ServiceProviderListFragmentModule {
     @FragmentScope
     @ServiceProviderListQualifier.ItemListUpdater
     abstract fun bindUpdateListener(@ServiceProviderListQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
+
+    @Binds
+    @FragmentScope
+    abstract fun bindServiceProviderListItemSelectedListener(fragment: ServiceProviderListFragment): ServiceProviderListItemAdapter.ServiceProviderListItemSelectedListener
 }

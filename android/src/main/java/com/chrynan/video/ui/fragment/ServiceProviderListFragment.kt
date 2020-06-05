@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
 import com.chrynan.video.di.qualifier.ServiceProviderListQualifier
 import com.chrynan.video.navigator.ServiceProviderListNavigator
 import com.chrynan.video.presenter.ServiceProviderListPresenter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.provider.ServiceProviderListItemAdapter
 import com.chrynan.video.ui.view.ServiceProviderListView
+import com.chrynan.video.viewmodel.ServiceProviderListItemViewModel
 import kotlinx.android.synthetic.main.fragment_service_provider_list.*
 import javax.inject.Inject
 
 class ServiceProviderListFragment : BaseFragment(),
     ServiceProviderListView,
-    ServiceProviderListNavigator {
+    ServiceProviderListNavigator,
+    ServiceProviderListItemAdapter.ServiceProviderListItemSelectedListener {
 
     companion object {
 
@@ -46,8 +50,16 @@ class ServiceProviderListFragment : BaseFragment(),
         serviceProviderListRecyclerView?.adapter = managerAdapter
         serviceProviderListRecyclerView?.layoutManager = linearLayoutManager
 
-        serviceProviderListFAB?.setOnClickListener { }
+        serviceProviderListFAB?.setOnClickListener { goToAddNewService() }
 
         presenter.loadItems()
     }
+
+    override fun goToAddNewService() = goToFragment(NewServiceProviderFragment.newInstance())
+
+    override fun goToServiceDetails(providerUri: UriString) =
+        goToFragment(ServiceProviderDetailsFragment.newInstance(providerUri))
+
+    override fun onServiceProviderListItemSelected(item: ServiceProviderListItemViewModel) =
+        goToServiceDetails(item.uri)
 }

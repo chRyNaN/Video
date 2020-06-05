@@ -79,4 +79,6 @@
 
     <dimen name="collapsible_toolbar_expanded_appbar_height">128dp</dimen>
 
+    <dimen name="provider_thumbnail_image_size">36dp</dimen>
+
 </resources>

@@ -10,7 +10,7 @@
     android:paddingEnd="@dimen/spacing_horizontal_default"
     android:paddingBottom="@dimen/spacing_vertical_default">
 
-    <com.chrynan.video.ui.widget.ChannelThumbnailWidget
+    <com.chrynan.video.ui.widget.ThumbnailImageWidget
         android:id="@+id/adapterChannelListItemCircleImageView"
         android:layout_width="@dimen/channel_list_item_image_size"
         android:layout_height="@dimen/channel_list_item_image_size"
