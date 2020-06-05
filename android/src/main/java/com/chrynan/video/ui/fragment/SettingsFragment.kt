@@ -8,14 +8,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.SettingsView
 import com.chrynan.video.R
 import com.chrynan.video.di.qualifier.SettingsQualifier
+import com.chrynan.video.model.ServiceProviderScreen
+import com.chrynan.video.navigator.SettingsNavigator
 import com.chrynan.video.presenter.SettingsPresenter
+import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.SettingsListDecorator
+import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
+import com.chrynan.video.viewmodel.SettingsItemViewModel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
 
 class SettingsFragment : BaseFragment(),
-    SettingsView {
+    SettingsView,
+    SettingsNavigator,
+    SettingsItemAdapter.SettingsItemSelectedListener {
 
     companion object {
 
@@ -54,5 +61,12 @@ class SettingsFragment : BaseFragment(),
         }
 
         presenter.getSettings()
+    }
+
+    override fun goToServiceProviderList() =
+        startActivitySafely { ServiceProviderActivity.newIntent(it, ServiceProviderScreen.List) }
+
+    override fun onSettingsItemSelected(type: SettingsItemViewModel.SettingsType) {
+        if (type == SettingsItemViewModel.SettingsType.SERVICES) goToServiceProviderList()
     }
 }

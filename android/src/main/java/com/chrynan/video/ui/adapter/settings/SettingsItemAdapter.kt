@@ -16,8 +16,10 @@ import kotlinx.android.synthetic.main.adapter_settings_item.view.*
 import javax.inject.Inject
 
 @Adapter
-class SettingsItemAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<SettingsItemViewModel>(dispatchers) {
+class SettingsItemAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val listener: SettingsItemSelectedListener
+) : BaseAdapter<SettingsItemViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(SettingsItemAdapter::class.java)
 
@@ -27,7 +29,7 @@ class SettingsItemAdapter @Inject constructor(dispatchers: CoroutineDispatchers)
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: ViewType
-    ) = inflater.inflate(R.layout.adapter_settings_item, parent, false)
+    ): View = inflater.inflate(R.layout.adapter_settings_item, parent, false)
 
     override fun View.onBindItem(item: SettingsItemViewModel, position: Int) {
         adapterSettingsItemTitleTextView?.text = item.title
@@ -48,9 +50,12 @@ class SettingsItemAdapter @Inject constructor(dispatchers: CoroutineDispatchers)
         adapterSettingsItemDescriptionTextView?.text = item.description
 
         if (item.isSelectable) {
-            setOnClickListener {
-                // TODO
-            }
+            setOnClickListener { listener.onSettingsItemSelected(type = item.type) }
         }
+    }
+
+    interface SettingsItemSelectedListener {
+
+        fun onSettingsItemSelected(type: SettingsItemViewModel.SettingsType)
     }
 }

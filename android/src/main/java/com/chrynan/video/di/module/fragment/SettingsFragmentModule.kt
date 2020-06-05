@@ -6,6 +6,7 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.SettingsQualifier
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.navigator.SettingsNavigator
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
@@ -97,6 +98,14 @@ internal abstract class SettingsFragmentModule {
 
     @Binds
     @FragmentScope
+    abstract fun bindSettingsNavigator(fragment: SettingsFragment): SettingsNavigator
+
+    @Binds
+    @FragmentScope
     @SettingsQualifier.ItemListUpdater
     abstract fun bindUpdateListener(@SettingsQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
+
+    @Binds
+    @FragmentScope
+    abstract fun bindSettingsItemSelectedListener(fragment: SettingsFragment): SettingsItemAdapter.SettingsItemSelectedListener
 }

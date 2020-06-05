@@ -1,6 +1,7 @@
 package com.chrynan.video.di.module
 
 import com.chrynan.video.di.module.activity.MainActivityModule
+import com.chrynan.video.di.module.activity.ServiceProviderActivityModule
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.activity.ServiceProviderActivity
@@ -15,6 +16,6 @@ internal abstract class ActivityModule {
     abstract fun mainActivityInjector(): MainActivity
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [ServiceProviderActivity::class])
+    @ContributesAndroidInjector(modules = [ServiceProviderActivityModule::class])
     abstract fun serviceProviderActivityInjector(): ServiceProviderActivity
 }

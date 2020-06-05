@@ -9,6 +9,7 @@ import com.chrynan.video.model.ServiceProviderScreen
 import com.chrynan.video.navigator.ServiceProviderNavigator
 import com.chrynan.video.parcel.model.getScreen
 import com.chrynan.video.parcel.model.putScreen
+import com.chrynan.video.ui.fragment.ServiceProviderListFragment
 
 class ServiceProviderActivity : BaseActivity(),
     ServiceProviderNavigator {
@@ -31,12 +32,14 @@ class ServiceProviderActivity : BaseActivity(),
 
         val screen = intent?.getScreen(KEY_SCREEN) ?: ServiceProviderScreen.List
 
-
+        when (screen) {
+            is ServiceProviderScreen.List -> goToServiceList()
+            is ServiceProviderScreen.New -> goToAddNewService()
+            is ServiceProviderScreen.Details -> goToServiceDetails(screen.providerUri)
+        }
     }
 
-    override fun goToServiceList() {
-
-    }
+    override fun goToServiceList() = goToFragment(ServiceProviderListFragment.newInstance())
 
     override fun goToAddNewService() {
     }
