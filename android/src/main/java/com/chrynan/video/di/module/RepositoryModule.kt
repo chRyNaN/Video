@@ -3,10 +3,12 @@ package com.chrynan.video.di.module
 import com.chrynan.common.api.WebApi
 import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.repository.FeedItemRepository
-import com.chrynan.common.repository.ServiceRepository
+import com.chrynan.common.repository.ServiceProviderRepository
+import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
 import com.chrynan.common.repository.source.FeedItemRepositorySource
+import com.chrynan.common.repository.source.ServiceProviderSource
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
-import com.chrynan.video.database.source.ServiceRepositorySource
+import com.chrynan.video.database.source.ServiceProviderDatabaseSource
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -23,7 +25,7 @@ internal abstract class RepositoryModule {
         @OptIn(ExperimentalCoroutinesApi::class)
         fun provideFeedItemRepository(
             webApi: WebApi,
-            serviceRepository: ServiceRepository,
+            serviceRepository: ServiceProviderDatabaseRepository,
             mapper: FeedResultItemMapper,
             coroutineScope: RepositoryCoroutineScope
         ): FeedItemRepository = FeedItemRepositorySource(
@@ -35,5 +37,8 @@ internal abstract class RepositoryModule {
     }
 
     @Binds
-    abstract fun bindServiceRepository(source: ServiceRepositorySource): ServiceRepository
+    abstract fun bindServiceDatabaseRepository(source: ServiceProviderDatabaseSource): ServiceProviderDatabaseRepository
+
+    @Binds
+    abstract fun bindServiceRepository(source: ServiceProviderSource): ServiceProviderRepository
 }

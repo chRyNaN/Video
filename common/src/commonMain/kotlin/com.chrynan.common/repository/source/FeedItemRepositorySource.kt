@@ -6,7 +6,7 @@ import com.chrynan.common.model.core.PageInfo
 import com.chrynan.common.model.core.UriString
 import com.chrynan.common.model.result.FeedResultItem
 import com.chrynan.common.repository.FeedItemRepository
-import com.chrynan.common.repository.ServiceRepository
+import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
 import com.chrynan.logger.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.onStart
 @ExperimentalCoroutinesApi
 class FeedItemRepositorySource(
     private val webApi: WebApi,
-    private val serviceRepository: ServiceRepository,
+    private val serviceRepository: ServiceProviderDatabaseRepository,
     private val mapper: FeedResultItemMapper,
     private val coroutineScope: CoroutineScope
 ) : FeedItemRepository {

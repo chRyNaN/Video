@@ -47,5 +47,7 @@ class ServiceProviderListFragment : BaseFragment(),
         serviceProviderListRecyclerView?.layoutManager = linearLayoutManager
 
         serviceProviderListFAB?.setOnClickListener { }
+
+        presenter.loadItems()
     }
 }

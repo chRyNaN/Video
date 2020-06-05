@@ -1,31 +1,31 @@
 package com.chrynan.video.database.source
 
-import com.chrynan.common.model.Service
+import com.chrynan.common.model.ServiceProvider
 import com.chrynan.common.model.core.UriString
-import com.chrynan.common.repository.ServiceRepository
-import com.chrynan.video.database.dao.DbServiceDao
+import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
+import com.chrynan.video.database.dao.DbServiceProviderDao
 import com.chrynan.video.database.mapper.DbServiceFromServiceMapper
 import com.chrynan.video.database.mapper.DbServiceToServiceMapper
 import javax.inject.Inject
 
-class ServiceRepositorySource @Inject constructor(
-    private val dao: DbServiceDao,
+class ServiceProviderDatabaseSource @Inject constructor(
+    private val dao: DbServiceProviderDao,
     private val toDbServiceMapper: DbServiceFromServiceMapper,
     private val toServiceMapper: DbServiceToServiceMapper
-) : ServiceRepository {
+) : ServiceProviderDatabaseRepository {
 
-    override suspend fun getAll(): List<Service> = dao.getAll().map { toServiceMapper.map(it) }
+    override suspend fun getAll(): List<ServiceProvider> = dao.getAll().map { toServiceMapper.map(it) }
 
-    override suspend fun getByProviderUri(providerUri: UriString): Service? =
+    override suspend fun getByProviderUri(providerUri: UriString): ServiceProvider? =
         dao.getByProviderUri(providerUri)?.let { toServiceMapper.map(it) }
 
-    override suspend fun insert(model: Service) {
+    override suspend fun insert(model: ServiceProvider) {
         val dbModel = toDbServiceMapper.map(model)
 
         dao.insert(dbModel)
     }
 
-    override suspend fun update(model: Service) {
+    override suspend fun update(model: ServiceProvider) {
         val dbModel = toDbServiceMapper.map(model)
 
         dao.update(dbModel)
