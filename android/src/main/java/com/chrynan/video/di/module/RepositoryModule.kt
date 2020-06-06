@@ -3,9 +3,11 @@ package com.chrynan.video.di.module
 import com.chrynan.common.api.WebApi
 import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.repository.FeedItemRepository
+import com.chrynan.common.repository.LoginInfoRepository
 import com.chrynan.common.repository.ServiceProviderRepository
 import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
 import com.chrynan.common.repository.source.FeedItemRepositorySource
+import com.chrynan.common.repository.source.LoginInfoRepositorySource
 import com.chrynan.common.repository.source.ServiceProviderSource
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
 import com.chrynan.video.database.source.ServiceProviderDatabaseSource
@@ -41,4 +43,7 @@ internal abstract class RepositoryModule {
 
     @Binds
     abstract fun bindServiceRepository(source: ServiceProviderSource): ServiceProviderRepository
+
+    @Binds
+    abstract fun bindLoginInfoRepository(source: LoginInfoRepositorySource): LoginInfoRepository
 }

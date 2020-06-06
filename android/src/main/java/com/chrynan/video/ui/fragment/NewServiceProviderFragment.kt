@@ -39,6 +39,12 @@ class NewServiceProviderFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        newServiceProviderMainActionButton?.setOnClickListener {
+            presenter.handleProviderUriTest(
+                providerUri = newServiceProviderTextInputEditText?.text?.toString()
+            )
+        }
+
         newServiceProviderTextInputEditText.textChanges()
             .filterUntilFirstChange()
             .map { it?.charSequence?.toString() }

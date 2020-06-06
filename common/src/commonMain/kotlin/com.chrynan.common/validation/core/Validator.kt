@@ -1,6 +1,6 @@
 package com.chrynan.common.validation.core
 
-interface Validator<T> {
+interface Validator<T, R> {
 
-    operator fun invoke(input: T): ValidationResult
+    operator fun invoke(input: T): ValidationResult<R>
 }

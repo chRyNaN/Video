@@ -1,17 +1,17 @@
 package com.chrynan.common.validation.core
 
-sealed class ValidationResult {
+sealed class ValidationResult<T> {
 
-    object Valid : ValidationResult()
+    class Valid<T>(val value: T) : ValidationResult<T>()
 
-    class Invalid(vararg val errors: ValidationError) : ValidationResult()
+    class Invalid<T>(vararg val errors: ValidationError) : ValidationResult<T>()
 }
 
-val ValidationResult.isValid
+val <T> ValidationResult<T>.isValid
     get() = this is ValidationResult.Valid
 
-val ValidationResult.isInvalid
+val <T> ValidationResult<T>.isInvalid
     get() = this is ValidationResult.Invalid
 
-operator fun ValidationResult.contains(error: ValidationError): Boolean =
+operator fun <T> ValidationResult<T>.contains(error: ValidationError): Boolean =
     this is ValidationResult.Invalid && errors.contains(error)

@@ -71,10 +71,8 @@ fun TextView?.textChanges(): Flow<TextChange?> {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            Logger.logWarning(message = "TEST: onTextChanged: s = $s")
             mutableStateFlow.value =
                 TextChange(charSequence = s, start = start, count = count, before = before)
-            Logger.logWarning(message = "TEST: onTextChanged: mutableStateFlow.value = ${mutableStateFlow.value}")
         }
     }
 

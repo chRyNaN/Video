@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
     android:paddingStart="@dimen/spacing_horizontal_default"
     android:paddingTop="@dimen/spacing_vertical_default"
     android:paddingEnd="@dimen/spacing_horizontal_default"

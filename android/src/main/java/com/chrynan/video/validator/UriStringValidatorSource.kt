@@ -22,18 +22,18 @@ class UriStringValidatorSource @Inject constructor() : UriStringValidator {
         )
     }
 
-    override fun invoke(input: UriString?): ValidationResult {
+    override fun invoke(input: UriString?): ValidationResult<UriString> {
         if (input.isNullOrBlank()) return ValidationResult.Invalid(EmptyUriStringError)
 
         val trimmedInput = input.trim()
 
         val isWebUrl = Patterns.WEB_URL.matcher(trimmedInput).matches()
 
-        if (isWebUrl) return ValidationResult.Valid
+        if (isWebUrl) return ValidationResult.Valid(value = trimmedInput)
 
         val isValidUri = URI_REGEX.matches(trimmedInput)
 
-        return if (isValidUri) ValidationResult.Valid else ValidationResult.Invalid(
+        return if (isValidUri) ValidationResult.Valid(value = trimmedInput) else ValidationResult.Invalid(
             InvalidUriStringError
         )
     }
