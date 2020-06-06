@@ -81,4 +81,7 @@
 
     <dimen name="provider_thumbnail_image_size">36dp</dimen>
 
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="button_min_width">120dp</dimen>
+
 </resources>

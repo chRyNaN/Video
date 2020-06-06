@@ -45,4 +45,15 @@
     <string name="service_provider_list_add_new_label">Add New</string>
     <string name="service_provider_list_empty_text">There are no Service Providers. Add one to begin watching videos.</string>
 
+    <string name="new_service_provider_toolbar_title">Add Service</string>
+    <string name="new_service_provider_button_add">Add</string>
+    <string name="new_service_provider_button_sign_in">Sign In</string>
+    <string name="new_service_provider_description_optional_sign_in">Service Provider was added. Sign In for more content.</string>
+    <string name="new_service_provider_description_required_sign_in">Sign In required to add service provider.</string>
+    <string name="new_service_provider_hint">example.com</string>
+    <string name="new_service_provider_label">Service Provider URI</string>
+    <string name="new_service_provider_error_empty">Service Provider URI must not be empty.</string>
+    <string name="new_service_provider_error_invalid">Enter a valid Service Provider URI.</string>
+    <string name="new_service_provider_error_no_api">The entered URI does not implement the Service Provider API.</string>
+
 </resources>

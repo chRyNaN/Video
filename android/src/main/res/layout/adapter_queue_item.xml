@@ -4,7 +4,7 @@
     android:id="@+id/queueItemContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/background_queue_item_color">
+    android:backgroundTint="@color/bg_queue_item_color">
 
     <ImageView
         android:id="@+id/adapterQueueVideoImageView"

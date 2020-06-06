@@ -6,6 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorError">@color/error_color</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="colorSurface">@color/primary_very_dark_color</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
         <item name="android:windowBackground">@color/background_dark_color</item>
         <item name="android:popupMenuStyle">@style/PopupMenu</item>
         <item name="android:textAppearanceLargePopupMenu">@style/TextAppearance.Title</item>
@@ -111,8 +120,31 @@
         <item name="checkedIcon">@null</item>
     </style>
 
-    <!-- Subscribe Button -->
+    <!-- Default Button -->
 
+    <style name="DefaultButton" parent="Widget.MaterialComponents.Button">
+        <item name="singleLine">true</item>
+        <item name="maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button</item>
+        <item name="android:background">@drawable/bg_default_button</item>
+        <item name="android:backgroundTint">@color/bg_button_default_color</item>
+        <item name="android:tint">@color/text_button_default_color</item>
+        <item name="android:minWidth">@dimen/button_min_width</item>
+        <item name="android:textColor">@color/text_button_default_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="tint">@color/text_button_default_color</item>
+        <item name="backgroundTint">@color/bg_button_default_color</item>
+    </style>
+
+    <!-- Accent Button -->
+    <style name="AccentButton" parent="DefaultButton">
+        <item name="android:backgroundTint">@color/bg_button_accent_color</item>
+        <item name="backgroundTint">@color/bg_button_accent_color</item>
+    </style>
+
+    <!-- Subscribe Button -->
     <style name="SubscribeButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textAppearance">@style/TextAppearance.Button.Accent.Secondary</item>
         <item name="android:textColor">@color/button_subscription_text_color</item>
@@ -134,7 +166,6 @@
     </style>
 
     <!-- CollapsingToolbarLayout -->
-
     <style name="CollapsingToolbarLayout">
         <item name="android:fitsSystemWindows">true</item>
         <item name="contentScrim">?attr/colorPrimary</item>
@@ -144,5 +175,20 @@
         <item name="expandedTitleTextAppearance">@style/TextAppearance.H5</item>
         <item name="expandedTitleMargin">@dimen/spacing_small</item>
     </style>
+
+    <!-- Text Input Layout -->
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
+        <item name="hintTextAppearance">@style/TextAppearance.Caption</item>
+        <item name="errorTextAppearance">@style/TextAppearance.Caption</item>
+        <item name="backgroundColor">@color/text_input_background_color</item>
+        <item name="android:textColorHint">@color/text_input_expanded_hint_color</item>
+        <item name="hintTextColor">@color/text_input_collapsed_hint_color</item>
+        <item name="android:textColor">@color/text_input_text_color</item>
+        <item name="boxStrokeColor">@color/text_input_box_stroke_color</item>
+        <item name="boxStrokeErrorColor">@color/text_input_box_stroke_error_color</item>
+        <item name="errorTextColor">@color/error_color</item>
+    </style>
+
 
 </resources>

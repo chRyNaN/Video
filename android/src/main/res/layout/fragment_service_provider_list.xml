@@ -23,7 +23,8 @@
         android:gravity="center_horizontal"
         android:singleLine="false"
         android:text="@string/service_provider_list_empty_text"
-        android:textAppearance="@style/TextAppearance.SubHeader" />
+        android:textAppearance="@style/TextAppearance.SubHeader"
+        android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/serviceProviderListAppBarLayout"
@@ -43,7 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_medium"
         android:text="@string/service_provider_list_add_new_label"
         app:icon="@drawable/ic_fab_add" />
 
