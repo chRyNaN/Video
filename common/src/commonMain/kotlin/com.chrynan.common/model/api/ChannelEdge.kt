@@ -1,10 +1,12 @@
 package com.chrynan.common.model.api
 
-import com.chrynan.common.model.api.Channel
 import com.chrynan.common.model.core.Cursor
 import com.chrynan.common.model.core.Edge
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ChannelEdge(
-    override val cursor: Cursor,
-    override val node: Channel
+    @SerialName(value = "cursor") override val cursor: Cursor,
+    @SerialName(value = "node") override val node: Channel
 ) : Edge<Channel>

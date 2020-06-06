@@ -1,5 +1,6 @@
 type Query {
     apiVersion: String!
+    login: LoginInfo!
     provider: Provider!
     viewer: Viewer!
     search(query: String!, take: Int!, after: Cursor): SearchResultConnection!

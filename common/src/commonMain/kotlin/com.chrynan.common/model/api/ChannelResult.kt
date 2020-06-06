@@ -1,6 +1,10 @@
 package com.chrynan.common.model.api
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ChannelResult(
-    val channel: Channel,
-    val provider: Provider
+    @SerialName(value = "channel") val channel: Channel,
+    @SerialName(value = "provider") val provider: Provider
 )

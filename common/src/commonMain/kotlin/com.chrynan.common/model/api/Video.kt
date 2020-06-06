@@ -1,25 +1,28 @@
 package com.chrynan.common.model.api
 
 import com.chrynan.common.model.core.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Video(
-    override val id: ID,
-    override val created: Moment,
-    override val lastUpdated: Moment,
-    val published: Moment,
-    val uri: UriString,
-    val name: String,
-    val description: String? = null,
-    val about: String? = null,
-    val previewImage: UriString? = null,
-    val category: String? = null,
-    val tags: List<String> = emptyList(),
-    val viewCount: Long? = null,
-    val isLive: Boolean = false,
-    val lengthInMilliseconds: Long,
-    val streamType: VideoStreamType = VideoStreamType.PROGRESSIVE,
-    val standaloneSubtitles: List<Subtitle> = emptyList(),
-    val drmInfo: DrmInfo,
-    val actions: List<VideoAction> = emptyList()
+    @SerialName(value = "id") override val id: ID,
+    @SerialName(value = "created") override val created: Moment,
+    @SerialName(value = "lastUpdated") override val lastUpdated: Moment,
+    @SerialName(value = "published") val published: Moment,
+    @SerialName(value = "uri") val uri: UriString,
+    @SerialName(value = "name") val name: String,
+    @SerialName(value = "description") val description: String? = null,
+    @SerialName(value = "about") val about: String? = null,
+    @SerialName(value = "previewImage") val previewImage: UriString? = null,
+    @SerialName(value = "category") val category: String? = null,
+    @SerialName(value = "tags") val tags: List<String> = emptyList(),
+    @SerialName(value = "viewCount") val viewCount: Long? = null,
+    @SerialName(value = "isLive") val isLive: Boolean = false,
+    @SerialName(value = "lengthInMilliseconds") val lengthInMilliseconds: Long,
+    @SerialName(value = "streamType") val streamType: VideoStreamType = VideoStreamType.PROGRESSIVE,
+    @SerialName(value = "standaloneSubtitles") val standaloneSubtitles: List<Subtitle> = emptyList(),
+    @SerialName(value = "drmInfo") val drmInfo: DrmInfo,
+    @SerialName(value = "actions") val actions: List<VideoAction> = emptyList()
 ) : Node,
     TimeDetail

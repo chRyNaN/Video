@@ -1,0 +1,11 @@
+type LoginInfo {
+    type: LoginType!
+    loginUri: UriString
+    requestId: ID
+}
+
+enum LoginType {
+    REQUIRED
+    OPTIONAL
+    NONE
+}
