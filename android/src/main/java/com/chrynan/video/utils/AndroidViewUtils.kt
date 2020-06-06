@@ -4,6 +4,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
+import com.chrynan.common.utils.onError
+import com.chrynan.common.utils.onFirstEmit
+import com.chrynan.logger.Logger
 import com.chrynan.video.ui.view.SnackbarView
 import com.chrynan.video.R
 import com.google.android.material.snackbar.Snackbar
@@ -49,10 +52,17 @@ fun snackbarOf(
     }
 }
 
-fun TextView?.textChanges(): Flow<CharSequence?> {
+data class TextChange(
+    val charSequence: CharSequence? = null,
+    val start: Int = 0,
+    val before: Int = 0,
+    val count: Int = charSequence?.length ?: 0
+)
+
+fun TextView?.textChanges(): Flow<TextChange?> {
     if (this == null) return emptyFlow()
 
-    val mutableStateFlow = MutableStateFlow(text)
+    val mutableStateFlow = MutableStateFlow(TextChange(charSequence = text))
 
     val textWatcher = object : TextWatcher {
 
@@ -61,7 +71,10 @@ fun TextView?.textChanges(): Flow<CharSequence?> {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            mutableStateFlow.value = s
+            Logger.logWarning(message = "TEST: onTextChanged: s = $s")
+            mutableStateFlow.value =
+                TextChange(charSequence = s, start = start, count = count, before = before)
+            Logger.logWarning(message = "TEST: onTextChanged: mutableStateFlow.value = ${mutableStateFlow.value}")
         }
     }
 

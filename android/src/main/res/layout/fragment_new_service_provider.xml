@@ -46,7 +46,7 @@
             android:id="@+id/newServiceProviderTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textUri" />
+            android:inputType="textUri|textWebEmailAddress|textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

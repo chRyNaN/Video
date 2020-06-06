@@ -1,6 +1,7 @@
 package com.chrynan.video.presenter
 
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.common.model.core.UriString
 import com.chrynan.common.validation.core.ValidationResult
 import com.chrynan.common.validation.core.contains
 import com.chrynan.common.validation.error.EmptyUriStringError
@@ -31,5 +32,9 @@ class NewServiceProviderPresenter @Inject constructor(
             result.contains(EmptyUriStringError) -> view.showProviderUriInvalid(errorEmptyText)
             result.contains(InvalidUriStringError) -> view.showProviderUriInvalid(errorInvalidText)
         }
+    }
+
+    fun handleProviderUriTest(providerUri: UriString?) {
+
     }
 }
