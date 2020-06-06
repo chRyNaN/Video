@@ -7,10 +7,7 @@ import android.widget.TextView
 import com.chrynan.video.ui.view.SnackbarView
 import com.chrynan.video.R
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.*
 
 fun snackbarOf(
     view: View?,
@@ -52,7 +49,9 @@ fun snackbarOf(
     }
 }
 
-fun TextView.textChanges(): Flow<CharSequence?> {
+fun TextView?.textChanges(): Flow<CharSequence?> {
+    if (this == null) return emptyFlow()
+
     val mutableStateFlow = MutableStateFlow(text)
 
     val textWatcher = object : TextWatcher {

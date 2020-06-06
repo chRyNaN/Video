@@ -12,3 +12,6 @@ val ValidationResult.isValid
 
 val ValidationResult.isInvalid
     get() = this is ValidationResult.Invalid
+
+operator fun ValidationResult.contains(error: ValidationError): Boolean =
+    this is ValidationResult.Invalid && errors.contains(error)
