@@ -5,6 +5,7 @@ import com.chrynan.video.di.module.AppModule
 import com.chrynan.video.di.module.DatabaseModule
 import com.chrynan.video.di.module.MediaModule
 import com.chrynan.video.di.module.RepositoryModule
+import com.chrynan.video.di.module.ValidatorModule
 import com.chrynan.video.di.module.WebModule
 import com.chrynan.video.ui.VideoApplication
 import dagger.BindsInstance
@@ -22,6 +23,7 @@ import javax.inject.Singleton
         WebModule::class,
         RepositoryModule::class,
         DatabaseModule::class,
+        ValidatorModule::class,
         AndroidSupportInjectionModule::class
     ]
 )
