@@ -47,6 +47,7 @@
         android:layout_marginEnd="@dimen/spacing_small"
         android:layout_marginBottom="@dimen/spacing_medium"
         android:text="@string/service_provider_list_add_new_label"
-        app:icon="@drawable/ic_fab_add" />
+        app:icon="@drawable/ic_fab_add"
+        app:layout_behavior=".ui.widget.behavior.ExtendedFabBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
