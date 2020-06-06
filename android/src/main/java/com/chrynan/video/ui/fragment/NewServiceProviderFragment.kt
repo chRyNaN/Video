@@ -10,6 +10,7 @@ import com.chrynan.video.R
 import com.chrynan.video.navigator.NewServiceProviderNavigator
 import com.chrynan.video.presenter.NewServiceProviderPresenter
 import com.chrynan.video.ui.view.NewServiceProviderView
+import com.chrynan.video.utils.onEnterPressed
 import com.chrynan.video.utils.textChanges
 import kotlinx.android.synthetic.main.fragment_new_service_provider.*
 import kotlinx.coroutines.flow.catch
@@ -40,6 +41,12 @@ class NewServiceProviderFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         newServiceProviderMainActionButton?.setOnClickListener {
+            presenter.handleProviderUriTest(
+                providerUri = newServiceProviderTextInputEditText?.text?.toString()
+            )
+        }
+
+        newServiceProviderTextInputEditText?.onEnterPressed {
             presenter.handleProviderUriTest(
                 providerUri = newServiceProviderTextInputEditText?.text?.toString()
             )

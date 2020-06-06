@@ -2,15 +2,16 @@ package com.chrynan.video.utils
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
-import com.chrynan.common.utils.onError
-import com.chrynan.common.utils.onFirstEmit
-import com.chrynan.logger.Logger
-import com.chrynan.video.ui.view.SnackbarView
 import com.chrynan.video.R
+import com.chrynan.video.ui.view.SnackbarView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.onCompletion
 
 fun snackbarOf(
     view: View?,
@@ -80,4 +81,18 @@ fun TextView?.textChanges(): Flow<TextChange?> {
 
     return mutableStateFlow
         .onCompletion { removeTextChangedListener(textWatcher) }
+}
+
+fun TextView?.onEnterPressed(action: () -> Unit) {
+    this?.setOnKeyListener(object : View.OnKeyListener {
+        override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
+            if (event.action == KeyEvent.ACTION_DOWN && (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER)) {
+                action()
+
+                return true
+            }
+
+            return false
+        }
+    })
 }
