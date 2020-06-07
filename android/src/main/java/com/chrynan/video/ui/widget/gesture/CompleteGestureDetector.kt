@@ -16,15 +16,7 @@ class CompleteGestureDetector(
 
     private val detector by lazy { GestureDetectorCompat(context, listener) }
 
-    fun onTouch(event: MotionEvent): Boolean {
-        val isUpEvent = event.action == MotionEvent.ACTION_UP
-
-        val isHandled = detector.onTouchEvent(event)
-
-        if (!isHandled && isUpEvent) return listener.onUp(event)
-
-        return isHandled
-    }
+    fun onTouch(event: MotionEvent?): Boolean = detector.onTouchEvent(event)
 
     interface CompleteGestureListener : GestureDetector.OnGestureListener {
 

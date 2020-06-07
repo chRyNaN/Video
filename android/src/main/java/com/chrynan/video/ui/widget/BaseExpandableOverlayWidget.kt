@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.constraintlayout.motion.widget.MotionLayout
+import com.chrynan.logger.Logger
 import com.chrynan.video.model.ResourceID
 import com.chrynan.video.ui.widget.gesture.CompleteGestureDetector
 import kotlin.math.absoluteValue
@@ -17,8 +18,7 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : MotionLayout(context, attrs, defStyleAttr),
-    CompleteGestureDetector.CompleteGestureListener {
+) : MotionLayout(context, attrs, defStyleAttr) {
 
     companion object {
 
@@ -53,8 +53,6 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
             }
         }
 
-    private val gestureDetector by lazy { CompleteGestureDetector(context, this) }
-
     private val interpolator by lazy { AccelerateDecelerateInterpolator() }
 
     private val maxVerticalMotionDistance: Float
@@ -85,92 +83,68 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
-        // We have to check this in both onTouchEvent and here in onInterceptTouchEvent, because
-        // while returning false from this function will allow lower Views on the z-axis to receive
-        // touch events, child views will delegate back up to the onTouchEvent function.
+        val isInBounds = isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
 
-        return isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
+        return when {
+            event.action == MotionEvent.ACTION_DOWN -> {
+                isScrolling = false
+                downY = event.rawY.roundToInt()
+                lastY = downY
+                downProgress = progress
+                downIsInBounds = isInBounds
+
+                false
+            }
+            (event.action == MotionEvent.ACTION_UP || event.action == MotionEvent.ACTION_CANCEL) -> {
+                if (isScrolling and !(isExpanded or isCollapsed)) {
+
+                    // Finish scrolling to either state
+                    val currentY = event.rawY.roundToInt()
+                    val isExpanding = currentY - downY < 0
+
+                    animateToTransitionState(isExpanding = isExpanding)
+                }
+
+                isScrolling = false
+                downIsInBounds = false
+
+                false
+            }
+            event.action == MotionEvent.ACTION_MOVE && isScrolling -> true
+            event.action == MotionEvent.ACTION_MOVE && downIsInBounds -> {
+                val currentY = event.rawY.roundToInt()
+
+                val rawDiff = currentY - downY
+
+                // The Android View Coordinate Plane begins at the top left corner and has increasing
+                // positive values going downward. So, a negative value means we are increasing.
+                val isExpanding = rawDiff < 0
+                val isCollapsing = rawDiff >= 0
+                val isPastTouchSlop = rawDiff.absoluteValue > touchSlop
+
+                // We shouldn't handle the scroll operation if we are expanding when we are already
+                // expanded or we are collapsing when we are already collapsed.
+                val shouldHandleScroll =
+                    ((isExpanding and !isExpanded) or (isCollapsing and !isCollapsed)) and isPastTouchSlop
+
+                shouldHandleScroll
+            }
+            else -> false
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        // We have to check this in both onInterceptTouchEvent and here in onTouchEvent, because
-        // while returning false from onInterceptTouchEvent will allow lower Views on the z-axis to
-        // receive touch events, child views will delegate back up to this function.
-        val isInBounds = isInExpandableWidgetBounds(x = event.x, y = event.y, progress = progress)
-
-        if (isInBounds && event.action == MotionEvent.ACTION_DOWN) {
-            downIsInBounds = true
-            return gestureDetector.onTouch(event)
-        } else if (!isInBounds && event.action == MotionEvent.ACTION_DOWN) {
-            downIsInBounds = false
-            return super.onTouchEvent(event)
-        }
-
-        if (downIsInBounds) {
-            if (event.action != MotionEvent.ACTION_MOVE) {
-                super.onTouchEvent(event)
-            }
-
-            return gestureDetector.onTouch(event)
-        }
-
-        return super.onTouchEvent(event)
-    }
-
-    override fun onDown(event: MotionEvent): Boolean {
-        isScrolling = false
-        downY = event.rawY.roundToInt()
-        lastY = downY
-        downProgress = progress
-
-        return true
-    }
-
-    override fun onUp(event: MotionEvent): Boolean {
-        if (isScrolling and !(isExpanded or isCollapsed)) {
-            // Finish scrolling to either state
+        if (event.action == MotionEvent.ACTION_MOVE) {
             val currentY = event.rawY.roundToInt()
-            val isExpanding = currentY - downY < 0
 
-            animateToTransitionState(isExpanding = isExpanding)
-        } else if (!isScrolling) {
-            // Only allow a click if we weren't dragging the card
-            val currentY = event.rawY.roundToInt()
-            val isExpanding = currentY - downY < 0
+            val rawDiff = currentY - downY
 
-            animateToTransitionState(isExpanding = isExpanding)
-        }
+            // The Android View Coordinate Plane begins at the top left corner and has increasing
+            // positive values going downward. So, a negative value means we are increasing.
+            val isExpanding = rawDiff < 0
+            val isCollapsing = rawDiff >= 0
 
-        isScrolling = false
-        downIsInBounds = false
-
-        return true
-    }
-
-    override fun onScroll(
-        event1: MotionEvent,
-        event2: MotionEvent,
-        distanceX: Float,
-        distanceY: Float
-    ): Boolean {
-        val currentY = event2.rawY.roundToInt()
-
-        val rawDiff = currentY - downY
-
-        // The Android View Coordinate Plane begins at the top left corner and has increasing
-        // positive values going downward. So, a negative value means we are increasing.
-        val isExpanding = rawDiff < 0
-        val isCollapsing = rawDiff >= 0
-        val isPastTouchSlop = rawDiff.absoluteValue > touchSlop
-
-        // We shouldn't handle the scroll operation if we are expanding when we are already
-        // expanded or we are collapsing when we are already collapsed.
-        val shouldHandleScroll =
-            ((isExpanding and !isExpanded) or (isCollapsing and !isCollapsed)) and isPastTouchSlop
-
-        // Avoids scrolling until we've moved a bit and we can scroll.
-        if (shouldHandleScroll) {
             lastY = currentY
             isScrolling = true
 
@@ -189,23 +163,25 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
             }
 
             progress = newProgress
+
+            return true
+        } else if (event.action == MotionEvent.ACTION_UP || event.action == MotionEvent.ACTION_CANCEL) {
+            if (isScrolling and !(isExpanded or isCollapsed)) {
+
+                // Finish scrolling to either state
+                val currentY = event.rawY.roundToInt()
+                val isExpanding = currentY - downY < 0
+
+                animateToTransitionState(isExpanding = isExpanding)
+            }
+
+            isScrolling = false
+            downIsInBounds = false
+
+            return true
         }
 
-        return true
-    }
-
-    override fun onFling(
-        event1: MotionEvent,
-        event2: MotionEvent,
-        velocityX: Float,
-        velocityY: Float
-    ): Boolean {
-        val currentY = event2.rawY.roundToInt()
-        val isExpanding = currentY - downY < 0
-
-        animateToTransitionState(isExpanding = isExpanding, velocity = velocityY)
-
-        return true
+        return super.onTouchEvent(event)
     }
 
     private fun animateToTransitionState(isExpanding: Boolean, velocity: Float = 1F) {
@@ -214,8 +190,8 @@ abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
         val velocityForDuration = velocity / 4F
 
         val endProgressValue = when {
-            isExpanding and (currentVerticalPosition - velocityForDuration > midVerticalPosition) -> PROGRESS_EXPANDED
-            !isExpanding and (currentVerticalPosition + velocityForDuration > midVerticalPosition) -> PROGRESS_COLLAPSED
+            isExpanding -> PROGRESS_EXPANDED
+            !isExpanding -> PROGRESS_COLLAPSED
             currentVerticalPosition < midVerticalPosition -> PROGRESS_COLLAPSED
             else -> PROGRESS_EXPANDED
         }
