@@ -96,4 +96,6 @@
     <!-- Collapsing Toolbar -->
     <color name="collapsing_toolbar_layout_scrim_color">@color/primary_very_dark_color</color>
 
+    <color name="bottom_sheet_background_color">@color/colorPrimary</color>
+
 </resources>

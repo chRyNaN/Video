@@ -88,4 +88,6 @@
 
     <dimen name="chip_elevation">2dp</dimen>
 
+    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
+
 </resources>

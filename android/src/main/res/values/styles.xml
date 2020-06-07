@@ -21,11 +21,21 @@
         <item name="android:textAppearanceSmallPopupMenu">@style/TextAppearance.Body</item>
         <item name="textAppearanceLargePopupMenu">@style/TextAppearance.Title</item>
         <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.Body</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="PopupMenu" parent="Base.Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/background_dark_secondary_color</item>
         <item name="android:textAppearance">@style/TextAppearance.Body</item>
+    </style>
+
+    <!-- Bottom Sheet Dialog -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
     </style>
 
     <!-- Slider -->
