@@ -1,4 +1,4 @@
-type Viewer implements Node, TimeDetail {
+type Viewer implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: Moment!
     lastUpdated: Moment!
@@ -10,7 +10,7 @@ type Viewer implements Node, TimeDetail {
     subscribedChannels(take: Int!, after: Cursor): ChannelConnection!
 }
 
-enum NamePreference {
+enum NamePreference @access(type: LOGIN_STRATEGY) {
     NAME
     EMAIL
     USERNAME

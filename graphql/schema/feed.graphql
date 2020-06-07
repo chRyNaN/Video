@@ -1,16 +1,16 @@
 union FeedItem = VideoFeedItem
 
-type VideoFeedItem {
+type VideoFeedItem @access(type: LOGIN_STRATEGY) {
     channel: Channel!
     video: Video!
 }
 
-type FeedEdge {
+type FeedEdge @access(type: LOGIN_STRATEGY) {
     cursor: Cursor!
     node: FeedItem!
 }
 
-type FeedConnection {
+type FeedConnection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
     totalCount: Int!
     edges: [FeedEdge!]!

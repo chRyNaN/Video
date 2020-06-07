@@ -1,0 +1,8 @@
+directive @access(
+    type: AccessType!
+) on OBJECT | FIELD_DEFINITION | INPUT_OBJECT | ENUM
+
+enum AccessType {
+    OPEN
+    LOGIN_STRATEGY
+}

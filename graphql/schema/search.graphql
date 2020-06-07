@@ -1,11 +1,11 @@
 union SearchResultItem = Video | Channel
 
-type SearchResultEdge {
+type SearchResultEdge @access(type: LOGIN_STRATEGY) {
     cursor: Cursor!
     node: SearchResultItem!
 }
 
-type SearchResultConnection {
+type SearchResultConnection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
     totalCount: Int!
     edges: [SearchResultEdge!]!

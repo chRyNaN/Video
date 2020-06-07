@@ -1,8 +1,8 @@
-type Query {
-    apiVersion: String!
-    login: LoginInfo!
-    provider: Provider!
-    viewer: Viewer!
-    search(query: String!, take: Int!, after: Cursor): SearchResultConnection!
-    feed(take: Int!, after: Cursor): FeedConnection!
+type Query @access(type: OPEN) {
+    apiVersion: String! @access(type: OPEN)
+    login: LoginInfo! @access(type: OPEN)
+    provider: Provider! @access(type: OPEN)
+    viewer: Viewer! @access(type: LOGIN_STRATEGY)
+    search(query: String!, take: Int!, after: Cursor): SearchResultConnection! @access(type: LOGIN_STRATEGY)
+    feed(take: Int!, after: Cursor): FeedConnection! @access(type: LOGIN_STRATEGY)
 }

@@ -1,16 +1,16 @@
-type ChannelConnection implements Connection {
+type ChannelConnection implements Connection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
     totalCount: Int!
     edges: [ChannelEdge!]!
     nodes: [Channel!]!
 }
 
-type ChannelEdge implements Edge {
+type ChannelEdge implements Edge @access(type: LOGIN_STRATEGY) {
     cursor: Cursor!
     node: Channel!
 }
 
-type Channel implements Node, TimeDetail {
+type Channel implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: Moment!
     lastUpdated: Moment!
@@ -28,17 +28,17 @@ type Channel implements Node, TimeDetail {
     video(id: ID!): Video
 }
 
-type ChannelImageInfo {
+type ChannelImageInfo @access(type: LOGIN_STRATEGY) {
     thumbnail: UriString
     banner: UriString
 }
 
-type ChannelCountInfo {
+type ChannelCountInfo @access(type: LOGIN_STRATEGY) {
     totalSubscribers: Int!
     totalVideoViews: Int!
 }
 
-type ChannelVideoListConnection implements Connection {
+type ChannelVideoListConnection implements Connection @access(type: LOGIN_STRATEGY) {
     id: ID!
     name: String!
     totalCount: Int!

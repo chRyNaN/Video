@@ -1,10 +1,10 @@
-type LoginInfo {
+type LoginInfo @access(type: OPEN) {
     type: LoginType!
     loginUri: UriString
     requestId: ID
 }
 
-enum LoginType {
+enum LoginType @access(type: OPEN) {
     REQUIRED
     OPTIONAL
     NONE

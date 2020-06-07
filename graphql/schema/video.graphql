@@ -1,16 +1,16 @@
-type VideoConnection implements Connection {
+type VideoConnection implements Connection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
     totalCount: Int!
     edges: [VideoEdge!]!
     nodes: [Video!]!
 }
 
-type VideoEdge implements Edge {
+type VideoEdge implements Edge @access(type: LOGIN_STRATEGY) {
     cursor: Cursor!
     node: Video!
 }
 
-type Video implements Node, TimeDetail {
+type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: Moment!
     lastUpdated: Moment!
@@ -32,7 +32,7 @@ type Video implements Node, TimeDetail {
     related(take: Int!, after: Cursor): VideoConnection!
 }
 
-enum VideoStreamType {
+enum VideoStreamType @access(type: LOGIN_STRATEGY) {
     PROGRESSIVE
     DASH
     SMOOTH_STREAMING
@@ -47,46 +47,46 @@ interface SelectableAction {
     isSelected: Boolean!
 }
 
-type DownloadAction implements VideoAction {
+type DownloadAction implements VideoAction @access(type: LOGIN_STRATEGY) {
     type: String!
     downloadUri: UriString!
 }
 
-type RatingUpAction implements VideoAction, SelectableAction {
+type RatingUpAction implements VideoAction, SelectableAction @access(type: LOGIN_STRATEGY) {
     type: String!
     isSelected: Boolean!
 }
 
-type RatingDownAction implements VideoAction, SelectableAction {
+type RatingDownAction implements VideoAction, SelectableAction @access(type: LOGIN_STRATEGY) {
     type: String!
     isSelected: Boolean!
 }
 
-type FlagAction implements VideoAction, SelectableAction {
+type FlagAction implements VideoAction, SelectableAction @access(type: LOGIN_STRATEGY) {
     type: String!
     isSelected: Boolean!
 }
 
-enum SelectableVideoActionType {
+enum SelectableVideoActionType @access(type: LOGIN_STRATEGY) {
     RATING_UP
     RATING_DOWN
     FLAG
 }
 
-type Subtitle {
+type Subtitle @access(type: LOGIN_STRATEGY) {
     locale: String!
     uri: UriString!
     format: SubtitleFormat!
 }
 
-enum SubtitleFormat {
+enum SubtitleFormat @access(type: LOGIN_STRATEGY) {
     WEB_VTT
     TTML
     SUB_RIP
     SUB_STATION_ALPHA
 }
 
-enum DrmScheme {
+enum DrmScheme @access(type: LOGIN_STRATEGY) {
     CENC
     CBCS
     CBC1
@@ -95,7 +95,7 @@ enum DrmScheme {
     PLAYREADY_SL2000
 }
 
-type DrmInfo {
+type DrmInfo @access(type: LOGIN_STRATEGY) {
     licenseServerUrl: UriString!
     scheme: DrmScheme!
     multiSession: Boolean!
