@@ -16,6 +16,7 @@ class ChannelHeaderMapper @Inject constructor() :
             subscriberCount = model.channel.count.totalSubscribers.toString(), // TODO update
             totalVideoViewCount = model.channel.count.totalVideoViews.toString(), // TODO update
             channelHeaderImage = model.channel.images.banner,
-            channelImage = model.channel.images.thumbnail
+            channelImage = model.channel.images.thumbnail,
+            isSubscribed = model.channel.isSubscribed
         )
 }

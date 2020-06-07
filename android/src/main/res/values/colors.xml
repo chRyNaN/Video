@@ -74,7 +74,7 @@
 
     <color name="channel_video_list_item_background_color">@color/primary_color</color>
 
-    <color name="collapsible_toolbar_background_color">@color/colorPrimary</color>
+    <color name="collapsible_toolbar_background_color">@color/primary_very_dark_color</color>
 
     <!-- Button -->
     <color name="button_default_background_enabled_color">@color/accent_one_color</color>
@@ -92,5 +92,8 @@
     <color name="text_input_expanded_hint_color">@color/accent_three_color</color>
     <color name="text_input_box_stroke_color">@color/accent_three_color</color>
     <color name="text_input_box_stroke_error_color">@color/error_color</color>
+
+    <!-- Collapsing Toolbar -->
+    <color name="collapsing_toolbar_layout_scrim_color">@color/primary_very_dark_color</color>
 
 </resources>

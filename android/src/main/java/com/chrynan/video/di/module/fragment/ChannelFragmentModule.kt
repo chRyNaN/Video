@@ -169,6 +169,10 @@ internal abstract class ChannelFragmentModule {
 
     @Binds
     @FragmentScope
+    abstract fun bindSubscribeButtonSelectedListener(fragment: ChannelFragment): ChannelHeaderAdapter.SubscribeButtonSelectedListener
+
+    @Binds
+    @FragmentScope
     @ChannelQualifier.ItemListUpdater
     abstract fun bindUpdateListener(@ChannelQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 

@@ -56,4 +56,6 @@
     <string name="new_service_provider_error_invalid">Enter a valid Service Provider URI.</string>
     <string name="new_service_provider_error_no_api">The entered URI does not implement the Service Provider API.</string>
 
+    <string name="channel_default_toolbar_title">Channel</string>
+
 </resources>

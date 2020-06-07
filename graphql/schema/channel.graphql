@@ -22,7 +22,8 @@ type Channel implements Node, TimeDetail {
     images: ChannelImageInfo!
     count: ChannelCountInfo!
     isSubscribed: Boolean!
-    lists(take: Int!, after: Cursor): [ChannelVideoListConnection!]!
+    lists: [ChannelVideoListConnection!]!
+    list(id: ID!, take: Int!, after: Cursor): ChannelVideoListConnection!
     videos(take: Int!, after: Cursor): VideoConnection!
     video(id: ID!): Video
 }
@@ -38,6 +39,7 @@ type ChannelCountInfo {
 }
 
 type ChannelVideoListConnection implements Connection {
+    id: ID!
     name: String!
     totalCount: Int!
     pageInfo: PageInfo!

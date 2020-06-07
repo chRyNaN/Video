@@ -10,7 +10,8 @@ data class ChannelHeaderViewModel(
     val subscriberCount: String,
     val totalVideoViewCount: String,
     val channelHeaderImage: UriString? = null,
-    val channelImage: UriString? = null
+    val channelImage: UriString? = null,
+    val isSubscribed: Boolean = false
 ) : AdapterItem {
 
     override val uniqueAdapterId =

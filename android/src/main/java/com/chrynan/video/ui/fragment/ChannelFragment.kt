@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.api.load
 import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.common.model.core.ID
+import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.ChannelQualifier
+import com.chrynan.video.presenter.ChannelPresenter
+import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
 import com.chrynan.video.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_channel.*
@@ -18,12 +23,16 @@ import javax.inject.Inject
 
 class ChannelFragment : BaseFragment(),
     ChannelView,
-    VideoOptionsListener {
+    VideoOptionsListener,
+    ChannelHeaderAdapter.SubscribeButtonSelectedListener {
 
     companion object {
 
         fun newInstance() = ChannelFragment()
     }
+
+    @Inject
+    override lateinit var presenter: ChannelPresenter
 
     @Inject
     @field:ChannelQualifier.Adapter
@@ -41,8 +50,7 @@ class ChannelFragment : BaseFragment(),
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        layoutInflater.inflate(R.layout.fragment_channel, container, false)
+    ): View? = layoutInflater.inflate(R.layout.fragment_channel, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -113,7 +121,19 @@ class ChannelFragment : BaseFragment(),
         }
     }
 
+    override fun showTitle(title: String) {
+        channelCollapsingToolbarLayout?.title = title
+    }
+
+    override fun showBannerImage(imageUri: UriString) {
+        channelBannerImageView?.load(imageUri)
+    }
+
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
+
+    }
+
+    override fun onSubscribeButtonSelected(providerUri: UriString, channelId: ID) {
 
     }
 }

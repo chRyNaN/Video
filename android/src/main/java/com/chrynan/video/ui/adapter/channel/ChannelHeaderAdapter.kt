@@ -3,12 +3,13 @@ package com.chrynan.video.ui.adapter.channel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import coil.api.load
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.common.model.core.ID
+import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
 import com.chrynan.video.viewmodel.ChannelHeaderViewModel
@@ -16,8 +17,10 @@ import kotlinx.android.synthetic.main.adapter_channel_header.view.*
 import javax.inject.Inject
 
 @Adapter
-class ChannelHeaderAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<ChannelHeaderViewModel>(dispatchers) {
+class ChannelHeaderAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val listener: SubscribeButtonSelectedListener
+) : BaseAdapter<ChannelHeaderViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(ChannelHeaderAdapter::class.java)
 
@@ -30,12 +33,19 @@ class ChannelHeaderAdapter @Inject constructor(dispatchers: CoroutineDispatchers
     ): View = inflater.inflate(R.layout.adapter_channel_header, parent, false)
 
     override fun View.onBindItem(item: ChannelHeaderViewModel, position: Int) {
-        adapterChannelHeaderTitleTextView?.text = item.name
         adapterChannelHeaderTotalVideoViewCountTextView?.text = item.totalVideoViewCount
         adapterChannelHeaderSubscriberCountTextView?.text = item.subscriberCount
-        adapterChannelHeaderCircleImageView?.load(item.channelImage) {
-            placeholder(R.drawable.ic_default_user)
-            error(R.drawable.ic_default_user)
+        adapterChannelHeaderChannelSubscribeButton?.isChecked = item.isSubscribed
+        adapterChannelHeaderChannelSubscribeButton?.setOnClickListener {
+            listener.onSubscribeButtonSelected(
+                providerUri = item.providerUri,
+                channelId = item.channelId
+            )
         }
+    }
+
+    interface SubscribeButtonSelectedListener {
+
+        fun onSubscribeButtonSelected(providerUri: UriString, channelId: ID)
     }
 }
