@@ -181,6 +181,7 @@
         <item name="android:tint">@color/white</item>
         <item name="android:backgroundTint">@color/bg_video_info_action_color</item>
         <item name="android:elevation">@dimen/elevation_action_button</item>
+        <item name="backgroundTint">@color/bg_video_info_action_color</item>
     </style>
 
     <!-- CollapsingToolbarLayout -->
