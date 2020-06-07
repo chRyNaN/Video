@@ -30,15 +30,8 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/mainBottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_navigation_bar_height"
+        style="@style/BottomNavigationBar"
         android:layout_gravity="bottom"
-        android:background="@color/background_dark_color"
-        android:elevation="@dimen/elevation_bottom_navigation"
-        app:itemIconTint="@color/icon_menu_color"
-        app:itemTextAppearanceActive="@style/TextAppearance.Title.Accent"
-        app:itemTextAppearanceInactive="@style/TextAppearance.Title"
-        app:itemTextColor="@color/text_menu_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

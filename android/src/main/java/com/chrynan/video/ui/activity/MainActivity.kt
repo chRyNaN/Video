@@ -95,10 +95,9 @@ class MainActivity : BaseActivity(),
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_home -> goToHome()
-            R.id.action_search -> goToSearch()
-            R.id.action_user_content -> goToFragment(ChannelFragment.newInstance())
-            R.id.action_settings -> goToSettings()
+            R.id.action_bottom_navigation_home -> goToHome()
+            R.id.action_bottom_navigation_search -> goToSearch()
+            R.id.action_bottom_navigation_settings -> goToSettings()
         }
 
         // There's an odd issue with the overlays when changing fragments, so this is a hack to fix it

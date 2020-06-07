@@ -209,5 +209,16 @@
         <item name="errorTextColor">@color/error_color</item>
     </style>
 
+    <!-- Bottom Navigation Bar -->
+    <style name="BottomNavigationBar" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/bottom_navigation_bar_height</item>
+        <item name="android:background">@color/bottom_navbar_background_color</item>
+        <item name="itemIconTint">@color/icon_menu_color</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.Caption.Accent</item>
+        <item name="itemTextAppearance">@style/TextAppearance.Caption</item>
+        <item name="itemTextColor">@color/text_menu_color</item>
+        <item name="android:elevation">@dimen/elevation_bottom_navigation</item>
+    </style>
 
 </resources>
