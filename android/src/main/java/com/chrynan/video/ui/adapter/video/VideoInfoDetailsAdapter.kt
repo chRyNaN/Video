@@ -11,7 +11,9 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.VideoInfoDetailsViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.google.android.material.chip.Chip
+import com.chrynan.video.ui.widget.ChipBackgroundColor
+import com.chrynan.video.ui.widget.ChipStyle
+import com.chrynan.video.ui.widget.chipOf
 import kotlinx.android.synthetic.main.adapter_video_info_details.view.*
 import javax.inject.Inject
 
@@ -36,9 +38,12 @@ class VideoInfoDetailsAdapter @Inject constructor(dispatchers: CoroutineDispatch
             group.removeAllViews()
 
             item.tags.forEach {
-                val chip = Chip(group.context).apply {
+                val chip = chipOf(
+                    parent = group,
+                    style = ChipStyle.ACTION,
+                    backgroundColor = ChipBackgroundColor.ACCENT_ONE,
                     text = it
-                }
+                )
 
                 group.addView(chip)
             }

@@ -81,43 +81,51 @@
     <!-- Chips -->
 
     <style name="ChipAction" parent="Widget.MaterialComponents.Chip.Action">
-        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
         <item name="android:textColor">@color/text_primary_color</item>
         <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
         <item name="checkedIcon">@null</item>
+        <item name="android:elevation">@dimen/chip_elevation</item>
+    </style>
+
+    <style name="ChipPrimary" parent="ChipAction">
+        <item name="chipBackgroundColor">@color/bg_chip_item_primary_color</item>
     </style>
 
     <style name="ChipEntry" parent="Widget.MaterialComponents.Chip.Entry">
-        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
         <item name="android:textColor">@color/text_primary_color</item>
         <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
         <item name="checkedIcon">@null</item>
+        <item name="android:elevation">@dimen/chip_elevation</item>
     </style>
 
     <style name="ChipFilter" parent="Widget.MaterialComponents.Chip.Filter">
-        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
         <item name="android:textColor">@color/text_primary_color</item>
         <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
         <item name="checkedIcon">@null</item>
+        <item name="android:elevation">@dimen/chip_elevation</item>
     </style>
 
     <style name="ChipChoice" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
         <item name="android:textColor">@color/text_primary_color</item>
         <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="chipBackgroundColor">@color/bg_chip_item_one_color</item>
         <item name="checkedIcon">@null</item>
+        <item name="android:elevation">@dimen/chip_elevation</item>
     </style>
 
     <!-- Default Button -->

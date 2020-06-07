@@ -5,6 +5,6 @@
 
     <item android:color="@color/accent_one_color" android:state_pressed="true" />
 
-    <item android:color="@color/colorPrimary" />
+    <item android:color="@color/colorPrimaryDark" />
 
 </selector>

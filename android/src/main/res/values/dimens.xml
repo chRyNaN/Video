@@ -84,4 +84,8 @@
     <dimen name="button_corner_radius">8dp</dimen>
     <dimen name="button_min_width">120dp</dimen>
 
+    <dimen name="video_info_action_reyclerview_height">72dp</dimen>
+
+    <dimen name="chip_elevation">2dp</dimen>
+
 </resources>
