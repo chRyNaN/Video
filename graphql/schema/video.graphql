@@ -29,6 +29,7 @@ type Video implements Node, TimeDetail {
     standaloneSubtitles: [Subtitle!]!
     drmInfo: DrmInfo
     actions: [VideoAction!]!
+    related(take: Int!, after: Cursor): VideoConnection!
 }
 
 enum VideoStreamType {
