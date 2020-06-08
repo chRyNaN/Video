@@ -8,9 +8,7 @@ import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.chrynan.logger.Logger
 import com.chrynan.video.model.ResourceID
-import com.chrynan.video.ui.widget.gesture.CompleteGestureDetector
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 
