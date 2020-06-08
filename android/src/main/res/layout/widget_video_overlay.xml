@@ -6,23 +6,23 @@
     <View
         android:id="@+id/videoOverlayBackgroundView"
         android:layout_width="0dp"
-        android:layout_height="@dimen/video_collapsed_default_height"
+        android:layout_height="0dp"
         android:background="@color/colorPrimary"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/videoOverlayVideoPlayerWidget"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/videoOverlayVideoPlayerWidget" />
 
     <com.chrynan.video.ui.widget.VideoPlayerWidget
         android:id="@+id/videoOverlayVideoPlayerWidget"
-        android:layout_width="140dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/video_overlay_player_collapsed_width"
+        android:layout_height="wrap_content"
         android:background="@color/black"
         app:controller_layout_id="@layout/layout_video_player_control"
-        app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView"
         app:resize_mode="fixed_width"
         app:surface_type="texture_view" />
 
@@ -35,7 +35,6 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="Title Test that's really long"
         android:textAppearance="@style/TextAppearance.Title"
         app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
         app:layout_constraintEnd_toStartOf="@+id/videoOverlayPlayPauseImageView"

@@ -39,6 +39,8 @@
     <dimen name="video_queue_controls_previous_next_size">48dp</dimen>
     <dimen name="video_queue_controls_main_size">96dp</dimen>
 
+    <dimen name="video_overlay_player_collapsed_width">140dp</dimen>
+
     <dimen name="channel_info_image_size">48dp</dimen>
 
     <dimen name="header_image_default_height">200dp</dimen>

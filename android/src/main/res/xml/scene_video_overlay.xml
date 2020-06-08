@@ -14,7 +14,8 @@
                 app:framePosition="10"
                 app:keyPositionType="deltaRelative"
                 app:motionTarget="@+id/videoOverlayVideoPlayerWidget"
-                app:percentWidth="1.5" />
+                app:percentWidth="1"
+                app:percentX="1" />
 
             <KeyPosition
                 app:curveFit="linear"
@@ -22,21 +23,21 @@
                 app:keyPositionType="parentRelative"
                 app:motionTarget="@+id/videoOverlayTitleTextView"
                 app:percentWidth="1"
-                app:percentX="0.9" />
+                app:percentX="1" />
 
             <KeyPosition
                 app:curveFit="linear"
                 app:framePosition="10"
                 app:keyPositionType="deltaRelative"
                 app:motionTarget="@+id/videoOverlayCloseImageView"
-                app:percentX="0.9" />
+                app:percentX="1" />
 
             <KeyPosition
                 app:curveFit="linear"
                 app:framePosition="10"
                 app:keyPositionType="deltaRelative"
                 app:motionTarget="@+id/videoOverlayPlayPauseImageView"
-                app:percentX="0.9" />
+                app:percentX="1" />
 
             <KeyAttribute
                 android:alpha="0.10"
@@ -63,18 +64,18 @@
         <Constraint
             android:id="@+id/videoOverlayBackgroundView"
             android:layout_width="0dp"
-            android:layout_height="@dimen/video_collapsed_default_height"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayVideoPlayerWidget"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/videoOverlayVideoPlayerWidget" />
 
         <Constraint
             android:id="@+id/videoOverlayVideoPlayerWidget"
-            android:layout_width="140dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/videoOverlayBackgroundView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/videoOverlayBackgroundView" />
+            android:layout_width="@dimen/video_overlay_player_collapsed_width"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
             android:id="@+id/videoOverlayTitleTextView"
@@ -131,7 +132,7 @@
         <Constraint
             android:id="@+id/videoOverlayVideoPlayerWidget"
             android:layout_width="0dp"
-            android:layout_height="@dimen/video_expanded_default_height"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

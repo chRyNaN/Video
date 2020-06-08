@@ -31,7 +31,8 @@ internal abstract class MediaModule {
         @JvmStatic
         @Singleton
         fun provideSimpleExoPlayer(@ApplicationContextQualifier context: ApplicationContext): SimpleExoPlayer =
-            SimpleExoPlayer.Builder(context).build()
+            SimpleExoPlayer.Builder(context)
+                .build()
 
         @Provides
         @JvmStatic
