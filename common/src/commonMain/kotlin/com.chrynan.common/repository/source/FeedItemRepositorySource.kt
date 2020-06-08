@@ -1,6 +1,6 @@
 package com.chrynan.common.repository.source
 
-import com.chrynan.common.api.WebApi
+import com.chrynan.common.api.ApiService
 import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.model.core.PageInfo
 import com.chrynan.common.model.core.UriString
@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.onStart
 
 @ExperimentalCoroutinesApi
 class FeedItemRepositorySource(
-    private val webApi: WebApi,
+    private val webApi: ApiService,
     private val serviceRepository: ServiceProviderDatabaseRepository,
     private val mapper: FeedResultItemMapper,
     private val coroutineScope: CoroutineScope
@@ -66,7 +66,16 @@ class FeedItemRepositorySource(
                         }
                     }
                 }
-            }.forEach { it.await() }
+            }.forEach {
+                try {
+                    it.await()
+                } catch (throwable: Throwable) {
+                    Logger.logError(
+                        throwable = throwable,
+                        message = "Error fetching feed for Service Provider."
+                    )
+                }
+            }
 
             isLoading = false
         }

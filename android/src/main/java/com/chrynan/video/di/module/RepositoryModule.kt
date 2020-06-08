@@ -1,6 +1,6 @@
 package com.chrynan.video.di.module
 
-import com.chrynan.common.api.WebApi
+import com.chrynan.common.api.ApiService
 import com.chrynan.common.mapper.FeedResultItemMapper
 import com.chrynan.common.repository.*
 import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
@@ -26,7 +26,7 @@ internal abstract class RepositoryModule {
         @JvmStatic
         @OptIn(ExperimentalCoroutinesApi::class)
         fun provideFeedItemRepository(
-            webApi: WebApi,
+            webApi: ApiService,
             serviceRepository: ServiceProviderDatabaseRepository,
             mapper: FeedResultItemMapper,
             coroutineScope: RepositoryCoroutineScope

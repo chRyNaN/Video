@@ -1,14 +1,14 @@
 package com.chrynan.common.repository.source
 
 import com.chrynan.common.Inject
-import com.chrynan.common.api.WebApi
+import com.chrynan.common.api.ApiService
 import com.chrynan.common.model.core.UriString
 import com.chrynan.common.model.graphql.GraphQLResponse
 import com.chrynan.common.model.response.LoginInfoResponse
 import com.chrynan.common.repository.LoginInfoRepository
 import com.chrynan.logger.Logger
 
-class LoginInfoRepositorySource @Inject constructor(private val webApi: WebApi) :
+class LoginInfoRepositorySource @Inject constructor(private val webApi: ApiService) :
     LoginInfoRepository {
 
     override suspend fun getLoginInfoByProviderUri(providerUri: UriString): LoginInfoResponse? {
