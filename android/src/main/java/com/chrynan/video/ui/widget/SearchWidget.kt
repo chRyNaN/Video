@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.chrynan.video.R
+import com.chrynan.video.utils.onEnterPressed
 import kotlinx.android.synthetic.main.widget_search.view.*
 
 class SearchWidget @JvmOverloads constructor(
@@ -19,5 +20,17 @@ class SearchWidget @JvmOverloads constructor(
         orientation = VERTICAL
 
         searchWidgetEditText?.setBackgroundShape(BackgroundShape.Round)
+    }
+
+    var text: String? = null
+        get() = searchWidgetEditText?.text?.toString()
+        set(value) {
+            field = value
+
+            searchWidgetEditText?.setText(value)
+        }
+
+    fun onEnterPressed(action: () -> Unit) {
+        searchWidgetEditText?.onEnterPressed(action)
     }
 }

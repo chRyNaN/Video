@@ -4,7 +4,7 @@ import com.chrynan.common.Inject
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.graphql.GraphQLRequest
 
-class ChannelQuery @Inject constructor() {
+class ChannelGraphQLQuery @Inject constructor() {
 
     operator fun invoke(channelID: ID): GraphQLRequest {
         val query = """

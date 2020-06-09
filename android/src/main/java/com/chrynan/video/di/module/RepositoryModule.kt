@@ -2,11 +2,10 @@ package com.chrynan.video.di.module
 
 import com.chrynan.common.api.ApiService
 import com.chrynan.common.mapper.FeedResultItemMapper
+import com.chrynan.common.mapper.SearchResultItemMapper
 import com.chrynan.common.repository.*
 import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
-import com.chrynan.common.repository.source.FeedItemRepositorySource
-import com.chrynan.common.repository.source.LoginInfoRepositorySource
-import com.chrynan.common.repository.source.ServiceProviderSource
+import com.chrynan.common.repository.source.*
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
 import com.chrynan.video.database.source.ServiceProviderDatabaseSource
 import com.chrynan.video.source.AppInfoSource
@@ -27,10 +26,25 @@ internal abstract class RepositoryModule {
         @OptIn(ExperimentalCoroutinesApi::class)
         fun provideFeedItemRepository(
             webApi: ApiService,
-            serviceRepository: ServiceProviderDatabaseRepository,
+            serviceRepository: ServiceProviderRepository,
             mapper: FeedResultItemMapper,
             coroutineScope: RepositoryCoroutineScope
         ): FeedItemRepository = FeedItemRepositorySource(
+            webApi = webApi,
+            serviceRepository = serviceRepository,
+            mapper = mapper,
+            coroutineScope = coroutineScope
+        )
+
+        @Provides
+        @JvmStatic
+        @OptIn(ExperimentalCoroutinesApi::class)
+        fun provideSearchItemRepository(
+            webApi: ApiService,
+            serviceRepository: ServiceProviderRepository,
+            mapper: SearchResultItemMapper,
+            coroutineScope: RepositoryCoroutineScope
+        ): SearchItemRepository = SearchItemRepositorySource(
             webApi = webApi,
             serviceRepository = serviceRepository,
             mapper = mapper,
@@ -52,4 +66,7 @@ internal abstract class RepositoryModule {
 
     @Binds
     abstract fun bindSettingsInfoRepository(source: SettingsInfoSource): SettingsInfoRepository
+
+    @Binds
+    abstract fun bindTagSuggestionRepository(source: TagSuggestionRepositorySource): TagSuggestionRepository
 }

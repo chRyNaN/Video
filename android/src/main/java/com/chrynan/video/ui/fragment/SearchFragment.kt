@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.SearchView
-import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.di.qualifier.SearchQualifier
-import com.chrynan.video.ui.widget.*
-import com.chrynan.video.viewmodel.ChannelListItemViewModel
-import com.chrynan.video.viewmodel.VideoRecommendationViewModel
+import com.chrynan.video.viewmodel.TagItemViewModel
+import com.chrynan.video.presenter.SearchPresenter
+import com.chrynan.video.utils.updateTags
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.widget_search.view.*
 import javax.inject.Inject
@@ -28,6 +27,9 @@ class SearchFragment : BaseFragment(),
 
         fun newInstance() = SearchFragment()
     }
+
+    @Inject
+    override lateinit var presenter: SearchPresenter
 
     @Inject
     @field:SearchQualifier.Adapter
@@ -45,6 +47,8 @@ class SearchFragment : BaseFragment(),
         inflater.inflate(R.layout.fragment_search, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         searchWidget?.viewTreeObserver?.addOnGlobalLayoutListener(object :
             ViewTreeObserver.OnGlobalLayoutListener {
 
@@ -62,56 +66,33 @@ class SearchFragment : BaseFragment(),
             }
         })
 
-        searchWidget?.searchWidgetFilterItemChipGroup?.let { group ->
-            val chipOne = chipOf(group, ChipStyle.FILTER, "One", ChipBackgroundColor.ACCENT_ONE)
-            val chipTwo = chipOf(group, ChipStyle.FILTER, "Two", ChipBackgroundColor.ACCENT_TWO)
-            val chipThree =
-                chipOf(group, ChipStyle.FILTER, "Three", ChipBackgroundColor.ACCENT_THREE)
-
-            group.addView(chipOne)
-            group.addView(chipTwo)
-            group.addView(chipThree)
-        }
-
-        val recommendation = VideoRecommendationViewModel(
-            title = "Test Title",
-            channelName = "Test Channel Name",
-            detailText = "Test Detail Text",
-            videoInfo = VideoInfo(
-                videoId = "",
-                channelId = "",
-                videoUri = "",
-                providerUri = ""
-            ),
-            videoLength = "1:00"
-        )
-
-        val channel = ChannelListItemViewModel(
-            channelId = "",
-            providerUri = "",
-            title = "Channel Title with Long Name",
-            description = "Channel Description",
-            channelImageUri = "",
-            isSubscribed = false
-        )
-
         searchResultsRecyclerView?.apply {
             layoutManager = linearLayoutManager
             adapter = resultAdapter
-
-            resultAdapter.items = listOf(
-                SectionHeaderViewModel(header = "Results"),
-                recommendation,
-                recommendation,
-                channel,
-                recommendation,
-                channel,
-                channel
-            )
         }
+
+        searchWidget?.onEnterPressed {
+            searchWidget?.text?.let { presenter.handleQuery(query = it) }
+        }
+
+        presenter.loadInitialData()
     }
 
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
 
+    }
+
+    override fun showEmptyState() {
+        searchResultsRecyclerView?.visibility = View.GONE
+    }
+
+    override fun showListState() {
+        searchResultsRecyclerView?.visibility = View.VISIBLE
+    }
+
+    override fun updateTags(tags: List<TagItemViewModel>) {
+        val clickHandler: (TagItemViewModel) -> Unit = { presenter.handleTagItemSelected(it) }
+
+        searchWidget?.searchWidgetFilterItemChipGroup?.updateTags(tags, clickHandler)
     }
 }

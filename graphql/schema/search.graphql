@@ -1,4 +1,13 @@
-union SearchResultItem = Video | Channel
+union SearchResultItem = VideoSearchResultItem | ChannelSearchResultItem
+
+type VideoSearchResultItem {
+    video: Video!
+    channel: Channel!
+}
+
+type ChannelSearchResultItem {
+    channel: Channel!
+}
 
 type SearchResultEdge @access(type: LOGIN_STRATEGY) {
     cursor: Cursor!

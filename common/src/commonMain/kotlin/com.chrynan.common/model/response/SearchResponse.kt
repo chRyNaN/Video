@@ -1,12 +1,12 @@
 package com.chrynan.common.model.response
 
-import com.chrynan.common.model.api.FeedItemConnection
 import com.chrynan.common.model.api.Provider
+import com.chrynan.common.model.api.SearchResultItemConnection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FeedResponse(
+data class SearchResponse(
     @SerialName(value = "provider") val provider: Provider,
-    @SerialName(value = "feed") val connection: FeedItemConnection
+    @SerialName(value = "search") val connection: SearchResultItemConnection
 )

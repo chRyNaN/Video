@@ -2,7 +2,7 @@ package com.chrynan.video.presenter
 
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.model.api.VideoInfo
-import com.chrynan.common.model.result.FeedResultItem
+import com.chrynan.common.model.wrapper.FeedItemWrapper
 import com.chrynan.common.repository.FeedItemRepository
 import com.chrynan.logger.Logger
 import com.chrynan.video.di.qualifier.HomeQualifier
@@ -24,7 +24,7 @@ class HomePresenter @Inject constructor(
     fun loadFeed() {
         feedRepository.openSubscription()
             .map { list ->
-                list.filterIsInstance<FeedResultItem.Video>()
+                list.filterIsInstance<FeedItemWrapper.Video>()
                     .map { mapper.map(it.videoResult) }
             }.onStart {
                 val videoInfo = VideoInfo(

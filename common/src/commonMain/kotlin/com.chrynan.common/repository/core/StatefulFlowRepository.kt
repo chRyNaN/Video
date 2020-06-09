@@ -1,10 +1,8 @@
 package com.chrynan.common.repository.core
 
-import kotlinx.coroutines.flow.Flow
-
 interface StatefulFlowRepository<T> {
 
-    fun openSubscription(): Flow<T>
+    val value: T
 
     suspend fun loadMore()
 

@@ -6,7 +6,7 @@ import com.chrynan.common.model.api.VideoInfo
 data class VideoRecommendationViewModel(
     val title: String,
     val channelName: String,
-    val detailText: String,
+    val detailText: String? = null,
     val videoInfo: VideoInfo,
     val videoLength: String
 ) : AdapterItem {

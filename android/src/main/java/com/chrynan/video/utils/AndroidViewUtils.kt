@@ -6,7 +6,13 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
 import com.chrynan.video.R
+import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.ui.view.SnackbarView
+import com.chrynan.video.ui.widget.ChipBackgroundColor
+import com.chrynan.video.ui.widget.ChipStyle
+import com.chrynan.video.ui.widget.chipOf
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -95,4 +101,41 @@ fun TextView?.onEnterPressed(action: () -> Unit) {
             return false
         }
     })
+}
+
+fun ChipGroup.updateTags(tags: List<TagItemViewModel>, clickHandler: ((TagItemViewModel) -> Unit)? = null) {
+    removeAllViews()
+
+    val chips = mutableListOf<Chip>()
+
+    addTagsToList(chips, tags, 0, clickHandler)
+
+    chips.forEach { addView(it) }
+}
+
+private fun ChipGroup.addTagsToList(
+    chips: MutableList<Chip>,
+    tags: List<TagItemViewModel>,
+    count: Int,
+    clickHandler: ((TagItemViewModel) -> Unit)? = null
+) {
+    val colors = listOf(
+        ChipBackgroundColor.ACCENT_ONE,
+        ChipBackgroundColor.ACCENT_TWO,
+        ChipBackgroundColor.ACCENT_THREE
+    )
+
+    tags.map { tag ->
+        val chip = chipOf(this, ChipStyle.FILTER, tag.name, colors[count % colors.size])
+
+        chip.isActivated = tag.isSelected
+
+        chips.add(chip)
+
+        chip.setOnClickListener { clickHandler?.invoke(tag) }
+
+        if (tag.isSelected && tag.nestedTags.isNotEmpty()) {
+            addTagsToList(chips, tag.nestedTags, count + 1, clickHandler)
+        }
+    }
 }

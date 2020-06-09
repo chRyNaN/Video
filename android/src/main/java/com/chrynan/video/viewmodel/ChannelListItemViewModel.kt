@@ -8,7 +8,7 @@ data class ChannelListItemViewModel(
     val channelId: ID,
     val providerUri: UriString,
     val title: String,
-    val description: String,
+    val description: String? = null,
     val channelImageUri: UriString? = null,
     val isSubscribed: Boolean = false
 ) : AdapterItem {

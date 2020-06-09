@@ -1,6 +1,5 @@
 package com.chrynan.video.di.module.fragment
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers

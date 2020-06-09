@@ -27,7 +27,7 @@ class FeedGraphQLQuery @Inject constructor() {
                                         ...channelFields
                                     }
                                     video {
-                                        ..videoFields
+                                        ...videoFields
                                     }
                                 }
                             }
@@ -39,7 +39,7 @@ class FeedGraphQLQuery @Inject constructor() {
                                     ...channelFields
                                 }
                                 video {
-                                    ..videoFields
+                                    ...videoFields
                                 }
                             }
                         }

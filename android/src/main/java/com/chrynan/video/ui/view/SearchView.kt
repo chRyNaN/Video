@@ -1,3 +1,9 @@
 package com.chrynan.video.ui.view
 
-interface SearchView : View
+import com.chrynan.video.viewmodel.TagItemViewModel
+
+interface SearchView : View,
+    ListView {
+
+    fun updateTags(tags: List<TagItemViewModel>)
+}

@@ -5,11 +5,11 @@ import com.chrynan.common.model.api.FeedItem
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.api.VideoResult
 import com.chrynan.common.model.response.FeedResponse
-import com.chrynan.common.model.result.FeedResultItem
+import com.chrynan.common.model.wrapper.FeedItemWrapper
 
-class FeedResultItemMapper @Inject constructor() : Mapper<FeedResponse, List<FeedResultItem>> {
+class FeedResultItemMapper @Inject constructor() : Mapper<FeedResponse, List<FeedItemWrapper>> {
 
-    override suspend fun map(model: FeedResponse): List<FeedResultItem> =
+    override suspend fun map(model: FeedResponse): List<FeedItemWrapper> =
         model.connection.nodes.filterIsInstance<FeedItem.VideoFeedItem>()
             .map { item ->
                 val videoInfo = VideoInfo(
@@ -27,6 +27,6 @@ class FeedResultItemMapper @Inject constructor() : Mapper<FeedResponse, List<Fee
                     provider = model.provider
                 )
 
-                FeedResultItem.Video(videoResult = videoResult)
+                FeedItemWrapper.Video(videoResult = videoResult)
             }
 }
