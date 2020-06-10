@@ -74,3 +74,7 @@ fun chipOf(
         textColor = textColor
     )
 }
+
+fun Chip.setChipBackgroundColor(backgroundColor: ChipBackgroundColor) {
+    chipBackgroundColor = ContextCompat.getColorStateList(context, backgroundColor.resourceID)
+}
