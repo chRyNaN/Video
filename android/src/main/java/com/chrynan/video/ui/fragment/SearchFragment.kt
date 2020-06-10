@@ -11,20 +11,27 @@ import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.common.model.core.ID
+import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.SearchQualifier
+import com.chrynan.video.navigator.SearchNavigator
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.presenter.SearchPresenter
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
+import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
 import com.chrynan.video.utils.showKeyboard
+import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.widget_search.view.*
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(),
     SearchView,
+    SearchNavigator,
     VideoOptionsListener,
-    SearchTagItemAdapter.SearchTagItemSelectedListener {
+    SearchTagItemAdapter.SearchTagItemSelectedListener,
+    ChannelListItemAdapter.ChannelListItemSelectedListener {
 
     companion object {
 
@@ -88,6 +95,9 @@ class SearchFragment : BaseFragment(),
         presenter.loadInitialData()
     }
 
+    override fun goToChannel(providerUri: UriString, channelId: ID) =
+        goToFragment(ChannelFragment.newInstance(providerUri = providerUri, channelId = channelId))
+
     override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
 
     }
@@ -107,4 +117,12 @@ class SearchFragment : BaseFragment(),
     override fun onSearchTagItemSelected(item: TagItemViewModel) {
         presenter.handleTagItemSelected(item)
     }
+
+    override fun onChannelListItemSelected(item: ChannelListItemViewModel) =
+        goToChannel(providerUri = item.providerUri, channelId = item.channelId)
+
+    override fun onChannelSubscribeButtonSelected(
+        item: ChannelListItemViewModel,
+        isChecked: Boolean
+    ) = presenter.handleSubscribeButtonSelected(item = item, isChecked = isChecked)
 }

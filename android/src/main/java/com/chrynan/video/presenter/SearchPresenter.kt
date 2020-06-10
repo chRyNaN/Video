@@ -125,6 +125,10 @@ class SearchPresenter @Inject constructor(
             .launchIn(this)
     }
 
+    fun handleSubscribeButtonSelected(item: ChannelListItemViewModel, isChecked: Boolean) {
+        // TODO
+    }
+
     private fun getSearchQueryValidationFlow(query: String): Flow<ValidationResult<String>> =
         flowFrom {
             val searchQuery = SearchQuery(

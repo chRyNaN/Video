@@ -104,6 +104,10 @@ internal abstract class SearchFragmentModule {
 
     @Binds
     @FragmentScope
+    abstract fun bindChannelListItemSelectedListener(fragment: SearchFragment): ChannelListItemAdapter.ChannelListItemSelectedListener
+
+    @Binds
+    @FragmentScope
     @SearchQualifier.ItemListUpdater
     abstract fun bindUpdateListener(@SearchQualifier.Adapter adapter: RecyclerViewAdapter): ItemListUpdater<AdapterItem>
 }

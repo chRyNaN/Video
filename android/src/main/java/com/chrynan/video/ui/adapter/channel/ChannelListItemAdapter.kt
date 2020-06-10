@@ -16,8 +16,10 @@ import kotlinx.android.synthetic.main.adapter_channel_list_item.view.*
 import javax.inject.Inject
 
 @Adapter
-class ChannelListItemAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<ChannelListItemViewModel>(dispatchers) {
+class ChannelListItemAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val listener: ChannelListItemSelectedListener
+) : BaseAdapter<ChannelListItemViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(ChannelListItemAdapter::class.java)
 
@@ -37,12 +39,20 @@ class ChannelListItemAdapter @Inject constructor(dispatchers: CoroutineDispatche
         adapterChannelListItemTitleTextView?.text = item.title
         adapterChannelListItemDescriptionTextView?.text = item.description
         adapterChannelListItemSubscribeButton?.isChecked = item.isSubscribed
+
         adapterChannelListItemSubscribeButton?.setOnCheckedChangeListener { _, isChecked ->
-            // TODO
+            listener.onChannelSubscribeButtonSelected(item = item, isChecked = isChecked)
         }
 
         setOnClickListener {
-            // TODO
+            listener.onChannelListItemSelected(item = item)
         }
+    }
+
+    interface ChannelListItemSelectedListener {
+
+        fun onChannelListItemSelected(item: ChannelListItemViewModel)
+
+        fun onChannelSubscribeButtonSelected(item: ChannelListItemViewModel, isChecked: Boolean)
     }
 }

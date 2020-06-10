@@ -28,7 +28,15 @@ class ChannelFragment : BaseFragment(),
 
     companion object {
 
-        fun newInstance() = ChannelFragment()
+        private const val KEY_PROVIDER_URI = "keyProviderUri"
+        private const val KEY_CHANNEL_ID = "keyChannelId"
+
+        fun newInstance(providerUri: UriString, channelId: ID) = ChannelFragment().apply {
+            arguments = Bundle().apply {
+                putString(KEY_PROVIDER_URI, providerUri)
+                putString(KEY_CHANNEL_ID, channelId)
+            }
+        }
     }
 
     @Inject
