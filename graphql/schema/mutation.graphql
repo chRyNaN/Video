@@ -1,3 +1,4 @@
 type Mutation @access(type: LOGIN_STRATEGY) {
-    toggleVideoAction(videoId: ID!, type: SelectableVideoActionType!): VideoAction
+    toggleVideoAction(videoId: ID!, type: SelectableVideoActionType!): VideoAction!
+    toggleSubscription(channelId: ID!): Channel!
 }
