@@ -13,6 +13,7 @@ import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.SearchView
+import com.chrynan.video.utils.TagItemHandler
 import com.chrynan.video.viewmodel.AdapterItem
 import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import com.chrynan.video.viewmodel.SectionHeaderViewModel
@@ -28,7 +29,8 @@ class SearchPresenter @Inject constructor(
     private val searchItemRepository: SearchItemRepository,
     private val tagSuggestionRepository: TagSuggestionRepository,
     private val searchItemMapper: SearchResultMapper,
-    private val tagItemMapper: TagItemMapper
+    private val tagItemMapper: TagItemMapper,
+    private val tagItemHandler: TagItemHandler
 ) : BasePresenter(dispatchers) {
 
     private var retrievedTags = emptyList<TagItemViewModel>()
@@ -78,10 +80,9 @@ class SearchPresenter @Inject constructor(
             .mapEachItemWith(tagItemMapper)
             .flowOn(dispatchers.io)
             .onEach {
-                retrievedTags = it
-                editedTags = it
+                tagItemHandler.updateTags(it)
 
-                view.updateTags(it)
+                view.updateTags(tagItemHandler.allTags)
             }
             .flowOn(dispatchers.main)
             .catch {
@@ -94,17 +95,9 @@ class SearchPresenter @Inject constructor(
     }
 
     fun handleTagItemSelected(tag: TagItemViewModel) {
-        val selectedTags = retrievedTags.filter { it.isSelected }
+        tagItemHandler.selectTag(tag)
 
-        val updatedTags = if (tag.isSelected) {
-            selectedTags - tag
-        } else {
-            selectedTags + tag.copy(isSelected = !tag.isSelected)
-        }
-
-        editedTags = if (updatedTags.isEmpty()) retrievedTags else updatedTags
-
-        view.updateTags(editedTags)
+        view.updateTags(tagItemHandler.allTags)
     }
 
     fun handleQuery(query: String) {

@@ -8,31 +8,10 @@ import javax.inject.Inject
 
 class TagItemMapper @Inject constructor() : Mapper<TagSuggestion, TagItemViewModel> {
 
-    override suspend fun map(model: TagSuggestion): TagItemViewModel {
-        val colors = listOf(
-            ChipBackgroundColor.ACCENT_ONE,
-            ChipBackgroundColor.ACCENT_TWO,
-            ChipBackgroundColor.ACCENT_THREE
-        )
-
-        return mapWithColor(model = model, colors = colors, count = 0)
-    }
-
-    private fun mapWithColor(
-        model: TagSuggestion,
-        colors: List<ChipBackgroundColor>,
-        count: Int
-    ): TagItemViewModel =
+    override suspend fun map(model: TagSuggestion): TagItemViewModel =
         TagItemViewModel(
             name = model.name,
             isSelected = false,
-            backgroundColor = colors[count % colors.size].resourceID,
-            nestedTags = model.nestedSuggestions.map {
-                mapWithColor(
-                    model = it,
-                    colors = colors,
-                    count = count + 1
-                )
-            }
+            backgroundColor = ChipBackgroundColor.ACCENT_ONE.resourceID
         )
 }

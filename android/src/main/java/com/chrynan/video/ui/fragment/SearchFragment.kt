@@ -96,7 +96,7 @@ class SearchFragment : BaseFragment(),
         searchResultsRecyclerView?.visibility = View.VISIBLE
     }
 
-    override fun updateTags(tags: List<TagItemViewModel>) {
+    override fun updateTags(tags: Set<TagItemViewModel>) {
         searchWidget?.updateTags(tags)
     }
 

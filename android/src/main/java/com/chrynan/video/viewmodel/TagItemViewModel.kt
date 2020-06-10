@@ -6,8 +6,7 @@ import com.chrynan.video.R
 data class TagItemViewModel(
     val name: String,
     val isSelected: Boolean = false,
-    val backgroundColor: Int = R.color.bg_chip_item_one_color,
-    val nestedTags: List<TagItemViewModel> = emptyList()
+    val backgroundColor: Int = R.color.bg_chip_item_one_color
 ) : AdapterItem {
 
     override val uniqueAdapterId = "TagItem:$name".asUniqueAdapterId()

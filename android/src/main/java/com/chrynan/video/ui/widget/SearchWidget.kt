@@ -64,7 +64,7 @@ class SearchWidget @JvmOverloads constructor(
         tagAdapterComponents = searchWidgetTagRecyclerView?.let { binder.bindRecyclerView(it) }
     }
 
-    fun updateTags(tags: List<TagItemViewModel>) {
+    fun updateTags(tags: Set<TagItemViewModel>) {
         tagAdapterComponents?.let { components ->
             flowOf(tags)
                 .calculateAndDispatchDiff(components.adapterItemHandler)
