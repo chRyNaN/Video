@@ -7,6 +7,7 @@ import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
@@ -96,6 +97,10 @@ internal abstract class SearchFragmentModule {
     @Binds
     @FragmentScope
     abstract fun bindVideoInfoAdapterListener(fragment: SearchFragment): VideoOptionsListener
+
+    @Binds
+    @FragmentScope
+    abstract fun bindSearchTagItemSelectedListener(fragment: SearchFragment): SearchTagItemAdapter.SearchTagItemSelectedListener
 
     @Binds
     @FragmentScope

@@ -31,7 +31,8 @@ class SearchPresenter @Inject constructor(
     private val tagItemMapper: TagItemMapper
 ) : BasePresenter(dispatchers) {
 
-    private val tags = mutableListOf<TagItemViewModel>()
+    private var retrievedTags = emptyList<TagItemViewModel>()
+    private var editedTags = emptyList<TagItemViewModel>()
 
     private var currentSearchJob: Job? = null
 
@@ -77,9 +78,10 @@ class SearchPresenter @Inject constructor(
             .mapEachItemWith(tagItemMapper)
             .flowOn(dispatchers.io)
             .onEach {
-                tags.clear()
-                tags.addAll(it)
-                view.updateTags(tags)
+                retrievedTags = it
+                editedTags = it
+
+                view.updateTags(it)
             }
             .flowOn(dispatchers.main)
             .catch {
@@ -92,12 +94,17 @@ class SearchPresenter @Inject constructor(
     }
 
     fun handleTagItemSelected(tag: TagItemViewModel) {
-        val index = tags.indexOf(tag)
+        val selectedTags = retrievedTags.filter { it.isSelected }
 
-        tags.removeAt(index)
-        tags.add(index, tag.copy(isSelected = !tag.isSelected))
+        val updatedTags = if (tag.isSelected) {
+            selectedTags - tag
+        } else {
+            selectedTags + tag.copy(isSelected = !tag.isSelected)
+        }
 
-        view.updateTags(tags)
+        editedTags = if (updatedTags.isEmpty()) retrievedTags else updatedTags
+
+        view.updateTags(editedTags)
     }
 
     fun handleQuery(query: String) {

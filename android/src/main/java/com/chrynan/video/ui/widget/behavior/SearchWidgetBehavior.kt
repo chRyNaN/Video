@@ -49,13 +49,13 @@ class SearchWidgetBehavior : CoordinatorLayout.Behavior<SearchWidget> {
         val searchBarParams =
             child.searchWidgetEditText.layoutParams as? ViewGroup.MarginLayoutParams
         val chipGroupParams =
-            child.searchWidgetChipScrollView.layoutParams as? ViewGroup.MarginLayoutParams
+            child.searchWidgetTagRecyclerView.layoutParams as? ViewGroup.MarginLayoutParams
 
         widgetTotalHeight = child.measuredHeight + (widgetParams?.topMargin ?: 0)
         searchBarTotalHeight =
             child.searchWidgetEditText.measuredHeight + (searchBarParams?.topMargin ?: 0)
         chipGroupTotalHeight =
-            child.searchWidgetChipScrollView.measuredHeight + (chipGroupParams?.topMargin ?: 0)
+            child.searchWidgetTagRecyclerView.measuredHeight + (chipGroupParams?.topMargin ?: 0)
 
         return super.onLayoutChild(parent, child, layoutDirection)
     }
@@ -166,7 +166,7 @@ class SearchWidgetBehavior : CoordinatorLayout.Behavior<SearchWidget> {
     private fun slideUpChipGroup(child: SearchWidget) {
         if (currentState != State.EXPANDED) return
 
-        val chipGroup = child.searchWidgetChipScrollView ?: return
+        val chipGroup = child.searchWidgetTagRecyclerView ?: return
 
         if (currentChipGroupAnimator != null) {
             currentChipGroupAnimator?.cancel()
@@ -186,7 +186,7 @@ class SearchWidgetBehavior : CoordinatorLayout.Behavior<SearchWidget> {
     private fun slideDownChipGroup(child: SearchWidget) {
         if (currentState != State.PARTIALLY_EXPANDED) return
 
-        val chipGroup = child.searchWidgetChipScrollView ?: return
+        val chipGroup = child.searchWidgetTagRecyclerView ?: return
 
         if (currentChipGroupAnimator != null) {
             currentChipGroupAnimator?.cancel()
@@ -219,7 +219,7 @@ class SearchWidgetBehavior : CoordinatorLayout.Behavior<SearchWidget> {
         )
 
         child.postDelayed({
-            val chipGroup = child.searchWidgetChipScrollView
+            val chipGroup = child.searchWidgetTagRecyclerView
 
             if (chipGroup != null) {
                 if (currentChipGroupAnimator != null) {
@@ -240,7 +240,7 @@ class SearchWidgetBehavior : CoordinatorLayout.Behavior<SearchWidget> {
     }
 
     private fun slideUpEntireWidgetThenChipGroup(child: SearchWidget) {
-        val chipGroup = child.searchWidgetChipScrollView
+        val chipGroup = child.searchWidgetTagRecyclerView
 
         if (currentChipGroupAnimator != null) {
             currentChipGroupAnimator?.cancel()

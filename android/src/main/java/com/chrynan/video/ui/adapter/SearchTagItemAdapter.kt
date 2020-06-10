@@ -8,18 +8,17 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.ui.widget.ChipBackgroundColor
-import com.chrynan.video.ui.widget.ChipStyle
-import com.chrynan.video.ui.widget.chipOf
-import com.chrynan.video.ui.widget.setChipBackgroundColor
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.google.android.material.chip.Chip
 import javax.inject.Inject
 
 @Adapter
-class SearchTagItemAdapter @Inject constructor(dispatchers: CoroutineDispatchers) :
-    BaseAdapter<TagItemViewModel>(dispatchers) {
+class SearchTagItemAdapter @Inject constructor(
+    dispatchers: CoroutineDispatchers,
+    private val listener: SearchTagItemSelectedListener
+) : BaseAdapter<TagItemViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(SearchTagItemAdapter::class.java)
 
@@ -29,17 +28,19 @@ class SearchTagItemAdapter @Inject constructor(dispatchers: CoroutineDispatchers
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: ViewType
-    ): View = chipOf(
-        parent = parent,
-        text = "",
-        style = ChipStyle.FILTER,
-        backgroundColor = ChipBackgroundColor.ACCENT_ONE
-    )
+    ): View = inflater.inflate(R.layout.adapter_search_tag_item, parent, false)
 
     override fun View.onBindItem(item: TagItemViewModel, position: Int) {
         val chip = (this as? Chip)
 
         chip?.text = item.name
-        chip?.setChipBackgroundColor(item.backgroundColor)
+        chip?.setChipBackgroundColorResource(item.backgroundColor)
+        chip?.isChecked = item.isSelected
+        chip?.setOnClickListener { listener.onSearchTagItemSelected(item) }
+    }
+
+    interface SearchTagItemSelectedListener {
+
+        fun onSearchTagItemSelected(item: TagItemViewModel)
     }
 }

@@ -14,14 +14,15 @@ import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.presenter.SearchPresenter
-import com.chrynan.video.utils.updateTags
+import com.chrynan.video.ui.adapter.SearchTagItemAdapter
+import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
 import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.widget_search.view.*
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(),
     SearchView,
-    VideoOptionsListener {
+    VideoOptionsListener,
+    SearchTagItemAdapter.SearchTagItemSelectedListener {
 
     companion object {
 
@@ -38,6 +39,9 @@ class SearchFragment : BaseFragment(),
     @Inject
     @field:SearchQualifier.LayoutManager
     lateinit var linearLayoutManager: LinearLayoutManager
+
+    @Inject
+    lateinit var tagAdapterComponentsBinder: SearchTagAdapterComponentsBinder
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,6 +75,8 @@ class SearchFragment : BaseFragment(),
             adapter = resultAdapter
         }
 
+        searchWidget?.setupTagAdapter(tagAdapterComponentsBinder)
+
         searchWidget?.onEnterPressed {
             searchWidget?.text?.let { presenter.handleQuery(query = it) }
         }
@@ -91,8 +97,10 @@ class SearchFragment : BaseFragment(),
     }
 
     override fun updateTags(tags: List<TagItemViewModel>) {
-        val clickHandler: (TagItemViewModel) -> Unit = { presenter.handleTagItemSelected(it) }
+        searchWidget?.updateTags(tags)
+    }
 
-        searchWidget?.searchWidgetFilterItemChipGroup?.updateTags(tags, clickHandler)
+    override fun onSearchTagItemSelected(item: TagItemViewModel) {
+        presenter.handleTagItemSelected(item)
     }
 }

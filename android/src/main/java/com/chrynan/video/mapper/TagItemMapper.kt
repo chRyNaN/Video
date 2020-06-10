@@ -26,7 +26,7 @@ class TagItemMapper @Inject constructor() : Mapper<TagSuggestion, TagItemViewMod
         TagItemViewModel(
             name = model.name,
             isSelected = false,
-            backgroundColor = colors[count % colors.size],
+            backgroundColor = colors[count % colors.size].resourceID,
             nestedTags = model.nestedSuggestions.map {
                 mapWithColor(
                     model = it,
