@@ -12,14 +12,13 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_showcase.view.*
 import javax.inject.Inject
 
 @Adapter
 class VideoShowcaseAdapter @Inject constructor(
     dispatchers: CoroutineDispatchers,
-    private val listener: VideoOptionsListener
+    private val listener: VideoShowcaseItemSelectedListener
 ) : BaseAdapter<VideoShowcaseViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(VideoShowcaseAdapter::class.java)
@@ -47,9 +46,16 @@ class VideoShowcaseAdapter @Inject constructor(
         }
 
         adapterVideoShowcaseOverflowOptionsImageView?.setOnClickListener {
-            listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
+            listener.onVideoShowcaseOptionsSelected(item = item)
         }
 
-        setOnClickListener { }
+        setOnClickListener { listener.onVideoShowcaseItemSelected(item = item) }
+    }
+
+    interface VideoShowcaseItemSelectedListener {
+
+        fun onVideoShowcaseItemSelected(item: VideoShowcaseViewModel)
+
+        fun onVideoShowcaseOptionsSelected(item: VideoShowcaseViewModel)
     }
 }

@@ -15,7 +15,6 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.adapter.video.*
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.ui.view.VideoPlayerView
@@ -189,7 +188,11 @@ internal abstract class VideoPlayerFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindVideoOptionsListener(fragment: VideoPlayerFragment): VideoOptionsListener
+    abstract fun bindVideoRecommendationItemSelectedListener(fragment: VideoPlayerFragment): VideoRecommendationAdapter.VideoRecommendationItemSelectedListener
+
+    @Binds
+    @FragmentScope
+    abstract fun bindVideoShowcaseItemSelectedListener(fragment: VideoPlayerFragment): VideoShowcaseAdapter.VideoShowcaseItemSelectedListener
 
     @Binds
     @FragmentScope

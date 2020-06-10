@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.HomeView
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.di.qualifier.HomeQualifier
 import com.chrynan.video.presenter.HomePresenter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.HomeListDecorator
+import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
+import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment(),
     HomeView,
-    VideoOptionsListener {
+    VideoShowcaseAdapter.VideoShowcaseItemSelectedListener {
 
     companion object {
 
@@ -66,7 +66,11 @@ class HomeFragment : BaseFragment(),
         presenter.loadFeed()
     }
 
-    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
+    override fun onVideoShowcaseItemSelected(item: VideoShowcaseViewModel) {
+
+    }
+
+    override fun onVideoShowcaseOptionsSelected(item: VideoShowcaseViewModel) {
         videoOptionsMenuBottomSheet.show(childFragmentManager, null)
     }
 }

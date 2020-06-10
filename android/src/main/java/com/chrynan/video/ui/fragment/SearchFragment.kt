@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
-import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.SearchQualifier
@@ -20,8 +18,10 @@ import com.chrynan.video.presenter.SearchPresenter
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
 import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
+import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.utils.showKeyboard
 import com.chrynan.video.viewmodel.ChannelListItemViewModel
+import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.widget_search.view.*
 import javax.inject.Inject
@@ -29,7 +29,7 @@ import javax.inject.Inject
 class SearchFragment : BaseFragment(),
     SearchView,
     SearchNavigator,
-    VideoOptionsListener,
+    VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
     SearchTagItemAdapter.SearchTagItemSelectedListener,
     ChannelListItemAdapter.ChannelListItemSelectedListener {
 
@@ -98,8 +98,11 @@ class SearchFragment : BaseFragment(),
     override fun goToChannel(providerUri: UriString, channelId: ID) =
         goToFragment(ChannelFragment.newInstance(providerUri = providerUri, channelId = channelId))
 
-    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
+    override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {
 
+    }
+
+    override fun onVideoRecommendationOptionsSelected(item: VideoRecommendationViewModel) {
     }
 
     override fun showEmptyState() {

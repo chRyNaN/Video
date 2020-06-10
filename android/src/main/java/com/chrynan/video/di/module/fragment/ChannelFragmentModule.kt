@@ -15,7 +15,6 @@ import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
@@ -165,7 +164,7 @@ internal abstract class ChannelFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindVideoOptionsListener(fragment: ChannelFragment): VideoOptionsListener
+    abstract fun bindVideoRecommendationItemSelectedListener(fragment: ChannelFragment): VideoRecommendationAdapter.VideoRecommendationItemSelectedListener
 
     @Binds
     @FragmentScope

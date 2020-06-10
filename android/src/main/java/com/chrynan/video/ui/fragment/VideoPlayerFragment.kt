@@ -8,22 +8,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.common.model.api.VideoAction
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
+import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
+import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.view.VideoPlayerView
+import com.chrynan.video.viewmodel.VideoRecommendationViewModel
+import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import com.google.android.exoplayer2.Player
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
 class VideoPlayerFragment : BaseFragment(),
     VideoPlayerView,
-    VideoOptionsListener,
+    VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
+    VideoShowcaseAdapter.VideoShowcaseItemSelectedListener,
     VideoInfoActionAdapter.VideoActionSelectedListener {
 
     companion object {
@@ -69,8 +72,19 @@ class VideoPlayerFragment : BaseFragment(),
         presenter.loadExtras()
     }
 
-    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
+    override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {
+
+    }
+
+    override fun onVideoRecommendationOptionsSelected(item: VideoRecommendationViewModel) {
         videoOptionsMenuBottomSheet.show(childFragmentManager, null)
+    }
+
+    override fun onVideoShowcaseItemSelected(item: VideoShowcaseViewModel) {
+
+    }
+
+    override fun onVideoShowcaseOptionsSelected(item: VideoShowcaseViewModel) {
     }
 
     override fun attachPlayer(player: Player) {

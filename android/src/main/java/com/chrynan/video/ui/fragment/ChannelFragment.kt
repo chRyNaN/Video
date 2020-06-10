@@ -9,7 +9,6 @@ import coil.api.load
 import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
@@ -17,13 +16,14 @@ import com.chrynan.video.di.qualifier.ChannelQualifier
 import com.chrynan.video.presenter.ChannelPresenter
 import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
+import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_channel.*
 import javax.inject.Inject
 
 class ChannelFragment : BaseFragment(),
     ChannelView,
-    VideoOptionsListener,
+    VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
     ChannelHeaderAdapter.SubscribeButtonSelectedListener {
 
     companion object {
@@ -137,8 +137,11 @@ class ChannelFragment : BaseFragment(),
         channelBannerImageView?.load(imageUri)
     }
 
-    override fun videoOptionsMenuSelected(videoInfo: VideoInfo) {
+    override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {
 
+    }
+
+    override fun onVideoRecommendationOptionsSelected(item: VideoRecommendationViewModel) {
     }
 
     override fun onSubscribeButtonSelected(providerUri: UriString, channelId: ID) {

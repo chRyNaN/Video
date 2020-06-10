@@ -11,14 +11,13 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import kotlinx.android.synthetic.main.adapter_video_recommendation.view.*
 import javax.inject.Inject
 
 @Adapter
 class VideoRecommendationAdapter @Inject constructor(
     dispatchers: CoroutineDispatchers,
-    private val listener: VideoOptionsListener
+    private val listener: VideoRecommendationItemSelectedListener
 ) : BaseAdapter<VideoRecommendationViewModel>(dispatchers) {
 
     override val viewType = AdapterViewType.from(VideoRecommendationAdapter::class.java)
@@ -39,9 +38,16 @@ class VideoRecommendationAdapter @Inject constructor(
         adapterVideoRecommendationVideoLengthTextView?.text = item.videoLength
 
         adapterVideoRecommendationOverflowOptionsImageView?.setOnClickListener {
-            listener.videoOptionsMenuSelected(videoInfo = item.videoInfo)
+            listener.onVideoRecommendationOptionsSelected(item = item)
         }
 
-        setOnClickListener { }
+        setOnClickListener { listener.onVideoRecommendationItemSelected(item = item) }
+    }
+
+    interface VideoRecommendationItemSelectedListener {
+
+        fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel)
+
+        fun onVideoRecommendationOptionsSelected(item: VideoRecommendationViewModel)
     }
 }

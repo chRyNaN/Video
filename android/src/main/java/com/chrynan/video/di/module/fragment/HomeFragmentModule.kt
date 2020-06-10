@@ -11,7 +11,6 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.HomeListDecorator
-import com.chrynan.video.ui.adapter.listener.VideoOptionsListener
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.view.HomeView
@@ -98,7 +97,7 @@ internal abstract class HomeFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindVideoOptionsListener(fragment: HomeFragment): VideoOptionsListener
+    abstract fun bindVideoShowcaseItemSelectedListener(fragment: HomeFragment): VideoShowcaseAdapter.VideoShowcaseItemSelectedListener
 
     @Binds
     @FragmentScope
