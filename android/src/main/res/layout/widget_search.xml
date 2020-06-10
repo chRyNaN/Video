@@ -9,6 +9,8 @@
         style="@style/SearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusedByDefault="true"
         tools:ignore="Autofill,LabelFor,UnusedAttribute" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -16,7 +16,9 @@ import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.presenter.SearchPresenter
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
+import com.chrynan.video.utils.showKeyboard
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.widget_search.view.*
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(),
@@ -80,6 +82,8 @@ class SearchFragment : BaseFragment(),
         searchWidget?.onEnterPressed {
             searchWidget?.text?.let { presenter.handleQuery(query = it) }
         }
+
+        searchWidget?.searchWidgetEditText?.showKeyboard()
 
         presenter.loadInitialData()
     }
