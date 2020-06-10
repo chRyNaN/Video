@@ -1,10 +1,15 @@
 package com.chrynan.video.presenter
 
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.common.model.SearchQuery
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.repository.SearchItemRepository
 import com.chrynan.common.repository.TagSuggestionRepository
+import com.chrynan.common.utils.flowFrom
 import com.chrynan.common.utils.mapEachItemWith
+import com.chrynan.common.validation.core.ValidationResult
+import com.chrynan.common.validation.core.isValid
+import com.chrynan.common.validation.validator.SearchQueryValidator
 import com.chrynan.logger.Logger
 import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.mapper.SearchResultMapper
@@ -18,6 +23,7 @@ import com.chrynan.video.viewmodel.AdapterItem
 import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
@@ -30,7 +36,8 @@ class SearchPresenter @Inject constructor(
     private val tagSuggestionRepository: TagSuggestionRepository,
     private val searchItemMapper: SearchResultMapper,
     private val tagItemMapper: TagItemMapper,
-    private val tagItemHandler: TagItemHandler
+    private val tagItemHandler: TagItemHandler,
+    private val searchQueryValidator: SearchQueryValidator
 ) : BasePresenter(dispatchers) {
 
     private var retrievedTags = emptyList<TagItemViewModel>()
@@ -100,10 +107,13 @@ class SearchPresenter @Inject constructor(
         view.updateTags(tagItemHandler.allTags)
     }
 
+    @OptIn(FlowPreview::class)
     fun handleQuery(query: String) {
         currentSearchJob?.cancel()
 
-        currentSearchJob = searchItemRepository.search(query = query)
+        currentSearchJob = getSearchQueryValidationFlow(query)
+            .filter { it.isValid } // TODO handle errors
+            .flatMapConcat { searchItemRepository.search(query = query) }
             .mapEachItemWith(searchItemMapper)
             .calculateAndDispatchDiff(adapterItemHandler)
             .catch {
@@ -114,4 +124,14 @@ class SearchPresenter @Inject constructor(
             }
             .launchIn(this)
     }
+
+    private fun getSearchQueryValidationFlow(query: String): Flow<ValidationResult<String>> =
+        flowFrom {
+            val searchQuery = SearchQuery(
+                query = query,
+                selectedTags = tagItemHandler.selectedTags.map { it.name }.toSet()
+            )
+
+            searchQueryValidator(searchQuery)
+        }
 }
