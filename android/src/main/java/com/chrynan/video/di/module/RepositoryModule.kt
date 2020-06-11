@@ -69,4 +69,7 @@ internal abstract class RepositoryModule {
 
     @Binds
     abstract fun bindTagSuggestionRepository(source: TagSuggestionRepositorySource): TagSuggestionRepository
+
+    @Binds
+    abstract fun bindChannelRepository(source: ChannelRepositorySource): ChannelRepository
 }
