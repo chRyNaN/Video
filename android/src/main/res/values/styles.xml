@@ -24,6 +24,8 @@
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
+    <style name="LauncherTheme" parent="AppTheme"></style>
+
     <style name="PopupMenu" parent="Base.Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/background_dark_secondary_color</item>
         <item name="android:textAppearance">@style/TextAppearance.Body</item>

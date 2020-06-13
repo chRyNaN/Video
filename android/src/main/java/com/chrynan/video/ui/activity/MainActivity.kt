@@ -1,5 +1,7 @@
 package com.chrynan.video.ui.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -21,6 +23,11 @@ class MainActivity : BaseActivity(),
     MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener,
     BaseExpandableOverlayWidget.ProgressChangedListener {
+
+    companion object {
+
+        fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
+    }
 
     override var topMenuTitle: CharSequence?
         get() = null
