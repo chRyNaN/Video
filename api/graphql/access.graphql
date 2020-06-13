@@ -14,7 +14,7 @@
 #
 directive @access(
     type: AccessType!
-) on OBJECT | FIELD_DEFINITION | INPUT_OBJECT | ENUM
+) on OBJECT | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | ENUM
 
 #
 # A GraphQL enum type that defines the different access strategies for the API. This enum type is

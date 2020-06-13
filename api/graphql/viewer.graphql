@@ -1,3 +1,18 @@
+#
+# A GraphQL type representing the Viewer or User of the Client who is accessing the APIs. All of
+# the APIs should be scoped with respect to the `Viewer`. For example, the `feed` field on the
+# `Query` object should return items relevant to this `Viewer`.
+#
+# `name` - The name to use for this `Viewer`. This value is up to the server implementation and can
+# be anything that will be visible to the `Viewer`. For example, this could be the full name, first
+# name, username, email, or any other User defined value. Howerver, it is recommended not to expose
+# secure information, such as, an email.
+#
+# `isAuthenticated` - Indicates whether this `Viewer` is authenticated (logged-in) or not.
+#
+# `subscribedChannels` - A `ChannelConnection` linking to the `Channels` that this User has
+# subscribed to.
+#
 type Viewer implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: Moment!
