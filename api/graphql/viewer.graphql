@@ -3,15 +3,6 @@ type Viewer implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     created: Moment!
     lastUpdated: Moment!
     name: String!
-    email: String
-    username: String
-    namePreference: NamePreference!
     isAuthenticated: Boolean!
     subscribedChannels(take: Int!, after: Cursor): ChannelConnection!
-}
-
-enum NamePreference @access(type: LOGIN_STRATEGY) {
-    NAME
-    EMAIL
-    USERNAME
 }

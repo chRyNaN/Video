@@ -13,9 +13,6 @@ data class Viewer(
     @SerialName(value = "created") override val created: Moment,
     @SerialName(value = "lastUpdated") override val lastUpdated: Moment,
     @SerialName(value = "name") val name: String,
-    @SerialName(value = "email") val email: String? = null,
-    @SerialName(value = "username") val username: String? = null,
-    @SerialName(value = "namePreference") val namePreference: NamePreference = NamePreference.NAME,
     @SerialName(value = "isAuthenticated") val isAuthenticated: Boolean = false,
     @SerialName(value = "subscribedChannels") val subscribedChannels: ChannelConnection = ChannelConnection()
 ) : Node,
