@@ -1,7 +1,34 @@
+#
+# A GraphQL directive type that is used to highlight different parts of the API to note the API's
+# availability. The `type` field is an `AccessType` enum value indicating the availability of the
+# API.
+#
+# Note that if this directive is applied to a type, then all it's subfields are considered as
+# having the same directive applied to them, unless explicitly defined otherwise.
+#
 directive @access(
     type: AccessType!
 ) on OBJECT | FIELD_DEFINITION | INPUT_OBJECT | ENUM
 
+#
+# A GraphQL enum type that defines the different access strategies for the API. This enum type is
+# used within the `@access` directive to highlight different parts of the API to note the API's
+# availability.
+#
+# Available values are:
+# * OPEN
+# * LOGIN_STRATEGY
+#
+# The `OPEN` value indicates that part of the API should be available to anyone querying the API.
+# Whereas, the `LOGIN_STRATEGY` value  indicates that part of the API's access is dependent on the
+# `LoginType`. For instance, if the `LoginType` is `NONE`, then that part of the API should be
+# available to anyone querying the API, similar to the `OPEN` `AccessType`.
+#
+# * `AccessType.OPEN` -> Open API section
+# * `AccessType.LOGIN_STRATEGY` with `LoginType.NONE` -> Open API section
+# * `AccessType.LOGIN_STRATEGY` with `LoginType.OPTIONAL` -> Open API section with limited results
+# * `AccessType.LOGIN_STRATEGY` with `LoginType.REQUIRED` -> Secured API section requires auth
+#
 enum AccessType {
     OPEN
     LOGIN_STRATEGY
