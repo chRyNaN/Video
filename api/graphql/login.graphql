@@ -14,6 +14,9 @@
 # login. **Note** that this alone is not a security indicator and is simply used to allow the
 # server to identify the login request.
 #
+# **Note** that this type has an `AccessType` of `OPEN`. If this isn't available for any client
+# querying the API, then there will be no way for the User to login from the client.
+#
 type LoginInfo @access(type: OPEN) {
     type: LoginType!
     loginUri: UriString
