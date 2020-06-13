@@ -1,9 +1,44 @@
+#
+# A GraphQL type that represents login information for a User to access data from the API.
+#
+# The `type` field indicates whether a User is required to login to access data or not. This is a
+# required field.
+#
+# The `loginUri` field is the URI to redirect to so that the User can login. This is an optional
+# field, however, if the `LoginType` is `REQUIRED` or `OPTIONAL` this value must be available. If
+# the `LoginType` is `NONE`, then this value should be null.
+#
+# The `requestId` is a server provided unique identifier used in the login process. This is an
+# optional property. If it is available and the `LoginType` is `REQUIRED` or `OPTIONAL` then it
+# will be added as a query parameter (ex: `?requestId=12345`) of the `loginUri` when redirecting to
+# login. **Note** that this alone is not a security indicator and is simply used to allow the
+# server to identify the login request.
+#
 type LoginInfo @access(type: OPEN) {
     type: LoginType!
     loginUri: UriString
     requestId: ID
 }
 
+#
+# A GraphQL enum type that defines the different login approaches. This enum type is used within
+# the `LoginInfo` type to indicate whether a User must login before accessing data from this API.
+#
+# Available values are:
+# * REQUIRED
+# * OPTIONAL
+# * NONE
+#
+# The `NONE` value indicates that the User can access data from this API, such as `Videos`, without
+# having to login. The `OPTIONAL` value indicates that User can choose to login but it is not
+# required. Some additional data may be available to a logged-in User that might not be available
+# to a User that is not logged-in. The `REQUIRED` value indicates that the User must login before
+# accesssing data from this API.
+#
+# `LoginType.REQUIRED` -> User must login to access data from the API
+# `LoginType.OPTIONAL` -> User may login to possibly have more data from the API available
+# `LoginType.NONE` -> User does not have to login to access data from the API
+#
 enum LoginType @access(type: OPEN) {
     REQUIRED
     OPTIONAL

@@ -3,8 +3,14 @@
 # availability. The `type` field is an `AccessType` enum value indicating the availability of the
 # API.
 #
-# Note that if this directive is applied to a type, then all it's subfields are considered as
+# **Note** that if this directive is applied to a type, then all it's subfields are considered as
 # having the same directive applied to them, unless explicitly defined otherwise.
+#
+# **Note** that if a server implementation of this API does not conform to the specified `@access`
+# directive, then they could either possibly expose a security risk or break a client's ability to
+# work with the server. For instance, if an expected `OPEN` part of the API is restricted, such as,
+# with the `LoginInfo`, then a client might consider that the server doesn't implement the API at
+# all.
 #
 directive @access(
     type: AccessType!
