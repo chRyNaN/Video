@@ -60,6 +60,11 @@ kotlin {
 
 apollo {
     generateKotlinModels = true
+    customTypeMapping = [
+            "Moment"   : "kotlin.String",
+            "UriString": "kotlin.String",
+            "Cursor"   : "kotlin.String"
+    ]
 }
 
 configurations {

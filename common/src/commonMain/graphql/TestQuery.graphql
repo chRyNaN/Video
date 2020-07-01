@@ -1,0 +1,15 @@
+query Test {
+    login {
+        type
+        requestId
+        loginUri
+    }
+    apiVersion
+    provider {
+        name
+        description
+        contactEmail
+        uri
+        created
+    }
+}
