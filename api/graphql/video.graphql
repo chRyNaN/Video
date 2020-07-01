@@ -28,6 +28,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     streamType: VideoStreamType!
     standaloneSubtitles: [Subtitle!]!
     drmInfo: DrmInfo
+    locale: String
     actions: [VideoAction!]!
     related(take: Int!, after: Cursor): VideoConnection!
 }
