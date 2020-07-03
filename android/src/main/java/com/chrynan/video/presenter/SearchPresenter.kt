@@ -8,11 +8,9 @@ import com.chrynan.common.repository.TagSuggestionRepository
 import com.chrynan.common.utils.flowFrom
 import com.chrynan.common.utils.mapEachItemWith
 import com.chrynan.common.validation.core.ValidationResult
-import com.chrynan.common.validation.core.isValid
 import com.chrynan.common.validation.validator.SearchQueryValidator
 import com.chrynan.logger.Logger
 import com.chrynan.video.di.qualifier.SearchQualifier
-import com.chrynan.video.mapper.SearchResultMapper
 import com.chrynan.video.mapper.TagItemMapper
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
@@ -34,7 +32,6 @@ class SearchPresenter @Inject constructor(
     @SearchQualifier.AdapterItemHandler private val adapterItemHandler: AdapterItemHandler<AdapterItem>,
     private val searchItemRepository: SearchItemRepository,
     private val tagSuggestionRepository: TagSuggestionRepository,
-    private val searchItemMapper: SearchResultMapper,
     private val tagItemMapper: TagItemMapper,
     private val tagItemHandler: TagItemHandler,
     private val searchQueryValidator: SearchQueryValidator
@@ -110,19 +107,6 @@ class SearchPresenter @Inject constructor(
     @OptIn(FlowPreview::class)
     fun handleQuery(query: String) {
         currentSearchJob?.cancel()
-
-        currentSearchJob = getSearchQueryValidationFlow(query)
-            .filter { it.isValid } // TODO handle errors
-            .flatMapConcat { searchItemRepository.search(query = query) }
-            .mapEachItemWith(searchItemMapper)
-            .calculateAndDispatchDiff(adapterItemHandler)
-            .catch {
-                Logger.logError(
-                    throwable = it,
-                    message = "Error retrieving search results for query = $query"
-                )
-            }
-            .launchIn(this)
     }
 
     fun handleSubscribeButtonSelected(item: ChannelListItemViewModel, isChecked: Boolean) {
