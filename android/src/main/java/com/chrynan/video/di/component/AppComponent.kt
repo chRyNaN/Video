@@ -1,10 +1,11 @@
 package com.chrynan.video.di.component
 
+import com.chrynan.video.di.module.*
 import com.chrynan.video.di.module.ActivityModule
 import com.chrynan.video.di.module.AppModule
 import com.chrynan.video.di.module.DatabaseModule
+import com.chrynan.video.di.module.GraphQLModule
 import com.chrynan.video.di.module.MediaModule
-import com.chrynan.video.di.module.RepositoryModule
 import com.chrynan.video.di.module.ValidatorModule
 import com.chrynan.video.di.module.WebModule
 import com.chrynan.video.ui.VideoApplication
@@ -21,6 +22,7 @@ import javax.inject.Singleton
         ActivityModule::class,
         MediaModule::class,
         WebModule::class,
+        GraphQLModule::class,
         RepositoryModule::class,
         DatabaseModule::class,
         ValidatorModule::class,

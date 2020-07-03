@@ -102,7 +102,6 @@ dependencies {
 
     // GraphQL Client - Apollo
     implementation "com.apollographql.apollo:apollo-http-cache:2.2.1"
-    implementation "com.apollographql.apollo:apollo-normalized-cache-sqlite:2.2.1"
 
     // Dependency Injection - Dagger
     kapt "com.google.dagger:dagger-compiler:2.19"
