@@ -2,7 +2,6 @@ package com.chrynan.video.presenter
 
 import android.util.Log
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.model.api.VideoAction
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.media.MediaController
@@ -41,37 +40,37 @@ class VideoPlayerPresenter(
 
         val shareAction = VideoInfoActionViewModel(
             videoInfo = videoInfo,
-            action = VideoAction.Share(),
+            action = "VideoAction.Share()",
             icon = R.drawable.ic_video_action_share
         )
 
         val castAction = VideoInfoActionViewModel(
             videoInfo = videoInfo,
-            action = VideoAction.Cast,
+            action = "VideoAction.Cast",
             icon = R.drawable.ic_video_action_cast
         )
 
         val downloadAction = VideoInfoActionViewModel(
             videoInfo = videoInfo,
-            action = VideoAction.Download(""),
+            action = "VideoAction.Download(\"\")",
             icon = R.drawable.ic_video_action_download
         )
 
         val ratingUpAction = VideoInfoActionViewModel(
             videoInfo = videoInfo,
-            action = VideoAction.RatingUp(true),
+            action = "VideoAction.RatingUp(true)",
             icon = R.drawable.ic_video_action_rating_up
         )
 
         val ratingDownAction = VideoInfoActionViewModel(
             videoInfo = videoInfo,
-            action = VideoAction.RatingDown(false),
+            action = "VideoAction.RatingDown(false)",
             icon = R.drawable.ic_video_action_rating_down
         )
 
         val flagAction = VideoInfoActionViewModel(
             videoInfo = videoInfo,
-            action = VideoAction.Flag(false),
+            action = "VideoAction.Flag(false)",
             icon = R.drawable.ic_video_action_flag
         )
 

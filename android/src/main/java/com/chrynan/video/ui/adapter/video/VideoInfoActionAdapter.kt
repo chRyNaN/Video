@@ -9,7 +9,6 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.model.api.SelectableAction
 import com.chrynan.common.model.api.VideoAction
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
@@ -37,7 +36,7 @@ class VideoInfoActionAdapter @Inject constructor(
         val action = item.action
 
         adapterVideoInfoActionButton?.load(item.icon)
-        adapterVideoInfoActionButton?.isActivated = action is SelectableAction && action.isSelected
+        //adapterVideoInfoActionButton?.isActivated = action is SelectableAction && action.isSelected
         adapterVideoInfoActionButton?.setOnClickListener {
             listener.onVideoActionSelected(action)
         }
