@@ -370,7 +370,7 @@ type Viewer implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     lastUpdated: Moment!
     name: String!
     isAuthenticated: Boolean!
-    subscribedChannels(take: Int!, after: Cursor): ChannelConnection!
+    subscribedChannels(take: Int!, after: Cursor = null): ChannelConnection!
 }
 
 
@@ -379,8 +379,8 @@ type Query @access(type: OPEN) {
     login: LoginInfo! @access(type: OPEN)
     provider: Provider! @access(type: OPEN)
     viewer: Viewer! @access(type: LOGIN_STRATEGY)
-    search(query: String!, take: Int!, after: Cursor): SearchResultConnection! @access(type: LOGIN_STRATEGY)
-    feed(take: Int!, after: Cursor): FeedConnection! @access(type: LOGIN_STRATEGY)
+    search(query: String!, take: Int!, after: Cursor = null): SearchResultConnection! @access(type: LOGIN_STRATEGY)
+    feed(take: Int!, after: Cursor = null): FeedConnection! @access(type: LOGIN_STRATEGY)
 }
 
 schema {

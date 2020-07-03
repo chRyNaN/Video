@@ -1,0 +1,40 @@
+query FeedQuery($take: Int!, $after: Cursor = null) {
+    provider {
+        created
+        lastUpdated
+        uri
+        name
+    }
+    feedItems: feed(take: $take, after: $after) {
+        pageInfo {
+            ...pageInfoFragment
+        }
+        totalCount
+        nodes {
+            ...on VideoFeedItem {
+                channel {
+                    id
+                    created
+                    lastUpdated
+                    name
+                    isSubscribed
+                    count {
+                        totalSubscribers
+                    }
+                }
+                video {
+                    id
+                    created
+                    lastUpdated
+                    uri
+                    name
+                    description
+                    previewImage
+                    isLive
+                    lengthInMilliseconds
+                    viewCount
+                }
+            }
+        }
+    }
+}

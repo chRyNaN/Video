@@ -1,5 +1,7 @@
 package com.chrynan.common.api
 
+import FeedQuery
+import com.apollographql.apollo.api.Input
 import com.chrynan.common.Inject
 import com.chrynan.common.api.query.ChannelGraphQLQuery
 import com.chrynan.common.api.query.FeedGraphQLQuery
