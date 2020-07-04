@@ -11,7 +11,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @OptIn(ApolloExperimental::class, ExperimentalCoroutinesApi::class)
 class ApolloGraphQLClientFactory @Inject constructor() : GraphQLClientFactory {
 
+    private val mapCache = mutableMapOf<UriString, GraphQLClient>()
+
     override fun create(baseUri: UriString): GraphQLClient {
+        var graphQLClient = mapCache[baseUri]
+
+        if (graphQLClient != null) return graphQLClient
+
         val apolloClient = ApolloClient(
             networkTransport = ApolloHttpNetworkTransport(
                 serverUrl = "https://api.github.com/graphql",
@@ -25,6 +31,10 @@ class ApolloGraphQLClientFactory @Inject constructor() : GraphQLClientFactory {
             )
         )
 
-        return ApolloGraphQLClient(apolloClient)
+        graphQLClient = ApolloGraphQLClient(apolloClient)
+
+        mapCache[baseUri] = graphQLClient
+
+        return graphQLClient
     }
 }
