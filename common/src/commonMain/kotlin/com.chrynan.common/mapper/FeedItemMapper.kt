@@ -28,9 +28,11 @@ class FeedItemMapper @Inject constructor() : Mapper<FeedQuery.Data, List<FeedIte
                     isVideoLive = node.video.isLive,
                     videoLengthInMilliseconds = node.video.lengthInMilliseconds.toLong(),
                     videoViewCount = node.video.viewCount?.toLong(),
+                    videoImage = node.video.previewImage,
                     channelName = node.channel.name,
                     isSubscribedToChannel = node.channel.isSubscribed,
                     channelSubscriberCount = node.channel.count.totalSubscribers.toLong(),
+                    channelImage = node.channel.images.thumbnail,
                     providerName = providerName
                 )
             }

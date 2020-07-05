@@ -21,6 +21,9 @@ query FeedQuery($take: Int!, $after: Cursor = null) {
                     count {
                         totalSubscribers
                     }
+                    images {
+                        thumbnail
+                    }
                 }
                 video {
                     id

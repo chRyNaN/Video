@@ -8,5 +8,13 @@ import javax.inject.Inject
 class VideoShowcaseMapper @Inject constructor() :
     Mapper<FeedItem.VideoFeedItem, VideoShowcaseViewModel> {
 
-    override suspend fun map(model: FeedItem.VideoFeedItem): VideoShowcaseViewModel = TODO()
+    override suspend fun map(model: FeedItem.VideoFeedItem): VideoShowcaseViewModel =
+        VideoShowcaseViewModel(
+            videoInfo = model.videoInfo,
+            title = model.videoName,
+            details = model.videoDescription ?: "",
+            provider = model.providerName,
+            videoLength = model.videoLengthInMilliseconds?.toString() ?: "",
+            channelImageUrl = model.channelImage
+        )
 }
