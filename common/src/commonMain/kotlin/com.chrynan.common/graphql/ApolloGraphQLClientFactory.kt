@@ -13,7 +13,7 @@ class ApolloGraphQLClientFactory @Inject constructor() : GraphQLClientFactory {
 
     private val mapCache = mutableMapOf<UriString, GraphQLClient>()
 
-    override fun create(baseUri: UriString): GraphQLClient {
+    override fun getOrCreate(baseUri: UriString): GraphQLClient {
         var graphQLClient = mapCache[baseUri]
 
         if (graphQLClient != null) return graphQLClient

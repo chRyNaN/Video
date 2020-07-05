@@ -1,5 +1,7 @@
 package com.chrynan.video.di.module
 
+import com.chrynan.common.paginate.CursorCache
+import com.chrynan.common.paginate.MapCursorCache
 import com.chrynan.common.repository.*
 import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
 import com.chrynan.common.repository.source.*
@@ -11,6 +13,9 @@ import dagger.Module
 
 @Module
 internal abstract class RepositoryModule {
+
+    @Binds
+    abstract fun bindCursorCache(mapCursorCache: MapCursorCache): CursorCache
 
     @Binds
     abstract fun bindServiceDatabaseRepository(source: ServiceProviderDatabaseSource): ServiceProviderDatabaseRepository

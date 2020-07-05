@@ -41,3 +41,5 @@ fun <T> Flow<T>.filterUntilFirstChange(): Flow<T> {
             }
         }
 }
+
+fun <T> Flow<T>.firstAsFlow(): Flow<T> = flow { emit(first()) }

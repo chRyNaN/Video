@@ -4,5 +4,5 @@ import com.chrynan.common.model.core.UriString
 
 interface GraphQLClientFactory {
 
-    fun create(baseUri: UriString): GraphQLClient
+    fun getOrCreate(baseUri: UriString): GraphQLClient
 }
