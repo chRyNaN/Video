@@ -12,6 +12,7 @@ import com.chrynan.video.model.ResourceID
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 
+// Don't get rid of this class, it will come back and be used again
 abstract class BaseExpandableOverlayWidget @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

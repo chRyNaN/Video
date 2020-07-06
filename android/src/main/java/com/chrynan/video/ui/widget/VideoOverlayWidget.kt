@@ -13,6 +13,7 @@ import com.chrynan.video.ui.view.VideoPlayerView
 import com.google.android.exoplayer2.Player
 import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 
+// Don't get rid of this class, it will come back and be used again
 class VideoOverlayWidget @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

@@ -72,9 +72,9 @@ class VideoPlayerFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        videoOverlayWidget?.setup()
-
-        videoOverlayWidget?.setupAdapter(adapter, layoutManager, decorator)
+        videoRecyclerView?.adapter = adapter
+        videoRecyclerView?.layoutManager = layoutManager
+        videoRecyclerView?.addItemDecoration(decorator)
 
         presenter.loadVideo()
         presenter.loadExtras()
@@ -96,19 +96,19 @@ class VideoPlayerFragment : BaseFragment(),
     }
 
     override fun attachPlayer(player: Player) {
-        videoOverlayWidget?.attachPlayer(player)
+        videoPlayerWidget?.attachPlayer(player)
     }
 
     override fun detachPlayer() {
-        videoOverlayWidget?.detachPlayer()
+        videoPlayerWidget?.detachPlayer()
     }
 
     override fun showPreviewImage(previewImageUri: UriString?) {
-        videoOverlayWidget?.showPreviewImage(previewImageUri)
+        videoPlayerWidget?.showPreviewImage(previewImageUri)
     }
 
     override fun showVideo() {
-        videoOverlayWidget?.showVideo()
+        videoPlayerWidget?.showVideo()
     }
 
     override fun onVideoActionSelected(action: VideoAction) {

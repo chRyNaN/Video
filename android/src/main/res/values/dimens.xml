@@ -92,4 +92,6 @@
 
     <dimen name="bottom_sheet_corner_radius">16dp</dimen>
 
+    <dimen name="video_player_min_height">200dp</dimen>
+
 </resources>
