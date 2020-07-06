@@ -63,7 +63,7 @@ class HomeFragment : BaseFragment(),
             addItemDecoration(decorator)
         }
 
-        presenter.loadFeed()
+        presenter.loadInitialFeed()
     }
 
     override fun onVideoShowcaseItemSelected(item: VideoShowcaseViewModel) {

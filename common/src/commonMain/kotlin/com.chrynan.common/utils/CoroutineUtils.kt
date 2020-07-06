@@ -10,6 +10,10 @@ fun <T> flowFrom(builder: suspend () -> T): Flow<T> = flow {
 fun <T, R> Flow<Collection<T>>.mapEachItemWith(mapper: Mapper<T, R>): Flow<List<R>> =
     map { list -> list.map { mapper.map(it) } }
 
+inline fun <reified R> Flow<Collection<*>>.filterEachItemIsInstance() = map {
+    it.filterIsInstance<R>()
+}
+
 fun <T> Flow<T>.onFirstEmit(action: suspend (T) -> Unit): Flow<T> {
     var firstEmit = true
 
