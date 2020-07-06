@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.common.model.api.VideoAction
+import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
+import com.chrynan.video.parcel.model.putVideoInfo
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
 import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
@@ -31,7 +33,13 @@ class VideoPlayerFragment : BaseFragment(),
 
     companion object {
 
-        fun newInstance() = VideoPlayerFragment()
+        private const val KEY_VIDEO_INFO = "keyVideoInfo"
+
+        fun newInstance(videoInfo: VideoInfo) = VideoPlayerFragment().apply {
+            arguments = Bundle().apply {
+                putVideoInfo(KEY_VIDEO_INFO, videoInfo)
+            }
+        }
     }
 
     @Inject
