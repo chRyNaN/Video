@@ -1,3 +1,4 @@
 package com.chrynan.video.ui.view
 
-interface HomeView : View
+interface HomeView : View,
+    EmptyListStateView

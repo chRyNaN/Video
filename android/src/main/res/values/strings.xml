@@ -67,4 +67,7 @@
     <string name="settings_item_title_license">License</string>
     <string name="settings_item_title_open_source_licenses">Open Source Licenses</string>
 
+    <string name="home_empty_text">There are no videos available. Try adding a Service Provider to load more videos.</string>
+    <string name="home_add_service_provider_button">Add Service Provider</string>
+
 </resources>

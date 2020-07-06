@@ -9,7 +9,9 @@ import com.chrynan.video.ui.view.HomeView
 import com.chrynan.video.R
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.di.qualifier.HomeQualifier
+import com.chrynan.video.model.ServiceProviderScreen
 import com.chrynan.video.presenter.HomePresenter
+import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.HomeListDecorator
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
@@ -57,13 +59,32 @@ class HomeFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView?.apply {
+        homeRecyclerView?.apply {
             layoutManager = linearLayoutManager
             adapter = managerAdapter
             addItemDecoration(decorator)
         }
 
+        homeAddServiceProviderButton?.setOnClickListener {
+            startActivitySafely {
+                ServiceProviderActivity.newIntent(
+                    context = it,
+                    screen = ServiceProviderScreen.New
+                )
+            }
+        }
+
         presenter.loadInitialFeed()
+    }
+
+    override fun showEmptyState() {
+        homeEmptyStateGroup?.visibility = View.VISIBLE
+        homeRecyclerView?.visibility = View.GONE
+    }
+
+    override fun showListState() {
+        homeRecyclerView?.visibility = View.VISIBLE
+        homeEmptyStateGroup?.visibility = View.GONE
     }
 
     override fun onVideoShowcaseItemSelected(item: VideoShowcaseViewModel) {

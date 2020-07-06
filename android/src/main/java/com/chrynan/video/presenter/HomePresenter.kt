@@ -13,19 +13,20 @@ import com.chrynan.common.utils.mapEachItemWith
 import com.chrynan.common.utils.onError
 import com.chrynan.logger.Logger
 import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
+import com.chrynan.video.ui.view.HomeView
+import com.chrynan.video.ui.view.toggleEmptyState
+import kotlinx.coroutines.flow.*
 
 class HomePresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
+    private val view: HomeView,
     private val feedRepository: FeedItemRepository,
     private val mapper: VideoShowcaseMapper,
     @HomeQualifier.AdapterItemHandler private val adapterItemHandler: AdapterItemHandler<AdapterItem>
 ) : BasePresenter(dispatchers) {
 
     private var isLoading = false
+    private var lastCount = 0
 
     fun loadInitialFeed() = loadFeed()
 
@@ -37,8 +38,14 @@ class HomePresenter @Inject constructor(
                 .onStart { isLoading = true }
                 .onEach { isLoading = false }
                 .onError { isLoading = false }
+                .flowOn(dispatchers.io)
+                .onEach { lastCount = it.size }
+                .onEach { view.toggleEmptyState(count = lastCount) }
+                .onError { view.toggleEmptyState(count = lastCount) }
+                .flowOn(dispatchers.main)
                 .filterEachItemIsInstance<FeedItem.VideoFeedItem>()
                 .mapEachItemWith(mapper)
+                .flowOn(dispatchers.io)
                 .calculateAndDispatchDiff(adapterItemHandler)
                 .catch { Logger.logError(message = "Error fetching feed items.", throwable = it) }
                 .launchIn(this)
