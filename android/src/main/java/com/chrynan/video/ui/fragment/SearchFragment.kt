@@ -15,6 +15,7 @@ import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.navigator.SearchNavigator
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.presenter.SearchPresenter
+import com.chrynan.video.ui.activity.ChannelActivity
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
 import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
@@ -96,7 +97,13 @@ class SearchFragment : BaseFragment(),
     }
 
     override fun goToChannel(providerUri: UriString, channelId: ID) =
-        goToFragment(ChannelFragment.newInstance(providerUri = providerUri, channelId = channelId))
+        startActivitySafely {
+            ChannelActivity.newIntent(
+                context = it,
+                providerUri = providerUri,
+                channelId = channelId
+            )
+        }
 
     override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {
 

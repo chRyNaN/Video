@@ -51,18 +51,10 @@ internal abstract class MainActivityModule {
     abstract fun settingsFragmentInjector(): SettingsFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [VideoPlayerFragmentModule::class])
-    abstract fun videoFragmentInjector(): VideoPlayerFragment
-
-    @FragmentScope
     @ContributesAndroidInjector(modules = [QueueFragmentModule::class])
     abstract fun queueFragmentInjector(): QueueFragment
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [WatchListFragmentModule::class])
     abstract fun watchListFragmentInjector(): WatchListFragment
-
-    @FragmentScope
-    @ContributesAndroidInjector(modules = [ChannelFragmentModule::class])
-    abstract fun channelFragmentInjector(): ChannelFragment
 }

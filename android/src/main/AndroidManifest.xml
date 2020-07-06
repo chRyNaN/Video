@@ -25,6 +25,8 @@
 
         <activity android:name=".ui.activity.ServiceProviderActivity" />
 
+        <activity android:name=".ui.activity.ChannelActivity" />
+
         <activity android:name=".ui.activity.VideoPlayerActivity" />
 
         <meta-data
