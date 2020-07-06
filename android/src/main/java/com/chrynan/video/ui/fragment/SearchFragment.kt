@@ -16,6 +16,7 @@ import com.chrynan.video.navigator.SearchNavigator
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.presenter.SearchPresenter
 import com.chrynan.video.ui.activity.ChannelActivity
+import com.chrynan.video.ui.activity.VideoPlayerActivity
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
 import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
@@ -105,9 +106,10 @@ class SearchFragment : BaseFragment(),
             )
         }
 
-    override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {
-
-    }
+    override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) =
+        startActivitySafely {
+            VideoPlayerActivity.newIntent(context = it, videoInfo = item.videoInfo)
+        }
 
     override fun onVideoRecommendationOptionsSelected(item: VideoRecommendationViewModel) {
     }
