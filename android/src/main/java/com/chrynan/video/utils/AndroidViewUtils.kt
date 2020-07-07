@@ -1,6 +1,8 @@
 package com.chrynan.video.utils
 
 import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
