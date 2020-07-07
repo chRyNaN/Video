@@ -30,6 +30,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     drmInfo: DrmInfo
     locale: String
     actions: [VideoAction!]!
+    adInfo: AdInfo
     related(take: Int!, after: Cursor): VideoConnection!
 }
 
@@ -101,4 +102,14 @@ type DrmInfo @access(type: LOGIN_STRATEGY) {
     scheme: DrmScheme!
     multiSession: Boolean!
     offlineLicenseKeySetId: String
+}
+
+type AdInfo @access(type: LOGIN_STRATEGY) {
+    format: AdFormat!
+    uri: UriString!
+}
+
+enum AdFormat @access(type: LOGIN_STRATEGY) {
+    VAST
+    VMAP
 }
