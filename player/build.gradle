@@ -1,0 +1,40 @@
+apply plugin: "kotlin-multiplatform"
+
+group rootProject.libraryGroup
+version rootProject.libraryVersion
+
+kotlin {
+    targets {
+        jvm()
+    }
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib"
+            }
+        }
+    }
+}
+
+configurations {
+    compileClasspath
+}
+
+publishing {
+    publications {
+        kotlinMultiplatform {
+            artifactId = "video-player"
+        }
+        jvm {
+            artifactId = "video-player-jvm"
+        }
+        metadata {
+            artifactId = "video-player-metadata"
+        }
+    }
+}

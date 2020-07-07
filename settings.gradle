@@ -3,5 +3,6 @@ rootProject.name = "video"
 include ":android"
 include ":common"
 include ":presentation"
+include ":player"
 
 enableFeaturePreview("GRADLE_METADATA")
