@@ -6,6 +6,8 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.qualifier.HomeQualifier
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.player.AndroidMediaController
+import com.chrynan.video.player.converter.DelegatePlayableConverter
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
@@ -16,6 +18,7 @@ import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.view.HomeView
 import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
+import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -25,6 +28,14 @@ internal abstract class HomeFragmentModule {
 
     @Module
     companion object {
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        fun provideMediaController(
+            exoPlayer: SimpleExoPlayer,
+            converter: DelegatePlayableConverter
+        ): com.chrynan.video.player.MediaController = AndroidMediaController(exoPlayer, converter)
 
         @Provides
         @JvmStatic

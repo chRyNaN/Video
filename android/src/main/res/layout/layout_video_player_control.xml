@@ -6,6 +6,18 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/videoPlayerControlPreviewImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/cd_video_preview_image"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/exo_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

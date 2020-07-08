@@ -4,8 +4,8 @@ import android.util.Log
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
-import com.chrynan.video.media.MediaController
-import com.chrynan.video.media.MediaSourceCreator
+import com.chrynan.video.player.MediaController
+import com.chrynan.video.player.PlaylistCreator
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.VideoPlayerView
@@ -16,16 +16,16 @@ class VideoPlayerPresenter(
     dispatchers: CoroutineDispatchers,
     private val adapterHandler: AdapterItemHandler<AdapterItem>,
     private val mediaController: MediaController,
-    private val mediaSourceCreator: MediaSourceCreator,
+    private val playlistCreator: PlaylistCreator,
     private val view: VideoPlayerView
 ) : BasePresenter(dispatchers) {
 
     fun loadVideo() {
-        val source = mediaSourceCreator.fromUri("https://www.w3schools.com/html/mov_bbb.mp4")
+        //val source = mediaSourceCreator.fromUri("https://www.w3schools.com/html/mov_bbb.mp4")
 
-        view.attachPlayer(mediaController.player)
-        mediaController.load(source)
-        mediaController.resume()
+        //view.attachPlayer(mediaController.player)
+        //mediaController.load(source)
+        //mediaController.resume()
     }
 
     fun loadExtras() {

@@ -9,13 +9,14 @@ import coil.fetch.VideoFrameFileFetcher
 import coil.fetch.VideoFrameUriFetcher
 import com.chrynan.video.di.qualifier.ApplicationContextQualifier
 import com.chrynan.video.di.qualifier.OkHttpQualifier
-import com.chrynan.video.media.AndroidMediaSourceCreator
-import com.chrynan.video.media.MediaController
-import com.chrynan.video.media.MediaSourceCreator
-import com.chrynan.video.media.SimpleExoPlayerMediaController
+import com.chrynan.video.player.AndroidPlaylistCreator
+import com.chrynan.video.player.PlaylistCreator
+import com.chrynan.video.player.converter.*
 import com.chrynan.video.utils.ApplicationContext
 import com.google.android.exoplayer2.SimpleExoPlayer
-import dagger.Binds
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -33,6 +34,54 @@ internal abstract class MediaModule {
         fun provideSimpleExoPlayer(@ApplicationContextQualifier context: ApplicationContext): SimpleExoPlayer =
             SimpleExoPlayer.Builder(context)
                 .build()
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun provideDataSourceFactory(@ApplicationContextQualifier context: ApplicationContext): DataSource.Factory =
+            DefaultDataSourceFactory(context, Util.getUserAgent(context, "Video"))
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun provideMediaSourcePlayableConverter(dataSourceFactory: DataSource.Factory): MediaSourcePlayableConverter =
+            MediaSourcePlayableConverter(dataSourceFactory)
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun provideMediaSourceEffectPlayableConverter(mediaSourceConverter: MediaSourcePlayableConverter): MediaSourceEffectPlayableConverter =
+            MediaSourceEffectPlayableConverter(mediaSourceConverter)
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun providePlaylistPlayableConverter(
+            mediaSourceConverter: MediaSourcePlayableConverter,
+            mediaSourceEffectConverter: MediaSourceEffectPlayableConverter
+        ): PlaylistPlayableConverter =
+            PlaylistPlayableConverter(mediaSourceConverter, mediaSourceEffectConverter)
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun provideDelegatePlayableConverter(
+            mediaSourceConverter: MediaSourcePlayableConverter,
+            mediaSourceEffectConverter: MediaSourceEffectPlayableConverter,
+            playlistConverter: PlaylistPlayableConverter
+        ): DelegatePlayableConverter = DelegatePlayableConverter(
+            converters = listOf(
+                mediaSourceConverter,
+                mediaSourceEffectConverter,
+                playlistConverter
+            )
+        )
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun providePlaylistCreator(converter: DelegatePlayableConverter): PlaylistCreator =
+            AndroidPlaylistCreator(converter)
 
         @Provides
         @JvmStatic
@@ -59,10 +108,4 @@ internal abstract class MediaModule {
             }
             .build()
     }
-
-    @Binds
-    abstract fun bindMediaSourceCreator(creator: AndroidMediaSourceCreator): MediaSourceCreator
-
-    @Binds
-    abstract fun bindMediaController(controller: SimpleExoPlayerMediaController): MediaController
 }

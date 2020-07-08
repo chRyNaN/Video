@@ -1,11 +1,13 @@
 apply plugin: "kotlin-multiplatform"
+apply plugin: "com.android.library"
+apply plugin: "digital.wup.android-maven-publish"
 
 group rootProject.libraryGroup
 version rootProject.libraryVersion
 
 kotlin {
     targets {
-        jvm()
+        fromPreset(presets.android, "android")
     }
     sourceSets {
         commonMain {
@@ -13,12 +15,56 @@ kotlin {
                 implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
             }
         }
-        jvmMain {
+        androidMain {
             dependencies {
                 implementation "org.jetbrains.kotlin:kotlin-stdlib"
             }
         }
     }
+}
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode rootProject.libraryVersionCode
+        versionName rootProject.libraryVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            matchingFallbacks = ["debug"]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    sourceSets {
+        main {
+            manifest.srcFile "src/androidMain/AndroidManifest.xml"
+            java.srcDirs = ["src/androidMain/kotlin"]
+            res.srcDirs = ["src/androidMain/res"]
+        }
+        test {
+            java.srcDirs = ["src/androidTest/kotlin"]
+            res.srcDirs = ["src/androidTest/res"]
+        }
+    }
+}
+
+dependencies {
+    // Video Player - ExoPlayer
+    implementation "com.google.android.exoplayer:exoplayer:2.11.5"
+
+    // Image Loading - Coil
+    implementation "io.coil-kt:coil-base:0.11.0"
 }
 
 configurations {
@@ -30,11 +76,18 @@ publishing {
         kotlinMultiplatform {
             artifactId = "video-player"
         }
-        jvm {
-            artifactId = "video-player-jvm"
-        }
         metadata {
             artifactId = "video-player-metadata"
         }
+        MavenPub(MavenPublication) {
+            from(components.android)
+            artifactId "video-player-android"
+        }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xopt-in=kotlin.RequiresOptIn"]
     }
 }

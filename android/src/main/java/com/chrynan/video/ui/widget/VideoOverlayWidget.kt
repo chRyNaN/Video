@@ -1,16 +1,16 @@
 package com.chrynan.video.ui.widget
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.view.OverlayView
 import com.chrynan.video.ui.view.VideoOverlayView
 import com.chrynan.video.ui.view.VideoPlayerView
-import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ui.PlayerView
 import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 
 // Don't get rid of this class, it will come back and be used again
@@ -49,19 +49,18 @@ class VideoOverlayWidget @JvmOverloads constructor(
         videoOverlayRecyclerView?.addItemDecoration(decorator)
     }
 
-    override fun attachPlayer(player: Player) {
-        videoOverlayVideoPlayerWidget?.attachPlayer(player)
+    override val widget: PlayerView
+        get() = TODO("Not yet implemented")
+
+    override fun setPreviewImage(drawable: Drawable?) {
+        TODO("Not yet implemented")
     }
 
-    override fun detachPlayer() {
-        videoOverlayVideoPlayerWidget?.detachPlayer()
+    override fun setPreviewImage(uri: String?) {
+        TODO("Not yet implemented")
     }
 
-    override fun showPreviewImage(previewImageUri: UriString?) {
-        videoOverlayVideoPlayerWidget?.showPreviewImage(previewImageUri)
-    }
-
-    override fun showVideo() {
-        videoOverlayVideoPlayerWidget?.showVideo()
+    override fun togglePreviewImageVisibility(isVisible: Boolean) {
+        TODO("Not yet implemented")
     }
 }

@@ -1,5 +1,6 @@
 package com.chrynan.video.ui.fragment
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.core.UriString
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.parcel.model.putVideoInfo
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
@@ -21,7 +21,7 @@ import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import com.chrynan.video.viewmodel.VideoShowcaseViewModel
-import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ui.PlayerView
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
@@ -95,20 +95,19 @@ class VideoPlayerFragment : BaseFragment(),
     override fun onVideoShowcaseOptionsSelected(item: VideoShowcaseViewModel) {
     }
 
-    override fun attachPlayer(player: Player) {
-        videoPlayerWidget?.attachPlayer(player)
+    override val widget: PlayerView
+        get() = TODO("Not yet implemented")
+
+    override fun setPreviewImage(drawable: Drawable?) {
+        TODO("Not yet implemented")
     }
 
-    override fun detachPlayer() {
-        videoPlayerWidget?.detachPlayer()
+    override fun setPreviewImage(uri: String?) {
+        TODO("Not yet implemented")
     }
 
-    override fun showPreviewImage(previewImageUri: UriString?) {
-        videoPlayerWidget?.showPreviewImage(previewImageUri)
-    }
-
-    override fun showVideo() {
-        videoPlayerWidget?.showVideo()
+    override fun togglePreviewImageVisibility(isVisible: Boolean) {
+        TODO("Not yet implemented")
     }
 
     override fun onVideoActionSelected(action: VideoAction) {

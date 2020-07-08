@@ -8,8 +8,10 @@ import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.di.qualifier.VideoActionQualifier
 import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.media.MediaController
-import com.chrynan.video.media.MediaSourceCreator
+import com.chrynan.video.player.AndroidMediaController
+import com.chrynan.video.player.MediaController
+import com.chrynan.video.player.PlaylistCreator
+import com.chrynan.video.player.converter.DelegatePlayableConverter
 import com.chrynan.video.ui.adapter.*
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
@@ -20,6 +22,7 @@ import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.ui.view.VideoPlayerView
 import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
+import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -29,6 +32,14 @@ internal abstract class VideoPlayerFragmentModule {
 
     @Module
     companion object {
+
+        @Provides
+        @JvmStatic
+        @FragmentScope
+        fun provideMediaController(
+            exoPlayer: SimpleExoPlayer,
+            converter: DelegatePlayableConverter
+        ): com.chrynan.video.player.MediaController = AndroidMediaController(exoPlayer, converter)
 
         // Adapter
 
@@ -115,13 +126,13 @@ internal abstract class VideoPlayerFragmentModule {
             coroutineDispatchers: CoroutineDispatchers,
             @VideoPlayerQualifier.AdapterItemHandler adapterItemHandler: AdapterItemHandler<AdapterItem>,
             mediaController: MediaController,
-            mediaSourceCreator: MediaSourceCreator,
+            playlistCreator: PlaylistCreator,
             view: VideoPlayerView
         ) = VideoPlayerPresenter(
             dispatchers = coroutineDispatchers,
             adapterHandler = adapterItemHandler,
             mediaController = mediaController,
-            mediaSourceCreator = mediaSourceCreator,
+            playlistCreator = playlistCreator,
             view = view
         )
 

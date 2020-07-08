@@ -1,16 +1,13 @@
 package com.chrynan.video.ui.widget
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import coil.api.load
-import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
-import com.chrynan.video.media.MediaPlayerView
-import com.google.android.exoplayer2.Player
-import kotlinx.android.synthetic.main.widget_list_video_player.view.*
+import com.chrynan.video.player.MediaPlayerView
+import com.google.android.exoplayer2.ui.PlayerView
 
 class ListVideoPlayerWidget @JvmOverloads constructor(
     context: Context,
@@ -23,23 +20,18 @@ class ListVideoPlayerWidget @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.widget_list_video_player, this)
     }
 
-    override fun attachPlayer(player: Player) {
-        widgetListVideoPlayerView?.player = player
-        requestLayout()
+    override val widget: PlayerView
+        get() = TODO("Not yet implemented")
+
+    override fun setPreviewImage(drawable: Drawable?) {
+        TODO("Not yet implemented")
     }
 
-    override fun detachPlayer() {
-        widgetListVideoPlayerView?.player = null
+    override fun setPreviewImage(uri: String?) {
+        TODO("Not yet implemented")
     }
 
-    override fun showPreviewImage(previewImageUri: UriString?) {
-        widgetListVideoPlayerPreviewImageView?.load(previewImageUri)
-        widgetListVideoPlayerPreviewImageView?.visibility = View.VISIBLE
-        widgetListVideoPlayerView?.visibility = View.GONE
-    }
-
-    override fun showVideo() {
-        widgetListVideoPlayerView?.visibility = View.VISIBLE
-        widgetListVideoPlayerPreviewImageView?.visibility = View.GONE
+    override fun togglePreviewImageVisibility(isVisible: Boolean) {
+        TODO("Not yet implemented")
     }
 }

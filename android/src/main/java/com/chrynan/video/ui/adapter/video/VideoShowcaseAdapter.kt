@@ -38,7 +38,7 @@ class VideoShowcaseAdapter @Inject constructor(
         adapterVideoShowcaseProviderTextView?.text = item.provider
         adapterVideoShowcaseVideoLengthTextView?.text = item.videoLength
 
-        adapterVideoShowcaseImageView?.showPreviewImage(item.videoInfo.previewImageUri)
+        adapterVideoShowcaseImageView?.setPreviewImage(item.videoInfo.previewImageUri)
 
         adapterVideoShowcaseChannelImageView?.load(item.channelImageUrl) {
             placeholder(R.drawable.ic_default_user)
