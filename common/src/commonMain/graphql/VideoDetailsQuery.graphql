@@ -1,0 +1,65 @@
+query VideoDetailsQuery($channelId: ID!, $videoId: ID!) {
+    provider {
+        created
+        lastUpdated
+        uri
+        name
+        channel(id: $channelId) {
+            id
+            created
+            lastUpdated
+            published
+            name
+            description
+            images {
+                thumbnail
+            }
+            count {
+                totalSubscribers
+            }
+            isSubscribed
+            video(id: $videoId) {
+                id
+                created
+                lastUpdated
+                published
+                uri
+                name
+                description
+                about
+                previewImage
+                category
+                tags
+                viewCount
+                isLive
+                lengthInMilliseconds
+                streamType
+                standaloneSubtitles {
+                    locale
+                    uri
+                    format
+                }
+                drmInfo {
+                    licenseServerUrl
+                    scheme
+                    multiSession
+                    offlineLicenseKeySetId
+                }
+                locale
+                related(take: 10){
+                    nodes {
+                        id
+                        created
+                        lastUpdated
+                        published
+                        uri
+                        name
+                        description
+                        previewImage
+                        viewCount
+                    }
+                }
+            }
+        }
+    }
+}
