@@ -25,7 +25,6 @@ type Channel implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     lists: [ChannelVideoListConnection!]!
     list(id: ID!, take: Int!, after: Cursor): ChannelVideoListConnection!
     videos(take: Int!, after: Cursor): VideoConnection!
-    video(id: ID!): Video
 }
 
 type ChannelImageInfo @access(type: LOGIN_STRATEGY) {

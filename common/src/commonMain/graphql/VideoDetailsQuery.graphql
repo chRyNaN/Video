@@ -1,24 +1,26 @@
-query VideoDetailsQuery($channelId: ID!, $videoId: ID!) {
+query VideoDetailsQuery($videoId: ID!) {
     provider {
         created
         lastUpdated
         uri
         name
-        channel(id: $channelId) {
-            id
-            created
-            lastUpdated
-            published
-            name
-            description
-            images {
-                thumbnail
+        video(id: $videoId) {
+            channel {
+                id
+                created
+                lastUpdated
+                published
+                name
+                description
+                images {
+                    thumbnail
+                }
+                count {
+                    totalSubscribers
+                }
+                isSubscribed
             }
-            count {
-                totalSubscribers
-            }
-            isSubscribed
-            video(id: $videoId) {
+            video {
                 id
                 created
                 lastUpdated
@@ -46,6 +48,10 @@ query VideoDetailsQuery($channelId: ID!, $videoId: ID!) {
                     offlineLicenseKeySetId
                 }
                 locale
+                adInfo {
+                    format
+                    uri
+                }
                 related(take: 10){
                     nodes {
                         channel {

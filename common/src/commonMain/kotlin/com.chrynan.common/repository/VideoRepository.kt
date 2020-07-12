@@ -1,3 +1,8 @@
 package com.chrynan.common.repository
 
-interface VideoRepository
+import kotlinx.coroutines.flow.Flow
+
+interface VideoRepository {
+
+    fun getVideoDetails(): Flow<VideoDetailsQuery.Data>
+}
