@@ -1,4321 +1,3251 @@
 {
   "data": {
     "__schema": {
-      "queryType": {
-        "name": "Query"
-      },
-      "mutationType": {
-        "name": "Mutation"
-      },
-      "subscriptionType": null,
       "types": [
         {
-          "kind": "SCALAR",
-          "name": "ID",
-          "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Cursor",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "UriString",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Moment",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "Node",
-          "description": null,
-          "fields": [
-            {
-              "name": "id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "Video",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Channel",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Viewer",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "Edge",
-          "description": null,
-          "fields": [
-            {
-              "name": "cursor",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Cursor",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "node",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INTERFACE",
-                  "name": "Node",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "VideoEdge",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "ChannelEdge",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "OBJECT",
-          "name": "PageInfo",
-          "description": null,
-          "fields": [
-            {
-              "name": "startCursor",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Cursor",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "endCursor",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Cursor",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "hasNextPage",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "hasPreviousPage",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Boolean",
-          "description": "The `Boolean` scalar type represents `true` or `false`.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "TimeDetail",
-          "description": null,
-          "fields": [
-            {
-              "name": "created",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "lastUpdated",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "Video",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Channel",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Provider",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Viewer",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "Connection",
-          "description": null,
-          "fields": [
-            {
-              "name": "totalCount",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pageInfo",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "PageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "edges",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "Edge",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "nodes",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "Node",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "VideoConnection",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "ChannelVideoListConnection",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "ChannelConnection",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Int",
-          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
           "name": "AccessType",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
+          "kind": "ENUM",
           "enumValues": [
             {
               "name": "OPEN",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             },
             {
               "name": "LOGIN_STRATEGY",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "VideoEdge",
-          "description": null,
-          "fields": [
-            {
-              "name": "cursor",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Cursor",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "node",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Video",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Edge",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "VideoStreamType",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "PROGRESSIVE",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "DASH",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SMOOTH_STREAMING",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "HLS",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "VideoAction",
-          "description": null,
-          "fields": [
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "DownloadAction",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "RatingUpAction",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "RatingDownAction",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "FlagAction",
-              "ofType": null
+              "isDeprecated": false
             }
           ]
         },
         {
-          "kind": "SCALAR",
-          "name": "String",
-          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "SelectableAction",
-          "description": null,
-          "fields": [
+          "name": "AdFormat",
+          "kind": "ENUM",
+          "enumValues": [
             {
-              "name": "isSelected",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "RatingUpAction",
-              "ofType": null
+              "name": "VAST",
+              "isDeprecated": false
             },
             {
-              "kind": "OBJECT",
-              "name": "RatingDownAction",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "FlagAction",
-              "ofType": null
+              "name": "VMAP",
+              "isDeprecated": false
             }
           ]
         },
         {
-          "kind": "OBJECT",
-          "name": "DownloadAction",
-          "description": null,
+          "name": "AdInfo",
+          "interfaces": [],
           "fields": [
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "downloadUri",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "UriString",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "VideoAction",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "RatingUpAction",
-          "description": null,
-          "fields": [
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isSelected",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "VideoAction",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "SelectableAction",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "RatingDownAction",
-          "description": null,
-          "fields": [
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isSelected",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "VideoAction",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "SelectableAction",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "FlagAction",
-          "description": null,
-          "fields": [
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isSelected",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "VideoAction",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "SelectableAction",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "SelectableVideoActionType",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "RATING_UP",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "RATING_DOWN",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "FLAG",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Subtitle",
-          "description": null,
-          "fields": [
-            {
-              "name": "locale",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "uri",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "UriString",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
             {
               "name": "format",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "ENUM",
-                  "name": "SubtitleFormat",
-                  "ofType": null
+                  "name": "AdFormat",
+                  "kind": "ENUM"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "SubtitleFormat",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "WEB_VTT",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "TTML",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SUB_RIP",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SUB_STATION_ALPHA",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "DrmScheme",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "CENC",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "CBCS",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "CBC1",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "CENS",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "CLEAR_KEY",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "PLAYREADY_SL2000",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "DrmInfo",
-          "description": null,
-          "fields": [
-            {
-              "name": "licenseServerUrl",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "UriString",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "scheme",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "DrmScheme",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "multiSession",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "offlineLicenseKeySetId",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Video",
-          "description": null,
-          "fields": [
-            {
-              "name": "id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "created",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "lastUpdated",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "published",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "uri",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "UriString",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "about",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "previewImage",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "category",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tags",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "String",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "viewCount",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isLive",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "lengthInMilliseconds",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "streamType",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "VideoStreamType",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "standaloneSubtitles",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Subtitle",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "drmInfo",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "DrmInfo",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "locale",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "actions",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "VideoAction",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "related",
-              "description": null,
-              "args": [
-                {
-                  "name": "take",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "Int",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "after",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "VideoConnection",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "TimeDetail",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
-          "name": "VideoConnection",
-          "description": null,
-          "fields": [
-            {
-              "name": "pageInfo",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "PageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "totalCount",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "edges",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "VideoEdge",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "nodes",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Video",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Connection",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
+          "name": "Boolean",
+          "description": "Built-in Boolean",
+          "kind": "SCALAR"
         },
         {
-          "kind": "OBJECT",
-          "name": "ChannelImageInfo",
-          "description": null,
-          "fields": [
-            {
-              "name": "thumbnail",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "banner",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ChannelCountInfo",
-          "description": null,
-          "fields": [
-            {
-              "name": "totalSubscribers",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "totalVideoViews",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ChannelVideoListConnection",
-          "description": null,
-          "fields": [
-            {
-              "name": "id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "totalCount",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pageInfo",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "PageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "edges",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "VideoEdge",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "nodes",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Video",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Connection",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ChannelEdge",
-          "description": null,
-          "fields": [
-            {
-              "name": "cursor",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Cursor",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "node",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Channel",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Edge",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
           "name": "Channel",
-          "description": null,
+          "interfaces": [
+            {
+              "name": "Node",
+              "kind": "INTERFACE"
+            },
+            {
+              "name": "TimeDetail",
+              "kind": "INTERFACE"
+            }
+          ],
           "fields": [
             {
               "name": "id",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "ID",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "created",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Moment",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "lastUpdated",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Moment",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "published",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "name",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "description",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
             },
             {
               "name": "about",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
             },
             {
               "name": "website",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
             },
             {
               "name": "images",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "ChannelImageInfo",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "count",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "ChannelCountInfo",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "isSubscribed",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Boolean",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "lists",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
                       "name": "ChannelVideoListConnection",
-                      "ofType": null
+                      "kind": "OBJECT"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "list",
-              "description": null,
               "args": [
                 {
                   "name": "id",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "ID",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "take",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "Int",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "after",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
+                    "kind": "SCALAR"
+                  }
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "ChannelVideoListConnection",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "videos",
-              "description": null,
               "args": [
                 {
                   "name": "take",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "Int",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "after",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
+                    "kind": "SCALAR"
+                  }
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "VideoConnection",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "video",
-              "description": null,
               "args": [
                 {
                   "name": "id",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "ID",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 }
               ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Video",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "Video",
+                "kind": "OBJECT"
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "TimeDetail",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
           "name": "ChannelConnection",
-          "description": null,
+          "interfaces": [
+            {
+              "name": "Connection",
+              "kind": "INTERFACE"
+            }
+          ],
           "fields": [
             {
               "name": "pageInfo",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "PageInfo",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "totalCount",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Int",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "edges",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
                       "name": "ChannelEdge",
-                      "ofType": null
+                      "kind": "OBJECT"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "nodes",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
                       "name": "Channel",
-                      "ofType": null
+                      "kind": "OBJECT"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Connection",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "UNION",
-          "name": "FeedItem",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "VideoFeedItem",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "OBJECT",
-          "name": "VideoFeedItem",
-          "description": null,
+          "name": "ChannelCountInfo",
+          "interfaces": [],
           "fields": [
             {
-              "name": "channel",
-              "description": null,
+              "name": "totalSubscribers",
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Channel",
-                  "ofType": null
+                  "name": "Int",
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
-              "name": "video",
-              "description": null,
+              "name": "totalVideoViews",
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Video",
-                  "ofType": null
+                  "name": "Int",
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
-          "name": "FeedEdge",
-          "description": null,
+          "name": "ChannelEdge",
+          "interfaces": [
+            {
+              "name": "Edge",
+              "kind": "INTERFACE"
+            }
+          ],
           "fields": [
             {
               "name": "cursor",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Cursor",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "node",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "UNION",
-                  "name": "FeedItem",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "FeedConnection",
-          "description": null,
-          "fields": [
-            {
-              "name": "pageInfo",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "PageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "totalCount",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "edges",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "FeedEdge",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "nodes",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "UNION",
-                      "name": "FeedItem",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "LoginInfo",
-          "description": null,
-          "fields": [
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "LoginType",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "loginUri",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "requestId",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "LoginType",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "REQUIRED",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "OPTIONAL",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "NONE",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Mutation",
-          "description": null,
-          "fields": [
-            {
-              "name": "toggleVideoAction",
-              "description": null,
-              "args": [
-                {
-                  "name": "videoId",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "type",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "ENUM",
-                      "name": "SelectableVideoActionType",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INTERFACE",
-                  "name": "VideoAction",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "toggleSubscription",
-              "description": null,
-              "args": [
-                {
-                  "name": "channelId",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
                   "name": "Channel",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
+          "kind": "OBJECT"
+        },
+        {
+          "name": "ChannelImageInfo",
           "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Provider",
-          "description": null,
-          "fields": [
-            {
-              "name": "created",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "lastUpdated",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "uri",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "UriString",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "about",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "website",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "contactEmail",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "images",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "ProviderImageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "channels",
-              "description": null,
-              "args": [
-                {
-                  "name": "take",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "Int",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "after",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "ChannelConnection",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "channel",
-              "description": null,
-              "args": [
-                {
-                  "name": "id",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Channel",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "TimeDetail",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ProviderImageInfo",
-          "description": null,
           "fields": [
             {
               "name": "thumbnail",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
             },
             {
               "name": "banner",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "UriString",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "UNION",
-          "name": "SearchResultItem",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": [
+          "name": "ChannelSearchResultItem",
+          "interfaces": [],
+          "fields": [
             {
-              "kind": "OBJECT",
-              "name": "VideoSearchResultItem",
-              "ofType": null
+              "name": "channel",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Channel",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "ChannelVideoListConnection",
+          "interfaces": [
+            {
+              "name": "Connection",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "id",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "ID",
+                  "kind": "SCALAR"
+                }
+              }
             },
             {
-              "kind": "OBJECT",
-              "name": "ChannelSearchResultItem",
-              "ofType": null
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "totalCount",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Int",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "pageInfo",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "PageInfo",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "edges",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "VideoEdge",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "nodes",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Video",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "Connection",
+          "interfaces": [],
+          "possibleTypes": [
+            {
+              "name": "ChannelConnection",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "ChannelVideoListConnection",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "VideoConnection",
+              "kind": "OBJECT"
+            }
+          ],
+          "fields": [
+            {
+              "name": "totalCount",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Int",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "pageInfo",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "PageInfo",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "edges",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Edge",
+                      "kind": "INTERFACE"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "nodes",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Node",
+                      "kind": "INTERFACE"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "INTERFACE"
+        },
+        {
+          "name": "Cursor",
+          "kind": "SCALAR"
+        },
+        {
+          "name": "DownloadAction",
+          "interfaces": [
+            {
+              "name": "VideoAction",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "downloadUri",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "UriString",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "DrmInfo",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "licenseServerUrl",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "UriString",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "scheme",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "DrmScheme",
+                  "kind": "ENUM"
+                }
+              }
+            },
+            {
+              "name": "multiSession",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "offlineLicenseKeySetId",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "DrmScheme",
+          "kind": "ENUM",
+          "enumValues": [
+            {
+              "name": "CENC",
+              "isDeprecated": false
+            },
+            {
+              "name": "CBCS",
+              "isDeprecated": false
+            },
+            {
+              "name": "CBC1",
+              "isDeprecated": false
+            },
+            {
+              "name": "CENS",
+              "isDeprecated": false
+            },
+            {
+              "name": "CLEAR_KEY",
+              "isDeprecated": false
+            },
+            {
+              "name": "PLAYREADY_SL2000",
+              "isDeprecated": false
             }
           ]
         },
         {
-          "kind": "OBJECT",
-          "name": "VideoSearchResultItem",
-          "description": null,
-          "fields": [
+          "name": "Edge",
+          "interfaces": [],
+          "possibleTypes": [
             {
-              "name": "video",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Video",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "name": "ChannelEdge",
+              "kind": "OBJECT"
             },
             {
-              "name": "channel",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Channel",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "name": "VideoEdge",
+              "kind": "OBJECT"
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ChannelSearchResultItem",
-          "description": null,
-          "fields": [
-            {
-              "name": "channel",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Channel",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "SearchResultEdge",
-          "description": null,
           "fields": [
             {
               "name": "cursor",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Cursor",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "node",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "UNION",
-                  "name": "SearchResultItem",
-                  "ofType": null
+                  "name": "Node",
+                  "kind": "INTERFACE"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "INTERFACE"
         },
         {
-          "kind": "OBJECT",
-          "name": "SearchResultConnection",
-          "description": null,
+          "name": "FeedConnection",
+          "interfaces": [],
           "fields": [
             {
               "name": "pageInfo",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "PageInfo",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "totalCount",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Int",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "edges",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
-                      "name": "SearchResultEdge",
-                      "ofType": null
+                      "name": "FeedEdge",
+                      "kind": "OBJECT"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "nodes",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "UNION",
-                      "name": "SearchResultItem",
-                      "ofType": null
+                      "name": "FeedItem",
+                      "kind": "UNION"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
-          "name": "Viewer",
-          "description": null,
+          "name": "FeedEdge",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "cursor",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Cursor",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "node",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "FeedItem",
+                  "kind": "UNION"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "FeedItem",
+          "possibleTypes": [
+            {
+              "name": "VideoFeedItem",
+              "kind": "OBJECT"
+            }
+          ],
+          "kind": "UNION"
+        },
+        {
+          "name": "FlagAction",
+          "interfaces": [
+            {
+              "name": "VideoAction",
+              "kind": "INTERFACE"
+            },
+            {
+              "name": "SelectableAction",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "isSelected",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "ID",
+          "description": "Built-in ID",
+          "kind": "SCALAR"
+        },
+        {
+          "name": "Int",
+          "description": "Built-in Int",
+          "kind": "SCALAR"
+        },
+        {
+          "name": "LoginInfo",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "LoginType",
+                  "kind": "ENUM"
+                }
+              }
+            },
+            {
+              "name": "loginUri",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "requestId",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "LoginType",
+          "kind": "ENUM",
+          "enumValues": [
+            {
+              "name": "REQUIRED",
+              "isDeprecated": false
+            },
+            {
+              "name": "OPTIONAL",
+              "isDeprecated": false
+            },
+            {
+              "name": "NONE",
+              "isDeprecated": false
+            }
+          ]
+        },
+        {
+          "name": "Moment",
+          "kind": "SCALAR"
+        },
+        {
+          "name": "Mutation",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "toggleVideoAction",
+              "args": [
+                {
+                  "name": "videoId",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "ID",
+                      "kind": "SCALAR"
+                    }
+                  }
+                },
+                {
+                  "name": "type",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "SelectableVideoActionType",
+                      "kind": "ENUM"
+                    }
+                  }
+                }
+              ],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "VideoAction",
+                  "kind": "INTERFACE"
+                }
+              }
+            },
+            {
+              "name": "toggleSubscription",
+              "args": [
+                {
+                  "name": "channelId",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "ID",
+                      "kind": "SCALAR"
+                    }
+                  }
+                }
+              ],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Channel",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "Node",
+          "interfaces": [],
+          "possibleTypes": [
+            {
+              "name": "Channel",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "Video",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "Viewer",
+              "kind": "OBJECT"
+            }
+          ],
           "fields": [
             {
               "name": "id",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "ID",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
+              }
+            }
+          ],
+          "kind": "INTERFACE"
+        },
+        {
+          "name": "PageInfo",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "startCursor",
+              "args": [],
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "Cursor",
+                "kind": "SCALAR"
+              }
             },
             {
-              "name": "created",
-              "description": null,
+              "name": "endCursor",
               "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "Cursor",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "hasNextPage",
+              "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Moment",
-                  "ofType": null
+                  "name": "Boolean",
+                  "kind": "SCALAR"
                 }
-              },
+              }
+            },
+            {
+              "name": "hasPreviousPage",
+              "args": [],
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "Provider",
+          "interfaces": [
+            {
+              "name": "TimeDetail",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "created",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
             },
             {
               "name": "lastUpdated",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "Moment",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
+              }
+            },
+            {
+              "name": "uri",
+              "args": [],
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "UriString",
+                  "kind": "SCALAR"
+                }
+              }
             },
             {
               "name": "name",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
-              "name": "isAuthenticated",
-              "description": null,
+              "name": "description",
               "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "about",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "website",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "contactEmail",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "images",
+              "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
+                  "name": "ProviderImageInfo",
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
-              "name": "subscribedChannels",
-              "description": null,
+              "name": "channels",
               "args": [
                 {
                   "name": "take",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "Int",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "after",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
+                    "kind": "SCALAR"
+                  }
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "ChannelConnection",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
+              }
             },
             {
-              "kind": "INTERFACE",
-              "name": "TimeDetail",
-              "ofType": null
+              "name": "channel",
+              "args": [
+                {
+                  "name": "id",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "ID",
+                      "kind": "SCALAR"
+                    }
+                  }
+                }
+              ],
+              "isDeprecated": false,
+              "type": {
+                "name": "Channel",
+                "kind": "OBJECT"
+              }
             }
           ],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
+          "name": "ProviderImageInfo",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "thumbnail",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "banner",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
           "name": "Query",
-          "description": null,
+          "interfaces": [],
           "fields": [
             {
               "name": "apiVersion",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "login",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "LoginInfo",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "provider",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "Provider",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "viewer",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "Viewer",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "search",
-              "description": null,
               "args": [
                 {
                   "name": "query",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "String",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "take",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "Int",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "after",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
+                    "kind": "SCALAR"
+                  }
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "SearchResultConnection",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "feed",
-              "description": null,
               "args": [
                 {
                   "name": "take",
-                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "SCALAR",
                       "name": "Int",
-                      "ofType": null
+                      "kind": "SCALAR"
                     }
-                  },
-                  "defaultValue": null
+                  }
                 },
                 {
                   "name": "after",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Cursor",
-                    "ofType": null
-                  },
-                  "defaultValue": null
+                    "kind": "SCALAR"
+                  }
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
                   "name": "FeedConnection",
-                  "ofType": null
+                  "kind": "OBJECT"
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
-          "name": "__Schema",
-          "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
-          "fields": [
+          "name": "RatingDownAction",
+          "interfaces": [
             {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "name": "VideoAction",
+              "kind": "INTERFACE"
             },
             {
-              "name": "types",
-              "description": "A list of all types supported by this server.",
+              "name": "SelectableAction",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "isSelected",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "RatingUpAction",
+          "interfaces": [
+            {
+              "name": "VideoAction",
+              "kind": "INTERFACE"
+            },
+            {
+              "name": "SelectableAction",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "isSelected",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "SearchResultConnection",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "pageInfo",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "PageInfo",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "totalCount",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Int",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "edges",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
-                      "name": "__Type",
-                      "ofType": null
+                      "name": "SearchResultEdge",
+                      "kind": "OBJECT"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
-              "name": "queryType",
-              "description": "The type that query operations will be rooted at.",
+              "name": "nodes",
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "__Type",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "mutationType",
-              "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "__Type",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "subscriptionType",
-              "description": "If this server support subscription, the type that subscription operations will be rooted at.",
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "__Type",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "directives",
-              "description": "A list of all directives supported by this server.",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
                   "kind": "LIST",
-                  "name": null,
                   "ofType": {
                     "kind": "NON_NULL",
-                    "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
-                      "name": "__Directive",
-                      "ofType": null
+                      "name": "SearchResultItem",
+                      "kind": "UNION"
                     }
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "OBJECT",
-          "name": "__Type",
-          "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+          "name": "SearchResultEdge",
+          "interfaces": [],
           "fields": [
             {
-              "name": "kind",
-              "description": null,
+              "name": "cursor",
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "ENUM",
-                  "name": "__TypeKind",
-                  "ofType": null
+                  "name": "Cursor",
+                  "kind": "SCALAR"
                 }
-              },
+              }
+            },
+            {
+              "name": "node",
+              "args": [],
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "SearchResultItem",
+                  "kind": "UNION"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "SearchResultItem",
+          "possibleTypes": [
+            {
+              "name": "VideoSearchResultItem",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "ChannelSearchResultItem",
+              "kind": "OBJECT"
+            }
+          ],
+          "kind": "UNION"
+        },
+        {
+          "name": "SelectableAction",
+          "interfaces": [],
+          "possibleTypes": [
+            {
+              "name": "FlagAction",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "RatingDownAction",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "RatingUpAction",
+              "kind": "OBJECT"
+            }
+          ],
+          "fields": [
+            {
+              "name": "isSelected",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "INTERFACE"
+        },
+        {
+          "name": "SelectableVideoActionType",
+          "kind": "ENUM",
+          "enumValues": [
+            {
+              "name": "RATING_UP",
+              "isDeprecated": false
+            },
+            {
+              "name": "RATING_DOWN",
+              "isDeprecated": false
+            },
+            {
+              "name": "FLAG",
+              "isDeprecated": false
+            }
+          ]
+        },
+        {
+          "name": "String",
+          "description": "Built-in String",
+          "kind": "SCALAR"
+        },
+        {
+          "name": "Subtitle",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "locale",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "uri",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "UriString",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "format",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "SubtitleFormat",
+                  "kind": "ENUM"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "SubtitleFormat",
+          "kind": "ENUM",
+          "enumValues": [
+            {
+              "name": "WEB_VTT",
+              "isDeprecated": false
+            },
+            {
+              "name": "TTML",
+              "isDeprecated": false
+            },
+            {
+              "name": "SUB_RIP",
+              "isDeprecated": false
+            },
+            {
+              "name": "SUB_STATION_ALPHA",
+              "isDeprecated": false
+            }
+          ]
+        },
+        {
+          "name": "TimeDetail",
+          "interfaces": [],
+          "possibleTypes": [
+            {
+              "name": "Channel",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "Provider",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "Video",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "Viewer",
+              "kind": "OBJECT"
+            }
+          ],
+          "fields": [
+            {
+              "name": "created",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "lastUpdated",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "INTERFACE"
+        },
+        {
+          "name": "UriString",
+          "kind": "SCALAR"
+        },
+        {
+          "name": "Video",
+          "interfaces": [
+            {
+              "name": "Node",
+              "kind": "INTERFACE"
+            },
+            {
+              "name": "TimeDetail",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "id",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "ID",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "created",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "lastUpdated",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "published",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "uri",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "UriString",
+                  "kind": "SCALAR"
+                }
+              }
             },
             {
               "name": "name",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
             },
             {
               "name": "description",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
             },
             {
-              "name": "specifiedByUrl",
-              "description": null,
+              "name": "about",
               "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "previewImage",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "UriString",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "category",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "tags",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "String",
+                      "kind": "SCALAR"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "viewCount",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "Int",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "isLive",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "lengthInMilliseconds",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Int",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "streamType",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "VideoStreamType",
+                  "kind": "ENUM"
+                }
+              }
+            },
+            {
+              "name": "standaloneSubtitles",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Subtitle",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "drmInfo",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "DrmInfo",
+                "kind": "OBJECT"
+              }
+            },
+            {
+              "name": "locale",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "actions",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "VideoAction",
+                      "kind": "INTERFACE"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "adInfo",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "AdInfo",
+                "kind": "OBJECT"
+              }
+            },
+            {
+              "name": "related",
+              "args": [
+                {
+                  "name": "take",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Int",
+                      "kind": "SCALAR"
+                    }
+                  }
+                },
+                {
+                  "name": "after",
+                  "type": {
+                    "name": "Cursor",
+                    "kind": "SCALAR"
+                  }
+                }
+              ],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "VideoConnection",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "VideoAction",
+          "interfaces": [],
+          "possibleTypes": [
+            {
+              "name": "DownloadAction",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "FlagAction",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "RatingDownAction",
+              "kind": "OBJECT"
+            },
+            {
+              "name": "RatingUpAction",
+              "kind": "OBJECT"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            }
+          ],
+          "kind": "INTERFACE"
+        },
+        {
+          "name": "VideoConnection",
+          "interfaces": [
+            {
+              "name": "Connection",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "pageInfo",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "PageInfo",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "totalCount",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Int",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "edges",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "VideoEdge",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "nodes",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Video",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "VideoEdge",
+          "interfaces": [
+            {
+              "name": "Edge",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "cursor",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Cursor",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "node",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Video",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "VideoFeedItem",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "channel",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Channel",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "video",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Video",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "VideoSearchResultItem",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "video",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Video",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "channel",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Channel",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "VideoStreamType",
+          "kind": "ENUM",
+          "enumValues": [
+            {
+              "name": "PROGRESSIVE",
+              "isDeprecated": false
+            },
+            {
+              "name": "DASH",
+              "isDeprecated": false
+            },
+            {
+              "name": "SMOOTH_STREAMING",
+              "isDeprecated": false
+            },
+            {
+              "name": "HLS",
+              "isDeprecated": false
+            }
+          ]
+        },
+        {
+          "name": "Viewer",
+          "interfaces": [
+            {
+              "name": "Node",
+              "kind": "INTERFACE"
+            },
+            {
+              "name": "TimeDetail",
+              "kind": "INTERFACE"
+            }
+          ],
+          "fields": [
+            {
+              "name": "id",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "ID",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "created",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "lastUpdated",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Moment",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "isAuthenticated",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "subscribedChannels",
+              "args": [
+                {
+                  "name": "take",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "Int",
+                      "kind": "SCALAR"
+                    }
+                  }
+                },
+                {
+                  "name": "after",
+                  "type": {
+                    "name": "Cursor",
+                    "kind": "SCALAR"
+                  }
+                }
+              ],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "ChannelConnection",
+                  "kind": "OBJECT"
+                }
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "__Directive",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "description",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "locations",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "__DirectiveLocation",
+                    "kind": "ENUM"
+                  }
+                }
+              }
+            },
+            {
+              "name": "args",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "__InputValue",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "onOperation",
+              "args": [],
+              "deprecationReason": "Use `locations`.",
+              "isDeprecated": true,
+              "type": {
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "onFragment",
+              "args": [],
+              "deprecationReason": "Use `locations`.",
+              "isDeprecated": true,
+              "type": {
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "onField",
+              "args": [],
+              "deprecationReason": "Use `locations`.",
+              "isDeprecated": true,
+              "type": {
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "__DirectiveLocation",
+          "description": "An enum describing valid locations where a directive can be placed",
+          "kind": "ENUM",
+          "enumValues": [
+            {
+              "name": "QUERY",
+              "description": "Indicates the directive is valid on queries.",
+              "isDeprecated": false
+            },
+            {
+              "name": "MUTATION",
+              "description": "Indicates the directive is valid on mutations.",
+              "isDeprecated": false
+            },
+            {
+              "name": "FIELD",
+              "description": "Indicates the directive is valid on fields.",
+              "isDeprecated": false
+            },
+            {
+              "name": "FRAGMENT_DEFINITION",
+              "description": "Indicates the directive is valid on fragment definitions.",
+              "isDeprecated": false
+            },
+            {
+              "name": "FRAGMENT_SPREAD",
+              "description": "Indicates the directive is valid on fragment spreads.",
+              "isDeprecated": false
+            },
+            {
+              "name": "INLINE_FRAGMENT",
+              "description": "Indicates the directive is valid on inline fragments.",
+              "isDeprecated": false
+            },
+            {
+              "name": "VARIABLE_DEFINITION",
+              "description": "Indicates the directive is valid on variable definitions.",
+              "isDeprecated": false
+            },
+            {
+              "name": "SCHEMA",
+              "description": "Indicates the directive is valid on a schema SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "SCALAR",
+              "description": "Indicates the directive is valid on a scalar SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "OBJECT",
+              "description": "Indicates the directive is valid on an object SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "FIELD_DEFINITION",
+              "description": "Indicates the directive is valid on a field SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "ARGUMENT_DEFINITION",
+              "description": "Indicates the directive is valid on a field argument SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "INTERFACE",
+              "description": "Indicates the directive is valid on an interface SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "UNION",
+              "description": "Indicates the directive is valid on an union SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "ENUM",
+              "description": "Indicates the directive is valid on an enum SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "ENUM_VALUE",
+              "description": "Indicates the directive is valid on an enum value SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "INPUT_OBJECT",
+              "description": "Indicates the directive is valid on an input object SDL definition.",
+              "isDeprecated": false
+            },
+            {
+              "name": "INPUT_FIELD_DEFINITION",
+              "description": "Indicates the directive is valid on an input object field SDL definition.",
+              "isDeprecated": false
+            }
+          ]
+        },
+        {
+          "name": "__EnumValue",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "description",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "isDeprecated",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "deprecationReason",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "__Field",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "description",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "args",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "__InputValue",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "__Type",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "isDeprecated",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "deprecationReason",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "__InputValue",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "String",
+                  "kind": "SCALAR"
+                }
+              }
+            },
+            {
+              "name": "description",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "type",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "__Type",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "defaultValue",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "__Schema",
+          "description": "A GraphQL Introspection defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, the entry points for query, mutation, and subscription operations.",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "description",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "types",
+              "args": [],
+              "description": "A list of all types supported by this server.",
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "__Type",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "queryType",
+              "args": [],
+              "description": "The type that query operations will be rooted at.",
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "__Type",
+                  "kind": "OBJECT"
+                }
+              }
+            },
+            {
+              "name": "mutationType",
+              "args": [],
+              "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
+              "isDeprecated": false,
+              "type": {
+                "name": "__Type",
+                "kind": "OBJECT"
+              }
+            },
+            {
+              "name": "directives",
+              "args": [],
+              "description": "'A list of all directives supported by this server.",
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "name": "__Directive",
+                      "kind": "OBJECT"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "subscriptionType",
+              "args": [],
+              "description": "'If this server support subscription, the type that subscription operations will be rooted at.",
+              "isDeprecated": false,
+              "type": {
+                "name": "__Type",
+                "kind": "OBJECT"
+              }
+            }
+          ],
+          "kind": "OBJECT"
+        },
+        {
+          "name": "__Type",
+          "interfaces": [],
+          "fields": [
+            {
+              "name": "kind",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "__TypeKind",
+                  "kind": "ENUM"
+                }
+              }
+            },
+            {
+              "name": "name",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            },
+            {
+              "name": "description",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
             },
             {
               "name": "fields",
-              "description": null,
               "args": [
                 {
                   "name": "includeDeprecated",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Boolean",
-                    "ofType": null
+                    "kind": "SCALAR"
                   },
                   "defaultValue": "false"
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "LIST",
-                "name": null,
                 "ofType": {
                   "kind": "NON_NULL",
-                  "name": null,
                   "ofType": {
-                    "kind": "OBJECT",
                     "name": "__Field",
-                    "ofType": null
+                    "kind": "OBJECT"
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "interfaces",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "LIST",
-                "name": null,
                 "ofType": {
                   "kind": "NON_NULL",
-                  "name": null,
                   "ofType": {
-                    "kind": "OBJECT",
                     "name": "__Type",
-                    "ofType": null
+                    "kind": "OBJECT"
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "possibleTypes",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "LIST",
-                "name": null,
                 "ofType": {
                   "kind": "NON_NULL",
-                  "name": null,
                   "ofType": {
-                    "kind": "OBJECT",
                     "name": "__Type",
-                    "ofType": null
+                    "kind": "OBJECT"
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "enumValues",
-              "description": null,
               "args": [
                 {
                   "name": "includeDeprecated",
-                  "description": null,
                   "type": {
-                    "kind": "SCALAR",
                     "name": "Boolean",
-                    "ofType": null
+                    "kind": "SCALAR"
                   },
                   "defaultValue": "false"
                 }
               ],
+              "isDeprecated": false,
               "type": {
                 "kind": "LIST",
-                "name": null,
                 "ofType": {
                   "kind": "NON_NULL",
-                  "name": null,
                   "ofType": {
-                    "kind": "OBJECT",
                     "name": "__EnumValue",
-                    "ofType": null
+                    "kind": "OBJECT"
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "inputFields",
-              "description": null,
               "args": [],
+              "isDeprecated": false,
               "type": {
                 "kind": "LIST",
-                "name": null,
                 "ofType": {
                   "kind": "NON_NULL",
-                  "name": null,
                   "ofType": {
-                    "kind": "OBJECT",
                     "name": "__InputValue",
-                    "ofType": null
+                    "kind": "OBJECT"
                   }
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
+              }
             },
             {
               "name": "ofType",
-              "description": null,
               "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "__Type",
-                "ofType": null
-              },
               "isDeprecated": false,
-              "deprecationReason": null
+              "type": {
+                "name": "__Type",
+                "kind": "OBJECT"
+              }
+            },
+            {
+              "name": "specifiedByUrl",
+              "args": [],
+              "isDeprecated": false,
+              "type": {
+                "name": "String",
+                "kind": "SCALAR"
+              }
             }
           ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
+          "kind": "OBJECT"
         },
         {
-          "kind": "ENUM",
           "name": "__TypeKind",
-          "description": "An enum describing what kind of type a given `__Type` is.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
+          "description": "An enum describing what kind of type a given __Type is",
+          "kind": "ENUM",
           "enumValues": [
             {
               "name": "SCALAR",
-              "description": "Indicates this type is a scalar.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "description": "Indicates this type is a scalar. 'specifiedByUrl' is a valid field",
+              "isDeprecated": false
             },
             {
               "name": "OBJECT",
               "description": "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             },
             {
               "name": "INTERFACE",
-              "description": "Indicates this type is an interface. `fields`, `interfaces`, and `possibleTypes` are valid fields.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "description": "Indicates this type is an interface. `fields` and `possibleTypes` are valid fields.",
+              "isDeprecated": false
             },
             {
               "name": "UNION",
               "description": "Indicates this type is a union. `possibleTypes` is a valid field.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             },
             {
               "name": "ENUM",
               "description": "Indicates this type is an enum. `enumValues` is a valid field.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             },
             {
               "name": "INPUT_OBJECT",
               "description": "Indicates this type is an input object. `inputFields` is a valid field.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             },
             {
               "name": "LIST",
               "description": "Indicates this type is a list. `ofType` is a valid field.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             },
             {
               "name": "NON_NULL",
               "description": "Indicates this type is a non-null. `ofType` is a valid field.",
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": false
             }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "__Field",
-          "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
-          "fields": [
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "args",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "__InputValue",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "__Type",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isDeprecated",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "deprecationReason",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "__InputValue",
-          "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
-          "fields": [
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "type",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "__Type",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "defaultValue",
-              "description": "A GraphQL-formatted string representing the default value for this input value.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "__EnumValue",
-          "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
-          "fields": [
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isDeprecated",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "deprecationReason",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "__Directive",
-          "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
-          "fields": [
-            {
-              "name": "name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "description",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "isRepeatable",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "locations",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "ENUM",
-                      "name": "__DirectiveLocation",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "args",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "__InputValue",
-                      "ofType": null
-                    }
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "__DirectiveLocation",
-          "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "QUERY",
-              "description": "Location adjacent to a query operation.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "MUTATION",
-              "description": "Location adjacent to a mutation operation.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SUBSCRIPTION",
-              "description": "Location adjacent to a subscription operation.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "FIELD",
-              "description": "Location adjacent to a field.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "FRAGMENT_DEFINITION",
-              "description": "Location adjacent to a fragment definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "FRAGMENT_SPREAD",
-              "description": "Location adjacent to a fragment spread.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "INLINE_FRAGMENT",
-              "description": "Location adjacent to an inline fragment.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "VARIABLE_DEFINITION",
-              "description": "Location adjacent to a variable definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SCHEMA",
-              "description": "Location adjacent to a schema definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SCALAR",
-              "description": "Location adjacent to a scalar definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "OBJECT",
-              "description": "Location adjacent to an object type definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "FIELD_DEFINITION",
-              "description": "Location adjacent to a field definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "ARGUMENT_DEFINITION",
-              "description": "Location adjacent to an argument definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "INTERFACE",
-              "description": "Location adjacent to an interface definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "UNION",
-              "description": "Location adjacent to a union definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "ENUM",
-              "description": "Location adjacent to an enum definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "ENUM_VALUE",
-              "description": "Location adjacent to an enum value definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "INPUT_OBJECT",
-              "description": "Location adjacent to an input object type definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "INPUT_FIELD_DEFINITION",
-              "description": "Location adjacent to an input object field definition.",
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
+          ]
         }
       ],
       "directives": [
         {
-          "name": "access",
-          "description": null,
-          "locations": [
-            "OBJECT",
-            "FIELD_DEFINITION",
-            "INPUT_FIELD_DEFINITION",
-            "INPUT_OBJECT",
-            "ENUM"
-          ],
+          "name": "include",
           "args": [
             {
-              "name": "type",
-              "description": null,
+              "name": "if",
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "ENUM",
-                  "name": "AccessType",
-                  "ofType": null
+                  "name": "Boolean",
+                  "kind": "SCALAR"
                 }
               },
-              "defaultValue": null
+              "description": "Included when true."
             }
+          ],
+          "description": "Directs the executor to include this field or fragment only when the `if` argument is true",
+          "locations": [
+            "FIELD",
+            "FRAGMENT_SPREAD",
+            "INLINE_FRAGMENT"
           ]
         },
         {
           "name": "skip",
-          "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+          "args": [
+            {
+              "name": "if",
+              "type": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "name": "Boolean",
+                  "kind": "SCALAR"
+                }
+              },
+              "description": "Skipped when true."
+            }
+          ],
+          "description": "Directs the executor to skip this field or fragment when the `if`'argument is true.",
           "locations": [
             "FIELD",
             "FRAGMENT_SPREAD",
             "INLINE_FRAGMENT"
-          ],
-          "args": [
-            {
-              "name": "if",
-              "description": "Skipped when true.",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
           ]
         },
         {
-          "name": "include",
-          "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
-          "locations": [
-            "FIELD",
-            "FRAGMENT_SPREAD",
-            "INLINE_FRAGMENT"
-          ],
+          "name": "access",
           "args": [
             {
-              "name": "if",
-              "description": "Included when true.",
+              "name": "type",
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
+                  "name": "AccessType",
+                  "kind": "ENUM"
                 }
-              },
-              "defaultValue": null
+              }
             }
+          ],
+          "locations": [
+            "OBJECT",
+            "FIELD_DEFINITION",
+            "ENUM",
+            "INPUT_OBJECT",
+            "VARIABLE_DEFINITION"
           ]
         },
         {
           "name": "deprecated",
-          "description": "Marks an element of a GraphQL schema as no longer supported.",
-          "locations": [
-            "FIELD_DEFINITION",
-            "ENUM_VALUE"
-          ],
           "args": [
             {
               "name": "reason",
-              "description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted using the Markdown syntax, as specified by [CommonMark](https://commonmark.org/).",
+              "description": "The reason for the deprecation",
               "type": {
-                "kind": "SCALAR",
                 "name": "String",
-                "ofType": null
+                "kind": "SCALAR"
               },
               "defaultValue": "\"No longer supported\""
             }
+          ],
+          "description": "Marks the field or enum value as deprecated",
+          "locations": [
+            "FIELD_DEFINITION",
+            "ENUM_VALUE"
           ]
         },
         {
           "name": "specifiedBy",
-          "description": "Exposes a URL that specifies the behaviour of this scalar.",
-          "locations": [
-            "SCALAR"
-          ],
           "args": [
             {
               "name": "url",
-              "description": "The URL that specifies the behaviour of this scalar.",
               "type": {
                 "kind": "NON_NULL",
-                "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
                   "name": "String",
-                  "ofType": null
+                  "kind": "SCALAR"
                 }
               },
-              "defaultValue": null
+              "description": "The URL that specifies the behaviour of this scalar."
             }
+          ],
+          "description": "Exposes a URL that specifies the behaviour of this scalar.",
+          "locations": [
+            "SCALAR"
           ]
         }
-      ]
+      ],
+      "mutationType": {
+        "name": "Mutation"
+      },
+      "queryType": {
+        "name": "Query"
+      }
     }
   }
 }

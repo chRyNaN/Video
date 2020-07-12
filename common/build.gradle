@@ -1,6 +1,9 @@
+import com.chrynan.video.plugins.schema.CreateSchemaJsonPlugin
+
 apply plugin: "kotlin-multiplatform"
 apply plugin: "kotlinx-serialization"
 apply plugin: "com.apollographql.apollo"
+apply plugin: CreateSchemaJsonPlugin
 
 group rootProject.libraryGroup
 version rootProject.libraryVersion
@@ -57,6 +60,11 @@ kotlin {
             }
         }
     }
+}
+
+graphQLSchemaJson {
+    graphQLDirectory = "${project.rootDir.path}/api/graphql/"
+    schemaOutputDirectory = "${project.projectDir.path}/src/commonMain/graphql/"
 }
 
 apollo {
