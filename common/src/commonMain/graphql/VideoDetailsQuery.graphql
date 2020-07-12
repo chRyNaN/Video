@@ -48,15 +48,32 @@ query VideoDetailsQuery($channelId: ID!, $videoId: ID!) {
                 locale
                 related(take: 10){
                     nodes {
-                        id
-                        created
-                        lastUpdated
-                        published
-                        uri
-                        name
-                        description
-                        previewImage
-                        viewCount
+                        channel {
+                            id
+                            created
+                            lastUpdated
+                            published
+                            name
+                            description
+                            images {
+                                thumbnail
+                            }
+                            count {
+                                totalSubscribers
+                            }
+                            isSubscribed
+                        }
+                        video {
+                            id
+                            created
+                            lastUpdated
+                            published
+                            uri
+                            name
+                            description
+                            previewImage
+                            viewCount
+                        }
                     }
                 }
             }

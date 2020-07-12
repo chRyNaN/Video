@@ -31,7 +31,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     locale: String
     actions: [VideoAction!]!
     adInfo: AdInfo
-    related(take: Int!, after: Cursor): VideoConnection!
+    related(take: Int!, after: Cursor): VideoResultItemConnection!
 }
 
 enum VideoStreamType @access(type: LOGIN_STRATEGY) {
@@ -112,4 +112,21 @@ type AdInfo @access(type: LOGIN_STRATEGY) {
 enum AdFormat @access(type: LOGIN_STRATEGY) {
     VAST
     VMAP
+}
+
+type VideoResultItem @access(type: LOGIN_STRATEGY) {
+    video: Video!
+    channel: Channel!
+}
+
+type VideoResultItemEdge @access(type: LOGIN_STRATEGY) {
+    cursor: String!
+    node: VideoResultItem!
+}
+
+type VideoResultItemConnection @access(type: LOGIN_STRATEGY) {
+    pageInfo: PageInfo!
+    totalCount: Int!
+    edges: [VideoResultItemEdge!]!
+    nodes: [VideoResultItem!]!
 }
