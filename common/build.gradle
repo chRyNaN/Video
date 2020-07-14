@@ -76,6 +76,12 @@ apollo {
     ]
 }
 
+project.tasks.whenTaskAdded { task ->
+    if (task.name == "generateApolloSources") {
+        task.dependsOn(createSchemaJson)
+    }
+}
+
 configurations {
     compileClasspath
 }
