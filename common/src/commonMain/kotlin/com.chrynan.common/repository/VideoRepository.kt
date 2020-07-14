@@ -1,8 +1,10 @@
 package com.chrynan.common.repository
 
+import com.chrynan.common.model.core.ID
+import com.chrynan.common.model.core.UriString
 import kotlinx.coroutines.flow.Flow
 
 interface VideoRepository {
 
-    fun getVideoDetails(): Flow<VideoDetailsQuery.Data>
+    fun getVideoDetails(providerUri: UriString, videoId: ID): Flow<VideoDetailsQuery.Data>
 }

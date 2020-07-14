@@ -43,4 +43,7 @@ internal abstract class RepositoryModule {
 
     @Binds
     abstract fun bindSearchItemRepository(source: SearchItemRepositorySource): SearchItemRepository
+
+    @Binds
+    abstract fun bindVideoRepository(source: VideoRepositorySource): VideoRepository
 }

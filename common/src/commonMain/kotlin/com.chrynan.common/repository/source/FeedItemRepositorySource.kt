@@ -14,7 +14,6 @@ import com.chrynan.common.paginate.CursorCacheValue
 import com.chrynan.common.repository.FeedItemRepository
 import com.chrynan.common.repository.ServiceProviderRepository
 import com.chrynan.common.utils.firstAsFlow
-import com.chrynan.logger.Logger
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
@@ -40,12 +39,12 @@ class FeedItemRepositorySource @Inject constructor(
             .firstAsFlow()
             .flatMapConcat {
                 val flows = it.map { serviceProvider ->
-                    var cursorValue = cursorCache[""]
+                    var cursorValue = cursorCache[serviceProvider.providerUri]
 
                     if (cursorValue == null) {
                         cursorValue = CursorCacheValue(cursor = null, hasNextPage = true)
 
-                        cursorCache[""] = cursorValue
+                        cursorCache[serviceProvider.providerUri] = cursorValue
                     }
 
                     getFeedItemsForProviderUri(
@@ -68,7 +67,7 @@ class FeedItemRepositorySource @Inject constructor(
         val query = FeedQuery(take, Input.fromNullable(after))
 
         return client.query(query)
-            .filterSuccess { Logger.logWarning(message = "Errors fetching feed items for providerUri = $providerUri; errors = $it") }
+            .filterSuccess()
             .map { mapper.map(it) }
     }
 }
