@@ -34,7 +34,9 @@ query VideoDetailsQuery($videoId: ID!) {
                 }
                 category
                 tags
-                viewCount
+                count {
+                    totalViews
+                }
                 isLive
                 lengthInMilliseconds
                 streamType
