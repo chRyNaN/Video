@@ -19,7 +19,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     name: String!
     description: String
     about: String
-    previewImage: UriString
+    images: VideoImageInfo!
     category: String
     tags: [String!]!
     viewCount: Int
@@ -32,6 +32,10 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     actions: [VideoAction!]!
     adInfo: AdInfo
     related(take: Int!, after: Cursor): VideoResultItemConnection!
+}
+
+type VideoImageInfo @access(type: OPEN) {
+    preview: UriString
 }
 
 enum VideoStreamType @access(type: LOGIN_STRATEGY) {

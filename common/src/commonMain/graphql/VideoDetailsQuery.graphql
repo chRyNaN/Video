@@ -29,7 +29,9 @@ query VideoDetailsQuery($videoId: ID!) {
                 name
                 description
                 about
-                previewImage
+                images {
+                    preview
+                }
                 category
                 tags
                 viewCount
