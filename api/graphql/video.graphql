@@ -22,7 +22,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     images: VideoImageInfo!
     category: String
     tags: [String!]!
-    viewCount: Long
+    count: VideoCountInfo!
     isLive: Boolean!
     lengthInMilliseconds: Long!
     streamType: VideoStreamType!
@@ -36,6 +36,10 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
 
 type VideoImageInfo @access(type: OPEN) {
     preview: UriString
+}
+
+type VideoCountInfo @access(type: LOGIN_STRATEGY) {
+    totalViews: Long!
 }
 
 enum VideoStreamType @access(type: LOGIN_STRATEGY) {
