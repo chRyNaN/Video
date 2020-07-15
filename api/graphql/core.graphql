@@ -2,6 +2,7 @@ scalar ID
 scalar Cursor
 scalar UriString
 scalar DateTime
+scalar Long
 
 interface Node {
 
@@ -30,7 +31,7 @@ interface TimeDetail {
 
 interface Connection {
 
-    totalCount: Int!
+    totalCount: Long!
     pageInfo: PageInfo!
     edges: [Edge!]!
     nodes: [Node!]!

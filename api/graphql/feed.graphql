@@ -12,7 +12,7 @@ type FeedEdge @access(type: LOGIN_STRATEGY) {
 
 type FeedConnection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
-    totalCount: Int!
+    totalCount: Long!
     edges: [FeedEdge!]!
     nodes: [FeedItem!]!
 }

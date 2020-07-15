@@ -1,6 +1,6 @@
 type ChannelConnection implements Connection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
-    totalCount: Int!
+    totalCount: Long!
     edges: [ChannelEdge!]!
     nodes: [Channel!]!
 }
@@ -33,14 +33,14 @@ type ChannelImageInfo @access(type: LOGIN_STRATEGY) {
 }
 
 type ChannelCountInfo @access(type: LOGIN_STRATEGY) {
-    totalSubscribers: Int!
-    totalVideoViews: Int!
+    totalSubscribers: Long!
+    totalVideoViews: Long!
 }
 
 type ChannelVideoListConnection implements Connection @access(type: LOGIN_STRATEGY) {
     id: ID!
     name: String!
-    totalCount: Int!
+    totalCount: Long!
     pageInfo: PageInfo!
     edges: [VideoEdge!]!
     nodes: [Video!]!

@@ -1,6 +1,6 @@
 type VideoConnection implements Connection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
-    totalCount: Int!
+    totalCount: Long!
     edges: [VideoEdge!]!
     nodes: [Video!]!
 }
@@ -22,9 +22,9 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     images: VideoImageInfo!
     category: String
     tags: [String!]!
-    viewCount: Int
+    viewCount: Long
     isLive: Boolean!
-    lengthInMilliseconds: Int!
+    lengthInMilliseconds: Long!
     streamType: VideoStreamType!
     standaloneSubtitles: [Subtitle!]!
     drmInfo: DrmInfo
@@ -130,7 +130,7 @@ type VideoResultItemEdge @access(type: LOGIN_STRATEGY) {
 
 type VideoResultItemConnection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
-    totalCount: Int!
+    totalCount: Long!
     edges: [VideoResultItemEdge!]!
     nodes: [VideoResultItem!]!
 }

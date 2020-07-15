@@ -16,7 +16,7 @@ type SearchResultEdge @access(type: LOGIN_STRATEGY) {
 
 type SearchResultConnection @access(type: LOGIN_STRATEGY) {
     pageInfo: PageInfo!
-    totalCount: Int!
+    totalCount: Long!
     edges: [SearchResultEdge!]!
     nodes: [SearchResultItem!]!
 }
