@@ -34,7 +34,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     related(take: Int!, after: Cursor): VideoResultItemConnection!
 }
 
-type VideoImageInfo @access(type: OPEN) {
+type VideoImageInfo @access(type: LOGIN_STRATEGY) {
     preview: UriString
 }
 
