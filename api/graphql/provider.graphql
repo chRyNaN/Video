@@ -1,6 +1,6 @@
 type Provider implements TimeDetail @access(type: OPEN) {
-    created: Moment!
-    lastUpdated: Moment!
+    created: DateTime!
+    lastUpdated: DateTime!
     uri: UriString!
     name: String!
     description: String

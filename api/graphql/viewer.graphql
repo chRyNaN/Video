@@ -15,8 +15,8 @@
 #
 type Viewer implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
-    created: Moment!
-    lastUpdated: Moment!
+    created: DateTime!
+    lastUpdated: DateTime!
     name: String!
     isAuthenticated: Boolean!
     subscribedChannels(take: Int!, after: Cursor): ChannelConnection!

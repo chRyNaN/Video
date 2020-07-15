@@ -12,9 +12,9 @@ type VideoEdge implements Edge @access(type: LOGIN_STRATEGY) {
 
 type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
-    created: Moment!
-    lastUpdated: Moment!
-    published: Moment!
+    created: DateTime!
+    lastUpdated: DateTime!
+    published: DateTime!
     uri: UriString!
     name: String!
     description: String

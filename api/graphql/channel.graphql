@@ -12,8 +12,8 @@ type ChannelEdge implements Edge @access(type: LOGIN_STRATEGY) {
 
 type Channel implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
-    created: Moment!
-    lastUpdated: Moment!
+    created: DateTime!
+    lastUpdated: DateTime!
     published: String!
     name: String!
     description: String

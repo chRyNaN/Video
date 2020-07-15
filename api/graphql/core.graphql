@@ -1,7 +1,7 @@
 scalar ID
 scalar Cursor
 scalar UriString
-scalar Moment
+scalar DateTime
 
 interface Node {
 
@@ -24,8 +24,8 @@ type PageInfo {
 
 interface TimeDetail {
 
-    created: Moment!
-    lastUpdated: Moment!
+    created: DateTime!
+    lastUpdated: DateTime!
 }
 
 interface Connection {
