@@ -36,3 +36,7 @@ interface Connection {
     edges: [Edge!]!
     nodes: [Node!]!
 }
+
+type Duration {
+    totalMilliseconds: Long
+}

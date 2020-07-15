@@ -24,7 +24,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     tags: [String!]!
     count: VideoCountInfo!
     isLive: Boolean!
-    lengthInMilliseconds: Long!
+    duration: Duration!
     streamType: VideoStreamType!
     standaloneSubtitles: [Subtitle!]!
     drmInfo: DrmInfo

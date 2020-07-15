@@ -38,7 +38,9 @@ query VideoDetailsQuery($videoId: ID!) {
                     totalViews
                 }
                 isLive
-                lengthInMilliseconds
+                duration {
+                    totalMilliseconds
+                }
                 streamType
                 standaloneSubtitles {
                     locale
