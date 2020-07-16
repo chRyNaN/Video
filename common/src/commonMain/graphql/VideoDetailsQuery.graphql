@@ -4,101 +4,101 @@ query VideoDetailsQuery($videoId: ID!) {
         lastUpdated
         uri
         name
-        result: video(id: $videoId) {
-            channel {
-                id
-                created
-                lastUpdated
-                published
-                name
-                description
-                images {
-                    thumbnail
-                }
-                count {
-                    totalSubscribers
-                }
-                isSubscribed
+    }
+    result: video(id: $videoId) {
+        channel {
+            id
+            created
+            lastUpdated
+            published
+            name
+            description
+            images {
+                thumbnail
             }
-            video {
-                id
-                created
-                lastUpdated
-                published
-                uri
-                name
-                description
-                about
-                images {
-                    preview
-                }
-                category
-                tags
-                count {
-                    totalViews
-                }
-                live {
-                    start
-                    end
-                }
-                duration {
-                    totalMilliseconds
-                }
-                streamType
-                standaloneSubtitles {
-                    locale
-                    uri
-                    format
-                }
-                drmInfo {
-                    licenseServerUrl
-                    scheme
-                    multiSession
-                    offlineLicenseKeySetId
-                }
+            count {
+                totalSubscribers
+            }
+            isSubscribed
+        }
+        video {
+            id
+            created
+            lastUpdated
+            published
+            uri
+            name
+            description
+            about
+            images {
+                preview
+            }
+            category
+            tags
+            count {
+                totalViews
+            }
+            live {
+                start
+                end
+            }
+            duration {
+                totalMilliseconds
+            }
+            streamType
+            standaloneSubtitles {
                 locale
-                adInfo {
-                    format
-                    uri
-                }
-                related(take: 10){
-                    nodes {
-                        channel {
-                            id
-                            created
-                            lastUpdated
-                            published
-                            name
-                            description
-                            images {
-                                thumbnail
-                            }
-                            count {
-                                totalSubscribers
-                            }
-                            isSubscribed
+                uri
+                format
+            }
+            drmInfo {
+                licenseServerUrl
+                scheme
+                multiSession
+                offlineLicenseKeySetId
+            }
+            locale
+            adInfo {
+                format
+                uri
+            }
+            related(take: 10){
+                nodes {
+                    channel {
+                        id
+                        created
+                        lastUpdated
+                        published
+                        name
+                        description
+                        images {
+                            thumbnail
                         }
-                        video {
-                            id
-                            created
-                            lastUpdated
-                            published
-                            uri
-                            name
-                            description
-                            images {
-                                preview
-                            }
-                            count {
-                                totalViews
-                            }
-                            live {
-                                start
-                                end
-                            }
-                            duration {
-                                totalMilliseconds
-                            }
+                        count {
+                            totalSubscribers
+                        }
+                        isSubscribed
+                    }
+                    video {
+                        id
+                        created
+                        lastUpdated
+                        published
+                        uri
+                        name
+                        description
+                        images {
+                            preview
+                        }
+                        count {
+                            totalViews
+                        }
+                        live {
+                            start
+                            end
+                        }
+                        duration {
+                            totalMilliseconds
                         }
                     }
                 }

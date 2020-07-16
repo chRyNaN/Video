@@ -7,13 +7,13 @@ import com.chrynan.common.model.api.VideoInfo
 class VideoDetailsMapper @Inject constructor() : Mapper<VideoDetailsQuery.Data, VideoDetails?> {
 
     override suspend fun map(model: VideoDetailsQuery.Data): VideoDetails? {
-        if (model.provider.result == null) return null
+        if (model.result == null) return null
 
         val videoInfo = VideoInfo(
-            videoId = model.provider.result.video.id,
-            videoUri = model.provider.result.video.uri,
-            previewImageUri = model.provider.result.video.images.preview,
-            channelId = model.provider.result.channel.id,
+            videoId = model.result.video.id,
+            videoUri = model.result.video.uri,
+            previewImageUri = model.result.video.images.preview,
+            channelId = model.result.channel.id,
             providerUri = model.provider.uri
         )
 

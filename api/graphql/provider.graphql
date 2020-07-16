@@ -8,9 +8,6 @@ type Provider implements TimeDetail @access(type: OPEN) {
     website: String
     contactEmail: String
     images: ProviderImageInfo!
-    channels(take: Int!, after: Cursor): ChannelConnection! @access(type: LOGIN_STRATEGY)
-    channel(id: ID!): Channel @access(type: LOGIN_STRATEGY)
-    video(id: ID!): VideoResultItem @access(type: LOGIN_STRATEGY)
 }
 
 type ProviderImageInfo @access(type: OPEN) {
