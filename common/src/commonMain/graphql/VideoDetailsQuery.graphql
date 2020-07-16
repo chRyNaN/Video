@@ -86,8 +86,19 @@ query VideoDetailsQuery($videoId: ID!) {
                             uri
                             name
                             description
-                            previewImage
-                            viewCount
+                            images {
+                                preview
+                            }
+                            count {
+                                totalViews
+                            }
+                            live {
+                                start
+                                end
+                            }
+                            duration {
+                                totalMilliseconds
+                            }
                         }
                     }
                 }

@@ -18,20 +18,20 @@ class FeedItemMapper @Inject constructor() : Mapper<FeedQuery.Data, List<FeedIte
                     channelId = node.channel.id,
                     providerUri = providerUri,
                     videoUri = node.video.uri,
-                    previewImageUri = node.video.previewImage
+                    previewImageUri = node.video.images.preview
                 )
 
                 FeedItem.VideoFeedItem(
                     videoInfo = videoInfo,
                     videoName = node.video.name,
                     videoDescription = node.video.description,
-                    isVideoLive = node.video.isLive,
-                    videoLengthInMilliseconds = node.video.lengthInMilliseconds.toLong(),
-                    videoViewCount = node.video.viewCount?.toLong(),
-                    videoImage = node.video.previewImage,
+                    isVideoLive = false,
+                    videoLengthInMilliseconds = node.video.duration.totalMilliseconds as? Long,
+                    videoViewCount = node.video.count.totalViews as? Long,
+                    videoImage = node.video.images.preview,
                     channelName = node.channel.name,
                     isSubscribedToChannel = node.channel.isSubscribed,
-                    channelSubscriberCount = node.channel.count.totalSubscribers.toLong(),
+                    channelSubscriberCount = node.channel.count.totalSubscribers as Long,
                     channelImage = node.channel.images.thumbnail,
                     providerName = providerName
                 )

@@ -32,10 +32,19 @@ query FeedQuery($take: Int!, $after: Cursor = null) {
                     uri
                     name
                     description
-                    previewImage
-                    isLive
-                    lengthInMilliseconds
-                    viewCount
+                    images {
+                        preview
+                    }
+                    live {
+                        start
+                        end
+                    }
+                    duration {
+                        totalMilliseconds
+                    }
+                    count {
+                        totalViews
+                    }
                 }
             }
         }
