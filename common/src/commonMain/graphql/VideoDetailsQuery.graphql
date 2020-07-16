@@ -4,7 +4,7 @@ query VideoDetailsQuery($videoId: ID!) {
         lastUpdated
         uri
         name
-        video(id: $videoId) {
+        result: video(id: $videoId) {
             channel {
                 id
                 created
