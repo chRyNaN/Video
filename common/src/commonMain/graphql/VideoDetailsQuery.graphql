@@ -37,7 +37,10 @@ query VideoDetailsQuery($videoId: ID!) {
                 count {
                     totalViews
                 }
-                isLive
+                live {
+                    start
+                    end
+                }
                 duration {
                     totalMilliseconds
                 }

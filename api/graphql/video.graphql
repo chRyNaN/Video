@@ -23,7 +23,7 @@ type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     category: String
     tags: [String!]!
     count: VideoCountInfo!
-    isLive: Boolean!
+    live: LiveInfo
     duration: Duration!
     streamType: VideoStreamType!
     standaloneSubtitles: [Subtitle!]!
@@ -120,6 +120,11 @@ type AdInfo @access(type: LOGIN_STRATEGY) {
 enum AdFormat @access(type: LOGIN_STRATEGY) {
     VAST
     VMAP
+}
+
+type LiveInfo @access(type: LOGIN_STRATEGY) {
+    start: DateTime!
+    end: DateTime
 }
 
 type VideoResultItem @access(type: LOGIN_STRATEGY) {
