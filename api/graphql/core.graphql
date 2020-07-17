@@ -1,20 +1,64 @@
+# A scalar that represents an identifier for a type.
 scalar ID
+
+# A scalar that represents a positional reference in a query.
 scalar Cursor
+
+# A scalar that represents a URI formatted String.
 scalar UriString
+
+#
+# A scalar that represents an ISO-8601 formatted datetime String. For example:
+# "2020-07-17T17:47:29+00:00"
+#
 scalar DateTime
+
+#
+# A scalar that represents a signed 64-bit integer value. The range for this value is -2^63 to
+# 2^63-1. This defines a larger range of values than the standard Int scalar, which is a signed
+# 32-bit integer value.
+#
 scalar Long
 
+#
+# An interface that represents a type that has a unique identifier. This unique identifier allows
+# a type value to be distinguished from other values of the same type.
+#
+# `id` - The unique identifier for this `Node`.
+#
 interface Node {
 
     id: ID!
 }
 
+#
+# An interface that represents a graph like linking between a `Connection` and a `Node`. An `Edge`
+# contains positional information (`cursor`), the `node`, and may contain additional information
+# describing the link between the `Connection` and the `Node`.
+#
+# `cursor` - The `Cursor` positional reference for this `Edge` within the query.
+#
+# `node` - The `Node` that this `Edge` links to the `Connection`.
+#
 interface Edge {
 
     cursor: Cursor!
     node: Node!
 }
 
+#
+# A type that provides pagination information for a `Connection`.
+#
+# `startCursor` - The beginning `Cursor` within the `Connection`.
+#
+# `endCursor` - The ending `Cursor` within the `Connection`.
+#
+# `hasNextPage` - A `Boolean` value indicating whether more data can be fetched after the
+# `endCursor` in a subsequent query.
+#
+# `hasPreviousPage` - A `Boolean` value indicating whether more data can be fetched before the
+# `startCursor` in a subsequent query.
+#
 type PageInfo {
 
     startCursor: Cursor
@@ -23,12 +67,35 @@ type PageInfo {
     hasPreviousPage: Boolean!
 }
 
+#
+# An interface that represents a type that provides consistent time based information about it's
+# creation and edits.
+#
+# `created` - A `DateTime` value indicating the time when this object was created.
+#
+# `lastUpdated` - A `DateTime` value indicating the time when this object was last updated.
+#
 interface TimeDetail {
 
     created: DateTime!
     lastUpdated: DateTime!
 }
 
+#
+# An interface that represents the result of a paginated query. This interface provides access to
+# information necessary to performing subsequent queries.
+#
+# `totalCount` - The total number of items that can be queried. Note that this does not represent
+# the amount of items returned in this specific query but rather the total number of items that can
+# be queried altogether.
+#
+# `pageInfo` - The `PageInfo` object for this query that contains pagination information.
+#
+# `edges` - The `Edges` resulting from this query. This could be used instead of the `nodes` field
+# if the `cursor` value or other information on the `Edge` is required.
+#
+# `nodes` - The `Nodes` resulting from this query.
+#
 interface Connection {
 
     totalCount: Long!
@@ -37,6 +104,18 @@ interface Connection {
     nodes: [Node!]!
 }
 
+#
+# A type that defines an elapsed amount of time. There are properties to access the duration in
+# specific units.
+#
+# For instance, the `totalMilliseconds` field will return the total amount of milliseconds in the
+# `Duration`. For example, if the `Duration` represents 3 seconds, then the `totalMilliseconds`
+# field will return a `Long` value of *3,000*.
+#
+# Note that the fields are returned in `Long` values, so precision will be lost due to rounding.
+#
+# `totalMilliseconds` - represents the total amount of milliseconds for this `Duration`.
+#
 type Duration {
     totalMilliseconds: Long
 }
