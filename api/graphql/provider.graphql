@@ -1,4 +1,4 @@
-type Provider implements TimeDetail @access(type: OPEN) {
+type ProviderInfo implements TimeDetail @access(type: OPEN) {
     created: DateTime!
     lastUpdated: DateTime!
     uri: UriString!
