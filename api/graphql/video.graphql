@@ -1,15 +1,3 @@
-type VideoConnection implements Connection @access(type: LOGIN_STRATEGY) {
-    pageInfo: PageInfo!
-    totalCount: Long!
-    edges: [VideoEdge!]!
-    nodes: [Video!]!
-}
-
-type VideoEdge implements Edge @access(type: LOGIN_STRATEGY) {
-    cursor: Cursor!
-    node: Video!
-}
-
 type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: DateTime!

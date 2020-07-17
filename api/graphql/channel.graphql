@@ -24,7 +24,7 @@ type Channel implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
     isSubscribed: Boolean!
     lists: [ChannelVideoListConnection!]!
     list(id: ID!, take: Int!, after: Cursor): ChannelVideoListConnection!
-    videos(take: Int!, after: Cursor): VideoConnection!
+    videos(take: Int!, after: Cursor): ChannelVideoConnection!
 }
 
 type ChannelImageInfo @access(type: LOGIN_STRATEGY) {
@@ -42,6 +42,18 @@ type ChannelVideoListConnection implements Connection @access(type: LOGIN_STRATE
     name: String!
     totalCount: Long!
     pageInfo: PageInfo!
-    edges: [VideoEdge!]!
+    edges: [ChannelVideoEdge!]!
     nodes: [Video!]!
+}
+
+type ChannelVideoConnection implements Connection @access(type: LOGIN_STRATEGY) {
+    pageInfo: PageInfo!
+    totalCount: Long!
+    edges: [ChannelVideoEdge!]!
+    nodes: [Video!]!
+}
+
+type ChannelVideoEdge implements Edge @access(type: LOGIN_STRATEGY) {
+    cursor: Cursor!
+    node: Video!
 }
