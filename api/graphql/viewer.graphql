@@ -13,7 +13,7 @@
 # `subscribedChannels` - A `ChannelConnection` linking to the `Channels` that this User has
 # subscribed to.
 #
-type Viewer implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
+type Viewer implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: DateTime!
     lastUpdated: DateTime!

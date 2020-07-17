@@ -1,4 +1,4 @@
-type Video implements Node, TimeDetail @access(type: LOGIN_STRATEGY) {
+type Video implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     id: ID!
     created: DateTime!
     lastUpdated: DateTime!
@@ -50,17 +50,17 @@ type DownloadAction implements VideoAction @access(type: LOGIN_STRATEGY) {
     downloadUri: UriString!
 }
 
-type RatingUpAction implements VideoAction, SelectableAction @access(type: LOGIN_STRATEGY) {
+type RatingUpAction implements VideoAction & SelectableAction @access(type: LOGIN_STRATEGY) {
     type: String!
     isSelected: Boolean!
 }
 
-type RatingDownAction implements VideoAction, SelectableAction @access(type: LOGIN_STRATEGY) {
+type RatingDownAction implements VideoAction & SelectableAction @access(type: LOGIN_STRATEGY) {
     type: String!
     isSelected: Boolean!
 }
 
-type FlagAction implements VideoAction, SelectableAction @access(type: LOGIN_STRATEGY) {
+type FlagAction implements VideoAction & SelectableAction @access(type: LOGIN_STRATEGY) {
     type: String!
     isSelected: Boolean!
 }
