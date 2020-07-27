@@ -1,0 +1,18 @@
+union RelatedItem = VideoRelatedItem
+
+type VideoRelatedItem @access(type: LOGIN_STRATEGY) {
+    channel: Channel!
+    video: Video!
+}
+
+type RelatedEdge @access(type: LOGIN_STRATEGY) {
+    cursor: Cursor!
+    node: RelatedItem!
+}
+
+type RelatedConnection @access(type: LOGIN_STRATEGY) {
+    pageInfo: PageInfo!
+    totalCount: Long!
+    edges: [RelatedEdge!]!
+    nodes: [RelatedItem!]!
+}

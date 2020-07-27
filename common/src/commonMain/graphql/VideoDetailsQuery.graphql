@@ -62,43 +62,45 @@ query VideoDetailsQuery($videoId: ID!) {
                 format
                 uri
             }
-            related(take: 10){
+            related(take: 10) {
                 nodes {
-                    channel {
-                        id
-                        created
-                        lastUpdated
-                        published
-                        name
-                        description
-                        images {
-                            thumbnail
+                    ... on VideoRelatedItem {
+                        channel {
+                            id
+                            created
+                            lastUpdated
+                            published
+                            name
+                            description
+                            images {
+                                thumbnail
+                            }
+                            count {
+                                totalSubscribers
+                            }
+                            isSubscribed
                         }
-                        count {
-                            totalSubscribers
-                        }
-                        isSubscribed
-                    }
-                    video {
-                        id
-                        created
-                        lastUpdated
-                        published
-                        uri
-                        name
-                        description
-                        images {
-                            preview
-                        }
-                        count {
-                            totalViews
-                        }
-                        live {
-                            start
-                            end
-                        }
-                        duration {
-                            totalMilliseconds
+                        video {
+                            id
+                            created
+                            lastUpdated
+                            published
+                            uri
+                            name
+                            description
+                            images {
+                                preview
+                            }
+                            count {
+                                totalViews
+                            }
+                            live {
+                                start
+                                end
+                            }
+                            duration {
+                                totalMilliseconds
+                            }
                         }
                     }
                 }
