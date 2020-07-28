@@ -13,6 +13,7 @@ This application is similar to a Web Browser but specifically for videos. Or can
 
 ### API
 The API is a GraphQL API which can be found in the [api/graphql/](api/graphql) directory. Reasons for choosing GraphQL include it's flexibility for clients to request the data that they need and the simplicity of exposing only a single URI.
+More information about the API can be found in [api/README.md](api/README.md) file.
 
 ### How it came about
 Personally, I have multiple subscriptions to streaming video providers and thought about how convenient it would be to access all of their content from a single application. I thought this would make an interesting project, and so I began developing it.
