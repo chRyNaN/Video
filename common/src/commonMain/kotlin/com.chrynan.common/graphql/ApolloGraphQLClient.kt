@@ -11,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
 @OptIn(ApolloExperimental::class, ExperimentalCoroutinesApi::class)
 class ApolloGraphQLClient(private val apolloClient: ApolloClient) : GraphQLClient {
 
-    override fun <D : Operation.Data, T, V : Operation.Variables> query(query: Query<D, T, V>): Flow<Response<T>> =
+    override fun <D : Operation.Data, V : Operation.Variables> query(query: Query<D, D, V>): Flow<Response<D>> =
         apolloClient.query(query).execute()
 }

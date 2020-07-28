@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GraphQLClient {
 
-    fun <D : Operation.Data, T, V : Operation.Variables> query(query: Query<D, T, V>): Flow<Response<T>>
+    fun <D : Operation.Data, V : Operation.Variables> query(query: Query<D, D, V>): Flow<Response<D>>
 }

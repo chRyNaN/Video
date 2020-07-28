@@ -3,7 +3,7 @@ package com.chrynan.common.graphql
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.ApolloExperimental
 import com.apollographql.apollo.api.ScalarTypeAdapters
-import com.apollographql.apollo.network.ApolloHttpNetworkTransport
+import com.apollographql.apollo.network.http.ApolloHttpNetworkTransport
 import com.chrynan.common.Inject
 import com.chrynan.common.model.core.UriString
 import kotlinx.coroutines.ExperimentalCoroutinesApi
