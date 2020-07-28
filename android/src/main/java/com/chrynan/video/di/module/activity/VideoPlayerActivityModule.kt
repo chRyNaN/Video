@@ -5,6 +5,7 @@ import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.activity.VideoPlayerActivity
+import com.chrynan.video.ui.fragment.VideoDetailsFragment
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
@@ -22,4 +23,8 @@ internal abstract class VideoPlayerActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [VideoPlayerFragmentModule::class])
     abstract fun videoFragmentInjector(): VideoPlayerFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [VideoDetailsFragment::class])
+    abstract fun videoDetailsInjector(): VideoDetailsFragment
 }
