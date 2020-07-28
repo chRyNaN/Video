@@ -46,13 +46,21 @@ or it can return an HTTP Response Code of `401` - Unauthorized. The Video Client
 Since the API is designed to be federated, it uses the [OAUTH 2.0 Dynamic Client Registration Protocol](https://tools.ietf.org/html/rfc7591) for authentication. This allows a Video Client Application to 
 dynamically register with a Video Content Provider so that it can perform authentication with a User.
 
-Note that there is no initial authentication token for dynamically registering with a Video Content Provider, because that would require manually setting up that connection prior to the registering, 
-and since this is a federated API, there is no way to effectively do that.
+Note that there is no initial authentication token for dynamically registering with a Video Content Provider, because that would require manually setting up that connection prior to registering, 
+and since this is a federated API, there is no way to effectively do that. This approach can be considered Open Registration.
 
-TODO - provide more information about the process.
+#### Process
+The authentication process can be described by the following steps:
+* The Video Client Application performs a GraphQL Query to the Video Content Provider API to access the `LoginInfo` object to obtain the `registrationUri`.
+* The Video Client Application attempts to dynamically register by performing an HTTP POST request to the `registrationUri` with a JSON body of required and optional fields.
+* The Video Content Provider responds with a JSON object containing the fields necessary to perform a standard Oauth 2.0 request.
+* The Video Client Application performs the standard Oauth 2.0 flow using the values obtained in the previous step.
 
 ## Perspective
-TODO - perspective of `Viewer`
+The API is designed to be in the perspective of the `Viewer`. The `Viewer` is the User who is accessing the content from the Video Content Provider.
+
+For instance, when accessing the `feed` field on the `Query` object, the returned results are catered to the current User, or `Viewer`. If a different User accessed the `feed` field on the `Query` object, 
+with the same parameters, they might receive different results, since they are in the perspective from a different `Viewer` and may have a unique experience.
 
 ## Open Android App from Intent
 There are multiple ways to open the Android video client application to display a video:

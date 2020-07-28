@@ -19,6 +19,7 @@
 #
 type LoginInfo @access(type: OPEN) {
     type: LoginType!
+    registrationUri: UriString
     loginUri: UriString
     requestId: ID
 }
