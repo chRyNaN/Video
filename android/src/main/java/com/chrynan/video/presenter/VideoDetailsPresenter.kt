@@ -12,8 +12,9 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
-class VideoDetailsPresenter(
+class VideoDetailsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val view: VideoDetailsView,
     private val adapterFactory: VideoDetailsAdapterFactory

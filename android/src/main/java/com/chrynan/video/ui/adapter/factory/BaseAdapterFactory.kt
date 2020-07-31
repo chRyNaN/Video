@@ -15,9 +15,9 @@ abstract class BaseAdapterFactory : AdapterFactory {
 
     abstract val adapters: Set<BaseAdapter<*>>
 
-    override val decorators: List<RecyclerView.ItemDecoration> by lazy { emptyList() }
+    override val decorators: List<RecyclerView.ItemDecoration> by lazy { emptyList<RecyclerView.ItemDecoration>() }
 
-    override val diffUtilCalculator: DiffUtilCalculator<AdapterItem> by lazy { DiffUtilCalculator() }
+    override val diffUtilCalculator: DiffUtilCalculator<AdapterItem> by lazy { DiffUtilCalculator<AdapterItem>() }
 
     override val diffProcessor: DiffProcessor<AdapterItem> by lazy {
         AndroidDiffProcessor(

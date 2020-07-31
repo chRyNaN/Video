@@ -2,6 +2,7 @@ package com.chrynan.video.di.module.fragment
 
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.player.AndroidMediaController
+import com.chrynan.video.player.MediaController
 import com.chrynan.video.player.converter.DelegatePlayableConverter
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.ui.view.VideoPlayerView
@@ -22,7 +23,7 @@ internal abstract class VideoPlayerFragmentModule {
         fun provideMediaController(
             exoPlayer: SimpleExoPlayer,
             converter: DelegatePlayableConverter
-        ): com.chrynan.video.player.MediaController = AndroidMediaController(exoPlayer, converter)
+        ): MediaController = AndroidMediaController(exoPlayer, converter)
     }
 
     @Binds

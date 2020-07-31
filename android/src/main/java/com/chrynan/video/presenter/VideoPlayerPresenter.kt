@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class VideoPlayerPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
-    private val mediaController: MediaController,
-    private val playlistCreator: PlaylistCreator,
+    //private val mediaController: MediaController,
+    //private val playlistCreator: PlaylistCreator,
     private val view: VideoPlayerView
 ) : BasePresenter(dispatchers) {
 

@@ -1,5 +1,6 @@
 package com.chrynan.video.di.module.activity
 
+import com.chrynan.video.di.module.fragment.VideoDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.VideoPlayerFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
@@ -25,6 +26,6 @@ internal abstract class VideoPlayerActivityModule {
     abstract fun videoFragmentInjector(): VideoPlayerFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [VideoDetailsFragment::class])
+    @ContributesAndroidInjector(modules = [VideoDetailsFragmentModule::class])
     abstract fun videoDetailsInjector(): VideoDetailsFragment
 }

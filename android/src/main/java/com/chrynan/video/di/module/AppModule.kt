@@ -33,7 +33,7 @@ internal abstract class AppModule {
         fun provideMarkWon(
             @ApplicationContextQualifier context: ApplicationContext,
             imageLoader: ImageLoader
-        ) = Markwon.builder(context)
+        ): Markwon = Markwon.builder(context)
             .usePlugin(CoilImagesPlugin.create(context, imageLoader))
             .usePlugin(HtmlPlugin.create())
             .usePlugin(StrikethroughPlugin.create())
