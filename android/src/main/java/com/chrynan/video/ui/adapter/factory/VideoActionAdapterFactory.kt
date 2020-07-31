@@ -27,15 +27,13 @@ class VideoActionAdapterFactory @Inject constructor(
         )
     }
 
-    override val layoutManager: LinearLayoutManager by lazy {
-        LinearLayoutManager(
-            context,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-    }
-
     override val positionManager: AdapterPositionManager by lazy {
-        LinearLayoutPositionManager(layoutManager)
+        LinearLayoutPositionManager(
+            LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+        )
     }
 }

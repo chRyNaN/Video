@@ -1,6 +1,5 @@
 package com.chrynan.video.ui.adapter.factory
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.DiffDispatcher
 import com.chrynan.aaaah.DiffProcessor
@@ -16,8 +15,6 @@ interface AdapterFactory {
 
     val decorators: List<RecyclerView.ItemDecoration>
 
-    val layoutManager: LinearLayoutManager
-
     val positionManager: AdapterPositionManager
 
     val adapter: RecyclerViewAdapter
@@ -32,7 +29,7 @@ interface AdapterFactory {
 }
 
 fun RecyclerView.bindAdapterFactory(factory: AdapterFactory) {
-    layoutManager = factory.layoutManager
+    layoutManager = factory.positionManager.layoutManager
     adapter = factory.adapter
     factory.decorators.forEach { addItemDecoration(it) }
 }

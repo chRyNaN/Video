@@ -1,8 +1,11 @@
 package com.chrynan.video.ui.adapter.position
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 interface AdapterPositionManager {
+
+    val layoutManager: RecyclerView.LayoutManager
 
     fun findFirstVisibleItemPosition(): Int
 

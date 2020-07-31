@@ -3,17 +3,17 @@ package com.chrynan.video.ui.adapter.position
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 
-class GridLayoutPositionManager(private val gridLayoutManager: GridLayoutManager) :
+class GridLayoutPositionManager(override val layoutManager: GridLayoutManager) :
     AdapterPositionManager {
 
     override fun findFirstVisibleItemPosition(): Int =
-        gridLayoutManager.findFirstVisibleItemPosition()
+        layoutManager.findFirstVisibleItemPosition()
 
     override fun findLastVisibleItemPosition(): Int =
-        gridLayoutManager.findLastVisibleItemPosition()
+        layoutManager.findLastVisibleItemPosition()
 
     override fun findViewByPosition(position: Int): View? =
-        gridLayoutManager.findViewByPosition(position)
+        layoutManager.findViewByPosition(position)
 
-    override fun getPosition(view: View): Int = gridLayoutManager.getPosition(view)
+    override fun getPosition(view: View): Int = layoutManager.getPosition(view)
 }

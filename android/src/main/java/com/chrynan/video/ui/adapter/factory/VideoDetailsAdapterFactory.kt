@@ -39,10 +39,8 @@ class VideoDetailsAdapterFactory @Inject constructor(
         )
     }
 
-    override val layoutManager: LinearLayoutManager by lazy { LinearLayoutManager(context) }
-
     override val positionManager: AdapterPositionManager by lazy {
-        LinearLayoutPositionManager(layoutManager)
+        LinearLayoutPositionManager(LinearLayoutManager(context))
     }
 
     override val decorators: List<RecyclerView.ItemDecoration> by lazy {

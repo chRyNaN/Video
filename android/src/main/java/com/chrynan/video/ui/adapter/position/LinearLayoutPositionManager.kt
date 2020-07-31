@@ -3,17 +3,17 @@ package com.chrynan.video.ui.adapter.position
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 
-class LinearLayoutPositionManager(private val linearLayoutManager: LinearLayoutManager) :
+class LinearLayoutPositionManager(override val layoutManager: LinearLayoutManager) :
     AdapterPositionManager {
 
     override fun findFirstVisibleItemPosition(): Int =
-        linearLayoutManager.findFirstVisibleItemPosition()
+        layoutManager.findFirstVisibleItemPosition()
 
     override fun findLastVisibleItemPosition(): Int =
-        linearLayoutManager.findLastVisibleItemPosition()
+        layoutManager.findLastVisibleItemPosition()
 
     override fun findViewByPosition(position: Int): View? =
-        linearLayoutManager.findViewByPosition(position)
+        layoutManager.findViewByPosition(position)
 
-    override fun getPosition(view: View): Int = linearLayoutManager.getPosition(view)
+    override fun getPosition(view: View): Int = layoutManager.getPosition(view)
 }
