@@ -5,6 +5,8 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.core.BaseAdapter
+import com.chrynan.video.ui.adapter.position.AdapterPositionManager
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
 import com.chrynan.video.ui.adapter.video.VideoInfoProviderAdapter
 import com.chrynan.video.utils.ActivityContext
@@ -31,5 +33,9 @@ class VideoActionAdapterFactory @Inject constructor(
             LinearLayoutManager.HORIZONTAL,
             false
         )
+    }
+
+    override val positionManager: AdapterPositionManager by lazy {
+        LinearLayoutPositionManager(layoutManager)
     }
 }

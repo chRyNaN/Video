@@ -13,6 +13,7 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.HomeListDecorator
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.fragment.HomeFragment
 import com.chrynan.video.ui.view.HomeView
@@ -98,7 +99,7 @@ internal abstract class HomeFragmentModule {
                 sectionHeaderAdapter,
                 videoShowcaseAdapter
             ),
-            layoutManager = layoutManager
+            positionManager = LinearLayoutPositionManager(layoutManager)
         )
     }
 

@@ -8,6 +8,7 @@ import com.chrynan.aaaah.DiffResult
 import com.chrynan.aaaah.DiffUtilCalculator
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.position.AdapterPositionManager
 import com.chrynan.video.viewmodel.AdapterItem
 import kotlinx.coroutines.flow.Flow
 
@@ -16,6 +17,8 @@ interface AdapterFactory {
     val decorators: List<RecyclerView.ItemDecoration>
 
     val layoutManager: LinearLayoutManager
+
+    val positionManager: AdapterPositionManager
 
     val adapter: RecyclerViewAdapter
 

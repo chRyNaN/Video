@@ -1,14 +1,14 @@
 package com.chrynan.video.ui.adapter.core
 
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
+import com.chrynan.video.ui.adapter.position.AdapterPositionManager
 import com.chrynan.video.viewmodel.AdapterItem
 
 open class BaseManagerAdapter<VM : AdapterItem>(
     private val adapters: Set<BaseAdapter<out VM>>,
-    private val layoutManager: LinearLayoutManager
+    private val positionManager: AdapterPositionManager? = null
 ) : ManagerRecyclerViewAdapter<VM>(adapters = adapters) {
 
     companion object {
@@ -68,55 +68,58 @@ open class BaseManagerAdapter<VM : AdapterItem>(
     }
 
     private fun handleOnScrolled() {
-        val firstPosition = layoutManager.findFirstVisibleItemPosition()
-        val lastPosition = layoutManager.findLastVisibleItemPosition()
+        if (positionManager != null) {
+            val firstPosition = positionManager.findFirstVisibleItemPosition()
+            val lastPosition = positionManager.findLastVisibleItemPosition()
 
-        if (firstPosition != previousFirstVisibleItemPosition || lastPosition != previousLastVisibleItemPosition) {
-            handleEndlessScrollLoadMore(
-                firstVisiblePosition = firstPosition,
-                lastVisiblePosition = lastPosition
-            )
-
-            val previousFirstItem = items.getOrNull(previousFirstVisibleItemPosition)
-            val previousLastItem = items.getOrNull(previousLastVisibleItemPosition)
-            val firstItem = items.getOrNull(firstPosition)
-            val lastItem = items.getOrNull(lastPosition)
-
-            val previousFirstView =
-                layoutManager.findViewByPosition(previousFirstVisibleItemPosition)
-            val previousLastView = layoutManager.findViewByPosition(previousLastVisibleItemPosition)
-            val firstView = layoutManager.findViewByPosition(firstPosition)
-            val lastView = layoutManager.findViewByPosition(lastPosition)
-
-            // Top
-            if (firstPosition > previousFirstVisibleItemPosition) {
-                // The old item is no longer visible
-                getAdapterForItem(previousFirstItem)?.exit(
-                    view = previousFirstView,
-                    item = previousFirstItem
+            if (firstPosition != previousFirstVisibleItemPosition || lastPosition != previousLastVisibleItemPosition) {
+                handleEndlessScrollLoadMore(
+                    firstVisiblePosition = firstPosition,
+                    lastVisiblePosition = lastPosition
                 )
-            } else if (firstPosition < previousFirstVisibleItemPosition) {
-                // The new item is now visible
-                getAdapterForItem(firstItem)?.enter(view = firstView, item = firstItem)
-            }
 
-            // Bottom
-            if (lastPosition > previousLastVisibleItemPosition) {
-                // The new item is now visible
-                getAdapterForItem(lastItem)?.enter(view = lastView, item = lastItem)
-            } else if (lastPosition < previousLastVisibleItemPosition) {
-                // The old item is no longer visible
-                getAdapterForItem(previousLastItem)?.exit(
-                    view = previousLastView,
-                    item = previousLastItem
-                )
+                val previousFirstItem = items.getOrNull(previousFirstVisibleItemPosition)
+                val previousLastItem = items.getOrNull(previousLastVisibleItemPosition)
+                val firstItem = items.getOrNull(firstPosition)
+                val lastItem = items.getOrNull(lastPosition)
+
+                val previousFirstView =
+                    positionManager.findViewByPosition(previousFirstVisibleItemPosition)
+                val previousLastView =
+                    positionManager.findViewByPosition(previousLastVisibleItemPosition)
+                val firstView = positionManager.findViewByPosition(firstPosition)
+                val lastView = positionManager.findViewByPosition(lastPosition)
+
+                // Top
+                if (firstPosition > previousFirstVisibleItemPosition) {
+                    // The old item is no longer visible
+                    getAdapterForItem(previousFirstItem)?.exit(
+                        view = previousFirstView,
+                        item = previousFirstItem
+                    )
+                } else if (firstPosition < previousFirstVisibleItemPosition) {
+                    // The new item is now visible
+                    getAdapterForItem(firstItem)?.enter(view = firstView, item = firstItem)
+                }
+
+                // Bottom
+                if (lastPosition > previousLastVisibleItemPosition) {
+                    // The new item is now visible
+                    getAdapterForItem(lastItem)?.enter(view = lastView, item = lastItem)
+                } else if (lastPosition < previousLastVisibleItemPosition) {
+                    // The old item is no longer visible
+                    getAdapterForItem(previousLastItem)?.exit(
+                        view = previousLastView,
+                        item = previousLastItem
+                    )
+                }
             }
         }
     }
 
     private fun handleRecycled(itemView: View) {
-        val position = layoutManager.getPosition(itemView)
-        val item = items.getOrNull(position)
+        val position = positionManager?.getPosition(itemView)
+        val item = position?.let { items.getOrNull(it) }
 
         getAdapterForItem(item)?.recycle(itemView, item)
     }

@@ -10,6 +10,7 @@ import com.chrynan.video.navigator.ServiceProviderListNavigator
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.adapter.provider.ServiceProviderListItemAdapter
 import com.chrynan.video.ui.fragment.ServiceProviderListFragment
 import com.chrynan.video.ui.view.ServiceProviderListView
@@ -77,7 +78,7 @@ internal abstract class ServiceProviderListFragmentModule {
             adapters = setOf(
                 serviceProviderListItemAdapter
             ),
-            layoutManager = layoutManager
+            positionManager = LinearLayoutPositionManager(layoutManager)
         )
     }
 

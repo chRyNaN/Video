@@ -12,6 +12,7 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.decorator.SettingsListDecorator
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
 import com.chrynan.video.ui.fragment.SettingsFragment
 import com.chrynan.video.ui.view.SettingsView
@@ -88,7 +89,7 @@ internal abstract class SettingsFragmentModule {
                 sectionHeaderAdapter,
                 settingsItemAdapter
             ),
-            layoutManager = layoutManager
+            positionManager = LinearLayoutPositionManager(layoutManager)
         )
     }
 

@@ -15,8 +15,10 @@ abstract class BaseAdapterFactory : AdapterFactory {
 
     abstract val adapters: Set<BaseAdapter<*>>
 
+    @Suppress("RemoveExplicitTypeArguments") // For some reason the build fails without the explicit type parameter
     override val decorators: List<RecyclerView.ItemDecoration> by lazy { emptyList<RecyclerView.ItemDecoration>() }
 
+    @Suppress("RemoveExplicitTypeArguments") // For some reason the build fails without the explicit type parameter
     override val diffUtilCalculator: DiffUtilCalculator<AdapterItem> by lazy { DiffUtilCalculator<AdapterItem>() }
 
     override val diffProcessor: DiffProcessor<AdapterItem> by lazy {
@@ -30,7 +32,7 @@ abstract class BaseAdapterFactory : AdapterFactory {
     override val adapter: RecyclerViewAdapter by lazy {
         RecyclerViewAdapter(
             adapters = adapters,
-            layoutManager = layoutManager
+            positionManager = positionManager
         )
     }
 

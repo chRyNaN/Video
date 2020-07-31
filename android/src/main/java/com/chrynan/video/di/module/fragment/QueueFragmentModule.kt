@@ -7,6 +7,7 @@ import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.QueueItemAdapter
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.fragment.QueueFragment
 import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
@@ -31,7 +32,7 @@ internal abstract class QueueFragmentModule {
         fun provideAdapter(queueItemAdapter: QueueItemAdapter, layoutManager: LinearLayoutManager) =
             RecyclerViewAdapter(
                 adapters = setOf(queueItemAdapter),
-                layoutManager = layoutManager
+                positionManager = LinearLayoutPositionManager(layoutManager)
             )
     }
 

@@ -6,6 +6,7 @@ import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.core.AdapterComponentsBinder
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.utils.ActivityContext
 import javax.inject.Inject
 
@@ -19,5 +20,8 @@ class SearchTagAdapterComponentsBinder @Inject constructor(
         LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
     override fun createAdapter(layoutManager: LinearLayoutManager): RecyclerViewAdapter =
-        RecyclerViewAdapter(adapters = setOf(searchTagItemAdapter), layoutManager = layoutManager)
+        RecyclerViewAdapter(
+            adapters = setOf(searchTagItemAdapter),
+            positionManager = LinearLayoutPositionManager(layoutManager)
+        )
 }

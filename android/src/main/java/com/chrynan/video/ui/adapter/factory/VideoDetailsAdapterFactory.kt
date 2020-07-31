@@ -8,6 +8,8 @@ import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.SectionHeaderAdapter
 import com.chrynan.video.ui.adapter.core.BaseAdapter
 import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
+import com.chrynan.video.ui.adapter.position.AdapterPositionManager
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.adapter.video.*
 import com.chrynan.video.utils.ActivityContext
 import javax.inject.Inject
@@ -38,6 +40,10 @@ class VideoDetailsAdapterFactory @Inject constructor(
     }
 
     override val layoutManager: LinearLayoutManager by lazy { LinearLayoutManager(context) }
+
+    override val positionManager: AdapterPositionManager by lazy {
+        LinearLayoutPositionManager(layoutManager)
+    }
 
     override val decorators: List<RecyclerView.ItemDecoration> by lazy {
         listOf(VideoPlayerListDecorator(context))

@@ -14,6 +14,7 @@ import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.fragment.SearchFragment
 import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
@@ -85,7 +86,7 @@ internal abstract class SearchFragmentModule {
                 videoRecommendationAdapter,
                 channelListItemAdapter
             ),
-            layoutManager = layoutManager
+            positionManager = LinearLayoutPositionManager(layoutManager)
         )
     }
 

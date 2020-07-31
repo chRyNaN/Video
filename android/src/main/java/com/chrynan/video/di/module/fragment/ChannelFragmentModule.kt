@@ -15,6 +15,7 @@ import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
 import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.utils.ActivityContext
 import com.chrynan.video.viewmodel.AdapterItem
@@ -99,7 +100,7 @@ internal abstract class ChannelFragmentModule {
                 headerAdapter,
                 videoAdapter
             ),
-            layoutManager = layoutManager
+            positionManager = LinearLayoutPositionManager(layoutManager)
         )
 
         // Channel Video List Adapter
@@ -154,7 +155,7 @@ internal abstract class ChannelFragmentModule {
             @ChannelVideoListQualifier.LayoutManager layoutManager: LinearLayoutManager
         ) = RecyclerViewAdapter(
             adapters = setOf(listItemAdapter),
-            layoutManager = layoutManager
+            positionManager = LinearLayoutPositionManager(layoutManager)
         )
     }
 

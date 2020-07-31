@@ -6,6 +6,7 @@ import com.chrynan.video.ui.view.WatchListView
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.fragment.WatchListFragment
 import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
@@ -35,7 +36,7 @@ internal abstract class WatchListFragmentModule {
                 adapters = setOf(
                     watchListAdapter
                 ),
-                layoutManager = layoutManager
+                positionManager = LinearLayoutPositionManager(layoutManager)
             )
     }
 
