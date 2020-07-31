@@ -4,21 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
 import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
-import com.chrynan.video.di.qualifier.ChannelQualifier
+import com.chrynan.logger.Logger
 import com.chrynan.video.presenter.ChannelPresenter
 import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
-import com.chrynan.video.ui.adapter.decorator.ChannelListDecorator
+import com.chrynan.video.ui.adapter.factory.ChannelAdapterFactory
+import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
+import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_channel.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
 class ChannelFragment : BaseFragment(),
@@ -43,16 +46,7 @@ class ChannelFragment : BaseFragment(),
     override lateinit var presenter: ChannelPresenter
 
     @Inject
-    @field:ChannelQualifier.Adapter
-    lateinit var managerAdapter: RecyclerViewAdapter
-
-    @Inject
-    @field:ChannelQualifier.LayoutManager
-    lateinit var linearLayoutManager: LinearLayoutManager
-
-    @Inject
-    @field:ChannelQualifier.Decorator
-    lateinit var decorator: ChannelListDecorator
+    lateinit var adapterFactory: ChannelAdapterFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,9 +58,7 @@ class ChannelFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         channelRecyclerView?.apply {
-            layoutManager = linearLayoutManager
-            adapter = managerAdapter
-            addItemDecoration(decorator)
+            bindAdapterFactory(adapterFactory)
 
             val videoInfo = VideoInfo(
                 videoId = "",
@@ -109,23 +101,28 @@ class ChannelFragment : BaseFragment(),
                 items = listOf(listItemOne, listItemTwo)
             )
 
-            managerAdapter.items = listOf(
-                header,
-                SectionHeaderViewModel("About"),
-                ChannelInfoViewModel(
-                    about = "A **Channel** *you* might like.\n\n ![Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1)",
-                    created = "Today",
-                    lastUpdated = "Today",
-                    headerImageUri = "",
-                    channelImageUri = "",
-                    isSubscribed = false,
-                    channelId = "",
-                    providerUri = "",
-                    channelUrl = ""
-                ),
-                provider,
-                videoList
+            flowOf(
+                listOf(
+                    header,
+                    SectionHeaderViewModel("About"),
+                    ChannelInfoViewModel(
+                        about = "A **Channel** *you* might like.\n\n ![Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1)",
+                        created = "Today",
+                        lastUpdated = "Today",
+                        headerImageUri = "",
+                        channelImageUri = "",
+                        isSubscribed = false,
+                        channelId = "",
+                        providerUri = "",
+                        channelUrl = ""
+                    ),
+                    provider,
+                    videoList
+                )
             )
+                .calculateAndDispatchDiff(adapterFactory)
+                .catch { Logger.logError(throwable = it, message = "Error loading Channel Items.") }
+                .launchIn(this@ChannelFragment)
         }
     }
 
