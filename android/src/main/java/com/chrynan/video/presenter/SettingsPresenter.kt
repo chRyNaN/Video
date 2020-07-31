@@ -4,11 +4,9 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.repository.SettingsInfoRepository
 import com.chrynan.common.utils.flowFrom
 import com.chrynan.logger.Logger
-import com.chrynan.video.di.qualifier.SettingsQualifier
 import com.chrynan.video.mapper.SettingsInfoMapper
-import com.chrynan.video.ui.adapter.core.AdapterItemHandler
-import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
-import com.chrynan.video.viewmodel.AdapterItem
+import com.chrynan.video.ui.adapter.factory.SettingsAdapterFactory
+import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -18,13 +16,13 @@ class SettingsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val settingsInfoRepository: SettingsInfoRepository,
     private val mapper: SettingsInfoMapper,
-    @SettingsQualifier.AdapterItemHandler private val adapterItemHandler: AdapterItemHandler<AdapterItem>
+    private val adapterFactory: SettingsAdapterFactory
 ) : BasePresenter(dispatchers) {
 
     fun getSettings() {
         flowFrom { settingsInfoRepository.getSettingsInfo() }
             .map(mapper::map)
-            .calculateAndDispatchDiff(adapterItemHandler)
+            .calculateAndDispatchDiff(adapterFactory)
             .catch { Logger.logError(throwable = it, message = "Error fetching Settings Info.") }
             .launchIn(this)
     }
