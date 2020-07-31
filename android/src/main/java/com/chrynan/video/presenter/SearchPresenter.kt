@@ -10,14 +10,12 @@ import com.chrynan.common.utils.mapEachItemWith
 import com.chrynan.common.validation.core.ValidationResult
 import com.chrynan.common.validation.validator.SearchQueryValidator
 import com.chrynan.logger.Logger
-import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.mapper.TagItemMapper
 import com.chrynan.video.viewmodel.TagItemViewModel
-import com.chrynan.video.ui.adapter.core.AdapterItemHandler
-import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
+import com.chrynan.video.ui.adapter.factory.SearchAdapterFactory
+import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.utils.TagItemHandler
-import com.chrynan.video.viewmodel.AdapterItem
 import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import com.chrynan.video.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
@@ -29,7 +27,7 @@ import javax.inject.Inject
 class SearchPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val view: SearchView,
-    @SearchQualifier.AdapterItemHandler private val adapterItemHandler: AdapterItemHandler<AdapterItem>,
+    private val adapterFactory: SearchAdapterFactory,
     private val searchItemRepository: SearchItemRepository,
     private val tagSuggestionRepository: TagSuggestionRepository,
     private val tagItemMapper: TagItemMapper,
@@ -76,7 +74,7 @@ class SearchPresenter @Inject constructor(
         )
 
         flowOf(list)
-            .calculateAndDispatchDiff(itemHandler = adapterItemHandler)
+            .calculateAndDispatchDiff(adapterFactory)
             .catch { Logger.logError(message = "Error loading Search Results.") }
             .launchIn(this)
 

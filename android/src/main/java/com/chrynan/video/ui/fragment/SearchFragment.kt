@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
-import com.chrynan.video.di.qualifier.SearchQualifier
 import com.chrynan.video.navigator.SearchNavigator
 import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.presenter.SearchPresenter
@@ -20,6 +17,8 @@ import com.chrynan.video.ui.activity.VideoPlayerActivity
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
 import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
+import com.chrynan.video.ui.adapter.factory.SearchAdapterFactory
+import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.utils.showKeyboard
 import com.chrynan.video.viewmodel.ChannelListItemViewModel
@@ -44,12 +43,7 @@ class SearchFragment : BaseFragment(),
     override lateinit var presenter: SearchPresenter
 
     @Inject
-    @field:SearchQualifier.Adapter
-    lateinit var resultAdapter: RecyclerViewAdapter
-
-    @Inject
-    @field:SearchQualifier.LayoutManager
-    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var adapterFactory: SearchAdapterFactory
 
     @Inject
     lateinit var tagAdapterComponentsBinder: SearchTagAdapterComponentsBinder
@@ -81,10 +75,7 @@ class SearchFragment : BaseFragment(),
             }
         })
 
-        searchResultsRecyclerView?.apply {
-            layoutManager = linearLayoutManager
-            adapter = resultAdapter
-        }
+        searchResultsRecyclerView?.bindAdapterFactory(adapterFactory)
 
         searchWidget?.setupTagAdapter(tagAdapterComponentsBinder)
 
