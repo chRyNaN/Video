@@ -10,7 +10,7 @@ import com.chrynan.video.viewmodel.AdapterItem
 import kotlinx.coroutines.SupervisorJob
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseAdapter<VM : AdapterItem>(private val dispatchers: CoroutineDispatchers) :
+abstract class BaseAdapter<VM : AdapterItem>(protected val dispatchers: CoroutineDispatchers) :
     AnotherAdapter<VM>(),
     AdapterCoroutineScope {
 

@@ -4,8 +4,8 @@ import android.util.Log
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
-import com.chrynan.video.ui.adapter.core.AdapterItemHandler
-import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
+import com.chrynan.video.ui.adapter.factory.VideoDetailsAdapterFactory
+import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.VideoDetailsView
 import com.chrynan.video.viewmodel.*
 import kotlinx.coroutines.flow.flowOf
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.onEach
 class VideoDetailsPresenter(
     dispatchers: CoroutineDispatchers,
     private val view: VideoDetailsView,
-    private val adapterHandler: AdapterItemHandler<AdapterItem>
+    private val adapterFactory: VideoDetailsAdapterFactory
 ) : BasePresenter(dispatchers) {
 
     fun loadData() {
@@ -114,7 +114,7 @@ class VideoDetailsPresenter(
         val job = flowOf(items)
             .onEach { Log.w("ADAPTER", "onEach: it = $it") }
             .flowOn(dispatchers.io)
-            .calculateAndDispatchDiff(adapterHandler)
+            .calculateAndDispatchDiff(adapterFactory)
             .launchIn(this)
 
         Log.w("ADAPTER", "job = $job")

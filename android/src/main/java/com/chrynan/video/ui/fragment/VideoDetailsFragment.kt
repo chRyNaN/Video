@@ -2,13 +2,11 @@ package com.chrynan.video.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.common.model.api.VideoAction
 import com.chrynan.video.R
-import com.chrynan.video.di.qualifier.VideoPlayerQualifier
 import com.chrynan.video.presenter.VideoDetailsPresenter
-import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
-import com.chrynan.video.ui.adapter.decorator.VideoPlayerListDecorator
+import com.chrynan.video.ui.adapter.factory.VideoDetailsAdapterFactory
+import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
@@ -34,16 +32,7 @@ class VideoDetailsFragment : BaseFragment(),
     override lateinit var presenter: VideoDetailsPresenter
 
     @Inject
-    @field:VideoPlayerQualifier.Adapter
-    lateinit var adapter: RecyclerViewAdapter
-
-    @Inject
-    @field:VideoPlayerQualifier.LayoutManager
-    lateinit var layoutManager: LinearLayoutManager
-
-    @Inject
-    @field:VideoPlayerQualifier.Decorator
-    lateinit var decorator: VideoPlayerListDecorator
+    lateinit var adapterFactory: VideoDetailsAdapterFactory
 
     private val videoOptionsMenuBottomSheet by lazy {
         MenuBottomSheetDialogFragment.newInstance(
@@ -54,9 +43,7 @@ class VideoDetailsFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        videoDetailsRecyclerView?.adapter = adapter
-        videoDetailsRecyclerView?.layoutManager = layoutManager
-        videoDetailsRecyclerView?.addItemDecoration(decorator)
+        videoDetailsRecyclerView?.bindAdapterFactory(adapterFactory)
     }
 
     override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {
