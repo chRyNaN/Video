@@ -29,6 +29,11 @@ class VideoPlayerActivity : BaseActivity() {
 
         videoInfo = intent?.getVideoInfo(KEY_VIDEO_INFO)
 
-        videoInfo?.let { goToFragment(VideoPlayerFragment.newInstance(it)) }
+        videoInfo?.let {
+            goToFragment(
+                VideoPlayerFragment.newInstance(it),
+                R.id.videoPlayerFragmentContainer
+            )
+        }
     }
 }
