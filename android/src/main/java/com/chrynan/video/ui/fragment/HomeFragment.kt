@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.HomeView
 import com.chrynan.video.R
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.di.qualifier.HomeQualifier
 import com.chrynan.video.model.ServiceProviderScreen
 import com.chrynan.video.presenter.HomePresenter
 import com.chrynan.video.ui.activity.ServiceProviderActivity
-import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
-import com.chrynan.video.ui.adapter.decorator.HomeListDecorator
+import com.chrynan.video.ui.adapter.factory.HomeAdapterFactory
+import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -32,16 +30,7 @@ class HomeFragment : BaseFragment(),
     override lateinit var presenter: HomePresenter
 
     @Inject
-    @field:HomeQualifier.Adapter
-    lateinit var managerAdapter: RecyclerViewAdapter
-
-    @Inject
-    @field:HomeQualifier.LayoutManager
-    lateinit var linearLayoutManager: LinearLayoutManager
-
-    @Inject
-    @field:HomeQualifier.Decorator
-    lateinit var decorator: HomeListDecorator
+    lateinit var adapterFactory: HomeAdapterFactory
 
     private val videoOptionsMenuBottomSheet by lazy {
         MenuBottomSheetDialogFragment.newInstance(
@@ -59,11 +48,7 @@ class HomeFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeRecyclerView?.apply {
-            layoutManager = linearLayoutManager
-            adapter = managerAdapter
-            addItemDecoration(decorator)
-        }
+        homeRecyclerView?.bindAdapterFactory(adapterFactory)
 
         homeAddServiceProviderButton?.setOnClickListener {
             startActivitySafely {
