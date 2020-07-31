@@ -4,12 +4,10 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.repository.ServiceProviderRepository
 import com.chrynan.common.utils.mapEachItemWith
 import com.chrynan.logger.Logger
-import com.chrynan.video.di.qualifier.ServiceProviderListQualifier
 import com.chrynan.video.mapper.provider.ServiceProviderMapper
-import com.chrynan.video.ui.adapter.core.AdapterItemHandler
-import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
+import com.chrynan.video.ui.adapter.factory.ServiceProviderListAdapterFactory
+import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.ServiceProviderListView
-import com.chrynan.video.viewmodel.AdapterItem
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
@@ -21,13 +19,13 @@ class ServiceProviderListPresenter @Inject constructor(
     private val view: ServiceProviderListView,
     private val serviceProviderRepository: ServiceProviderRepository,
     private val mapper: ServiceProviderMapper,
-    @ServiceProviderListQualifier.AdapterItemHandler private val adapterItemHandler: AdapterItemHandler<AdapterItem>
+    private val adapterFactory: ServiceProviderListAdapterFactory
 ) : BasePresenter(dispatchers) {
 
     fun loadItems() {
         serviceProviderRepository.getAll()
             .mapEachItemWith(mapper)
-            .calculateAndDispatchDiff(adapterItemHandler)
+            .calculateAndDispatchDiff(adapterFactory)
             .flowOn(dispatchers.io)
             .onEach { if (it.items.isEmpty()) view.showEmptyState() else view.showListState() }
             .flowOn(dispatchers.main)
