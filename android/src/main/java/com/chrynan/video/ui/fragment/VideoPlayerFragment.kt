@@ -1,7 +1,6 @@
 package com.chrynan.video.ui.fragment
 
 import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
+import com.chrynan.video.model.VideoLoadType
 import com.chrynan.video.parcel.model.putVideoInfo
 import com.chrynan.video.player.exception.NullPlayerViewException
 import com.chrynan.video.ui.view.VideoPlayerView
@@ -22,7 +22,7 @@ class VideoPlayerFragment : BaseFragment(),
     companion object {
 
         private const val KEY_VIDEO_INFO = "com.chrynan.video.keyVideoInfo"
-        private const val KEY_VIDEO_CONTENT_URI = "com.chrynan.video.keyVideoContentUri"
+        private const val KEY_VIDEO_LOAD_TYPE = "com.chrynan.video.keyVideoLoadType"
 
         fun newInstance(videoInfo: VideoInfo) = VideoPlayerFragment().apply {
             arguments = Bundle().apply {
@@ -30,9 +30,9 @@ class VideoPlayerFragment : BaseFragment(),
             }
         }
 
-        fun newInstance(videoUri: Uri) = VideoPlayerFragment().apply {
+        fun newInstance(videoLoadType: VideoLoadType) = VideoPlayerFragment().apply {
             arguments = Bundle().apply {
-                putParcelable(KEY_VIDEO_CONTENT_URI, videoUri)
+                putParcelable(KEY_VIDEO_LOAD_TYPE, videoLoadType)
             }
         }
     }
@@ -49,11 +49,11 @@ class VideoPlayerFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val videoUri = arguments?.getParcelable<Uri>(KEY_VIDEO_CONTENT_URI)
+        val videoLoadType = arguments?.getParcelable<VideoLoadType>(KEY_VIDEO_LOAD_TYPE)
 
-        videoPlayerWidget
-
-        presenter.loadVideo(videoUri)
+        if (videoLoadType is VideoLoadType.ContentUri) {
+            presenter.loadVideo(videoLoadType.uri)
+        }
     }
 
     override val widget: PlayerView

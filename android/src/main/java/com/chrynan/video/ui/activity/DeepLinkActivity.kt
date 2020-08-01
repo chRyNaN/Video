@@ -3,6 +3,7 @@ package com.chrynan.video.ui.activity
 import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
+import com.chrynan.video.model.VideoLoadType
 import java.util.*
 
 class DeepLinkActivity : BaseActivity() {
@@ -37,7 +38,7 @@ class DeepLinkActivity : BaseActivity() {
     }
 
     private fun handleVideoContentUri(uri: Uri) =
-        startActivity(VideoPlayerActivity.newIntent(this, uri))
+        startActivity(VideoPlayerActivity.newIntent(this, VideoLoadType.ContentUri(uri)))
 
     private fun handleUnsupportedUri() {
 
