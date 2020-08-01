@@ -10,6 +10,8 @@ class LauncherActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
 
         goToMainScreen()
+
+        finish()
     }
 
     override fun goToMainScreen() = startActivity(MainActivity.newIntent(this))
