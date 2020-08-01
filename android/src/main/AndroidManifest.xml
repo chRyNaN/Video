@@ -70,6 +70,26 @@
                     android:scheme="https" />
             </intent-filter>
 
+            <!-- video:// -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="video" />
+            </intent-filter>
+
+            <!-- lbry:// -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="video" />
+            </intent-filter>
+
         </activity>
 
         <meta-data

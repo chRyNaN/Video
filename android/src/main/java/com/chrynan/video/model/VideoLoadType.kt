@@ -17,4 +17,8 @@ sealed class VideoLoadType : Parcelable {
         val start: Long? = null,
         val end: Long? = null
     ) : VideoLoadType()
+
+    @Parcelize
+    data class LbryUri(val uri: Uri) :
+        VideoLoadType() // TODO parameters should already be extracted
 }

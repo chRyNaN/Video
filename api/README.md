@@ -67,6 +67,7 @@ There are multiple ways to open the Android video client application to display 
 
 * Through a video content URI, such as, a `file:` or `content:` schemed URI, with a MIME type of `video/*`.
 * Through a specially formatted `video:` URI.
+* Through a specially formatted `lbry:` URI that matches the [LBRY Protocol Specification](https://lbry.tech/spec).
 * Through a particular URI that the application expects.
 
 Note that not all Android video client applications will support each of the above approaches. However, it is recommended that at least the first two approaches are supported.
@@ -107,6 +108,11 @@ The following are optional query parameters that may be provided to the Video UR
 * `auto_play` (optional) - a boolean value indicating whether this video should begin playing immediately. It is up to the Video Client to determine a default for this value.
 * `start` (optional) - a long value indicating the starting point, in milliseconds, to begin playing the video. The default value is `0` which begins the video at it's natural starting point.
 * `end` (optional) - a long value indicating the ending point, in milliseconds, to stop playing the video. The default value is the length of the video which ends the video at it's natural ending point.
+
+### LBRY URI
+An Android video client application can be opened to display a particular video by an Android `Intent` with a LBRY URI.
+
+More information will be added about this approach when it is fully supported.
 
 ### Specific URI
 An Android video client application can be opened to display a particular video by an Android `Intent` with a particular URI that the application expects.
