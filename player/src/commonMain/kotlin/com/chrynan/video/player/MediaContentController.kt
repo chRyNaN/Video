@@ -14,3 +14,8 @@ interface MediaContentController {
 
     fun seekToDefaultPosition()
 }
+
+fun MediaContentController.play(source: Playable) {
+    load(source)
+    resume()
+}

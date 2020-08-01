@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.parcel.model.getVideoInfo
@@ -29,19 +30,18 @@ class VideoPlayerActivity : BaseActivity() {
     }
 
     private var videoInfo: VideoInfo? = null
-    private var videoContentUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_player)
 
         videoInfo = intent?.getVideoInfo(KEY_VIDEO_INFO)
-        videoContentUri = intent?.getParcelableExtra(KEY_VIDEO_CONTENT_URI)
+        val videoContentUri = intent?.getParcelableExtra<Uri>(KEY_VIDEO_CONTENT_URI)
 
-        videoInfo?.let {
+        if (findViewById<View>(R.id.videoActivityPlayerFragmentContainer) != null && videoContentUri != null) {
             goToFragment(
-                VideoPlayerFragment.newInstance(it),
-                R.id.videoPlayerFragmentContainer
+                VideoPlayerFragment.newInstance(videoContentUri),
+                R.id.videoActivityPlayerFragmentContainer
             )
         }
     }

@@ -75,3 +75,15 @@ sealed class MediaSource : Playable {
         override val type: MediaType = MediaType.SMOOTH_STREAMING
     }
 }
+
+fun mediaSource(
+    uri: String,
+    mediaType: MediaType = MediaType.DEFAULT,
+    drmInfo: DrmInfo? = null,
+    tag: String? = null
+): MediaSource = MediaSource.from(
+    uri = uri,
+    mediaType = mediaType,
+    drmInfo = drmInfo,
+    tag = tag
+)

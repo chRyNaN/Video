@@ -5,8 +5,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
-import coil.ImageLoader
-import coil.request.LoadRequest
+import coil.api.load
 import com.chrynan.video.player.MediaPlayerView
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.ui.PlayerView
@@ -22,33 +21,17 @@ abstract class BaseVideoPlayerWidget @JvmOverloads constructor(
         resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH
     }
 
-    abstract val imageLoader: ImageLoader
-
     abstract val previewImageView: ImageView?
 
     override val widget: PlayerView
         get() = this
 
     override fun setPreviewImage(drawable: Drawable?) {
-        previewImageView?.let {
-            val request = LoadRequest.Builder(context)
-                .data(drawable)
-                .target(it)
-                .build()
-
-            imageLoader.execute(request)
-        }
+        previewImageView?.load(drawable)
     }
 
     override fun setPreviewImage(uri: String?) {
-        previewImageView?.let {
-            val request = LoadRequest.Builder(context)
-                .data(uri)
-                .target(it)
-                .build()
-
-            imageLoader.execute(request)
-        }
+        previewImageView?.load(uri)
     }
 
     override fun togglePreviewImageVisibility(isVisible: Boolean) {
