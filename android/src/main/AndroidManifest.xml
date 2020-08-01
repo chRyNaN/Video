@@ -27,19 +27,47 @@
 
         <activity android:name=".ui.activity.ChannelActivity" />
 
-        <activity android:name=".ui.activity.VideoPlayerActivity">
+        <activity android:name=".ui.activity.VideoPlayerActivity" />
 
+        <activity android:name=".ui.activity.DeepLinkActivity">
+
+            <!-- file:// with MIME type video/* -->
             <intent-filter>
-
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="video"
-                    android:scheme="video" />
+                    android:mimeType="video/*"
+                    android:scheme="file" />
+            </intent-filter>
 
+            <!-- content:// with MIME type video/* -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:mimeType="video/*"
+                    android:scheme="content" />
+            </intent-filter>
+
+            <!-- http(s):// with MIME type video/* -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:mimeType="video/*"
+                    android:scheme="http" />
+                <data
+                    android:mimeType="video/*"
+                    android:scheme="https" />
             </intent-filter>
 
         </activity>
