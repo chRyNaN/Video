@@ -26,27 +26,18 @@ class DeepLinkActivity : BaseActivity() {
         val isVideoMimeType = mimeType != null && mimeType.startsWith(MIME_TYPE_START_VIDEO)
 
         when {
-            scheme == SCHEME_FILE && isVideoMimeType -> handleVideoFileUri(uri)
+            scheme == SCHEME_FILE && isVideoMimeType -> handleVideoContentUri(uri)
             scheme == SCHEME_CONTENT && isVideoMimeType -> handleVideoContentUri(uri)
-            scheme == SCHEME_HTTP && isVideoMimeType -> handleVideoHttpsUri(uri)
-            scheme == SCHEME_HTTPS && isVideoMimeType -> handleVideoHttpsUri(uri)
+            scheme == SCHEME_HTTP && isVideoMimeType -> handleVideoContentUri(uri)
+            scheme == SCHEME_HTTPS && isVideoMimeType -> handleVideoContentUri(uri)
             else -> handleUnsupportedUri()
         }
 
         finish()
     }
 
-    private fun handleVideoFileUri(uri: Uri) {
-
-    }
-
-    private fun handleVideoContentUri(uri: Uri) {
-
-    }
-
-    private fun handleVideoHttpsUri(uri: Uri) {
-
-    }
+    private fun handleVideoContentUri(uri: Uri) =
+        startActivity(VideoPlayerActivity.newIntent(this, uri))
 
     private fun handleUnsupportedUri() {
 
