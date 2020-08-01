@@ -62,7 +62,7 @@ The API is designed to be in the perspective of the `Viewer`. The `Viewer` is th
 For instance, when accessing the `feed` field on the `Query` object, the returned results are catered to the current User, or `Viewer`. If a different User accessed the `feed` field on the `Query` object, 
 with the same parameters, they might receive different results, since they are in the perspective from a different `Viewer` and may have a unique experience.
 
-## Open Android App from Intent
+## Open Android App from URI Intent
 There are multiple ways to open the Android video client application to display a video:
 
 * Through a video content URI, such as, a `file:` or `content:` schemed URI, with a MIME type of `video/*`.
@@ -81,11 +81,13 @@ Note that an Android video client application might not support all video file f
 ### Video URI
 An Android video client application can be opened to display a particular video by an Android `Intent` with a Video URI specifying how to retrieve the video resource. This URI format conforms to a specific standard outlined below.
 
+Note that this URI format is not an HTTP URI and does not correlate directly to a valid or owned HTTP URI. This difference is signified by the use of the `video` URI Scheme, as opposed to the `http(s)` URI Scheme.
+This was deliberately chosen to be agnostic of a specific HTTP URI, so that it can be used in a de-centralized manner. So to be clear, `video://${HOST}` does not correlate to `https://${HOST}`, or any other URI Scheme for that matter.
+
 * The Video URI must have a `video` scheme.
-* The Video Provider URI follows the `video` scheme.
-    * The Video Provider URI excludes it's scheme component.
-    * Typically the last path parameter of a Video Provider URI is `videoql`. If that is the case for this URI then it must be included.
-    * The Video Provider URI must be a valid URI that is accessible via the `https` scheme.
+* The Video URI must have a `video` host.
+* The Video URI must contain a `providerUri` query parameter.
+    * The `providerUri` query parameter must be the URL encoded URI to the Video Content Provider API.
 * The Video URI must contain either a `videoId` or `videoUri` query parameter.
     * Both query parameters may be present.
     * The `videoId` query parameter must be the identifier for the video accessible from the Video Provider API.
@@ -94,20 +96,20 @@ An Android video client application can be opened to display a particular video 
 
 The following is an example of a Video URI:
 ```
-video://www.example.com/videoql?videoId=d147333b-ed38-4bcf-8a49-f5280ac3519a&videoUri=https%3A%2F%2Fcom.example.com%2Fvideo%2Fd147333b-ed38-4bcf-8a49-f5280ac3519a
+video://video?providerUri=https%3A%2F%2Fwww.example.com%2Fvideoql&videoId=d147333b-ed38-4bcf-8a49-f5280ac3519a&videoUri=https%3A%2F%2Fcom.example.com%2Fvideo%2Fd147333b-ed38-4bcf-8a49-f5280ac3519a
 ```
 
-In the above example we begin with the `video` scheme followed by the scheme separators `://`. 
-Then the Video Provider URI is used, `www.example.com/videoql`, which correlates to `https://www.example.com/videoql`.
+In the above example we begin with the `video` scheme followed by the scheme separators `://` and the `video` host. 
+Then the Video Provider URI query parameter is used, `https%3A%2F%2Fwww.example.com%2Fvideoql`, which correlates to `https://www.example.com/videoql`.
 Finally, the query parameters are provided. The `videoId` query parameter with the value of `d147333b-ed38-4bcf-8a49-f5280ac3519a` and the `videoUri` query parameter with the value of `https%3A%2F%2Fcom.example.com%2Fvideo%2Fd147333b-ed38-4bcf-8a49-f5280ac3519a`.
 In practice, only one query parameter, `videoId` or `videoUri`, is necessary, but both may provided. If the `videoId` query parameter is provided, then the client application can retrieve information about the video that is being played from the Video Provider.
 
 #### Additional recognized query parameters
 The following are optional query parameters that may be provided to the Video URI:
 
-* `autoplay` - a boolean value indicating whether this video should begin playing immediately. It is up to the Video Client to determine a default for this value.
-* `start` - a long value indicating the starting point, in milliseconds, to begin playing the video. The default value is `0` which begins the video at it's natural starting point.
-* `end` - a long value indicating the ending point, in milliseconds, to stop playing the video. The default value is the length of the video which ends the video at it's natural ending point.
+* `autoplay` (optional) - a boolean value indicating whether this video should begin playing immediately. It is up to the Video Client to determine a default for this value.
+* `start` (optional) - a long value indicating the starting point, in milliseconds, to begin playing the video. The default value is `0` which begins the video at it's natural starting point.
+* `end` (optional) - a long value indicating the ending point, in milliseconds, to stop playing the video. The default value is the length of the video which ends the video at it's natural ending point.
 
 ### Specific URI
 An Android video client application can be opened to display a particular video by an Android `Intent` with a particular URI that the application expects.
