@@ -1,6 +1,7 @@
 package com.chrynan.video.di.module
 
 import com.chrynan.video.di.module.activity.ChannelActivityModule
+import com.chrynan.video.di.module.activity.DeepLinkActivityModule
 import com.chrynan.video.di.module.activity.LauncherActivityModule
 import com.chrynan.video.di.module.activity.MainActivityModule
 import com.chrynan.video.di.module.activity.ServiceProviderActivityModule
@@ -32,4 +33,8 @@ internal abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [ChannelActivityModule::class])
     abstract fun channelActivityInjector(): ChannelActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [DeepLinkActivityModule::class])
+    abstract fun deepLinkActivityInjector(): DeepLinkActivity
 }
