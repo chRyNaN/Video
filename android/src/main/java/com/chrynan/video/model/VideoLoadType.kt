@@ -8,4 +8,13 @@ sealed class VideoLoadType : Parcelable {
 
     @Parcelize
     data class ContentUri(val uri: Uri) : VideoLoadType()
+
+    @Parcelize
+    data class VideoUri(
+        val providerUri: Uri,
+        val videoId: String,
+        val autoPlay: Boolean = true,
+        val start: Long? = null,
+        val end: Long? = null
+    ) : VideoLoadType()
 }
