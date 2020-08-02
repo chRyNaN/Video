@@ -2,10 +2,12 @@ package com.chrynan.video.presenter
 
 import android.net.Uri
 import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.model.VideoLoadType
 import com.chrynan.video.player.MediaController
 import com.chrynan.video.player.PlaylistCreator
 import com.chrynan.video.player.mediaSource
 import com.chrynan.video.player.play
+import com.chrynan.common.provider.OpenVideoProvider
 import com.chrynan.video.ui.view.VideoPlayerView
 import javax.inject.Inject
 
@@ -13,6 +15,7 @@ class VideoPlayerPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val mediaController: MediaController,
     private val playlistCreator: PlaylistCreator,
+    private val openVideoProvider: OpenVideoProvider,
     private val view: VideoPlayerView
 ) : BasePresenter(dispatchers) {
 
@@ -22,5 +25,9 @@ class VideoPlayerPresenter @Inject constructor(
 
             mediaController.play(mediaSource(uri = videoUri))
         }
+    }
+
+    fun loadVideo(loadType: VideoLoadType) {
+
     }
 }

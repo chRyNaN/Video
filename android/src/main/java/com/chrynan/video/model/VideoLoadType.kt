@@ -2,6 +2,7 @@ package com.chrynan.video.model
 
 import android.net.Uri
 import android.os.Parcelable
+import com.chrynan.common.model.core.ID
 import kotlinx.android.parcel.Parcelize
 
 sealed class VideoLoadType : Parcelable {
@@ -12,7 +13,7 @@ sealed class VideoLoadType : Parcelable {
     @Parcelize
     data class VideoUri(
         val providerUri: Uri,
-        val videoId: String,
+        val videoId: ID,
         val autoPlay: Boolean = true,
         val start: Long? = null,
         val end: Long? = null

@@ -1,6 +1,9 @@
 package com.chrynan.common.utils
 
 import com.chrynan.common.mapper.Mapper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 
 fun <T> flowFrom(builder: suspend () -> T): Flow<T> = flow {
@@ -47,3 +50,17 @@ fun <T> Flow<T>.filterUntilFirstChange(): Flow<T> {
 }
 
 fun <T> Flow<T>.firstAsFlow(): Flow<T> = flow { emit(first()) }
+
+@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+class SharedFlow<T>(
+    originalFlow: Flow<T>,
+    coroutineScope: CoroutineScope
+) {
+
+    private val channel = originalFlow.conflate().broadcastIn(coroutineScope)
+
+    fun openSubscription(): Flow<T> = channel.asFlow()
+}
+
+fun <T> Flow<T>.shareIn(coroutineScope: CoroutineScope): SharedFlow<T> =
+    SharedFlow(originalFlow = this, coroutineScope = coroutineScope)

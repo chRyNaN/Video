@@ -4,6 +4,8 @@ import android.util.Log
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
+import com.chrynan.video.model.VideoLoadType
+import com.chrynan.common.provider.OpenVideoProvider
 import com.chrynan.video.ui.adapter.factory.VideoDetailsAdapterFactory
 import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.view.VideoDetailsView
@@ -17,8 +19,13 @@ import javax.inject.Inject
 class VideoDetailsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     private val view: VideoDetailsView,
-    private val adapterFactory: VideoDetailsAdapterFactory
+    private val adapterFactory: VideoDetailsAdapterFactory,
+    private val openVideoProvider: OpenVideoProvider
 ) : BasePresenter(dispatchers) {
+
+    fun loadData(loadType: VideoLoadType.VideoUri) {
+
+    }
 
     fun loadData() {
         Log.w("ADAPTER", "loadExtras; isBound = $isBound; context = $coroutineContext")
