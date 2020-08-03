@@ -8,6 +8,7 @@ type Video implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     description: String
     about: String
     images: VideoImageInfo!
+    type: String
     category: String
     tags: [String!]!
     count: VideoCountInfo!
@@ -19,6 +20,7 @@ type Video implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     locale: String
     actions: [VideoAction!]!
     adInfo: AdInfo
+    viewed: ViewedInfo
     related(take: Int!, after: Cursor): RelatedConnection!
 }
 
@@ -113,6 +115,10 @@ enum AdFormat @access(type: LOGIN_STRATEGY) {
 type LiveInfo @access(type: LOGIN_STRATEGY) {
     start: DateTime!
     end: DateTime
+}
+
+type ViewedInfo @access(type: LOGIN_STRATEGY) {
+    percent: Float!
 }
 
 type VideoResultItem @access(type: LOGIN_STRATEGY) {
