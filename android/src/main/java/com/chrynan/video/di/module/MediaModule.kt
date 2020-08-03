@@ -9,7 +9,9 @@ import coil.fetch.VideoFrameFileFetcher
 import coil.fetch.VideoFrameUriFetcher
 import com.chrynan.video.di.qualifier.ApplicationContextQualifier
 import com.chrynan.video.di.qualifier.OkHttpQualifier
+import com.chrynan.video.player.AndroidMediaMetadataRetriever
 import com.chrynan.video.player.AndroidPlaylistCreator
+import com.chrynan.video.player.MediaMetadataRetriever
 import com.chrynan.video.player.PlaylistCreator
 import com.chrynan.video.player.converter.*
 import com.chrynan.video.utils.ApplicationContext
@@ -82,6 +84,12 @@ internal abstract class MediaModule {
         @Singleton
         fun providePlaylistCreator(converter: DelegatePlayableConverter): PlaylistCreator =
             AndroidPlaylistCreator(converter)
+
+        @Provides
+        @JvmStatic
+        @Singleton
+        fun provideMediaMetadataRetriever(@ApplicationContextQualifier context: ApplicationContext): MediaMetadataRetriever =
+            AndroidMediaMetadataRetriever(context)
 
         @Provides
         @JvmStatic
