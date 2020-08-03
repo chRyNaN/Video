@@ -1,9 +1,9 @@
 package com.chrynan.video.ui.activity
 
-import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import com.chrynan.video.model.VideoLoadType
+import com.chrynan.video.utils.getFullMimeType
 import java.util.*
 
 class DeepLinkActivity : BaseActivity() {
@@ -29,7 +29,7 @@ class DeepLinkActivity : BaseActivity() {
 
         val uri = intent?.data
         val scheme = uri?.scheme?.toLowerCase(Locale.getDefault())
-        val mimeType = uri?.fullMimeType
+        val mimeType = uri?.getFullMimeType(this)
         val isVideoMimeType = mimeType != null && mimeType.startsWith(MIME_TYPE_START_VIDEO)
 
         when {
@@ -44,7 +44,7 @@ class DeepLinkActivity : BaseActivity() {
     }
 
     private fun handleContentUri(uri: Uri) =
-        startActivity(VideoPlayerActivity.newIntent(this, VideoLoadType.ContentUri(uri)))
+        startActivity(VideoPlayerActivity.newIntent(this, VideoLoadType.GenericContentUri(uri)))
 
     private fun handleVideoUri(uri: Uri) {
         val providerUri =
@@ -55,7 +55,7 @@ class DeepLinkActivity : BaseActivity() {
         val end = uri.getQueryParameter(QUERY_PARAM_END)?.toLong()
 
         if (providerUri != null && videoId != null) {
-            val loadType = VideoLoadType.VideoUri(
+            val loadType = VideoLoadType.OpenVideoUri(
                 providerUri = providerUri,
                 videoId = videoId,
                 autoPlay = autoPlay,
@@ -72,27 +72,4 @@ class DeepLinkActivity : BaseActivity() {
     private fun handleUnsupportedUri() {
 
     }
-
-    private val Uri.fullMimeType: String?
-        get() {
-            var type = contentResolver.getType(this)
-
-            if (type == null) {
-                val retriever = MediaMetadataRetriever().apply {
-                    setDataSource(this@DeepLinkActivity, this@fullMimeType)
-                }
-
-                type = try {
-                    retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_MIMETYPE)
-                } catch (throwable: Throwable) {
-                    null
-                }
-            }
-
-            if (type.isNullOrBlank()) {
-                type = null
-            }
-
-            return type
-        }
 }

@@ -8,10 +8,10 @@ import kotlinx.android.parcel.Parcelize
 sealed class VideoLoadType : Parcelable {
 
     @Parcelize
-    data class ContentUri(val uri: Uri) : VideoLoadType()
+    data class GenericContentUri(val uri: Uri) : VideoLoadType()
 
     @Parcelize
-    data class VideoUri(
+    data class OpenVideoUri(
         val providerUri: Uri,
         val videoId: ID,
         val autoPlay: Boolean = true,

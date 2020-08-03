@@ -2,15 +2,19 @@ package com.chrynan.video.di.module.activity
 
 import com.chrynan.common.repository.VideoRepository
 import com.chrynan.video.coroutine.ActivityCoroutineScope
-import com.chrynan.video.di.module.fragment.VideoDetailsFragmentModule
+import com.chrynan.video.di.module.fragment.OpenVideoDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.VideoPlayerFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.common.provider.OpenVideoProvider
+import com.chrynan.video.di.module.fragment.GenericContentVideoDetailsFragmentModule
+import com.chrynan.video.di.module.fragment.LbryVideoDetailsFragmentModule
 import com.chrynan.video.provider.source.OpenVideoProviderSource
 import com.chrynan.video.ui.activity.VideoPlayerActivity
-import com.chrynan.video.ui.fragment.VideoDetailsFragment
+import com.chrynan.video.ui.fragment.GenericContentVideoDetailsFragment
+import com.chrynan.video.ui.fragment.LbryVideoDetailsFragment
+import com.chrynan.video.ui.fragment.OpenVideoDetailsFragment
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.utils.ActivityContext
 import dagger.Binds
@@ -47,9 +51,17 @@ internal abstract class VideoPlayerActivityModule {
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [VideoPlayerFragmentModule::class])
-    abstract fun videoFragmentInjector(): VideoPlayerFragment
+    abstract fun videoPlayerFragmentInjector(): VideoPlayerFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [VideoDetailsFragmentModule::class])
-    abstract fun videoDetailsInjector(): VideoDetailsFragment
+    @ContributesAndroidInjector(modules = [OpenVideoDetailsFragmentModule::class])
+    abstract fun openVideoDetailsFragmentInjector(): OpenVideoDetailsFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [GenericContentVideoDetailsFragmentModule::class])
+    abstract fun genericContentVideoDetailsFragmentInjector(): GenericContentVideoDetailsFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [LbryVideoDetailsFragmentModule::class])
+    abstract fun lbryVideoDetailsFragmentInjectory(): LbryVideoDetailsFragment
 }

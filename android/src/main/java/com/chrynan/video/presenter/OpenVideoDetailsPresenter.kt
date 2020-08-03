@@ -6,9 +6,9 @@ import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoLoadType
 import com.chrynan.common.provider.OpenVideoProvider
-import com.chrynan.video.ui.adapter.factory.VideoDetailsAdapterFactory
+import com.chrynan.video.ui.adapter.factory.OpenVideoDetailsAdapterFactory
 import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
-import com.chrynan.video.ui.view.VideoDetailsView
+import com.chrynan.video.ui.view.OpenVideoDetailsView
 import com.chrynan.video.viewmodel.*
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
@@ -16,14 +16,14 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-class VideoDetailsPresenter @Inject constructor(
+class OpenVideoDetailsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
-    private val view: VideoDetailsView,
-    private val adapterFactory: VideoDetailsAdapterFactory,
+    private val view: OpenVideoDetailsView,
+    private val adapterFactory: OpenVideoDetailsAdapterFactory,
     private val openVideoProvider: OpenVideoProvider
 ) : BasePresenter(dispatchers) {
 
-    fun loadData(loadType: VideoLoadType.VideoUri) {
+    fun loadData(loadType: VideoLoadType.OpenVideoUri) {
 
     }
 

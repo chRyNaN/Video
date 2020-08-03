@@ -51,7 +51,7 @@ class VideoPlayerFragment : BaseFragment(),
 
         val videoLoadType = arguments?.getParcelable<VideoLoadType>(KEY_VIDEO_LOAD_TYPE)
 
-        if (videoLoadType is VideoLoadType.ContentUri) {
+        if (videoLoadType is VideoLoadType.GenericContentUri) {
             presenter.loadVideo(videoLoadType.uri)
         }
     }

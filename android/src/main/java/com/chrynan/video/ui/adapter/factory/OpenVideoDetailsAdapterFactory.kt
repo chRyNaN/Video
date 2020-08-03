@@ -15,7 +15,7 @@ import com.chrynan.video.utils.ActivityContext
 import javax.inject.Inject
 
 @FragmentScope
-class VideoDetailsAdapterFactory @Inject constructor(
+class OpenVideoDetailsAdapterFactory @Inject constructor(
     @ActivityContextQualifier context: ActivityContext,
     videoInfoHeaderAdapter: VideoInfoHeaderAdapter,
     videoInfoChannelAdapter: VideoInfoChannelAdapter,

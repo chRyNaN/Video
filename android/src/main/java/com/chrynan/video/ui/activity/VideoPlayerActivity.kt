@@ -10,8 +10,10 @@ import com.chrynan.video.model.VideoLoadType
 import com.chrynan.video.parcel.model.getVideoInfo
 import com.chrynan.video.parcel.model.putVideoInfo
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
+import com.chrynan.video.ui.view.VideoPlayerContainerView
 
-class VideoPlayerActivity : BaseActivity() {
+class VideoPlayerActivity : BaseActivity(),
+    VideoPlayerContainerView {
 
     companion object {
 
@@ -45,5 +47,17 @@ class VideoPlayerActivity : BaseActivity() {
                 R.id.videoActivityPlayerFragmentContainer
             )
         }
+    }
+
+    override fun showOpenVideoDetails() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showContentVideoDetails() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showLbryVideoDetails() {
+        TODO("Not yet implemented")
     }
 }
