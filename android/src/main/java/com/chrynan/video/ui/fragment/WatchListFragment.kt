@@ -10,7 +10,8 @@ import com.chrynan.video.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.common.model.core.ID
+import com.chrynan.common.model.core.UriString
 import kotlinx.android.synthetic.main.fragment_watch_list.*
 
 class WatchListFragment : BaseFragment(),
@@ -36,16 +37,10 @@ class WatchListFragment : BaseFragment(),
             layoutManager = LinearLayoutManager(context)
             adapter = managerAdapter
 
-            val videoInfo = VideoInfo(
-                videoUri = "",
-                videoId = "",
-                channelId = "",
-                providerUri = ""
-            )
-
             managerAdapter.items = listOf(
                 WatchListItemViewModel(
-                    videoInfo = videoInfo,
+                    providerUri = "",
+                    videoId = "",
                     videoImageUri = "",
                     title = "Test Title",
                     description = "Test Description",
@@ -55,7 +50,7 @@ class WatchListFragment : BaseFragment(),
         }
     }
 
-    override fun onWatchListItemSelected(videoInfo: VideoInfo) {
+    override fun onWatchListItemSelected(providerUri: UriString, videoId: ID) {
 
     }
 }

@@ -12,7 +12,8 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.common.model.core.ID
+import com.chrynan.common.model.core.UriString
 import kotlinx.android.synthetic.main.adapter_watch_list_item.view.*
 import javax.inject.Inject
 
@@ -40,11 +41,16 @@ class WatchListItemAdapter @Inject constructor(
 
         adapterWatchlistVideoImageView?.load(item.videoImageUri)
 
-        watchListItemContainer?.setOnClickListener { listener.onWatchListItemSelected(videoInfo = item.videoInfo) }
+        watchListItemContainer?.setOnClickListener {
+            listener.onWatchListItemSelected(
+                providerUri = item.providerUri,
+                videoId = item.videoId
+            )
+        }
     }
 
     interface WatchListItemSelectedListener {
 
-        fun onWatchListItemSelected(videoInfo: VideoInfo)
+        fun onWatchListItemSelected(providerUri: UriString, videoId: ID)
     }
 }
