@@ -17,7 +17,7 @@ type Channel implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     published: String!
     name: String!
     description: String
-    about: String
+    about: MarkdownString
     website: UriString
     images: ChannelImageInfo!
     count: ChannelCountInfo!

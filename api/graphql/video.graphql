@@ -6,7 +6,7 @@ type Video implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     uri: UriString!
     name: String!
     description: String
-    about: String
+    about: MarkdownString
     images: VideoImageInfo!
     type: String
     category: String

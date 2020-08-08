@@ -21,6 +21,15 @@ scalar DateTime
 scalar Long
 
 #
+# A scalar that represents a String that supports Markdown syntax, as well as, some style HTML
+# elements. This indicates that the String can be formatted as Markdown.
+#
+# Note that for security reasons, any String value accepted by a server, as well as, a
+# MarkdownString, should be properly handled to avoid any injection attack.
+#
+scalar MarkdownString
+
+#
 # An interface that represents a type that has a unique identifier. This unique identifier allows
 # a type value to be distinguished from other values of the same type.
 #

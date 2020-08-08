@@ -4,7 +4,7 @@ type ProviderInfo implements TimeDetail @access(type: OPEN) {
     uri: UriString!
     name: String!
     description: String
-    about: String
+    about: MarkdownString
     website: UriString
     contactEmail: String
     images: ProviderImageInfo!
