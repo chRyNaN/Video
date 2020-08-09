@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chrynan.video.R
-import com.chrynan.video.presenter.LbryVideoDetailsPresenter
-import com.chrynan.video.ui.view.LbryVideoDetailsView
+import com.chrynan.video.presentation.navigator.LbryVideoDetailsScreen
+import com.chrynan.video.presentation.state.LbryVideoDetailsChange
+import com.chrynan.video.presentation.state.LbryVideoDetailsIntent
+import com.chrynan.video.presentation.state.LbryVideoDetailsState
+import com.chrynan.video.presentation.presenter.LbryVideoDetailsPresenter
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class LbryVideoDetailsFragment : BaseFragment(),
-    LbryVideoDetailsView {
+class LbryVideoDetailsFragment :
+    BaseFragment<LbryVideoDetailsIntent, LbryVideoDetailsState, LbryVideoDetailsChange, LbryVideoDetailsScreen>() {
 
     companion object {
 
@@ -29,6 +33,17 @@ class LbryVideoDetailsFragment : BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
 
+    override fun intents(): Flow<LbryVideoDetailsIntent> {
+        TODO("Not yet implemented")
+    }
+
+    override fun render(state: LbryVideoDetailsState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: LbryVideoDetailsScreen) {
+        TODO("Not yet implemented")
     }
 }

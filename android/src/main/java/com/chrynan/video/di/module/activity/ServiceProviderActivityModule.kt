@@ -1,12 +1,14 @@
 package com.chrynan.video.di.module.activity
 
+import com.chrynan.video.coroutine.ActivityCoroutineScope
 import com.chrynan.video.di.module.fragment.ServiceProviderDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.NewServiceProviderFragmentModule
 import com.chrynan.video.di.module.fragment.ServiceProviderListFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.navigator.ServiceProviderNavigator
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.ServiceProviderScreen
 import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.fragment.ServiceProviderDetailsFragment
 import com.chrynan.video.ui.fragment.NewServiceProviderFragment
@@ -26,7 +28,11 @@ internal abstract class ServiceProviderActivityModule {
 
     @Binds
     @ActivityScope
-    abstract fun bindServiceProviderNavigator(activity: ServiceProviderActivity): ServiceProviderNavigator
+    abstract fun bindActivityCoroutineScope(activity: ServiceProviderActivity): ActivityCoroutineScope
+
+    @Binds
+    @ActivityScope
+    abstract fun bindServiceProviderActivityNavigator(activity: ServiceProviderActivity): Navigator<ServiceProviderScreen>
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [ServiceProviderListFragmentModule::class])

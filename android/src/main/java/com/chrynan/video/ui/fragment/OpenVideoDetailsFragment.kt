@@ -6,21 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.chrynan.common.model.api.VideoAction
 import com.chrynan.video.R
-import com.chrynan.video.presenter.OpenVideoDetailsPresenter
+import com.chrynan.video.presentation.navigator.OpenVideoDetailsScreen
+import com.chrynan.video.presentation.state.OpenVideoDetailsChange
+import com.chrynan.video.presentation.state.OpenVideoDetailsIntent
+import com.chrynan.video.presentation.state.OpenVideoDetailsState
+import com.chrynan.video.presentation.presenter.OpenVideoDetailsPresenter
 import com.chrynan.video.ui.adapter.factory.OpenVideoDetailsAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.ui.view.OpenVideoDetailsView
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_open_video_details.*
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class OpenVideoDetailsFragment : BaseFragment(),
-    OpenVideoDetailsView,
+class OpenVideoDetailsFragment :
+    BaseFragment<OpenVideoDetailsIntent, OpenVideoDetailsState, OpenVideoDetailsChange, OpenVideoDetailsScreen>(),
     VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
     VideoShowcaseAdapter.VideoShowcaseItemSelectedListener,
     VideoInfoActionAdapter.VideoActionSelectedListener {
@@ -52,6 +56,18 @@ class OpenVideoDetailsFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         openVideoDetailsRecyclerView?.bindAdapterFactory(adapterFactory)
+    }
+
+    override fun intents(): Flow<OpenVideoDetailsIntent> {
+        TODO("Not yet implemented")
+    }
+
+    override fun render(state: OpenVideoDetailsState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: OpenVideoDetailsScreen) {
+        TODO("Not yet implemented")
     }
 
     override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {

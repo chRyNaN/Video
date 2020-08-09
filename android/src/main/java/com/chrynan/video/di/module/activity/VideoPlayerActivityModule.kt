@@ -10,6 +10,8 @@ import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.common.provider.OpenVideoProvider
 import com.chrynan.video.di.module.fragment.GenericContentVideoDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.LbryVideoDetailsFragmentModule
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.VideoScreen
 import com.chrynan.video.provider.source.OpenVideoProviderSource
 import com.chrynan.video.ui.activity.VideoPlayerActivity
 import com.chrynan.video.ui.fragment.GenericContentVideoDetailsFragment
@@ -48,6 +50,10 @@ internal abstract class VideoPlayerActivityModule {
     @Binds
     @ActivityScope
     abstract fun bindActivityCoroutineScope(activity: VideoPlayerActivity): ActivityCoroutineScope
+
+    @Binds
+    @ActivityScope
+    abstract fun bindVideoPlayerActivityNavigator(activity: VideoPlayerActivity): Navigator<VideoScreen>
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [VideoPlayerFragmentModule::class])

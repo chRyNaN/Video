@@ -1,7 +1,11 @@
 package com.chrynan.video.di.module.fragment
 
-import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.SearchScreen
+import com.chrynan.video.presentation.state.SearchIntent
+import com.chrynan.video.presentation.state.SearchState
+import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.channel.ChannelListItemAdapter
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
@@ -14,7 +18,11 @@ internal abstract class SearchFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindSearchView(fragment: SearchFragment): SearchView
+    abstract fun bindSearchView(fragment: SearchFragment): View<SearchIntent, SearchState>
+
+    @Binds
+    @FragmentScope
+    abstract fun bindSearchNavigator(fragment: SearchFragment): Navigator<SearchScreen>
 
     @Binds
     @FragmentScope

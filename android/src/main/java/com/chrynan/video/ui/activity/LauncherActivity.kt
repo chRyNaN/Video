@@ -1,18 +1,18 @@
 package com.chrynan.video.ui.activity
 
 import android.os.Bundle
-import com.chrynan.video.navigator.LauncherNavigator
+import com.chrynan.video.presentation.navigator.LauncherScreen
 
-class LauncherActivity : BaseActivity(),
-    LauncherNavigator {
+class LauncherActivity : BaseActivity<LauncherScreen>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        goToMainScreen()
-
-        finish()
+        goTo(LauncherScreen.Main)
     }
 
-    override fun goToMainScreen() = startActivity(MainActivity.newIntent(this))
+    override fun goTo(screen: LauncherScreen) {
+        startActivity(MainActivity.newIntent(this))
+        finish()
+    }
 }

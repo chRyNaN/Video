@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chrynan.common.model.core.UriString
-import com.chrynan.video.ui.view.ServiceProviderDetailsView
 import com.chrynan.video.R
-import com.chrynan.video.navigator.ServiceProviderDetailsNavigator
-import com.chrynan.video.presenter.ServiceProviderDetailsPresenter
+import com.chrynan.video.presentation.navigator.ServiceProviderDetailsScreen
+import com.chrynan.video.presentation.state.ServiceProviderDetailsChange
+import com.chrynan.video.presentation.state.ServiceProviderDetailsIntent
+import com.chrynan.video.presentation.state.ServiceProviderDetailsState
+import com.chrynan.video.presentation.presenter.ServiceProviderDetailsPresenter
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ServiceProviderDetailsFragment : BaseFragment(),
-    ServiceProviderDetailsView,
-    ServiceProviderDetailsNavigator {
+class ServiceProviderDetailsFragment :
+    BaseFragment<ServiceProviderDetailsIntent, ServiceProviderDetailsState, ServiceProviderDetailsChange, ServiceProviderDetailsScreen>() {
 
     companion object {
 
@@ -34,5 +36,17 @@ class ServiceProviderDetailsFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
 
+    }
+
+    override fun intents(): Flow<ServiceProviderDetailsIntent> {
+        TODO("Not yet implemented")
+    }
+
+    override fun render(state: ServiceProviderDetailsState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: ServiceProviderDetailsScreen) {
+        TODO("Not yet implemented")
     }
 }

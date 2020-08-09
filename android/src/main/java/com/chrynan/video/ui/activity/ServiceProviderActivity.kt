@@ -3,18 +3,14 @@ package com.chrynan.video.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
-import com.chrynan.video.model.ServiceProviderScreen
-import com.chrynan.video.navigator.ServiceProviderNavigator
 import com.chrynan.video.parcel.model.getScreen
-import com.chrynan.video.parcel.model.putScreen
+import com.chrynan.video.presentation.navigator.ServiceProviderScreen
 import com.chrynan.video.ui.fragment.NewServiceProviderFragment
 import com.chrynan.video.ui.fragment.ServiceProviderDetailsFragment
 import com.chrynan.video.ui.fragment.ServiceProviderListFragment
 
-class ServiceProviderActivity : BaseActivity(),
-    ServiceProviderNavigator {
+class ServiceProviderActivity : BaseActivity<ServiceProviderScreen>() {
 
     companion object {
 
@@ -24,7 +20,6 @@ class ServiceProviderActivity : BaseActivity(),
             context: Context,
             screen: ServiceProviderScreen = ServiceProviderScreen.List
         ) = Intent(context, ServiceProviderActivity::class.java).apply {
-            putScreen(KEY_SCREEN, screen)
         }
     }
 
@@ -34,17 +29,18 @@ class ServiceProviderActivity : BaseActivity(),
 
         val screen = intent?.getScreen(KEY_SCREEN) ?: ServiceProviderScreen.List
 
-        when (screen) {
-            is ServiceProviderScreen.List -> goToServiceList()
-            is ServiceProviderScreen.New -> goToAddNewService()
-            is ServiceProviderScreen.Details -> goToServiceDetails(screen.providerUri)
-        }
+
     }
 
-    override fun goToServiceList() = goToFragment(ServiceProviderListFragment.newInstance())
-
-    override fun goToAddNewService() = goToFragment(NewServiceProviderFragment.newInstance())
-
-    override fun goToServiceDetails(providerUri: UriString) =
-        goToFragment(ServiceProviderDetailsFragment.newInstance(providerUri))
+    override fun goTo(screen: ServiceProviderScreen) {
+        when (screen) {
+            is ServiceProviderScreen.Details -> goToFragment(
+                ServiceProviderDetailsFragment.newInstance(
+                    screen.providerUri
+                )
+            )
+            is ServiceProviderScreen.List -> goToFragment(ServiceProviderListFragment.newInstance())
+            is ServiceProviderScreen.New -> goToFragment(NewServiceProviderFragment.newInstance())
+        }
+    }
 }

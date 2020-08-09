@@ -1,35 +1,34 @@
 package com.chrynan.video.ui.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.chrynan.kotlinutils.perform
-import com.chrynan.video.ui.view.SnackbarView
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.FragmentCoroutineScope
-import com.chrynan.video.navigator.Navigator
-import com.chrynan.video.presenter.BasePresenter
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.Screen
+import com.chrynan.video.presentation.presenter.BasePresenter
+import com.chrynan.video.presentation.state.Change
+import com.chrynan.video.presentation.state.Intent
+import com.chrynan.video.presentation.state.State
+import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.activity.BaseActivity
-import com.chrynan.video.utils.snackbarOf
-import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment : DaggerFragment(),
-    FragmentCoroutineScope,
-    Navigator,
-    SnackbarView {
+abstract class BaseFragment<INTENT : Intent, STATE : State, CHANGE : Change, SCREEN : Screen> :
+    DaggerFragment(),
+    View<INTENT, STATE>,
+    Navigator<SCREEN>,
+    FragmentCoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = lifecycleScope.coroutineContext
 
-    protected open val presenter: BasePresenter? = null
+    protected open val presenter: BasePresenter<INTENT, STATE, CHANGE>? = null
 
-    private var currentSnackbar: Snackbar? = null
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         presenter?.bind()
@@ -60,46 +59,26 @@ abstract class BaseFragment : DaggerFragment(),
     }
 
     override fun goBack() {
-        (activity as? BaseActivity)?.goBack()
-    }
-
-    override fun showSnackbar(
-        message: String,
-        type: SnackbarView.Type,
-        length: SnackbarView.Length,
-        action: SnackbarView.Action?
-    ) {
-        currentSnackbar = snackbarOf(
-            view = view,
-            message = message,
-            type = type,
-            length = length,
-            action = action
-        )
-
-        currentSnackbar?.show()
-    }
-
-    override fun hideSnackbar() {
-        currentSnackbar?.dismiss()
+        (activity as? BaseActivity<*>)?.goBack()
     }
 
     fun onRefresh() {}
 
     protected fun goToFragment(
-        fragment: BaseFragment,
+        fragment: BaseFragment<*, *, *, *>,
         fragmentContainerId: Int = R.id.fragmentContainer
     ) {
-        (activity as? BaseActivity)?.goToFragment(
+        (activity as? BaseActivity<*>)?.goToFragment(
             fragment = fragment,
             fragmentContainerId = fragmentContainerId
         )
     }
 
-    protected fun startActivitySafely(f: (Context) -> Intent) =
+    @Suppress("MemberVisibilityCanBePrivate")
+    protected fun startActivitySafely(f: (Context) -> android.content.Intent) =
         context.perform { startActivity(f(this)) }
 
-    protected fun startActivitySafelyAndFinish(f: (Context) -> Intent) {
+    protected fun startActivitySafelyAndFinish(f: (Context) -> android.content.Intent) {
         startActivitySafely(f).also {
             activity?.finish()
         }

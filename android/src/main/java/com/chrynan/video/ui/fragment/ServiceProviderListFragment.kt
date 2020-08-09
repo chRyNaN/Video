@@ -4,21 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
-import com.chrynan.video.navigator.ServiceProviderListNavigator
-import com.chrynan.video.presenter.ServiceProviderListPresenter
+import com.chrynan.video.presentation.navigator.ServiceProviderListScreen
+import com.chrynan.video.presentation.state.ServiceProviderListChange
+import com.chrynan.video.presentation.state.ServiceProviderListIntent
+import com.chrynan.video.presentation.state.ServiceProviderListState
+import com.chrynan.video.presentation.presenter.ServiceProviderListPresenter
 import com.chrynan.video.ui.adapter.factory.ServiceProviderListAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.provider.ServiceProviderListItemAdapter
-import com.chrynan.video.ui.view.ServiceProviderListView
 import com.chrynan.video.viewmodel.ServiceProviderListItemViewModel
 import kotlinx.android.synthetic.main.fragment_service_provider_list.*
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ServiceProviderListFragment : BaseFragment(),
-    ServiceProviderListView,
-    ServiceProviderListNavigator,
+class ServiceProviderListFragment :
+    BaseFragment<ServiceProviderListIntent, ServiceProviderListState, ServiceProviderListChange, ServiceProviderListScreen>(),
     ServiceProviderListItemAdapter.ServiceProviderListItemSelectedListener {
 
     companion object {
@@ -43,26 +44,22 @@ class ServiceProviderListFragment : BaseFragment(),
 
         serviceProviderListRecyclerView?.bindAdapterFactory(adapterFactory)
 
-        serviceProviderListFAB?.setOnClickListener { goToAddNewService() }
-
-        presenter.loadItems()
+        serviceProviderListFAB?.setOnClickListener { }
     }
 
-    override fun showEmptyState() {
-        serviceProviderListRecyclerView?.visibility = View.GONE
-        serviceProviderListEmptyTextView?.visibility = View.VISIBLE
+    override fun intents(): Flow<ServiceProviderListIntent> {
+        TODO("Not yet implemented")
     }
 
-    override fun showListState() {
-        serviceProviderListRecyclerView?.visibility = View.VISIBLE
-        serviceProviderListEmptyTextView?.visibility = View.GONE
+    override fun render(state: ServiceProviderListState) {
+        TODO("Not yet implemented")
     }
 
-    override fun goToAddNewService() = goToFragment(NewServiceProviderFragment.newInstance())
+    override fun goTo(screen: ServiceProviderListScreen) {
+        TODO("Not yet implemented")
+    }
 
-    override fun goToServiceDetails(providerUri: UriString) =
-        goToFragment(ServiceProviderDetailsFragment.newInstance(providerUri))
+    override fun onServiceProviderListItemSelected(item: ServiceProviderListItemViewModel) {
 
-    override fun onServiceProviderListItemSelected(item: ServiceProviderListItemViewModel) =
-        goToServiceDetails(item.uri)
+    }
 }

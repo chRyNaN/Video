@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import coil.api.load
-import com.chrynan.video.ui.view.ChannelView
 import com.chrynan.video.R
 import com.chrynan.common.model.api.VideoInfo
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
 import com.chrynan.logger.Logger
-import com.chrynan.video.presenter.ChannelPresenter
+import com.chrynan.video.presentation.navigator.ChannelDetailsScreen
+import com.chrynan.video.presentation.state.ChannelDetailsChange
+import com.chrynan.video.presentation.state.ChannelDetailsIntent
+import com.chrynan.video.presentation.state.ChannelDetailsState
+import com.chrynan.video.presentation.presenter.ChannelDetailsPresenter
 import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
 import com.chrynan.video.ui.adapter.factory.ChannelAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
@@ -19,13 +21,13 @@ import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_channel.*
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
-class ChannelFragment : BaseFragment(),
-    ChannelView,
+class ChannelFragment : BaseFragment<ChannelDetailsIntent, ChannelDetailsState, ChannelDetailsChange, ChannelDetailsScreen>(),
     VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
     ChannelHeaderAdapter.SubscribeButtonSelectedListener {
 
@@ -43,7 +45,7 @@ class ChannelFragment : BaseFragment(),
     }
 
     @Inject
-    override lateinit var presenter: ChannelPresenter
+    override lateinit var presenter: ChannelDetailsPresenter
 
     @Inject
     lateinit var adapterFactory: ChannelAdapterFactory
@@ -126,12 +128,16 @@ class ChannelFragment : BaseFragment(),
         }
     }
 
-    override fun showTitle(title: String) {
-        channelCollapsingToolbarLayout?.title = title
+    override fun intents(): Flow<ChannelDetailsIntent> {
+        TODO("Not yet implemented")
     }
 
-    override fun showBannerImage(imageUri: UriString) {
-        channelBannerImageView?.load(imageUri)
+    override fun render(state: ChannelDetailsState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: ChannelDetailsScreen) {
+        TODO("Not yet implemented")
     }
 
     override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) {

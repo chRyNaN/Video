@@ -4,8 +4,12 @@ import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.player.AndroidMediaController
 import com.chrynan.video.player.MediaController
 import com.chrynan.video.player.converter.DelegatePlayableConverter
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.VideoPlayerScreen
+import com.chrynan.video.presentation.state.VideoPlayerIntent
+import com.chrynan.video.presentation.state.VideoPlayerState
+import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
-import com.chrynan.video.ui.view.VideoPlayerView
 import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.Binds
 import dagger.Module
@@ -28,5 +32,9 @@ internal abstract class VideoPlayerFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): VideoPlayerView
+    abstract fun bindVideoPlayerView(fragment: VideoPlayerFragment): View<VideoPlayerIntent, VideoPlayerState>
+
+    @Binds
+    @FragmentScope
+    abstract fun bindVideoPlayerNavigator(fragment: VideoPlayerFragment): Navigator<VideoPlayerScreen>
 }

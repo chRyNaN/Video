@@ -1,9 +1,12 @@
 package com.chrynan.video.di.module.activity
 
+import com.chrynan.video.coroutine.ActivityCoroutineScope
 import com.chrynan.video.di.module.fragment.ChannelFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.navigator.ChannelScreen
+import com.chrynan.video.presentation.navigator.Navigator
 import com.chrynan.video.ui.activity.ChannelActivity
 import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.utils.ActivityContext
@@ -18,6 +21,14 @@ internal abstract class ChannelActivityModule {
     @ActivityScope
     @ActivityContextQualifier
     abstract fun bindActivityContext(activity: ChannelActivity): ActivityContext
+
+    @Binds
+    @ActivityScope
+    abstract fun bindActivityCoroutineScope(activity: ChannelActivity): ActivityCoroutineScope
+
+    @Binds
+    @ActivityScope
+    abstract fun bindChannelActivityNavigator(activity: ChannelActivity): Navigator<ChannelScreen>
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [ChannelFragmentModule::class])

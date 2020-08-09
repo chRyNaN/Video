@@ -1,12 +1,14 @@
 package com.chrynan.video.di.module.activity
 
 import com.chrynan.expandable.ExpandableContainerView
-import com.chrynan.video.navigator.MainNavigator
+import com.chrynan.video.coroutine.ActivityCoroutineScope
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.di.module.fragment.*
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.navigator.MainScreen
+import com.chrynan.video.presentation.navigator.Navigator
 import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.fragment.*
 import com.chrynan.video.utils.ActivityContext
@@ -24,6 +26,10 @@ internal abstract class MainActivityModule {
 
     @Binds
     @ActivityScope
+    abstract fun bindActivityCoroutineScope(activity: MainActivity): ActivityCoroutineScope
+
+    @Binds
+    @ActivityScope
     abstract fun bindTopMenuView(activity: MainActivity): TopMenuView
 
     @Binds
@@ -32,7 +38,7 @@ internal abstract class MainActivityModule {
 
     @Binds
     @ActivityScope
-    abstract fun bindMainNavigator(activity: MainActivity): MainNavigator
+    abstract fun bindMainActivityNavigator(activity: MainActivity): Navigator<MainScreen>
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [HomeFragmentModule::class])

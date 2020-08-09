@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import com.chrynan.video.ui.view.SearchView
 import com.chrynan.video.R
-import com.chrynan.common.model.core.ID
-import com.chrynan.common.model.core.UriString
-import com.chrynan.video.navigator.SearchNavigator
+import com.chrynan.video.presentation.navigator.SearchScreen
+import com.chrynan.video.presentation.state.SearchChange
+import com.chrynan.video.presentation.state.SearchIntent
+import com.chrynan.video.presentation.state.SearchState
 import com.chrynan.video.viewmodel.TagItemViewModel
-import com.chrynan.video.presenter.SearchPresenter
-import com.chrynan.video.ui.activity.ChannelActivity
+import com.chrynan.video.presentation.presenter.SearchPresenter
 import com.chrynan.video.ui.activity.VideoPlayerActivity
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
@@ -25,11 +24,10 @@ import com.chrynan.video.viewmodel.ChannelListItemViewModel
 import com.chrynan.video.viewmodel.VideoRecommendationViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.widget_search.view.*
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class SearchFragment : BaseFragment(),
-    SearchView,
-    SearchNavigator,
+class SearchFragment : BaseFragment<SearchIntent, SearchState, SearchChange, SearchScreen>(),
     VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
     SearchTagItemAdapter.SearchTagItemSelectedListener,
     ChannelListItemAdapter.ChannelListItemSelectedListener {
@@ -80,22 +78,23 @@ class SearchFragment : BaseFragment(),
         searchWidget?.setupTagAdapter(tagAdapterComponentsBinder)
 
         searchWidget?.onEnterPressed {
-            searchWidget?.text?.let { presenter.handleQuery(query = it) }
+            searchWidget?.text?.let { }
         }
 
         searchWidget?.searchWidgetEditText?.showKeyboard()
-
-        presenter.loadInitialData()
     }
 
-    override fun goToChannel(providerUri: UriString, channelId: ID) =
-        startActivitySafely {
-            ChannelActivity.newIntent(
-                context = it,
-                providerUri = providerUri,
-                channelId = channelId
-            )
-        }
+    override fun intents(): Flow<SearchIntent> {
+        TODO("Not yet implemented")
+    }
+
+    override fun render(state: SearchState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: SearchScreen) {
+        TODO("Not yet implemented")
+    }
 
     override fun onVideoRecommendationItemSelected(item: VideoRecommendationViewModel) =
         startActivitySafely {
@@ -105,27 +104,17 @@ class SearchFragment : BaseFragment(),
     override fun onVideoRecommendationOptionsSelected(item: VideoRecommendationViewModel) {
     }
 
-    override fun showEmptyState() {
-        searchResultsRecyclerView?.visibility = View.GONE
-    }
-
-    override fun showListState() {
-        searchResultsRecyclerView?.visibility = View.VISIBLE
-    }
-
-    override fun updateTags(tags: Set<TagItemViewModel>) {
-        searchWidget?.updateTags(tags)
-    }
-
     override fun onSearchTagItemSelected(item: TagItemViewModel) {
-        presenter.handleTagItemSelected(item)
     }
 
-    override fun onChannelListItemSelected(item: ChannelListItemViewModel) =
-        goToChannel(providerUri = item.providerUri, channelId = item.channelId)
+    override fun onChannelListItemSelected(item: ChannelListItemViewModel) {
+
+    }
 
     override fun onChannelSubscribeButtonSelected(
         item: ChannelListItemViewModel,
         isChecked: Boolean
-    ) = presenter.handleSubscribeButtonSelected(item = item, isChecked = isChecked)
+    ) {
+
+    }
 }

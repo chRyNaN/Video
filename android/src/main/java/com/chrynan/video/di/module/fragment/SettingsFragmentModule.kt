@@ -1,10 +1,13 @@
 package com.chrynan.video.di.module.fragment
 
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.navigator.SettingsNavigator
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.SettingsScreen
+import com.chrynan.video.presentation.state.SettingsIntent
+import com.chrynan.video.presentation.state.SettingsState
+import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
 import com.chrynan.video.ui.fragment.SettingsFragment
-import com.chrynan.video.ui.view.SettingsView
 import dagger.Binds
 import dagger.Module
 
@@ -13,11 +16,11 @@ internal abstract class SettingsFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindSettingsView(fragment: SettingsFragment): SettingsView
+    abstract fun bindSettingsView(fragment: SettingsFragment): View<SettingsIntent, SettingsState>
 
     @Binds
     @FragmentScope
-    abstract fun bindSettingsNavigator(fragment: SettingsFragment): SettingsNavigator
+    abstract fun bindSettingsNavigator(fragment: SettingsFragment): Navigator<SettingsScreen>
 
     @Binds
     @FragmentScope

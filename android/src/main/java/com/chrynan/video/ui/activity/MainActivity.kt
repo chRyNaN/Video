@@ -9,18 +9,17 @@ import com.chrynan.expandable.ExpandableChildLayout
 import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.expandable.ExpandableState
 import com.chrynan.expandable.ExpandableStateListener
-import com.chrynan.video.navigator.MainNavigator
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
+import com.chrynan.video.presentation.navigator.MainScreen
 import com.chrynan.video.ui.fragment.*
 import com.chrynan.video.ui.widget.BaseExpandableOverlayWidget
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(),
+class MainActivity : BaseActivity<MainScreen>(),
     TopMenuView,
     ExpandableContainerView,
-    MainNavigator,
     BottomNavigationView.OnNavigationItemSelectedListener,
     BaseExpandableOverlayWidget.ProgressChangedListener {
 
@@ -67,9 +66,7 @@ class MainActivity : BaseActivity(),
 
         mainBottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
-        goToHome()
-
-        goToVideo()
+        goTo(MainScreen.Home)
     }
 
     override fun addStateListener(listener: ExpandableStateListener) {
@@ -88,23 +85,15 @@ class MainActivity : BaseActivity(),
         // expandableLayout?.collapse()
     }
 
-    override fun goToHome() = goToFragment(HomeFragment.newInstance())
-
-    override fun goToSearch() = goToFragment(SearchFragment.newInstance())
-
-    override fun goToUserContent() = goToFragment(UserContentFragment.newInstance())
-
-    override fun goToSettings() = goToFragment(SettingsFragment.newInstance())
-
-    override fun goToVideo() {
+    override fun goTo(screen: MainScreen) {
 
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_bottom_navigation_home -> goToHome()
-            R.id.action_bottom_navigation_search -> goToSearch()
-            R.id.action_bottom_navigation_settings -> goToSettings()
+            R.id.action_bottom_navigation_home -> goTo(MainScreen.Home)
+            R.id.action_bottom_navigation_search -> goTo(MainScreen.Search)
+            R.id.action_bottom_navigation_settings -> goTo(MainScreen.Settings)
         }
 
         // There's an odd issue with the overlays when changing fragments, so this is a hack to fix it

@@ -9,10 +9,11 @@ import com.chrynan.video.R
 import com.chrynan.video.model.VideoLoadType
 import com.chrynan.video.parcel.model.getVideoInfo
 import com.chrynan.video.parcel.model.putVideoInfo
+import com.chrynan.video.presentation.navigator.VideoScreen
 import com.chrynan.video.ui.fragment.VideoPlayerFragment
 import com.chrynan.video.ui.view.VideoPlayerContainerView
 
-class VideoPlayerActivity : BaseActivity(),
+class VideoPlayerActivity : BaseActivity<VideoScreen>(),
     VideoPlayerContainerView {
 
     companion object {
@@ -47,6 +48,10 @@ class VideoPlayerActivity : BaseActivity(),
                 R.id.videoActivityPlayerFragmentContainer
             )
         }
+    }
+
+    override fun goTo(screen: VideoScreen) {
+
     }
 
     override fun showOpenVideoDetails() {

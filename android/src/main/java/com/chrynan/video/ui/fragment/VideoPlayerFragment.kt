@@ -1,23 +1,23 @@
 package com.chrynan.video.ui.fragment
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chrynan.common.model.api.VideoInfo
-import com.chrynan.video.presenter.VideoPlayerPresenter
+import com.chrynan.video.presentation.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoLoadType
 import com.chrynan.video.parcel.model.putVideoInfo
-import com.chrynan.video.player.exception.NullPlayerViewException
-import com.chrynan.video.ui.view.VideoPlayerView
-import com.google.android.exoplayer2.ui.PlayerView
-import kotlinx.android.synthetic.main.fragment_video.*
+import com.chrynan.video.presentation.navigator.VideoPlayerScreen
+import com.chrynan.video.presentation.state.VideoPlayerChange
+import com.chrynan.video.presentation.state.VideoPlayerIntent
+import com.chrynan.video.presentation.state.VideoPlayerState
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class VideoPlayerFragment : BaseFragment(),
-    VideoPlayerView {
+class VideoPlayerFragment :
+    BaseFragment<VideoPlayerIntent, VideoPlayerState, VideoPlayerChange, VideoPlayerScreen>() {
 
     companion object {
 
@@ -50,24 +50,17 @@ class VideoPlayerFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         val videoLoadType = arguments?.getParcelable<VideoLoadType>(KEY_VIDEO_LOAD_TYPE)
-
-        if (videoLoadType is VideoLoadType.GenericContentUri) {
-            presenter.loadVideo(videoLoadType.uri)
-        }
     }
 
-    override val widget: PlayerView
-        get() = videoPlayerWidget?.widget ?: throw NullPlayerViewException()
-
-    override fun setPreviewImage(drawable: Drawable?) {
-        videoPlayerWidget?.setPreviewImage(drawable)
+    override fun intents(): Flow<VideoPlayerIntent> {
+        TODO("Not yet implemented")
     }
 
-    override fun setPreviewImage(uri: String?) {
-        videoPlayerWidget?.setPreviewImage(uri)
+    override fun render(state: VideoPlayerState) {
+        TODO("Not yet implemented")
     }
 
-    override fun togglePreviewImageVisibility(isVisible: Boolean) {
-        videoPlayerWidget?.togglePreviewImageVisibility(isVisible)
+    override fun goTo(screen: VideoPlayerScreen) {
+        TODO("Not yet implemented")
     }
 }

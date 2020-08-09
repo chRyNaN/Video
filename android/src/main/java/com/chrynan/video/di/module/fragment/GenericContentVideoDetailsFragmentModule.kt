@@ -1,8 +1,12 @@
 package com.chrynan.video.di.module.fragment
 
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.navigator.GenericContentVideoDetailsScreen
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.state.GenericContentVideoDetailsIntent
+import com.chrynan.video.presentation.state.GenericContentVideoDetailsState
+import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.fragment.GenericContentVideoDetailsFragment
-import com.chrynan.video.ui.view.GenericContentVideoDetailsView
 import dagger.Binds
 import dagger.Module
 
@@ -11,5 +15,9 @@ internal abstract class GenericContentVideoDetailsFragmentModule {
 
     @Binds
     @FragmentScope
-    abstract fun bindContentVideoDetailsView(fragment: GenericContentVideoDetailsFragment): GenericContentVideoDetailsView
+    abstract fun bindGenericContentVideoDetailsView(fragment: GenericContentVideoDetailsFragment): View<GenericContentVideoDetailsIntent, GenericContentVideoDetailsState>
+
+    @Binds
+    @FragmentScope
+    abstract fun bindGenericContentVideoDetailsNavigator(fragment: GenericContentVideoDetailsFragment): Navigator<GenericContentVideoDetailsScreen>
 }

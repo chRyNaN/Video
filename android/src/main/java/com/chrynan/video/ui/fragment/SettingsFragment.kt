@@ -4,22 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.video.ui.view.SettingsView
 import com.chrynan.video.R
-import com.chrynan.video.model.ServiceProviderScreen
-import com.chrynan.video.navigator.SettingsNavigator
-import com.chrynan.video.presenter.SettingsPresenter
-import com.chrynan.video.ui.activity.ServiceProviderActivity
+import com.chrynan.video.presentation.navigator.SettingsScreen
+import com.chrynan.video.presentation.state.SettingsChange
+import com.chrynan.video.presentation.state.SettingsIntent
+import com.chrynan.video.presentation.state.SettingsState
+import com.chrynan.video.presentation.presenter.SettingsPresenter
 import com.chrynan.video.ui.adapter.factory.SettingsAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
 import com.chrynan.video.viewmodel.SettingsItemViewModel
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class SettingsFragment : BaseFragment(),
-    SettingsView,
-    SettingsNavigator,
+class SettingsFragment :
+    BaseFragment<SettingsIntent, SettingsState, SettingsChange, SettingsScreen>(),
     SettingsItemAdapter.SettingsItemSelectedListener {
 
     companion object {
@@ -44,22 +44,21 @@ class SettingsFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         settingsRecyclerView?.bindAdapterFactory(adapterFactory)
-
-        presenter.getSettings()
     }
 
-    override fun goToServiceProviderList() =
-        startActivitySafely { ServiceProviderActivity.newIntent(it, ServiceProviderScreen.List) }
+    override fun intents(): Flow<SettingsIntent> {
+        TODO("Not yet implemented")
+    }
 
-    override fun goToAddNewServiceProvider() =
-        startActivitySafely { ServiceProviderActivity.newIntent(it, ServiceProviderScreen.New) }
+    override fun render(state: SettingsState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: SettingsScreen) {
+        TODO("Not yet implemented")
+    }
 
     override fun onSettingsItemSelected(type: SettingsItemViewModel.SettingsType) {
-        when (type) {
-            SettingsItemViewModel.SettingsType.SERVICES -> goToServiceProviderList()
-            SettingsItemViewModel.SettingsType.ADD_SERVICE -> goToAddNewServiceProvider()
-            else -> {
-            }
-        }
+
     }
 }

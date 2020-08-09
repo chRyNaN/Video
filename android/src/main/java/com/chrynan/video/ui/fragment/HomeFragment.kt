@@ -4,21 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.video.ui.view.HomeView
 import com.chrynan.video.R
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.model.ServiceProviderScreen
-import com.chrynan.video.presenter.HomePresenter
+import com.chrynan.video.presentation.navigator.HomeScreen
+import com.chrynan.video.presentation.state.HomeChange
+import com.chrynan.video.presentation.state.HomeIntent
+import com.chrynan.video.presentation.state.HomeState
+import com.chrynan.video.presentation.presenter.HomePresenter
 import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.adapter.factory.HomeAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class HomeFragment : BaseFragment(),
-    HomeView,
+class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>(),
     VideoShowcaseAdapter.VideoShowcaseItemSelectedListener {
 
     companion object {
@@ -58,18 +61,18 @@ class HomeFragment : BaseFragment(),
                 )
             }
         }
-
-        presenter.loadInitialFeed()
     }
 
-    override fun showEmptyState() {
-        homeEmptyStateGroup?.visibility = View.VISIBLE
-        homeRecyclerView?.visibility = View.GONE
+    override fun intents(): Flow<HomeIntent> {
+        TODO("Not yet implemented")
     }
 
-    override fun showListState() {
-        homeRecyclerView?.visibility = View.VISIBLE
-        homeEmptyStateGroup?.visibility = View.GONE
+    override fun render(state: HomeState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun goTo(screen: HomeScreen) {
+        TODO("Not yet implemented")
     }
 
     override fun onVideoShowcaseItemSelected(item: VideoShowcaseViewModel) {

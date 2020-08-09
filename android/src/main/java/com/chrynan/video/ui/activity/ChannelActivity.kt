@@ -5,9 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import com.chrynan.common.model.core.ID
 import com.chrynan.video.R
+import com.chrynan.video.presentation.navigator.ChannelScreen
 import com.chrynan.video.ui.fragment.ChannelFragment
 
-class ChannelActivity : BaseActivity() {
+class ChannelActivity : BaseActivity<ChannelScreen>() {
 
     companion object {
 
@@ -36,5 +37,9 @@ class ChannelActivity : BaseActivity() {
                 )
             )
         }
+    }
+
+    override fun goTo(screen: ChannelScreen) {
+
     }
 }

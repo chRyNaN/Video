@@ -9,7 +9,6 @@ import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.view.OverlayView
 import com.chrynan.video.ui.view.VideoOverlayView
-import com.chrynan.video.ui.view.VideoPlayerView
 import com.google.android.exoplayer2.ui.PlayerView
 import kotlinx.android.synthetic.main.widget_video_overlay.view.*
 

@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoLoadType
+import com.chrynan.video.presentation.navigator.DeepLinkScreen
 import com.chrynan.video.utils.getFullMimeType
 import java.util.*
 
-class DeepLinkActivity : BaseActivity() {
+class DeepLinkActivity : BaseActivity<DeepLinkScreen>() {
 
     companion object {
 
@@ -47,6 +48,10 @@ class DeepLinkActivity : BaseActivity() {
         }
 
         finish()
+    }
+
+    override fun goTo(screen: DeepLinkScreen) {
+
     }
 
     private fun handleGenericContentUri(uri: Uri) =

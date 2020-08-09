@@ -4,22 +4,21 @@ import android.os.Bundle
 import androidx.lifecycle.coroutineScope
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.ActivityCoroutineScope
-import com.chrynan.video.navigator.Navigator
-import com.chrynan.video.presenter.BasePresenter
+import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.navigator.Screen
+import com.chrynan.video.presentation.presenter.BasePresenter
 import com.chrynan.video.ui.fragment.BaseFragment
-import com.chrynan.video.ui.view.View
 import dagger.android.support.DaggerAppCompatActivity
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseActivity : DaggerAppCompatActivity(),
+abstract class BaseActivity<SCREEN : Screen> : DaggerAppCompatActivity(),
     ActivityCoroutineScope,
-    Navigator,
-    View {
+    Navigator<SCREEN> {
 
     override val coroutineContext: CoroutineContext
         get() = lifecycle.coroutineScope.coroutineContext
 
-    protected open val presenter: BasePresenter? = null
+    protected open val presenter: BasePresenter<*, *, *>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +55,7 @@ abstract class BaseActivity : DaggerAppCompatActivity(),
     }
 
     fun goToFragment(
-        fragment: BaseFragment,
+        fragment: BaseFragment<*, *, *, *>,
         fragmentContainerId: Int = R.id.fragmentContainer
     ) {
         supportFragmentManager.let {
