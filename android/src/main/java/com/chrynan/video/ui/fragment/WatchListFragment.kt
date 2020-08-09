@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.WatchListView
-import com.chrynan.video.viewmodel.WatchListItemViewModel
+import com.chrynan.video.presentation.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
-import kotlinx.android.synthetic.main.fragment_watch_list.*
 
 class WatchListFragment : BaseFragment(),
     WatchListView,

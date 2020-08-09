@@ -13,7 +13,7 @@ import com.chrynan.video.presentation.presenter.ServiceProviderListPresenter
 import com.chrynan.video.ui.adapter.factory.ServiceProviderListAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.provider.ServiceProviderListItemAdapter
-import com.chrynan.video.viewmodel.ServiceProviderListItemViewModel
+import com.chrynan.video.presentation.viewmodel.ServiceProviderListItemViewModel
 import kotlinx.android.synthetic.main.fragment_service_provider_list.*
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

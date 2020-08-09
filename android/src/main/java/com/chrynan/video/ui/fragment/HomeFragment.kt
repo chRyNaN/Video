@@ -16,7 +16,7 @@ import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.adapter.factory.HomeAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
-import com.chrynan.video.viewmodel.VideoShowcaseViewModel
+import com.chrynan.video.presentation.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

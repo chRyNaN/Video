@@ -3,8 +3,8 @@ package com.chrynan.video.ui.adapter.core
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
+import com.chrynan.video.presentation.viewmodel.AdapterItem
 import com.chrynan.video.ui.adapter.position.AdapterPositionManager
-import com.chrynan.video.viewmodel.AdapterItem
 
 open class BaseManagerAdapter<VM : AdapterItem>(
     private val adapters: Set<BaseAdapter<out VM>>,

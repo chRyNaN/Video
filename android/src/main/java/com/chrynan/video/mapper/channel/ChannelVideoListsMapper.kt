@@ -1,7 +1,7 @@
 package com.chrynan.video.mapper.channel
 
 import com.chrynan.common.mapper.Mapper
-import com.chrynan.video.viewmodel.ChannelVideoListViewModel
+import com.chrynan.video.presentation.viewmodel.ChannelVideoListViewModel
 import javax.inject.Inject
 
 class ChannelVideoListsMapper @Inject constructor(

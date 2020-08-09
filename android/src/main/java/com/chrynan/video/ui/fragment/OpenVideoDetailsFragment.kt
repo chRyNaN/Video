@@ -17,8 +17,8 @@ import com.chrynan.video.ui.adapter.video.VideoInfoActionAdapter
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.viewmodel.VideoRecommendationViewModel
-import com.chrynan.video.viewmodel.VideoShowcaseViewModel
+import com.chrynan.video.presentation.viewmodel.VideoRecommendationViewModel
+import com.chrynan.video.presentation.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_open_video_details.*
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

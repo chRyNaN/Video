@@ -14,7 +14,7 @@ import com.chrynan.video.ui.adapter.core.*
 import com.chrynan.video.ui.adapter.factory.AdapterFactory
 import com.chrynan.video.ui.adapter.factory.ChannelVideoListAdapterFactory
 import com.chrynan.video.utils.ActivityContext
-import com.chrynan.video.viewmodel.ChannelVideoListViewModel
+import com.chrynan.video.presentation.viewmodel.ChannelVideoListViewModel
 import kotlinx.android.synthetic.main.adapter_channel_video_list.view.*
 import javax.inject.Inject
 

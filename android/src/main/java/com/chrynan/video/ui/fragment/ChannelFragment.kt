@@ -14,12 +14,12 @@ import com.chrynan.video.presentation.state.ChannelDetailsChange
 import com.chrynan.video.presentation.state.ChannelDetailsIntent
 import com.chrynan.video.presentation.state.ChannelDetailsState
 import com.chrynan.video.presentation.presenter.ChannelDetailsPresenter
+import com.chrynan.video.presentation.viewmodel.*
 import com.chrynan.video.ui.adapter.channel.ChannelHeaderAdapter
 import com.chrynan.video.ui.adapter.factory.ChannelAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
-import com.chrynan.video.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_channel.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -70,19 +70,21 @@ class ChannelFragment : BaseFragment<ChannelDetailsIntent, ChannelDetailsState, 
                 previewImageUri = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1"
             )
 
-            val header = ChannelHeaderViewModel(
-                name = "chRyNaN",
-                subscriberCount = "1,000,000",
-                totalVideoViewCount = "5,000,000",
-                channelId = "",
-                providerUri = ""
-            )
+            val header =
+                ChannelHeaderViewModel(
+                    name = "chRyNaN",
+                    subscriberCount = "1,000,000",
+                    totalVideoViewCount = "5,000,000",
+                    channelId = "",
+                    providerUri = ""
+                )
 
-            val provider = ChannelProviderViewModel(
-                providerServiceName = "chRyNaN Codes",
-                channelId = "",
-                providerUri = ""
-            )
+            val provider =
+                ChannelProviderViewModel(
+                    providerServiceName = "chRyNaN Codes",
+                    channelId = "",
+                    providerUri = ""
+                )
 
             val listItemOne = ChannelVideoListViewModel.ChannelVideoListItemViewModel(
                 videoInfo = videoInfo,
@@ -96,17 +98,20 @@ class ChannelFragment : BaseFragment<ChannelDetailsIntent, ChannelDetailsState, 
                 description = "Description Two"
             )
 
-            val videoList = ChannelVideoListViewModel(
-                channelId = "",
-                providerUri = "",
-                listName = "List Name",
-                items = listOf(listItemOne, listItemTwo)
-            )
+            val videoList =
+                ChannelVideoListViewModel(
+                    channelId = "",
+                    providerUri = "",
+                    listName = "List Name",
+                    items = listOf(listItemOne, listItemTwo)
+                )
 
             flowOf(
                 listOf(
                     header,
-                    SectionHeaderViewModel("About"),
+                    SectionHeaderViewModel(
+                        "About"
+                    ),
                     ChannelInfoViewModel(
                         about = "A **Channel** *you* might like.\n\n ![Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UCUcOcot_h55wnZNadIzsAHaDr%26pid%3DApi&f=1)",
                         created = "Today",

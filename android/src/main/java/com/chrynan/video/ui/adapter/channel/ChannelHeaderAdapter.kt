@@ -12,7 +12,7 @@ import com.chrynan.common.model.core.ID
 import com.chrynan.common.model.core.UriString
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.viewmodel.ChannelHeaderViewModel
+import com.chrynan.video.presentation.viewmodel.ChannelHeaderViewModel
 import kotlinx.android.synthetic.main.adapter_channel_header.view.*
 import javax.inject.Inject
 

@@ -10,7 +10,7 @@ import com.chrynan.video.presentation.navigator.SearchScreen
 import com.chrynan.video.presentation.state.SearchChange
 import com.chrynan.video.presentation.state.SearchIntent
 import com.chrynan.video.presentation.state.SearchState
-import com.chrynan.video.viewmodel.TagItemViewModel
+import com.chrynan.video.presentation.viewmodel.TagItemViewModel
 import com.chrynan.video.presentation.presenter.SearchPresenter
 import com.chrynan.video.ui.activity.VideoPlayerActivity
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
@@ -20,8 +20,8 @@ import com.chrynan.video.ui.adapter.factory.SearchAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.utils.showKeyboard
-import com.chrynan.video.viewmodel.ChannelListItemViewModel
-import com.chrynan.video.viewmodel.VideoRecommendationViewModel
+import com.chrynan.video.presentation.viewmodel.ChannelListItemViewModel
+import com.chrynan.video.presentation.viewmodel.VideoRecommendationViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.widget_search.view.*
 import kotlinx.coroutines.flow.Flow

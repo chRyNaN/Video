@@ -1,4 +1,4 @@
-package com.chrynan.video.viewmodel
+package com.chrynan.video.presentation.viewmodel
 
 import com.chrynan.aaaah.AdapterId
 import com.chrynan.aaaah.asUniqueAdapterId

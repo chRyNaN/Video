@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.chrynan.video.R
-import com.chrynan.video.model.ColorInt
-import com.chrynan.video.model.ResourceID
+import com.chrynan.video.presentation.model.ColorInt
+import com.chrynan.video.presentation.model.ResourceID
 import com.google.android.material.chip.Chip
 
 enum class ChipStyle(

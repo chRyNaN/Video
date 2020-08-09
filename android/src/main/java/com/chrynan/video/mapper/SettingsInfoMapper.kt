@@ -3,10 +3,10 @@ package com.chrynan.video.mapper
 import com.chrynan.common.mapper.Mapper
 import com.chrynan.common.model.SettingsInfo
 import com.chrynan.video.R
+import com.chrynan.video.presentation.viewmodel.AdapterItem
 import com.chrynan.video.resources.ResourceAccessor
-import com.chrynan.video.viewmodel.AdapterItem
-import com.chrynan.video.viewmodel.SettingsItemViewModel
-import com.chrynan.video.viewmodel.builder.settings
+import com.chrynan.video.presentation.viewmodel.SettingsItemViewModel
+import com.chrynan.video.presentation.viewmodel.builder.settings
 import javax.inject.Inject
 
 class SettingsInfoMapper @Inject constructor(

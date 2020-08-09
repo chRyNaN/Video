@@ -3,10 +3,10 @@ package com.chrynan.video.ui.adapter.core
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.logger.Logger
+import com.chrynan.video.presentation.viewmodel.AdapterItem
 import com.chrynan.video.ui.adapter.factory.AdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.factory.calculateAndDispatchDiff
-import com.chrynan.video.viewmodel.AdapterItem
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOf

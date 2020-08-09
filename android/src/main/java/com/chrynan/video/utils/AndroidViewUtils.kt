@@ -1,8 +1,6 @@
 package com.chrynan.video.utils
 
 import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
@@ -10,13 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.chrynan.video.R
-import com.chrynan.video.viewmodel.TagItemViewModel
 import com.chrynan.video.ui.view.SnackbarView
-import com.chrynan.video.ui.widget.ChipBackgroundColor
-import com.chrynan.video.ui.widget.ChipStyle
-import com.chrynan.video.ui.widget.chipOf
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

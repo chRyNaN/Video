@@ -13,7 +13,7 @@ import com.chrynan.video.presentation.presenter.SettingsPresenter
 import com.chrynan.video.ui.adapter.factory.SettingsAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.settings.SettingsItemAdapter
-import com.chrynan.video.viewmodel.SettingsItemViewModel
+import com.chrynan.video.presentation.viewmodel.SettingsItemViewModel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

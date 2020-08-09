@@ -8,7 +8,7 @@ import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.viewmodel.VideoInfoHeaderViewModel
+import com.chrynan.video.presentation.viewmodel.VideoInfoHeaderViewModel
 import com.chrynan.video.R
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.ui.adapter.core.BaseNestedListAdapter

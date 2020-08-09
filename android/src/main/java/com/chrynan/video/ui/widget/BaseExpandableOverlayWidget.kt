@@ -8,7 +8,7 @@ import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.chrynan.video.model.ResourceID
+import com.chrynan.video.presentation.model.ResourceID
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 

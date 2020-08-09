@@ -1,10 +1,9 @@
 package com.chrynan.video.ui.adapter.core
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.*
 import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.viewmodel.AdapterItem
+import com.chrynan.video.presentation.viewmodel.AdapterItem
 
 class AdapterComponents(
     val layoutManager: LinearLayoutManager,

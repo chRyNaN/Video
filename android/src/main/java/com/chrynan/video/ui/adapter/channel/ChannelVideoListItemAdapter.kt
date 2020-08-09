@@ -11,7 +11,7 @@ import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.viewmodel.ChannelVideoListViewModel
+import com.chrynan.video.presentation.viewmodel.ChannelVideoListViewModel
 import kotlinx.android.synthetic.main.adapter_channel_video_list_item.view.*
 import javax.inject.Inject
 

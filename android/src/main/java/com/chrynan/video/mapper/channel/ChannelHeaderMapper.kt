@@ -1,7 +1,7 @@
 package com.chrynan.video.mapper.channel
 
 import com.chrynan.common.mapper.Mapper
-import com.chrynan.video.viewmodel.ChannelHeaderViewModel
+import com.chrynan.video.presentation.viewmodel.ChannelHeaderViewModel
 import javax.inject.Inject
 
 class ChannelHeaderMapper @Inject constructor() :

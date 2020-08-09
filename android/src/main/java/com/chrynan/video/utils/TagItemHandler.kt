@@ -1,6 +1,6 @@
 package com.chrynan.video.utils
 
-import com.chrynan.video.viewmodel.TagItemViewModel
+import com.chrynan.video.presentation.viewmodel.TagItemViewModel
 import javax.inject.Inject
 
 class TagItemHandler @Inject constructor() {

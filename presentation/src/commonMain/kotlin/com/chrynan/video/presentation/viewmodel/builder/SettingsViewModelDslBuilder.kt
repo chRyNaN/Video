@@ -1,8 +1,8 @@
-package com.chrynan.video.viewmodel.builder
+package com.chrynan.video.presentation.viewmodel.builder
 
-import com.chrynan.video.viewmodel.AdapterItem
-import com.chrynan.video.viewmodel.SectionHeaderViewModel
-import com.chrynan.video.viewmodel.SettingsItemViewModel
+import com.chrynan.video.presentation.viewmodel.AdapterItem
+import com.chrynan.video.presentation.viewmodel.SectionHeaderViewModel
+import com.chrynan.video.presentation.viewmodel.SettingsItemViewModel
 
 @DslMarker
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE, AnnotationTarget.FUNCTION)
@@ -14,7 +14,10 @@ class SettingsViewModelDslBuilder internal constructor() {
     private val listItems = mutableListOf<AdapterItem>()
 
     fun group(headerText: String, builder: SettingsGroupDslBuilder.() -> Unit) {
-        val groupBuilder = SettingsGroupDslBuilder(headerText = headerText)
+        val groupBuilder =
+            SettingsGroupDslBuilder(
+                headerText = headerText
+            )
         builder.invoke(groupBuilder)
         listItems.addAll(groupBuilder.build())
     }
@@ -33,13 +36,17 @@ class SettingsGroupDslBuilder internal constructor(val headerText: String) {
     }
 
     internal fun build(): List<AdapterItem> {
-        val header = SectionHeaderViewModel(header = headerText)
+        val header =
+            SectionHeaderViewModel(
+                header = headerText
+            )
         return listOf(header) + settingsCells
     }
 }
 
 fun settings(builder: SettingsViewModelDslBuilder.() -> Unit): List<AdapterItem> {
-    val settingsBuilder = SettingsViewModelDslBuilder()
+    val settingsBuilder =
+        SettingsViewModelDslBuilder()
     builder.invoke(settingsBuilder)
     return settingsBuilder.build()
 }

@@ -1,7 +1,7 @@
 package com.chrynan.video.resources
 
 import android.graphics.drawable.Drawable
-import com.chrynan.video.model.ResourceID
+import com.chrynan.video.presentation.model.ResourceID
 
 interface ResourceAccessor {
 

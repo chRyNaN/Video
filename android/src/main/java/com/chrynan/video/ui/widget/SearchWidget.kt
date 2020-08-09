@@ -10,14 +10,12 @@ import com.chrynan.video.ui.adapter.binder.SearchTagAdapterComponentsBinder
 import com.chrynan.video.ui.adapter.core.AdapterComponents
 import com.chrynan.video.ui.adapter.core.calculateAndDispatchDiff
 import com.chrynan.video.utils.onEnterPressed
-import com.chrynan.video.viewmodel.TagItemViewModel
+import com.chrynan.video.presentation.viewmodel.TagItemViewModel
 import kotlinx.android.synthetic.main.widget_search.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.launchIn
 import kotlin.coroutines.CoroutineContext
 
 class SearchWidget @JvmOverloads constructor(

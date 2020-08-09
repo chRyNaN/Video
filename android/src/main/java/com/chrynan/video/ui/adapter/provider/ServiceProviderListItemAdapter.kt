@@ -11,7 +11,7 @@ import com.chrynan.aaaah.from
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.video.viewmodel.ServiceProviderListItemViewModel
+import com.chrynan.video.presentation.viewmodel.ServiceProviderListItemViewModel
 import kotlinx.android.synthetic.main.adapter_service_provider_list_item.view.*
 import javax.inject.Inject
 
