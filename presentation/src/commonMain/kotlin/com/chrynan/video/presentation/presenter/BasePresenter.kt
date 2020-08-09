@@ -2,12 +2,25 @@ package com.chrynan.video.presentation.presenter
 
 import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.coroutine.PresenterCoroutineScope
+import com.chrynan.video.presentation.state.Change
+import com.chrynan.video.presentation.state.Intent
+import com.chrynan.video.presentation.state.State
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlin.coroutines.CoroutineContext
 
-abstract class BasePresenter(protected val dispatchers: CoroutineDispatchers) : Presenter,
+abstract class BasePresenter<I : Intent, S : State, C : Change>(
+    initialState: S,
+    protected val dispatchers: CoroutineDispatchers
+) : Presenter<I, S, C>,
     PresenterCoroutineScope {
+
+    override var currentState: S = initialState
+        protected set
 
     override val coroutineContext: CoroutineContext
         get() = job + dispatchers.main
@@ -34,4 +47,17 @@ abstract class BasePresenter(protected val dispatchers: CoroutineDispatchers) : 
         job.cancel()
         isBound = false
     }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    protected fun Flow<C>.reduce(): Flow<S> =
+        flowOn(dispatchers.io)
+            .map { reducer(currentState, it) }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    protected fun Flow<S>.render(): Flow<S> =
+        flowOn(dispatchers.main)
+            .onEach { currentState = it }
+            .onEach { view.render(it) }
+
+    protected fun Flow<C>.reduceAndRender(): Flow<S> = reduce().render()
 }
