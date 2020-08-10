@@ -1,8 +1,8 @@
-package com.chrynan.video.mapper.channel
+package com.chrynan.video.presentation.mapper.channel
 
+import com.chrynan.common.Inject
 import com.chrynan.common.mapper.Mapper
 import com.chrynan.video.presentation.viewmodel.ChannelVideoListViewModel
-import javax.inject.Inject
 
 class ChannelVideoListsMapper @Inject constructor(
     private val itemMapper: ChannelVideoListItemMapper

@@ -1,8 +1,8 @@
-package com.chrynan.video.mapper.video
+package com.chrynan.video.presentation.mapper.video
 
+import com.chrynan.common.Inject
 import com.chrynan.common.mapper.Mapper
 import com.chrynan.video.presentation.viewmodel.VideoInfoChannelViewModel
-import javax.inject.Inject
 
 class VideoChannelMapper @Inject constructor() :
     Mapper<String, VideoInfoChannelViewModel> {

@@ -1,9 +1,9 @@
-package com.chrynan.video.mapper.video
+package com.chrynan.video.presentation.mapper.video
 
+import com.chrynan.common.Inject
 import com.chrynan.common.mapper.Mapper
 import com.chrynan.common.model.api.FeedItem
 import com.chrynan.video.presentation.viewmodel.VideoShowcaseViewModel
-import javax.inject.Inject
 
 class VideoShowcaseMapper @Inject constructor() :
     Mapper<FeedItem.VideoFeedItem, VideoShowcaseViewModel> {

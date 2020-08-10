@@ -1,9 +1,9 @@
-package com.chrynan.video.mapper.provider
+package com.chrynan.video.presentation.mapper.provider
 
+import com.chrynan.common.Inject
 import com.chrynan.common.mapper.Mapper
 import com.chrynan.common.model.ServiceProvider
 import com.chrynan.video.presentation.viewmodel.ServiceProviderListItemViewModel
-import javax.inject.Inject
 
 class ServiceProviderMapper @Inject constructor() :
     Mapper<ServiceProvider, ServiceProviderListItemViewModel> {

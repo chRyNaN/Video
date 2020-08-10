@@ -1,12 +1,12 @@
-package com.chrynan.video.mapper
+package com.chrynan.video.presentation.mapper
 
+import com.chrynan.common.Inject
 import com.chrynan.common.mapper.Mapper
 import com.chrynan.common.model.SettingsInfo
 import com.chrynan.video.presentation.resources.Strings
 import com.chrynan.video.presentation.viewmodel.AdapterItem
 import com.chrynan.video.presentation.viewmodel.SettingsItemViewModel
 import com.chrynan.video.presentation.viewmodel.builder.settings
-import javax.inject.Inject
 
 class SettingsInfoMapper @Inject constructor(
     private val strings: Strings
