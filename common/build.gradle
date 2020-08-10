@@ -2,6 +2,8 @@ import com.chrynan.video.buildSrc.AppConstants
 import com.chrynan.video.buildSrc.plugins.schema.CreateSchemaJsonPlugin
 
 apply plugin: "kotlin-multiplatform"
+apply plugin: "com.android.library"
+apply plugin: "digital.wup.android-maven-publish"
 apply plugin: "kotlinx-serialization"
 apply plugin: "com.apollographql.apollo"
 apply plugin: CreateSchemaJsonPlugin
@@ -12,6 +14,7 @@ version AppConstants.appVersion
 kotlin {
     targets {
         jvm()
+        fromPreset(presets.android, "android")
     }
     sourceSets {
         commonMain {
@@ -60,7 +63,70 @@ kotlin {
                 api "com.chrynan.logger:logger-core-jvm:1.2.1"
             }
         }
+        androidMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+                implementation "javax.inject:javax.inject:1"
+
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
+
+                // HTTP
+                api "io.ktor:ktor-client-okhttp:1.3.2"
+                api "io.ktor:ktor-client-serialization-jvm:1.3.2"
+                api "io.ktor:ktor-client-logging-jvm:1.3.2"
+
+                // GraphQL Client - Apollo
+                api "com.apollographql.apollo:apollo-api-jvm:2.2.3"
+
+                // Serialization
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
+
+                // Logging
+                api "com.chrynan.logger:logger-core-jvm:1.2.1"
+            }
+        }
     }
+}
+
+android {
+    compileSdkVersion AppConstants.androidCompileSdkVersion
+    defaultConfig {
+        minSdkVersion AppConstants.androidMinSdkVersion
+        targetSdkVersion AppConstants.androidTargetSdkVerison
+        versionCode AppConstants.appVersionCode
+        versionName AppConstants.appVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            matchingFallbacks = ["debug"]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    sourceSets {
+        main {
+            manifest.srcFile "src/androidMain/AndroidManifest.xml"
+            java.srcDirs = ["src/androidMain/kotlin"]
+            res.srcDirs = ["src/androidMain/res"]
+        }
+        test {
+            java.srcDirs = ["src/androidTest/kotlin"]
+            res.srcDirs = ["src/androidTest/res"]
+        }
+    }
+}
+
+dependencies {
+
 }
 
 graphQLSchemaJson {
@@ -94,6 +160,10 @@ publishing {
         }
         jvm {
             artifactId = "video-common-jvm"
+        }
+        MavenPub(MavenPublication) {
+            from(components.android)
+            artifactId "video-common-android"
         }
         metadata {
             artifactId = "video-common-metadata"
