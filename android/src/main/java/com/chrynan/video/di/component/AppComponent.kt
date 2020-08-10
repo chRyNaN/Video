@@ -8,7 +8,7 @@ import com.chrynan.video.di.module.GraphQLModule
 import com.chrynan.video.di.module.MediaModule
 import com.chrynan.video.di.module.ValidatorModule
 import com.chrynan.video.di.module.WebModule
-import com.chrynan.video.ui.VideoApplication
+import com.chrynan.video.VideoApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

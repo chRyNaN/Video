@@ -9,7 +9,7 @@ import com.chrynan.video.presentation.resources.AndroidResourceAccessor
 import com.chrynan.video.presentation.resources.AndroidResourceProvider
 import com.chrynan.video.presentation.resources.AndroidStrings
 import com.chrynan.video.presentation.resources.Strings
-import com.chrynan.video.ui.VideoApplication
+import com.chrynan.video.VideoApplication
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Binds
 import dagger.Module

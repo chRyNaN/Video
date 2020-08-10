@@ -1,4 +1,4 @@
-package com.chrynan.video.ui
+package com.chrynan.video
 
 import coil.Coil
 import coil.ImageLoader
