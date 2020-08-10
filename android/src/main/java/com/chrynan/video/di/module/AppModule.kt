@@ -5,8 +5,10 @@ import com.chrynan.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
 import com.chrynan.video.di.qualifier.ApplicationContextQualifier
-import com.chrynan.video.resources.ResourceAccessor
-import com.chrynan.video.resources.ResourceProvider
+import com.chrynan.video.presentation.resources.AndroidResourceAccessor
+import com.chrynan.video.presentation.resources.AndroidResourceProvider
+import com.chrynan.video.presentation.resources.AndroidStrings
+import com.chrynan.video.presentation.resources.Strings
 import com.chrynan.video.ui.VideoApplication
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Binds
@@ -41,6 +43,18 @@ internal abstract class AppModule {
             .usePlugin(TaskListPlugin.create(context))
             .usePlugin(LinkifyPlugin.create())
             .build() // TODO Add Syntax Highlighting Plugin
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun provideAndroidResourceAccessor(@ApplicationContextQualifier context: ApplicationContext): AndroidResourceAccessor =
+            AndroidResourceProvider(context)
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun provideStrings(resourceAccessor: AndroidResourceAccessor): Strings =
+            AndroidStrings(resourceAccessor)
     }
 
     @Binds
@@ -55,8 +69,4 @@ internal abstract class AppModule {
     @Binds
     @Singleton
     abstract fun bindCoroutineDispatchers(dispatchers: AndroidCoroutineDispatchers): CoroutineDispatchers
-
-    @Binds
-    @Singleton
-    abstract fun bindResourceAccessor(provider: ResourceProvider): ResourceAccessor
 }

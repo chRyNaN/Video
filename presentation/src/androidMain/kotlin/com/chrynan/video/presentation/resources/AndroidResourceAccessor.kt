@@ -1,9 +1,9 @@
-package com.chrynan.video.resources
+package com.chrynan.video.presentation.resources
 
 import android.graphics.drawable.Drawable
 import com.chrynan.video.presentation.model.ResourceID
 
-interface ResourceAccessor {
+interface AndroidResourceAccessor {
 
     fun string(resourceID: ResourceID): Lazy<String>
 
