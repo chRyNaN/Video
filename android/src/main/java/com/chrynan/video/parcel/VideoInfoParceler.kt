@@ -1,7 +1,7 @@
 package com.chrynan.video.parcel
 
 import android.os.Parcel
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 import kotlinx.android.parcel.Parceler
 
 object VideoInfoParceler : Parceler<VideoInfo> {

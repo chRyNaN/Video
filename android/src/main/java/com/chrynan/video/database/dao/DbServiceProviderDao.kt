@@ -1,7 +1,7 @@
 package com.chrynan.video.database.dao
 
 import androidx.room.*
-import com.chrynan.common.model.core.UriString
+import com.chrynan.video.common.model.core.UriString
 import com.chrynan.video.database.model.DbServiceProvider
 
 @Dao

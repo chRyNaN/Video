@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 import com.chrynan.video.presentation.presenter.VideoPlayerPresenter
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoLoadType

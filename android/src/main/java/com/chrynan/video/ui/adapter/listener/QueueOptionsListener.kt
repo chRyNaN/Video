@@ -1,6 +1,6 @@
 package com.chrynan.video.ui.adapter.listener
 
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 
 interface QueueOptionsListener {
 

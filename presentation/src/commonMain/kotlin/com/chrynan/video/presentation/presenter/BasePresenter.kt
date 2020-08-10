@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.coroutine.PresenterCoroutineScope
 import com.chrynan.video.presentation.state.Change
 import com.chrynan.video.presentation.state.Intent

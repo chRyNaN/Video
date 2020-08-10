@@ -1,7 +1,7 @@
 package com.chrynan.video.ui.adapter.binder
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.ui.adapter.SearchTagItemAdapter
 import com.chrynan.video.ui.adapter.core.AdapterComponentsBinder

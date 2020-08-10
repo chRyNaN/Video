@@ -1,7 +1,7 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.reducer.LbryVideoDetailsReducer
 import com.chrynan.video.presentation.state.LbryVideoDetailsChange
 import com.chrynan.video.presentation.state.LbryVideoDetailsIntent

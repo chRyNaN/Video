@@ -1,7 +1,7 @@
 package com.chrynan.video.presentation.viewmodel
 
 import com.chrynan.aaaah.asUniqueAdapterId
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 
 data class QueueItemViewModel(
     val videoInfo: VideoInfo,

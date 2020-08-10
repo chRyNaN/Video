@@ -1,10 +1,10 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.repository.LoginInfoRepository
-import com.chrynan.common.repository.ServiceProviderRepository
-import com.chrynan.common.validation.validator.UriStringValidator
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.repository.LoginInfoRepository
+import com.chrynan.video.common.repository.ServiceProviderRepository
+import com.chrynan.video.common.validation.validator.UriStringValidator
 import com.chrynan.video.presentation.reducer.NewServiceProviderReducer
 import com.chrynan.video.presentation.state.NewServiceProviderChange
 import com.chrynan.video.presentation.state.NewServiceProviderIntent

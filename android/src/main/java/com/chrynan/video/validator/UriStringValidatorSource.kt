@@ -1,14 +1,15 @@
 package com.chrynan.video.validator
 
 import android.util.Patterns
-import com.chrynan.common.model.core.UriString
-import com.chrynan.common.validation.core.ValidationResult
-import com.chrynan.common.validation.error.EmptyUriStringError
-import com.chrynan.common.validation.error.InvalidUriStringError
-import com.chrynan.common.validation.validator.UriStringValidator
+import com.chrynan.video.common.model.core.UriString
+import com.chrynan.video.common.validation.core.ValidationResult
+import com.chrynan.video.common.validation.error.EmptyUriStringError
+import com.chrynan.video.common.validation.error.InvalidUriStringError
+import com.chrynan.video.common.validation.validator.UriStringValidator
 import javax.inject.Inject
 
-class UriStringValidatorSource @Inject constructor() : UriStringValidator {
+class UriStringValidatorSource @Inject constructor() :
+    UriStringValidator {
 
     companion object {
 
@@ -23,7 +24,9 @@ class UriStringValidatorSource @Inject constructor() : UriStringValidator {
     }
 
     override fun invoke(input: UriString?): ValidationResult<UriString> {
-        if (input.isNullOrBlank()) return ValidationResult.Invalid(EmptyUriStringError)
+        if (input.isNullOrBlank()) return ValidationResult.Invalid(
+            EmptyUriStringError
+        )
 
         val trimmedInput = input.trim()
 

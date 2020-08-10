@@ -3,7 +3,7 @@ package com.chrynan.video.parcel.model
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 import com.chrynan.video.parcel.VideoInfoParceler
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.WriteWith

@@ -1,6 +1,6 @@
 package com.chrynan.video.di.module
 
-import com.chrynan.common.validation.validator.UriStringValidator
+import com.chrynan.video.common.validation.validator.UriStringValidator
 import com.chrynan.video.validator.UriStringValidatorSource
 import dagger.Binds
 import dagger.Module

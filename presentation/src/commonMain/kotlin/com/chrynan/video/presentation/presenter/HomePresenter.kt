@@ -1,8 +1,8 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.repository.FeedItemRepository
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.repository.FeedItemRepository
 import com.chrynan.video.presentation.reducer.HomeReducer
 import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent

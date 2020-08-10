@@ -2,7 +2,7 @@ package com.chrynan.video.ui.adapter.core
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.aaaah.*
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.viewmodel.AdapterItem
 
 class AdapterComponents(

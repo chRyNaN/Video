@@ -1,8 +1,8 @@
 package com.chrynan.video.presentation.mapper.provider
 
-import com.chrynan.common.Inject
-import com.chrynan.common.mapper.Mapper
-import com.chrynan.common.model.ServiceProvider
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.mapper.Mapper
+import com.chrynan.video.common.model.ServiceProvider
 import com.chrynan.video.presentation.viewmodel.ServiceProviderListItemViewModel
 
 class ServiceProviderMapper @Inject constructor() :

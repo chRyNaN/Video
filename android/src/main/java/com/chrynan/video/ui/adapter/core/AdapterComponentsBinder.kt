@@ -2,7 +2,7 @@ package com.chrynan.video.ui.adapter.core
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.utils.ActivityContext
 
 abstract class AdapterComponentsBinder {

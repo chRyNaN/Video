@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.navigator
 
-import com.chrynan.common.model.core.UriString
+import com.chrynan.video.common.model.core.UriString
 
 sealed class ServiceProviderScreen : Screen {
 

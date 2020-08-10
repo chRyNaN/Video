@@ -10,8 +10,8 @@ import com.chrynan.video.presentation.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
-import com.chrynan.common.model.core.ID
-import com.chrynan.common.model.core.UriString
+import com.chrynan.video.common.model.core.ID
+import com.chrynan.video.common.model.core.UriString
 
 class WatchListFragment : BaseFragment(),
     WatchListView,

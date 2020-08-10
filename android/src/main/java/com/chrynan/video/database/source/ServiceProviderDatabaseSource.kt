@@ -1,8 +1,8 @@
 package com.chrynan.video.database.source
 
-import com.chrynan.common.model.ServiceProvider
-import com.chrynan.common.model.core.UriString
-import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
+import com.chrynan.video.common.model.ServiceProvider
+import com.chrynan.video.common.model.core.UriString
+import com.chrynan.video.common.repository.database.ServiceProviderDatabaseRepository
 import com.chrynan.video.database.dao.DbServiceProviderDao
 import com.chrynan.video.database.mapper.DbServiceFromServiceMapper
 import com.chrynan.video.database.mapper.DbServiceToServiceMapper

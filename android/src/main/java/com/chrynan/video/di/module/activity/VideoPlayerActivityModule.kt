@@ -1,13 +1,13 @@
 package com.chrynan.video.di.module.activity
 
-import com.chrynan.common.repository.VideoRepository
+import com.chrynan.video.common.repository.VideoRepository
 import com.chrynan.video.coroutine.ActivityCoroutineScope
 import com.chrynan.video.di.module.fragment.OpenVideoDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.VideoPlayerFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.common.provider.OpenVideoProvider
+import com.chrynan.video.common.provider.OpenVideoProvider
 import com.chrynan.video.di.module.fragment.GenericContentVideoDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.LbryVideoDetailsFragmentModule
 import com.chrynan.video.presentation.navigator.Navigator

@@ -1,10 +1,12 @@
 package com.chrynan.video.di.module
 
-import com.chrynan.common.paginate.CursorCache
-import com.chrynan.common.paginate.MapCursorCache
+import com.chrynan.video.common.paginate.CursorCache
+import com.chrynan.video.common.paginate.MapCursorCache
 import com.chrynan.common.repository.*
-import com.chrynan.common.repository.database.ServiceProviderDatabaseRepository
+import com.chrynan.video.common.repository.database.ServiceProviderDatabaseRepository
 import com.chrynan.common.repository.source.*
+import com.chrynan.video.common.repository.*
+import com.chrynan.video.common.repository.source.*
 import com.chrynan.video.database.source.ServiceProviderDatabaseSource
 import com.chrynan.video.source.AppInfoSource
 import com.chrynan.video.source.SettingsInfoSource

@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 import com.chrynan.video.R
 import com.chrynan.video.model.VideoLoadType
 import com.chrynan.video.parcel.model.getVideoInfo

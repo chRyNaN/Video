@@ -11,7 +11,7 @@ import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.listener.QueueOptionsListener
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.common.model.api.VideoInfo
+import com.chrynan.video.common.model.api.VideoInfo
 import javax.inject.Inject
 
 class QueueFragment : BaseFragment(),

@@ -1,9 +1,9 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 
-import com.chrynan.common.provider.OpenVideoProvider
+import com.chrynan.video.common.provider.OpenVideoProvider
 import com.chrynan.video.presentation.reducer.OpenVideoDetailsReducer
 import com.chrynan.video.presentation.state.OpenVideoDetailsChange
 import com.chrynan.video.presentation.state.OpenVideoDetailsIntent

@@ -1,8 +1,8 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.repository.ServiceProviderRepository
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.repository.ServiceProviderRepository
 import com.chrynan.video.presentation.reducer.ServiceProviderListReducer
 import com.chrynan.video.presentation.state.ServiceProviderListChange
 import com.chrynan.video.presentation.state.ServiceProviderListIntent

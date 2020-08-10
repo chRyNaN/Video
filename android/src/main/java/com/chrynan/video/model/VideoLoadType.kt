@@ -2,7 +2,7 @@ package com.chrynan.video.model
 
 import android.net.Uri
 import android.os.Parcelable
-import com.chrynan.common.model.core.ID
+import com.chrynan.video.common.model.core.ID
 import kotlinx.android.parcel.Parcelize
 
 sealed class VideoLoadType : Parcelable {

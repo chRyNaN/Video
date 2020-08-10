@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.common.model.api.VideoAction
+import com.chrynan.video.common.model.api.VideoAction
 import com.chrynan.video.R
 import com.chrynan.video.presentation.navigator.OpenVideoDetailsScreen
 import com.chrynan.video.presentation.state.OpenVideoDetailsChange

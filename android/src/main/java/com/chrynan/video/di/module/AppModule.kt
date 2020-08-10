@@ -1,7 +1,7 @@
 package com.chrynan.video.di.module
 
 import coil.ImageLoader
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
 import com.chrynan.video.di.qualifier.ApplicationContextQualifier

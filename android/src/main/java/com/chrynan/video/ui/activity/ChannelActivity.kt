@@ -3,7 +3,7 @@ package com.chrynan.video.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.chrynan.common.model.core.ID
+import com.chrynan.video.common.model.core.ID
 import com.chrynan.video.R
 import com.chrynan.video.presentation.navigator.ChannelScreen
 import com.chrynan.video.ui.fragment.ChannelFragment

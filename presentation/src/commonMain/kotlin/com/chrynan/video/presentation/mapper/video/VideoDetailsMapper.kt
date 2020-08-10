@@ -1,7 +1,7 @@
 package com.chrynan.video.presentation.mapper.video
 
-import com.chrynan.common.Inject
-import com.chrynan.common.mapper.Mapper
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.mapper.Mapper
 import com.chrynan.video.presentation.viewmodel.VideoInfoDetailsViewModel
 
 class VideoDetailsMapper @Inject constructor() :

@@ -8,12 +8,12 @@ import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.ViewType
 import com.chrynan.aaaah.from
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.viewmodel.WatchListItemViewModel
 import com.chrynan.video.R
 import com.chrynan.video.ui.adapter.core.BaseAdapter
-import com.chrynan.common.model.core.ID
-import com.chrynan.common.model.core.UriString
+import com.chrynan.video.common.model.core.ID
+import com.chrynan.video.common.model.core.UriString
 import kotlinx.android.synthetic.main.adapter_watch_list_item.view.*
 import javax.inject.Inject
 

@@ -1,10 +1,10 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.repository.SearchItemRepository
-import com.chrynan.common.repository.TagSuggestionRepository
-import com.chrynan.common.validation.validator.SearchQueryValidator
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.repository.SearchItemRepository
+import com.chrynan.video.common.repository.TagSuggestionRepository
+import com.chrynan.video.common.validation.validator.SearchQueryValidator
 import com.chrynan.video.presentation.reducer.SearchReducer
 import com.chrynan.video.presentation.state.SearchChange
 import com.chrynan.video.presentation.state.SearchIntent

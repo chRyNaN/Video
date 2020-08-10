@@ -2,7 +2,7 @@ package com.chrynan.video.utils
 
 import android.media.MediaMetadataRetriever
 import android.net.Uri
-import com.chrynan.common.model.core.UriString
+import com.chrynan.video.common.model.core.UriString
 
 fun Uri.asUriString(): UriString = toString()
 

@@ -1,8 +1,8 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.common.Inject
-import com.chrynan.common.coroutine.CoroutineDispatchers
-import com.chrynan.common.repository.SettingsInfoRepository
+import com.chrynan.video.common.Inject
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.repository.SettingsInfoRepository
 import com.chrynan.video.presentation.reducer.SettingsReducer
 import com.chrynan.video.presentation.state.SettingsChange
 import com.chrynan.video.presentation.state.SettingsIntent

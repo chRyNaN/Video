@@ -1,8 +1,8 @@
 package com.chrynan.video.source
 
-import com.chrynan.common.model.SettingsInfo
-import com.chrynan.common.repository.AppInfoRepository
-import com.chrynan.common.repository.SettingsInfoRepository
+import com.chrynan.video.common.model.SettingsInfo
+import com.chrynan.video.common.repository.AppInfoRepository
+import com.chrynan.video.common.repository.SettingsInfoRepository
 import javax.inject.Inject
 
 class SettingsInfoSource @Inject constructor(private val appInfoRepository: AppInfoRepository) :

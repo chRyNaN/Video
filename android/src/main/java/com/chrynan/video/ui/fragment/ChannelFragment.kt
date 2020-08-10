@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chrynan.video.R
-import com.chrynan.common.model.api.VideoInfo
-import com.chrynan.common.model.core.ID
-import com.chrynan.common.model.core.UriString
+import com.chrynan.video.common.model.api.VideoInfo
+import com.chrynan.video.common.model.core.ID
+import com.chrynan.video.common.model.core.UriString
 import com.chrynan.logger.Logger
 import com.chrynan.video.presentation.navigator.ChannelDetailsScreen
 import com.chrynan.video.presentation.state.ChannelDetailsChange

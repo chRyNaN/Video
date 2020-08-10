@@ -1,7 +1,7 @@
 package com.chrynan.video.ui.adapter.factory
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chrynan.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.ui.adapter.channel.ChannelVideoListItemAdapter
