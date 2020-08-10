@@ -1,12 +1,13 @@
-import com.chrynan.video.plugins.schema.CreateSchemaJsonPlugin
+import com.chrynan.video.buildSrc.AppConstants
+import com.chrynan.video.buildSrc.plugins.schema.CreateSchemaJsonPlugin
 
 apply plugin: "kotlin-multiplatform"
 apply plugin: "kotlinx-serialization"
 apply plugin: "com.apollographql.apollo"
 apply plugin: CreateSchemaJsonPlugin
 
-group rootProject.libraryGroup
-version rootProject.libraryVersion
+group AppConstants.appGroup
+version AppConstants.appVersion
 
 kotlin {
     targets {

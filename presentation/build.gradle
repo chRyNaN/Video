@@ -1,9 +1,11 @@
+import com.chrynan.video.buildSrc.AppConstants
+
 apply plugin: "kotlin-multiplatform"
 apply plugin: "com.android.library"
 apply plugin: "digital.wup.android-maven-publish"
 
-group rootProject.libraryGroup
-version rootProject.libraryVersion
+group AppConstants.appGroup
+version AppConstants.appVersion
 
 kotlin {
     targets {
@@ -44,12 +46,12 @@ kotlin {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion AppConstants.androidCompileSdkVersion
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode rootProject.libraryVersionCode
-        versionName rootProject.libraryVersion
+        minSdkVersion AppConstants.androidMinSdkVersion
+        targetSdkVersion AppConstants.androidTargetSdkVerison
+        versionCode AppConstants.appVersionCode
+        versionName AppConstants.appVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

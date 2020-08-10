@@ -1,4 +1,4 @@
-package com.chrynan.video.plugins.schema
+package com.chrynan.video.buildSrc.plugins.schema
 
 import graphql.GraphQL
 import graphql.introspection.IntrospectionQuery

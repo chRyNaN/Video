@@ -1,4 +1,4 @@
-package com.chrynan.video.plugins.schema
+package com.chrynan.video.buildSrc.plugins.schema
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
