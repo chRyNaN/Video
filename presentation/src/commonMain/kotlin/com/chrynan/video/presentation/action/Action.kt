@@ -5,6 +5,11 @@ import com.chrynan.video.presentation.state.Intent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-typealias Action<INTENT, CHANGE> = suspend (INTENT) -> CHANGE
+interface Action<I : Intent, C : Change> {
+
+    suspend fun perform(intent: I): C
+
+    suspend operator fun invoke(intent: I): C
+}
 
 fun <I : Intent, C : Change> Flow<I>.perform(action: Action<I, C>): Flow<C> = map { action(it) }
