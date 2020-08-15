@@ -9,7 +9,7 @@ interface Action<I : Intent, C : Change> {
 
     suspend fun perform(intent: I): C
 
-    suspend operator fun invoke(intent: I): C
+    suspend operator fun invoke(intent: I): C = perform(intent)
 }
 
 fun <I : Intent, C : Change> Flow<I>.perform(action: Action<I, C>): Flow<C> = map { action(it) }
