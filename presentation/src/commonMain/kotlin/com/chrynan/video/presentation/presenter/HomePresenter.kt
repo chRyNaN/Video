@@ -15,7 +15,7 @@ class HomePresenter @Inject constructor(
     override val reducer: HomeReducer,
     private val feedRepository: FeedItemRepository
 ) : BasePresenter<HomeIntent, HomeState, HomeChange>(
-    initialState = HomeState.Initial,
+    initialState = HomeState.LoadingInitial,
     dispatchers = dispatchers
 ) {
 
