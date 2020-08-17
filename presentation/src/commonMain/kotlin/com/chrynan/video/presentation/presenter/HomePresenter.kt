@@ -1,16 +1,21 @@
 package com.chrynan.video.presentation.presenter
 
+import com.chrynan.logger.Logger
 import com.chrynan.video.common.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.common.repository.FeedItemRepository
 import com.chrynan.video.presentation.action.home.HomeLoadInitialAction
 import com.chrynan.video.presentation.action.home.HomeLoadMoreAction
 import com.chrynan.video.presentation.action.home.HomeRefreshAction
+import com.chrynan.video.presentation.action.perform
 import com.chrynan.video.presentation.reducer.HomeReducer
 import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent
 import com.chrynan.video.presentation.state.HomeState
 import com.chrynan.video.presentation.view.View
+import com.chrynan.video.presentation.viewmodel.AdapterItem
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
 
 class HomePresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
@@ -18,8 +23,7 @@ class HomePresenter @Inject constructor(
     override val reducer: HomeReducer,
     private val loadInitialAction: HomeLoadInitialAction,
     private val loadMoreAction: HomeLoadMoreAction,
-    private val refreshAction: HomeRefreshAction,
-    private val feedRepository: FeedItemRepository
+    private val refreshAction: HomeRefreshAction
 ) : BasePresenter<HomeIntent, HomeState, HomeChange>(
     initialState = HomeState.LoadingInitial,
     dispatchers = dispatchers
@@ -28,7 +32,31 @@ class HomePresenter @Inject constructor(
     override fun onBind() {
         super.onBind()
 
-        // TODO
         view.intents()
+            .flowOn(dispatchers.io)
+            .perform {
+                when (it) {
+                    is HomeIntent.LoadInitial -> loadInitialAction(it)
+                    is HomeIntent.Refresh -> refreshAction(it, currentState.currentItems)
+                    is HomeIntent.LoadMore -> loadMoreAction(it, currentState.currentItems)
+                }
+            }
+            .reduceAndRender()
+            .catch {
+                Logger.logError(
+                    throwable = it,
+                    message = "Error listening to intents in HomePresenter."
+                )
+            }
+            .launchIn(this)
     }
+
+    private val HomeState.currentItems: List<AdapterItem>
+        get() = when (this) {
+            is HomeState.LoadingInitial -> emptyList()
+            is HomeState.Refreshing -> currentItems
+            is HomeState.LoadingMore -> currentItems
+            is HomeState.DisplayingLoaded -> items
+            is HomeState.DisplayingEmpty -> emptyList()
+        }
 }
