@@ -13,7 +13,7 @@ open class BaseManagerAdapter<VM : AdapterItem>(
 
     companion object {
 
-        private const val DEFAULT_LOAD_MORE_THRESHOLD = 10
+        private const val DEFAULT_LOAD_MORE_THRESHOLD = 4
     }
 
     var endlessScrollLoadMoreThreshold = DEFAULT_LOAD_MORE_THRESHOLD

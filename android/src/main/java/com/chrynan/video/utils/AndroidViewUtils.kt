@@ -7,13 +7,18 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.video.R
+import com.chrynan.video.ui.adapter.core.BaseManagerAdapter
+import com.chrynan.video.ui.adapter.position.AdapterPositionManager
+import com.chrynan.video.ui.adapter.position.GridLayoutPositionManager
+import com.chrynan.video.ui.adapter.position.LinearLayoutPositionManager
 import com.chrynan.video.ui.view.SnackbarView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.*
+import reactivecircus.flowbinding.recyclerview.scrollEvents
 
 fun snackbarOf(
     view: View?,
@@ -110,4 +115,80 @@ fun View.hideKeyboard() {
     val inputMethodManager =
         context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
     inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
+}
+
+val RecyclerView.positionManager: AdapterPositionManager?
+    get() = when (val lm = layoutManager) {
+        is LinearLayoutManager -> LinearLayoutPositionManager(lm)
+        is GridLayoutManager -> GridLayoutPositionManager(lm)
+        else -> null
+    }
+
+enum class EndlessScrollDirection {
+
+    TOP,
+    BOTTOM
+}
+
+data class LoadMoreEvent(
+    val view: RecyclerView?,
+    val currentItemCount: Int,
+    val direction: EndlessScrollDirection,
+    val threshold: Int,
+    val firstVisibleItemPosition: Int,
+    val lastVisibleItemPosition: Int
+)
+
+fun RecyclerView.loadMoreEvents(
+    threshold: Int = 4,
+    direction: EndlessScrollDirection = EndlessScrollDirection.BOTTOM
+): Flow<LoadMoreEvent> {
+    var previousFirstVisibleItemPosition = -1
+    var previousLastVisibleItemPosition = -1
+    var isLoading = false
+    var itemCountBeforeLoading = adapter?.itemCount ?: 0
+
+    return scrollEvents().mapNotNull {
+        val pm = positionManager
+        val ma = adapter as? BaseManagerAdapter<*>
+
+        if (pm != null && ma != null) {
+            val firstPosition = pm.findFirstVisibleItemPosition()
+            val lastPosition = pm.findLastVisibleItemPosition()
+
+            if (firstPosition != previousFirstVisibleItemPosition || lastPosition != previousLastVisibleItemPosition) {
+                if (itemCountBeforeLoading != ma.itemCount) {
+                    itemCountBeforeLoading = ma.itemCount
+                    isLoading = false
+                }
+
+                if (!isLoading) {
+                    previousFirstVisibleItemPosition = firstPosition
+                    previousLastVisibleItemPosition = lastPosition
+
+                    val firstWithinThreshold = firstPosition - threshold <= 0
+                    val lastWithinThreshold =
+                        lastPosition + threshold >= ma.items.lastIndex
+
+                    if ((direction == EndlessScrollDirection.TOP && firstWithinThreshold) or
+                        (direction == EndlessScrollDirection.BOTTOM && lastWithinThreshold)
+                    ) {
+                        isLoading = true
+                        itemCountBeforeLoading = ma.itemCount
+
+                        LoadMoreEvent(
+                            view = it.view,
+                            currentItemCount = itemCountBeforeLoading,
+                            direction = direction,
+                            threshold = threshold,
+                            firstVisibleItemPosition = firstPosition,
+                            lastVisibleItemPosition = lastPosition
+                        )
+                    }
+                }
+            }
+        }
+
+        null
+    }
 }

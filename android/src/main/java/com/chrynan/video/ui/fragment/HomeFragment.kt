@@ -19,6 +19,8 @@ import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.presentation.viewmodel.VideoShowcaseViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import reactivecircus.flowbinding.android.view.scrollChangeEvents
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>(),
@@ -64,7 +66,6 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
     }
 
     override fun intents(): Flow<HomeIntent> {
-
         TODO("Not yet implemented")
     }
 
