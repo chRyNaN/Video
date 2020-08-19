@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.chrynan.video.R
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
-import com.chrynan.video.model.ServiceProviderScreen
 import com.chrynan.video.presentation.navigator.HomeScreen
+import com.chrynan.video.presentation.navigator.ServiceProviderScreen
 import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent
 import com.chrynan.video.presentation.state.HomeState
@@ -64,6 +64,7 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
     }
 
     override fun intents(): Flow<HomeIntent> {
+
         TODO("Not yet implemented")
     }
 
