@@ -22,6 +22,7 @@ type Channel implements Node & TimeDetail @access(type: LOGIN_STRATEGY) {
     images: ChannelImageInfo!
     count: ChannelCountInfo!
     isSubscribed: Boolean!
+    live: LiveStream
     lists: [ChannelVideoListConnection!]!
     list(id: ID!, take: Int!, after: Cursor): ChannelVideoListConnection!
     videos(take: Int!, after: Cursor): ChannelVideoConnection!
@@ -56,4 +57,8 @@ type ChannelVideoConnection implements Connection @access(type: LOGIN_STRATEGY) 
 type ChannelVideoEdge implements Edge @access(type: LOGIN_STRATEGY) {
     cursor: Cursor!
     node: Video!
+}
+
+type LiveStream {
+    video: Video
 }
