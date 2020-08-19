@@ -10,9 +10,11 @@ class VideoShowcaseMapper @Inject constructor() :
 
     override suspend fun map(model: FeedItem.VideoFeedItem): VideoShowcaseViewModel =
         VideoShowcaseViewModel(
-            videoInfo = model.videoInfo,
             title = model.videoName,
+            providerUri = model.videoInfo.providerUri,
+            videoId = model.videoInfo.videoId,
             details = model.videoDescription ?: "",
+            previewImage = model.videoInfo.previewImageUri,
             provider = model.providerName,
             videoLength = model.videoLengthInMilliseconds?.toString() ?: "",
             channelImageUrl = model.channelImage
