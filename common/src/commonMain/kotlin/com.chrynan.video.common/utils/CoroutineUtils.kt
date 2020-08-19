@@ -10,6 +10,9 @@ fun <T> flowFrom(builder: suspend () -> T): Flow<T> = flow {
     emit(builder())
 }
 
+@OptIn(ExperimentalCoroutinesApi::class)
+fun <T> Flow<T>.startWith(item: T): Flow<T> = onStart { emit(item) }
+
 fun <T, R> Flow<Collection<T>>.mapEachItemWith(mapper: Mapper<T, R>): Flow<List<R>> =
     map { list -> list.map { mapper.map(it) } }
 

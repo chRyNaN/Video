@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chrynan.video.R
+import com.chrynan.video.common.utils.startWith
 import com.chrynan.video.ui.dialog.MenuBottomSheetDialogFragment
 import com.chrynan.video.presentation.navigator.HomeScreen
 import com.chrynan.video.presentation.navigator.ServiceProviderScreen
@@ -17,10 +18,12 @@ import com.chrynan.video.ui.adapter.factory.HomeAdapterFactory
 import com.chrynan.video.ui.adapter.factory.bindAdapterFactory
 import com.chrynan.video.ui.adapter.video.VideoShowcaseAdapter
 import com.chrynan.video.presentation.viewmodel.VideoShowcaseViewModel
+import com.chrynan.video.utils.loadMoreEvents
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import reactivecircus.flowbinding.android.view.scrollChangeEvents
+import kotlinx.coroutines.flow.merge
+import reactivecircus.flowbinding.swiperefreshlayout.refreshes
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>(),
@@ -42,6 +45,14 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
             menuResId = R.menu.menu_video_options
         )
     }
+
+    private val loadMoreIntents: Flow<HomeIntent>
+        get() = homeRecyclerView.loadMoreEvents()
+            .map { HomeIntent.LoadMore }
+
+    private val refreshIntents: Flow<HomeIntent>
+        get() = homeSwipeRefreshLayout.refreshes()
+            .map { HomeIntent.Refresh }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,9 +76,11 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
         }
     }
 
-    override fun intents(): Flow<HomeIntent> {
-        TODO("Not yet implemented")
-    }
+    override fun intents(): Flow<HomeIntent> =
+        merge(
+            loadMoreIntents,
+            refreshIntents
+        ).startWith(HomeIntent.LoadInitial)
 
     override fun render(state: HomeState) {
         TODO("Not yet implemented")
