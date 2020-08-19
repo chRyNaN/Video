@@ -6,17 +6,17 @@ import com.chrynan.video.common.model.api.FeedItem
 import com.chrynan.video.presentation.viewmodel.VideoShowcaseViewModel
 
 class VideoShowcaseMapper @Inject constructor() :
-    Mapper<FeedItem.VideoFeedItem, VideoShowcaseViewModel> {
+    Mapper<FeedItem<FeedQuery.AsVideoFeedItem>, VideoShowcaseViewModel> {
 
-    override suspend fun map(model: FeedItem.VideoFeedItem): VideoShowcaseViewModel =
+    override suspend fun map(model: FeedItem<FeedQuery.AsVideoFeedItem>): VideoShowcaseViewModel =
         VideoShowcaseViewModel(
-            title = model.videoName,
-            providerUri = model.videoInfo.providerUri,
-            videoId = model.videoInfo.videoId,
-            details = model.videoDescription ?: "",
-            previewImage = model.videoInfo.previewImageUri,
-            provider = model.providerName,
-            videoLength = model.videoLengthInMilliseconds?.toString() ?: "",
-            channelImageUrl = model.channelImage
+            providerUri = model.provider.uri,
+            provider = model.provider.name,
+            title = model.item.video.name,
+            videoId = model.item.video.id,
+            details = model.item.video.description ?: "",
+            previewImage = model.item.video.images.preview,
+            videoLength = model.item.video.duration.totalMilliseconds?.toString() ?: "",
+            channelImageUrl = model.item.channel.images.thumbnail
         )
 }

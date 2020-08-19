@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface FeedItemRepository {
 
-    fun getFeedItems(): Flow<List<FeedItem>>
+    fun getFeedItems(): Flow<List<FeedItem<*>>>
 }

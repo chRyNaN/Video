@@ -34,7 +34,7 @@ class FeedItemRepositorySource @Inject constructor(
     }
 
     @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
-    override fun getFeedItems(): Flow<List<FeedItem>> =
+    override fun getFeedItems(): Flow<List<FeedItem<*>>> =
         providerRepository.getAll()
             .firstAsFlow()
             .flatMapConcat {
@@ -65,7 +65,7 @@ class FeedItemRepositorySource @Inject constructor(
         providerUri: UriString,
         take: Int,
         after: Cursor? = null
-    ): Flow<List<FeedItem>> {
+    ): Flow<List<FeedItem<*>>> {
         val client = graphQLClientFactory.getOrCreate(providerUri)
 
         val query = FeedQuery(take, Input.fromNullable(after))
