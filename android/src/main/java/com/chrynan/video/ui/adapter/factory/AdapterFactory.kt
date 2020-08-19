@@ -10,6 +10,7 @@ import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.position.AdapterPositionManager
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 interface AdapterFactory {
 
@@ -38,3 +39,6 @@ fun Flow<Collection<AdapterItem>>.calculateAndDispatchDiff(adapterFactory: Adapt
     adapterFactory.adapterItemHandler.run {
         calculateAndDispatchDiff()
     }
+
+fun AdapterFactory.calculateAndDispatchDiff(items: List<AdapterItem>): Flow<DiffResult<AdapterItem>> =
+    flowOf(items).calculateAndDispatchDiff(this)
