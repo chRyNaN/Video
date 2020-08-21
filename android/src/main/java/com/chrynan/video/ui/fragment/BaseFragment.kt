@@ -28,6 +28,8 @@ abstract class BaseFragment<INTENT : Intent, STATE : State, CHANGE : Change, SCR
 
     protected open val presenter: BasePresenter<INTENT, STATE, CHANGE>? = null
 
+    protected lateinit var renderState: STATE
+
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -56,6 +58,10 @@ abstract class BaseFragment<INTENT : Intent, STATE : State, CHANGE : Change, SCR
         presenter?.unbind()
 
         super.onDestroyView()
+    }
+
+    override fun render(state: STATE) {
+        renderState = state
     }
 
     override fun goBack() {

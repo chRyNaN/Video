@@ -57,6 +57,8 @@ class VideoPlayerFragment :
     }
 
     override fun render(state: VideoPlayerState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

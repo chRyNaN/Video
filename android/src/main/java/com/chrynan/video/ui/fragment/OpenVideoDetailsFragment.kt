@@ -63,6 +63,8 @@ class OpenVideoDetailsFragment :
     }
 
     override fun render(state: OpenVideoDetailsState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

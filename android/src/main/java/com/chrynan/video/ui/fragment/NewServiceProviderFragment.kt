@@ -52,6 +52,8 @@ class NewServiceProviderFragment :
     }
 
     override fun render(state: NewServiceProviderState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

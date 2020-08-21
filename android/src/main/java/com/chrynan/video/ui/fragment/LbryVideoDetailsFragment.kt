@@ -40,6 +40,8 @@ class LbryVideoDetailsFragment :
     }
 
     override fun render(state: LbryVideoDetailsState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

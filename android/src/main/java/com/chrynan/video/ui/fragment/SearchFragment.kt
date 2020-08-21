@@ -89,6 +89,8 @@ class SearchFragment : BaseFragment<SearchIntent, SearchState, SearchChange, Sea
     }
 
     override fun render(state: SearchState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

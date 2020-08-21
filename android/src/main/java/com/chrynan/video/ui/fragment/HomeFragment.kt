@@ -83,7 +83,9 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
             refreshIntents
         ).startWith(HomeIntent.LoadInitial)
 
-    override fun render(state: HomeState) =
+    override fun render(state: HomeState) {
+        super.render(state)
+
         when (state) {
             is HomeState.DisplayingEmpty -> renderEmptyState()
             is HomeState.DisplayingLoaded -> renderLoadedState(state)
@@ -91,6 +93,7 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
             is HomeState.LoadingMore -> renderLoadingMore(state)
             is HomeState.Refreshing -> renderRefreshing(state)
         }
+    }
 
     override fun goTo(screen: HomeScreen) =
         when (screen) {

@@ -51,6 +51,8 @@ class SettingsFragment :
     }
 
     override fun render(state: SettingsState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

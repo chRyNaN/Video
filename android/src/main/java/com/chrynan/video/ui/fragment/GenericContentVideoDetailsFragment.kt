@@ -40,6 +40,8 @@ class GenericContentVideoDetailsFragment :
     }
 
     override fun render(state: GenericContentVideoDetailsState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 

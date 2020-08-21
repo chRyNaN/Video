@@ -27,7 +27,8 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
-class ChannelFragment : BaseFragment<ChannelDetailsIntent, ChannelDetailsState, ChannelDetailsChange, ChannelDetailsScreen>(),
+class ChannelFragment :
+    BaseFragment<ChannelDetailsIntent, ChannelDetailsState, ChannelDetailsChange, ChannelDetailsScreen>(),
     VideoRecommendationAdapter.VideoRecommendationItemSelectedListener,
     ChannelHeaderAdapter.SubscribeButtonSelectedListener {
 
@@ -138,6 +139,8 @@ class ChannelFragment : BaseFragment<ChannelDetailsIntent, ChannelDetailsState, 
     }
 
     override fun render(state: ChannelDetailsState) {
+        super.render(state)
+
         TODO("Not yet implemented")
     }
 
