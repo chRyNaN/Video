@@ -24,13 +24,14 @@ class HomeLoadMoreAction @Inject constructor(
     operator fun invoke(
         intent: HomeIntent.LoadMore,
         currentItems: List<AdapterItem>
-    ): Flow<HomeChange> = feedItemRepository.get()
-        .onStart { feedItemRepository.loadMore() }
-        .filterNotNull()
-        .map { items ->
-            items.filterIsInstance<FeedItem<FeedQuery.AsVideoFeedItem>>()
-                .map { mapper.map(it) }
-        }
-        .map { HomeChange.Loaded(items = it) }
-        .startWith(HomeChange.StartedLoading(currentItems = currentItems))
+    ): Flow<HomeChange> =
+        feedItemRepository.get()
+            .onStart { feedItemRepository.loadMore() }
+            .filterNotNull()
+            .map { items ->
+                items.filterIsInstance<FeedItem<FeedQuery.AsVideoFeedItem>>()
+                    .map { mapper.map(it) }
+            }
+            .map { HomeChange.Loaded(items = it) }
+            .startWith(HomeChange.StartedLoading(currentItems = currentItems))
 }
