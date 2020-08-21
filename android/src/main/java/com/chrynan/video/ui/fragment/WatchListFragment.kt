@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chrynan.video.ui.view.WatchListView
 import com.chrynan.video.presentation.viewmodel.WatchListItemViewModel
@@ -12,8 +13,9 @@ import com.chrynan.video.ui.adapter.core.RecyclerViewAdapter
 import com.chrynan.video.ui.adapter.WatchListItemAdapter
 import com.chrynan.video.common.model.core.ID
 import com.chrynan.video.common.model.core.UriString
+import kotlinx.android.synthetic.main.fragment_watch_list.*
 
-class WatchListFragment : BaseFragment(),
+class WatchListFragment : Fragment(),
     WatchListView,
     WatchListItemAdapter.WatchListItemSelectedListener {
 
