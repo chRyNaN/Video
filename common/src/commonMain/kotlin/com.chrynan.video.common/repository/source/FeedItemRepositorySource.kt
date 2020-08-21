@@ -13,14 +13,13 @@ import com.chrynan.video.common.paginate.CursorCache
 import com.chrynan.video.common.paginate.CursorCacheValue
 import com.chrynan.video.common.repository.FeedItemRepository
 import com.chrynan.video.common.repository.ServiceProviderRepository
-import com.chrynan.video.common.utils.firstAsFlow
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flatMapConcat
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.*
 
+@OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 class FeedItemRepositorySource @Inject constructor(
     private val providerRepository: ServiceProviderRepository,
     private val graphQLClientFactory: GraphQLClientFactory,
@@ -28,50 +27,79 @@ class FeedItemRepositorySource @Inject constructor(
     private val mapper: FeedItemMapper
 ) : FeedItemRepository {
 
-    companion object {
+    private val items = mutableListOf<FeedItem<*>>()
+    private var stateFlow = MutableStateFlow<List<FeedItem<*>>?>(null)
 
-        private const val DEFAULT_PROVIDER_TAKE_COUNT = 10
+    override fun get(): Flow<List<FeedItem<*>>?> =
+        stateFlow.onStart { if (stateFlow.value == null) loadMore() }
+
+    override suspend fun refresh() {
+        items.clear()
+        stateFlow.value = null
+        loadMore()
     }
 
-    @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
-    override fun getFeedItems(): Flow<List<FeedItem<*>>> =
-        providerRepository.getAll()
-            .firstAsFlow()
-            .flatMapConcat {
-                val flows = it.map { serviceProvider ->
-                    var cursorValue = cursorCache[serviceProvider.providerUri]
+    override suspend fun loadMore(count: Int) {
+        coroutineScope {
+            providerRepository.getAll()
+                .first()
+                .map {
+                    async {
+                        val cursorValue = getCursorValueForProviderUri(providerUri = it.providerUri)
 
-                    if (cursorValue == null) {
-                        cursorValue =
-                            CursorCacheValue(
-                                cursor = null,
-                                hasNextPage = true
-                            )
-
-                        cursorCache[serviceProvider.providerUri] = cursorValue
+                        getFeedItemsForProviderUri(
+                            providerUri = it.providerUri,
+                            take = count,
+                            after = cursorValue.cursor
+                        )
                     }
-
-                    getFeedItemsForProviderUri(
-                        providerUri = serviceProvider.providerUri,
-                        take = DEFAULT_PROVIDER_TAKE_COUNT,
-                        after = cursorValue.cursor
-                    )
                 }
+                .forEach {
+                    val newItems = it.await()
 
-                merge(*flows.toTypedArray())
-            }
+                    items.addAll(newItems)
 
-    private fun getFeedItemsForProviderUri(
+                    stateFlow.value = items
+                }
+        }
+    }
+
+    private fun getCursorValueForProviderUri(providerUri: UriString): CursorCacheValue {
+        var cursorValue = cursorCache[providerUri]
+
+        if (cursorValue == null) {
+            cursorValue =
+                CursorCacheValue(
+                    cursor = null,
+                    hasNextPage = true
+                )
+
+            cursorCache[providerUri] = cursorValue
+        }
+
+        return cursorValue
+    }
+
+    private fun updateCursorValueForProviderUri(providerUri: UriString, data: FeedQuery.Data) {
+        cursorCache[providerUri] = CursorCacheValue(
+            cursor = data.feedItems.pageInfo.fragments.pageInfoFragment.endCursor,
+            hasNextPage = data.feedItems.pageInfo.fragments.pageInfoFragment.hasNextPage
+        )
+    }
+
+    private suspend fun getFeedItemsForProviderUri(
         providerUri: UriString,
         take: Int,
         after: Cursor? = null
-    ): Flow<List<FeedItem<*>>> {
+    ): List<FeedItem<*>> {
         val client = graphQLClientFactory.getOrCreate(providerUri)
 
         val query = FeedQuery(take, Input.fromNullable(after))
 
         return client.query(query)
             .filterSuccess()
+            .onEach { updateCursorValueForProviderUri(providerUri = providerUri, data = it) }
             .map { mapper.map(it) }
+            .first()
     }
 }

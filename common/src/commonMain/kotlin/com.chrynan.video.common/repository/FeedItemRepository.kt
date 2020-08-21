@@ -5,5 +5,14 @@ import kotlinx.coroutines.flow.Flow
 
 interface FeedItemRepository {
 
-    fun getFeedItems(): Flow<List<FeedItem<*>>>
+    companion object {
+
+        private const val DEFAULT_PROVIDER_TAKE_COUNT = 10
+    }
+
+    fun get(): Flow<List<FeedItem<*>>?>
+
+    suspend fun refresh()
+
+    suspend fun loadMore(count: Int = DEFAULT_PROVIDER_TAKE_COUNT)
 }
