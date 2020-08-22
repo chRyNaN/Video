@@ -117,8 +117,12 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
     }
 
     private fun renderLoadedState(state: HomeState.DisplayingLoaded) {
-        renderItems(state.items)
-        homeSwipeRefreshLayout?.isRefreshing = false
+        if (state.items.isEmpty()) {
+            renderEmptyState()
+        } else {
+            renderItems(state.items)
+            homeSwipeRefreshLayout?.isRefreshing = false
+        }
     }
 
     private fun renderLoadingInitial() {
