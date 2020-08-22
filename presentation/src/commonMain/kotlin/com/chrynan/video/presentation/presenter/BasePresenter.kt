@@ -50,14 +50,14 @@ abstract class BasePresenter<I : Intent, S : State, C : Change>(
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected fun Flow<C>.reduce(): Flow<S> =
-        flowOn(dispatchers.io)
-            .map { reducer(currentState, it) }
+        map { reducer(currentState, it) }
+            .flowOn(dispatchers.io)
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected fun Flow<S>.render(): Flow<S> =
-        flowOn(dispatchers.main)
-            .onEach { currentState = it }
+        onEach { currentState = it }
             .onEach { view.render(it) }
+            .flowOn(dispatchers.main)
 
     protected fun Flow<C>.reduceAndRender(): Flow<S> = reduce().render()
 }

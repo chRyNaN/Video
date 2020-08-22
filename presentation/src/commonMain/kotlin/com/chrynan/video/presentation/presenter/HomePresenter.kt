@@ -32,7 +32,7 @@ class HomePresenter @Inject constructor(
         super.onBind()
 
         view.intents()
-            .flowOn(dispatchers.io)
+            .flowOn(dispatchers.main)
             .perform {
                 when (it) {
                     is HomeIntent.LoadInitial -> loadInitialAction(it)
