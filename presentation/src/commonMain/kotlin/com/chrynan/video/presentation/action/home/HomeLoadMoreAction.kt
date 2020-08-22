@@ -8,7 +8,6 @@ import com.chrynan.video.presentation.action.Action
 import com.chrynan.video.presentation.mapper.video.VideoShowcaseMapper
 import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent
-import com.chrynan.video.presentation.viewmodel.AdapterItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
@@ -21,10 +20,7 @@ class HomeLoadMoreAction @Inject constructor(
     private val mapper: VideoShowcaseMapper
 ) : Action<HomeIntent.LoadMore, HomeChange> {
 
-    operator fun invoke(
-        intent: HomeIntent.LoadMore,
-        currentItems: List<AdapterItem>
-    ): Flow<HomeChange> =
+    override fun perform(intent: HomeIntent.LoadMore): Flow<HomeChange> =
         feedItemRepository.get()
             .onStart { feedItemRepository.loadMore() }
             .filterNotNull()
@@ -33,5 +29,5 @@ class HomeLoadMoreAction @Inject constructor(
                     .map { mapper.map(it) }
             }
             .map { HomeChange.Loaded(items = it) }
-            .startWith(HomeChange.StartedLoading(currentItems = currentItems))
+            .startWith(HomeChange.StartedLoading(currentItems = intent.currentItems))
 }

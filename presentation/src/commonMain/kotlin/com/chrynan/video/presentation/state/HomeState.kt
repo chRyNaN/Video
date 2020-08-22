@@ -19,9 +19,9 @@ sealed class HomeIntent : Intent {
 
     object LoadInitial : HomeIntent()
 
-    object LoadMore : HomeIntent()
+    data class LoadMore(val currentItems: List<AdapterItem> = emptyList()) : HomeIntent()
 
-    object Refresh : HomeIntent()
+    data class Refresh(val currentItems: List<AdapterItem> = emptyList()) : HomeIntent()
 }
 
 sealed class HomeChange : Change {
@@ -32,3 +32,12 @@ sealed class HomeChange : Change {
 
     data class StartedRefreshing(val currentItems: List<AdapterItem> = emptyList()) : HomeChange()
 }
+
+val HomeState.currentItems: List<AdapterItem>
+    get() = when (this) {
+        is HomeState.LoadingInitial -> emptyList()
+        is HomeState.Refreshing -> currentItems
+        is HomeState.LoadingMore -> currentItems
+        is HomeState.DisplayingLoaded -> items
+        is HomeState.DisplayingEmpty -> emptyList()
+    }

@@ -14,6 +14,7 @@ import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent
 import com.chrynan.video.presentation.state.HomeState
 import com.chrynan.video.presentation.presenter.HomePresenter
+import com.chrynan.video.presentation.state.currentItems
 import com.chrynan.video.presentation.viewmodel.AdapterItem
 import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.adapter.factory.HomeAdapterFactory
@@ -49,11 +50,11 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
 
     private val loadMoreIntents: Flow<HomeIntent>
         get() = homeRecyclerView.loadMoreEvents()
-            .map { HomeIntent.LoadMore }
+            .map { HomeIntent.LoadMore(currentItems = renderState.currentItems) }
 
     private val refreshIntents: Flow<HomeIntent>
         get() = homeSwipeRefreshLayout.refreshes()
-            .map { HomeIntent.Refresh }
+            .map { HomeIntent.Refresh(currentItems = renderState.currentItems) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

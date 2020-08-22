@@ -12,7 +12,6 @@ import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent
 import com.chrynan.video.presentation.state.HomeState
 import com.chrynan.video.presentation.view.View
-import com.chrynan.video.presentation.viewmodel.AdapterItem
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
@@ -37,8 +36,8 @@ class HomePresenter @Inject constructor(
             .perform {
                 when (it) {
                     is HomeIntent.LoadInitial -> loadInitialAction(it)
-                    is HomeIntent.Refresh -> refreshAction(it, currentState.currentItems)
-                    is HomeIntent.LoadMore -> loadMoreAction(it, currentState.currentItems)
+                    is HomeIntent.Refresh -> refreshAction(it)
+                    is HomeIntent.LoadMore -> loadMoreAction(it)
                 }
             }
             .reduceAndRender()
@@ -50,13 +49,4 @@ class HomePresenter @Inject constructor(
             }
             .launchIn(this)
     }
-
-    private val HomeState.currentItems: List<AdapterItem>
-        get() = when (this) {
-            is HomeState.LoadingInitial -> emptyList()
-            is HomeState.Refreshing -> currentItems
-            is HomeState.LoadingMore -> currentItems
-            is HomeState.DisplayingLoaded -> items
-            is HomeState.DisplayingEmpty -> emptyList()
-        }
 }

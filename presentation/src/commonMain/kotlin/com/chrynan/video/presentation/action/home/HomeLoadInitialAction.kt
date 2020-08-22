@@ -17,7 +17,7 @@ class HomeLoadInitialAction @Inject constructor(
     private val mapper: VideoShowcaseMapper
 ) : Action<HomeIntent.LoadInitial, HomeChange> {
 
-    operator fun invoke(intent: HomeIntent.LoadInitial): Flow<HomeChange> =
+    override fun perform(intent: HomeIntent.LoadInitial): Flow<HomeChange> =
         feedItemRepository.get()
             .filterNotNull()
             .map { items ->
