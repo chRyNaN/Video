@@ -28,6 +28,9 @@ abstract class BaseFragment<INTENT : Intent, STATE : State, CHANGE : Change, SCR
 
     protected open val presenter: BasePresenter<INTENT, STATE, CHANGE>? = null
 
+    protected val currentState: STATE
+        get() = presenter?.currentState ?: renderState
+
     protected lateinit var renderState: STATE
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {

@@ -50,11 +50,11 @@ class HomeFragment : BaseFragment<HomeIntent, HomeState, HomeChange, HomeScreen>
 
     private val loadMoreIntents: Flow<HomeIntent>
         get() = homeRecyclerView.loadMoreEvents()
-            .map { HomeIntent.LoadMore(currentItems = renderState.currentItems) }
+            .map { HomeIntent.LoadMore(currentItems = currentState.currentItems) }
 
     private val refreshIntents: Flow<HomeIntent>
         get() = homeSwipeRefreshLayout.refreshes()
-            .map { HomeIntent.Refresh(currentItems = renderState.currentItems) }
+            .map { HomeIntent.Refresh(currentItems = currentState.currentItems) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
