@@ -1,23 +1,28 @@
 package com.chrynan.video.presentation.presenter
 
+import com.chrynan.logger.Logger
 import com.chrynan.video.common.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.common.repository.SearchItemRepository
-import com.chrynan.video.common.repository.TagSuggestionRepository
-import com.chrynan.video.common.validation.validator.SearchQueryValidator
+import com.chrynan.video.presentation.action.perform
+import com.chrynan.video.presentation.action.search.SearchClearAction
+import com.chrynan.video.presentation.action.search.SearchLoadMoreAction
+import com.chrynan.video.presentation.action.search.SearchQueryAction
 import com.chrynan.video.presentation.reducer.SearchReducer
 import com.chrynan.video.presentation.state.SearchChange
 import com.chrynan.video.presentation.state.SearchIntent
 import com.chrynan.video.presentation.state.SearchState
 import com.chrynan.video.presentation.view.View
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
 
 class SearchPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,
     override val view: View<SearchIntent, SearchState>,
     override val reducer: SearchReducer,
-    private val searchItemRepository: SearchItemRepository,
-    private val tagSuggestionRepository: TagSuggestionRepository,
-    private val searchQueryValidator: SearchQueryValidator
+    private val searchQueryAction: SearchQueryAction,
+    private val searchLoadMoreAction: SearchLoadMoreAction,
+    private val searchClearAction: SearchClearAction
 ) : BasePresenter<SearchIntent, SearchState, SearchChange>(
     initialState = SearchState.DisplayingNoInput,
     dispatchers = dispatchers
@@ -26,7 +31,22 @@ class SearchPresenter @Inject constructor(
     override fun onBind() {
         super.onBind()
 
-        // TODO
         view.intents()
+            .flowOn(dispatchers.main)
+            .perform {
+                when (it) {
+                    is SearchIntent.Clear -> searchClearAction(it)
+                    is SearchIntent.Search -> searchQueryAction(it)
+                    is SearchIntent.LoadMore -> searchLoadMoreAction(it)
+                }
+            }
+            .reduceAndRender()
+            .catch {
+                Logger.logError(
+                    throwable = it,
+                    message = "Error listening to intents in SearchPresenter."
+                )
+            }
+            .launchIn(this)
     }
 }
