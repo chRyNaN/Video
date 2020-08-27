@@ -49,3 +49,12 @@ sealed class SearchChange : Change {
 
     object Cleared : SearchChange()
 }
+
+val SearchState.currentItems: List<AdapterItem>
+    get() = when (this) {
+        is SearchState.DisplayingNoInput -> emptyList()
+        is SearchState.DisplayingEmpty -> emptyList()
+        is SearchState.DisplayingLoaded -> items
+        is SearchState.Searching -> emptyList()
+        is SearchState.LoadingMore -> currentItems
+    }
