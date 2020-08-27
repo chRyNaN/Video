@@ -19,7 +19,7 @@ class SearchPresenter @Inject constructor(
     private val tagSuggestionRepository: TagSuggestionRepository,
     private val searchQueryValidator: SearchQueryValidator
 ) : BasePresenter<SearchIntent, SearchState, SearchChange>(
-    initialState = SearchState.Initial,
+    initialState = SearchState.DisplayingNoInput,
     dispatchers = dispatchers
 ) {
 
