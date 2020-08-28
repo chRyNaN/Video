@@ -5,6 +5,7 @@ object Versions {
     const val KOTLIN = "1.3.72"
     const val KOTLIN_COROUTINES = "1.3.9"
     const val KOTLIN_COROUTINES_COMMON = "1.3.7"
+    const val KOTLIN_SERIALIZATION = "0.20.0"
 
     const val ANDROID_LIFECYCLE = "2.2.0"
     const val ANDROID_COMPONENTS = "1.3.1"
@@ -38,6 +39,10 @@ object Versions {
     const val NOTIES = "4.4.0"
 
     const val FLOWBINDING = "1.0.0-alpha04"
+
+    const val KTOR = "1.3.2"
+
+    const val JAVAX_INJECT = "1"
 }
 
 object Deps {
@@ -50,6 +55,10 @@ object Deps {
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINES}"
     const val KOTLIN_COROUTINES_ANDROID =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLIN_COROUTINES}"
+    const val KOTLIN_SERIALIZATION_COMMON =
+        "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${Versions.KOTLIN_SERIALIZATION}"
+    const val KOTLIN_SERIALIZATION_JVM =
+        "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.KOTLIN_SERIALIZATION}"
 
     const val ANDROID_LIFECYCLE =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.ANDROID_LIFECYCLE}"
@@ -73,6 +82,9 @@ object Deps {
 
     const val DB_ENCRYPTION = "net.zetetic:android-database-sqlcipher:${Versions.DB_ENCRYPTION}"
 
+    const val CHRYNAN_LOGGING_CORE = "com.chrynan.logger:logger-core:${Versions.CHRYNAN_LOGGING}"
+    const val CHRYNAN_LOGGING_CORE_JVM =
+        "com.chrynan.logger:logger-core-jvm:${Versions.CHRYNAN_LOGGING}"
     const val CHRYNAN_LOGGING_ANDROID =
         "com.chrynan.logger:logger-android:${Versions.CHRYNAN_LOGGING}"
     const val CHRYNAN_LOGGING_ANDROID_TIMBER =
@@ -95,7 +107,13 @@ object Deps {
 
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
 
-    const val APOLLO_HTTP_CACHE = "com.apollographql.apollo:apollo-http-cache:${Versions.APOLLO}"
+    const val APOLLO_API_COMMON = "com.apollographql.apollo:apollo-api:${Versions.APOLLO}"
+    const val APOLLO_RUNTIME_COMMON =
+        "com.apollographql.apollo:apollo-runtime-kotlin:${Versions.APOLLO}"
+    const val APOLLO_CACHE_SQLITE_COMMON =
+        "com.apollographql.apollo:apollo-normalized-cache-sqlite:${Versions.APOLLO}"
+    const val APOLLO_API_JVM = "com.apollographql.apollo:apollo-api-jvm:${Versions.APOLLO}"
+    const val APOLLO_CACHE_HTTP = "com.apollographql.apollo:apollo-http-cache:${Versions.APOLLO}"
 
     const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Versions.DAGGER_COMPILER}"
     const val DAGGER_ANDROID_COMPILER =
@@ -124,4 +142,13 @@ object Deps {
         "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:${Versions.FLOWBINDING}"
     const val FLOWBINDING_SWIPEREFRESH =
         "io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:${Versions.FLOWBINDING}"
+
+    const val KTOR_CORE_COMMON = "io.ktor:ktor-client-core:${Versions.KTOR}"
+    const val KTOR_SERIALIZATION = "io.ktor:ktor-client-serialization:${Versions.KTOR}"
+    const val KTOR_SERIALIZATION_JVM = "io.ktor:ktor-client-serialization-jvm:${Versions.KTOR}"
+    const val KTOR_LOGGING = "io.ktor:ktor-client-logging:${Versions.KTOR}"
+    const val KTOR_LOGGING_JVM = "io.ktor:ktor-client-logging-jvm:${Versions.KTOR}"
+    const val KTOR_OKHTTP = "io.ktor:ktor-client-okhttp:${Versions.KTOR}"
+
+    const val JAVAX_INJECT = "javax.inject:javax.inject:${Versions.JAVAX_INJECT}"
 }

@@ -102,7 +102,7 @@ dependencies {
     implementation Deps.OKHTTP
 
     // GraphQL Client - Apollo
-    implementation Deps.APOLLO_HTTP_CACHE
+    implementation Deps.APOLLO_CACHE_HTTP
 
     // Dependency Injection - Dagger
     kapt Deps.DAGGER_COMPILER

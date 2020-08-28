@@ -1,5 +1,6 @@
 import com.chrynan.video.buildSrc.AppConstants
 import com.chrynan.video.buildSrc.plugins.schema.CreateSchemaJsonPlugin
+import com.chrynan.video.buildSrc.Deps
 
 apply plugin: "kotlin-multiplatform"
 apply plugin: "com.android.library"
@@ -19,71 +20,71 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
+                implementation Deps.KOTLIN_COMMON
 
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.7"
+                implementation Deps.KOTLIN_COROUTINES_COMMON
 
                 // HTTP
-                api "io.ktor:ktor-client-core:1.3.2"
-                api "io.ktor:ktor-client-serialization:1.3.2"
-                api "io.ktor:ktor-client-logging:1.3.2"
+                api Deps.KTOR_CORE_COMMON
+                api Deps.KTOR_SERIALIZATION
+                api Deps.KTOR_LOGGING
 
                 // GraphQL Client - Apollo
-                api "com.apollographql.apollo:apollo-api:2.3.0"
-                implementation "com.apollographql.apollo:apollo-runtime-kotlin:2.3.0"
-                implementation "com.apollographql.apollo:apollo-normalized-cache-sqlite:2.3.0"
+                api Deps.APOLLO_API_COMMON
+                implementation Deps.APOLLO_RUNTIME_COMMON
+                implementation Deps.APOLLO_CACHE_SQLITE_COMMON
 
                 // Serialization
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0"
+                api Deps.KOTLIN_SERIALIZATION_COMMON
 
                 // Logging
-                api "com.chrynan.logger:logger-core:1.2.1"
+                api Deps.CHRYNAN_LOGGING_CORE
             }
         }
         jvmMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib"
+                implementation Deps.KOTLIN_JVM
 
-                implementation "javax.inject:javax.inject:1"
+                implementation Deps.JAVAX_INJECT
 
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
+                implementation Deps.KOTLIN_COROUTINES_JVM
 
                 // HTTP
-                api "io.ktor:ktor-client-okhttp:1.3.2"
-                api "io.ktor:ktor-client-serialization-jvm:1.3.2"
-                api "io.ktor:ktor-client-logging-jvm:1.3.2"
+                api Deps.KTOR_OKHTTP
+                api Deps.KTOR_SERIALIZATION_JVM
+                api Deps.KTOR_LOGGING_JVM
 
                 // GraphQL Client - Apollo
-                api "com.apollographql.apollo:apollo-api-jvm:2.3.0"
+                api Deps.APOLLO_API_JVM
 
                 // Serialization
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
+                api Deps.KOTLIN_SERIALIZATION_JVM
 
                 // Logging
-                api "com.chrynan.logger:logger-core-jvm:1.2.1"
+                api Deps.CHRYNAN_LOGGING_CORE_JVM
             }
         }
         androidMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib"
+                implementation Deps.KOTLIN_JVM
 
-                implementation "javax.inject:javax.inject:1"
+                implementation Deps.JAVAX_INJECT
 
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
+                implementation Deps.KOTLIN_COROUTINES_COMMON
 
                 // HTTP
-                api "io.ktor:ktor-client-okhttp:1.3.2"
-                api "io.ktor:ktor-client-serialization-jvm:1.3.2"
-                api "io.ktor:ktor-client-logging-jvm:1.3.2"
+                api Deps.KTOR_OKHTTP
+                api Deps.KTOR_SERIALIZATION_JVM
+                api Deps.KTOR_LOGGING_JVM
 
                 // GraphQL Client - Apollo
-                api "com.apollographql.apollo:apollo-api-jvm:2.3.0"
+                api Deps.APOLLO_API_JVM
 
                 // Serialization
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
+                api Deps.KOTLIN_SERIALIZATION_JVM
 
                 // Logging
-                api "com.chrynan.logger:logger-core-jvm:1.2.1"
+                api Deps.CHRYNAN_LOGGING_CORE_JVM
             }
         }
     }
