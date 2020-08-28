@@ -1,4 +1,5 @@
 import com.chrynan.video.buildSrc.AppConstants
+import com.chrynan.video.buildSrc.Deps
 
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
@@ -54,14 +55,14 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72"
+    implementation Deps.KOTLIN_JVM
 
     // Kotlin Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+    implementation Deps.KOTLIN_COROUTINES
+    implementation Deps.KOTLIN_COROUTINES_ANDROID
 
     // Kotlin Coroutine Android Lifecycle
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation Deps.ANDROID_LIFECYCLE
 
     // Project Modules
     implementation project(":common")
@@ -69,77 +70,72 @@ dependencies {
     implementation project(":player")
 
     // Android Components
-    implementation "androidx.core:core:1.3.1"
-    // When upgrading, verify that the overlay's work correctly. The last checked newer version doesn't work.
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta3"
-    implementation "com.google.android.material:material:1.3.0-alpha02"
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-
-    // Utilities
-    implementation "com.github.chRyNaN.kotlin-utils:platform-jvm:0.1.3"
-    implementation "com.github.chRyNaN:expandable:v1.0.2"
+    implementation Deps.ANDROID_COMPONENTS
+    implementation Deps.ANDROID_CONSTRAINT_LAYOUT
+    implementation Deps.ANDROID_MATERIAL
+    implementation Deps.ANDROID_RECYCLER_VIEW
+    implementation Deps.ANDROID_CARD_VIEW
+    implementation Deps.ANDROID_SWIPE_REFRESH
 
     // Logging
-    implementation "com.chrynan.logger:logger-android:1.2.1"
-    implementation "com.chrynan.logger:logger-android-timber:1.2.1"
+    implementation Deps.CHRYNAN_LOGGING_ANDROID
+    implementation Deps.CHRYNAN_LOGGING_ANDROID_TIMBER
 
     // Adapter - Aaaah
-    implementation "com.chrynan.aaaah:aaaah-libraryx:0.7.0"
-    implementation "com.chrynan.aaaah:aaaah-annotation:0.7.0"
-    kapt "com.chrynan.aaaah:aaaah-compiler:0.7.0"
+    implementation Deps.CHRYNAN_AAAAH
+    implementation Deps.CHRYNAN_AAAAH_ANNOTATION
+    kapt Deps.CHRYNAN_AAAAH_COMPILER
 
     // Circle Image View
-    implementation "de.hdodenhof:circleimageview:3.0.1"
+    implementation Deps.UI_CIRCLE_VIEW
 
     // Image Loading - Coil
-    implementation "io.coil-kt:coil:0.11.0"
-    implementation "io.coil-kt:coil-gif:0.11.0"
-    implementation "io.coil-kt:coil-svg:0.11.0"
-    implementation "io.coil-kt:coil-video:0.11.0"
+    implementation Deps.COIL
+    implementation Deps.COIL_GIF
+    implementation Deps.COIL_SVG
+    implementation Deps.COIL_VIDEO
 
     // Video Player - ExoPlayer
-    implementation "com.google.android.exoplayer:exoplayer:2.11.5"
+    implementation Deps.EXOPLAYER
 
-    // HTTP
-    implementation "com.squareup.okhttp3:okhttp:4.7.2"
+    // HTTP - OkHttp
+    implementation Deps.OKHTTP
 
     // GraphQL Client - Apollo
-    implementation "com.apollographql.apollo:apollo-http-cache:2.3.0"
+    implementation Deps.APOLLO_HTTP_CACHE
 
     // Dependency Injection - Dagger
-    kapt "com.google.dagger:dagger-compiler:2.19"
-    kapt "com.google.dagger:dagger-android-processor:2.19"
-    implementation "com.google.dagger:dagger:2.27"
-    implementation "com.google.dagger:dagger-android-support:2.19"
+    kapt Deps.DAGGER_COMPILER
+    kapt Deps.DAGGER_ANDROID_COMPILER
+    implementation Deps.DAGGER
+    implementation Deps.DAGGER_ANDROID
 
     // Markdown Support
-    implementation "io.noties.markwon:core:4.4.0"
-    implementation "io.noties.markwon:ext-strikethrough:4.4.0"
-    implementation "io.noties.markwon:ext-tables:4.4.0"
-    implementation "io.noties.markwon:ext-tasklist:4.4.0"
-    implementation "io.noties.markwon:html:4.4.0"
-    implementation "io.noties.markwon:image-coil:4.4.0"
-    implementation "io.noties.markwon:linkify:4.4.0"
-    implementation "io.noties.markwon:syntax-highlight:4.4.0"
+    implementation Deps.NOTIES_CORE
+    implementation Deps.NOTIES_STRIKETHROUGH
+    implementation Deps.NOTIES_TABLE
+    implementation Deps.NOTIES_TASK_LIST
+    implementation Deps.NOTIES_HTML
+    implementation Deps.NOTIES_IMAGE_COIL
+    implementation Deps.NOTIES_LINKIFY
+    implementation Deps.NOTIES_SYNTAX_HIGHLIGHT
 
     // Database - Room
-    implementation "androidx.room:room-runtime:2.2.5"
-    implementation "androidx.room:room-ktx:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
+    implementation Deps.ANDROID_ROOM
+    implementation Deps.ANDROID_ROOM_KTX
+    kapt Deps.ANDROID_ROOM_COMPILER
 
     // Database Encryption - SqlCipher
-    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
-    implementation "androidx.sqlite:sqlite:2.1.0"
+    implementation Deps.DB_ENCRYPTION
+    implementation Deps.ANDROID_SQLIGHT
 
     // Reactive UI - FlowBinding
-    implementation "io.github.reactivecircus.flowbinding:flowbinding-android:1.0.0-alpha04"
-    implementation "io.github.reactivecircus.flowbinding:flowbinding-activity:1.0.0-alpha04"
-    implementation "io.github.reactivecircus.flowbinding:flowbinding-appcompat:1.0.0-alpha04"
-    implementation "io.github.reactivecircus.flowbinding:flowbinding-core:1.0.0-alpha04"
-    implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:1.0.0-alpha04"
-    implementation "io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:1.0.0-alpha04"
+    implementation Deps.FLOWBINDING_ANDROID
+    implementation Deps.FLOWBINDING_ACTIVITY
+    implementation Deps.FLOWBINDING_APPCOMPAT
+    implementation Deps.FLOWBINDING_CORE
+    implementation Deps.FLOWBINDING_RECYCLERVIEW
+    implementation Deps.FLOWBINDING_SWIPEREFRESH
 
     // Testing
     testImplementation "junit:junit:4.12"
