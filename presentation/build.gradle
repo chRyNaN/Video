@@ -1,4 +1,5 @@
 import com.chrynan.video.buildSrc.AppConstants
+import com.chrynan.video.buildSrc.Deps
 
 apply plugin: "kotlin-multiplatform"
 apply plugin: "com.android.library"
@@ -15,31 +16,31 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
+                implementation Deps.KOTLIN_COMMON
 
                 implementation project(":common")
 
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.7"
+                implementation Deps.KOTLIN_COROUTINES_COMMON
 
-                implementation "com.chrynan.aaaah:aaaah-core:0.7.0"
+                implementation Deps.CHRYNAN_AAAAH_CORE
             }
         }
         jvmMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib"
+                implementation Deps.KOTLIN_JVM
 
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
+                implementation Deps.KOTLIN_COROUTINES_JVM
 
-                implementation "com.chrynan.aaaah:aaaah-core-jvm:0.7.0"
+                implementation Deps.CHRYNAN_AAAAH_CORE_JVM
             }
         }
         androidMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib"
+                implementation Deps.KOTLIN_JVM
 
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
+                implementation Deps.KOTLIN_COROUTINES_JVM
 
-                implementation "com.chrynan.aaaah:aaaah-core-jvm:0.7.0"
+                implementation Deps.CHRYNAN_AAAAH_CORE_JVM
             }
         }
     }

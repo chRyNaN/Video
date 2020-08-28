@@ -4,6 +4,7 @@ object Versions {
 
     const val KOTLIN = "1.3.72"
     const val KOTLIN_COROUTINES = "1.3.9"
+    const val KOTLIN_COROUTINES_COMMON = "1.3.7"
 
     const val ANDROID_LIFECYCLE = "2.2.0"
     const val ANDROID_COMPONENTS = "1.3.1"
@@ -41,8 +42,11 @@ object Versions {
 
 object Deps {
 
+    const val KOTLIN_COMMON = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.KOTLIN}"
     const val KOTLIN_JVM = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
-    const val KOTLIN_COROUTINES =
+    const val KOTLIN_COROUTINES_COMMON =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${Versions.KOTLIN_COROUTINES_COMMON}"
+    const val KOTLIN_COROUTINES_JVM =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINES}"
     const val KOTLIN_COROUTINES_ANDROID =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLIN_COROUTINES}"
@@ -73,7 +77,9 @@ object Deps {
         "com.chrynan.logger:logger-android:${Versions.CHRYNAN_LOGGING}"
     const val CHRYNAN_LOGGING_ANDROID_TIMBER =
         "com.chrynan.logger:logger-android-timber:${Versions.CHRYNAN_LOGGING}"
-    const val CHRYNAN_AAAAH = "com.chrynan.aaaah:aaaah-libraryx:${Versions.CHRYNAN_AAAAH}"
+    const val CHRYNAN_AAAAH_CORE = "com.chrynan.aaaah:aaaah-core:${Versions.CHRYNAN_AAAAH}"
+    const val CHRYNAN_AAAAH_CORE_JVM = "com.chrynan.aaaah:aaaah-core-jvm:${Versions.CHRYNAN_AAAAH}"
+    const val CHRYNAN_AAAAH_ANDROID = "com.chrynan.aaaah:aaaah-libraryx:${Versions.CHRYNAN_AAAAH}"
     const val CHRYNAN_AAAAH_ANNOTATION =
         "com.chrynan.aaaah:aaaah-annotation:${Versions.CHRYNAN_AAAAH}"
     const val CHRYNAN_AAAAH_COMPILER = "com.chrynan.aaaah:aaaah-compiler:${Versions.CHRYNAN_AAAAH}"

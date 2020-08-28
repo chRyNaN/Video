@@ -58,7 +58,7 @@ dependencies {
     implementation Deps.KOTLIN_JVM
 
     // Kotlin Coroutines
-    implementation Deps.KOTLIN_COROUTINES
+    implementation Deps.KOTLIN_COROUTINES_JVM
     implementation Deps.KOTLIN_COROUTINES_ANDROID
 
     // Kotlin Coroutine Android Lifecycle
@@ -82,7 +82,7 @@ dependencies {
     implementation Deps.CHRYNAN_LOGGING_ANDROID_TIMBER
 
     // Adapter - Aaaah
-    implementation Deps.CHRYNAN_AAAAH
+    implementation Deps.CHRYNAN_AAAAH_ANDROID
     implementation Deps.CHRYNAN_AAAAH_ANNOTATION
     kapt Deps.CHRYNAN_AAAAH_COMPILER
 
