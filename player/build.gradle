@@ -1,4 +1,5 @@
 import com.chrynan.video.buildSrc.AppConstants
+import com.chrynan.video.buildSrc.Deps
 
 apply plugin: "kotlin-multiplatform"
 apply plugin: "com.android.library"
@@ -63,10 +64,10 @@ android {
 
 dependencies {
     // Video Player - ExoPlayer
-    implementation "com.google.android.exoplayer:exoplayer:2.11.5"
+    implementation Deps.EXOPLAYER
 
     // Image Loading - Coil
-    implementation "io.coil-kt:coil:0.11.0"
+    implementation Deps.COIL
 }
 
 configurations {
