@@ -1,0 +1,51 @@
+import com.chrynan.video.buildSrc.AppConstants
+import com.chrynan.video.buildSrc.Deps
+
+apply plugin: "kotlin-multiplatform"
+
+group AppConstants.appGroup
+version AppConstants.appVersion
+
+kotlin {
+    targets {
+        jvm()
+    }
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation Deps.KOTLIN_COMMON
+
+                implementation Deps.KOTLIN_COROUTINES_COMMON
+
+                implementation Deps.CHRYNAN_AAAAH_CORE
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation Deps.KOTLIN_JVM
+
+                implementation Deps.KOTLIN_COROUTINES_JVM
+
+                implementation Deps.CHRYNAN_AAAAH_CORE_JVM
+            }
+        }
+    }
+}
+
+configurations {
+    compileClasspath
+}
+
+publishing {
+    publications {
+        kotlinMultiplatform {
+            artifactId = "video-presentation-core"
+        }
+        jvm {
+            artifactId = "video-presentation-core-jvm"
+        }
+        metadata {
+            artifactId = "video-presentation-core-metadata"
+        }
+    }
+}

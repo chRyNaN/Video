@@ -49,10 +49,13 @@ object Deps {
 
     const val KOTLIN_COMMON = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.KOTLIN}"
     const val KOTLIN_JVM = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
+    const val KOTLIN_JS = "org.jetbrains.kotlin:kotlin-stdlib-js:${Versions.KOTLIN}"
     const val KOTLIN_COROUTINES_COMMON =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${Versions.KOTLIN_COROUTINES_COMMON}"
     const val KOTLIN_COROUTINES_JVM =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINES}"
+    const val KOTLIN_COROUTINES_JS =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${Versions.KOTLIN_COROUTINES}"
     const val KOTLIN_COROUTINES_ANDROID =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLIN_COROUTINES}"
     const val KOTLIN_SERIALIZATION_COMMON =
