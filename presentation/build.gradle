@@ -2,8 +2,6 @@ import com.chrynan.video.buildSrc.AppConstants
 import com.chrynan.video.buildSrc.Deps
 
 apply plugin: "kotlin-multiplatform"
-apply plugin: "com.android.library"
-apply plugin: "digital.wup.android-maven-publish"
 
 group AppConstants.appGroup
 version AppConstants.appVersion
@@ -11,7 +9,6 @@ version AppConstants.appVersion
 kotlin {
     targets {
         jvm()
-        fromPreset(presets.android, "android")
     }
     sourceSets {
         commonMain {
@@ -35,51 +32,6 @@ kotlin {
                 implementation Deps.CHRYNAN_AAAAH_CORE_JVM
             }
         }
-        androidMain {
-            dependencies {
-                implementation Deps.KOTLIN_JVM
-
-                implementation Deps.KOTLIN_COROUTINES_JVM
-
-                implementation Deps.CHRYNAN_AAAAH_CORE_JVM
-            }
-        }
-    }
-}
-
-android {
-    compileSdkVersion AppConstants.androidCompileSdkVersion
-    defaultConfig {
-        minSdkVersion AppConstants.androidMinSdkVersion
-        targetSdkVersion AppConstants.androidTargetSdkVerison
-        versionCode AppConstants.appVersionCode
-        versionName AppConstants.appVersion
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            matchingFallbacks = ["debug"]
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-    sourceSets {
-        main {
-            manifest.srcFile "src/androidMain/AndroidManifest.xml"
-            java.srcDirs = ["src/androidMain/kotlin"]
-            res.srcDirs = ["src/androidMain/res"]
-        }
-        test {
-            java.srcDirs = ["src/androidTest/kotlin"]
-            res.srcDirs = ["src/androidTest/res"]
-        }
     }
 }
 
@@ -94,10 +46,6 @@ publishing {
         }
         jvm {
             artifactId = "video-presentation-jvm"
-        }
-        MavenPub(MavenPublication) {
-            from(components.android)
-            artifactId "video-presentation-android"
         }
         metadata {
             artifactId = "video-presentation-metadata"

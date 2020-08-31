@@ -1,4 +1,4 @@
-package com.chrynan.video.presentation.resources
+package com.chrynan.video.android.core
 
 import android.content.Context
 import android.graphics.drawable.Drawable

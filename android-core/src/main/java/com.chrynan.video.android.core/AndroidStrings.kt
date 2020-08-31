@@ -1,6 +1,6 @@
-package com.chrynan.video.presentation.resources
+package com.chrynan.video.android.core
 
-import com.chrynan.video.presentation.R
+import com.chrynan.video.presentation.resources.Strings
 
 class AndroidStrings(resourceAccessor: AndroidResourceAccessor) : Strings,
     AndroidResourceAccessor by resourceAccessor {

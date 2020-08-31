@@ -68,6 +68,7 @@ dependencies {
     implementation project(":common")
     implementation project(":presentation")
     implementation project(":player")
+    implementation project(":android-core")
 
     // Android Components
     implementation Deps.ANDROID_COMPONENTS

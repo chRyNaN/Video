@@ -5,11 +5,11 @@ import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.coroutine.AndroidCoroutineDispatchers
 import com.chrynan.video.coroutine.RepositoryCoroutineScope
 import com.chrynan.video.di.qualifier.ApplicationContextQualifier
-import com.chrynan.video.presentation.resources.AndroidResourceAccessor
-import com.chrynan.video.presentation.resources.AndroidResourceProvider
-import com.chrynan.video.presentation.resources.AndroidStrings
 import com.chrynan.video.presentation.resources.Strings
 import com.chrynan.video.VideoApplication
+import com.chrynan.video.android.core.AndroidResourceAccessor
+import com.chrynan.video.android.core.AndroidResourceProvider
+import com.chrynan.video.android.core.AndroidStrings
 import com.chrynan.video.utils.ApplicationContext
 import dagger.Binds
 import dagger.Module
