@@ -1,0 +1,67 @@
+import com.chrynan.video.buildSrc.AppConstants
+import com.chrynan.video.buildSrc.Deps
+
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "digital.wup.android-maven-publish"
+
+group AppConstants.appGroup
+version AppConstants.appVersion
+
+android {
+    compileSdkVersion AppConstants.androidCompileSdkVersion
+    defaultConfig {
+        minSdkVersion AppConstants.androidMinSdkVersion
+        targetSdkVersion AppConstants.androidTargetSdkVerison
+        versionCode AppConstants.appVersionCode
+        versionName AppConstants.appVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            matchingFallbacks = ["debug"]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Kotlin
+    implementation Deps.KOTLIN_JVM
+
+    // Kotlin Coroutines
+    implementation Deps.KOTLIN_COROUTINES_JVM
+    implementation Deps.KOTLIN_COROUTINES_ANDROID
+
+    // Project Modules
+    implementation project(":presentation")
+
+    // Testing
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "com.android.support.test:runner:1.0.2"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.2"
+}
+
+configurations {
+    cleanedAnnotations
+    compile.exclude group: "org.jetbrains", module: "annotations"
+}
+
+publishing {
+    publications {
+        MavenPub(MavenPublication) {
+            from(components.android)
+            artifactId "video-android-core"
+        }
+    }
+}

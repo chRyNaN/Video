@@ -1,5 +1,6 @@
 rootProject.name = "video"
 
+include ":android-core"
 include ":android"
 include ":common"
 include ":presentation-core"
