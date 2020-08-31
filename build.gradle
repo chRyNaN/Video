@@ -35,7 +35,7 @@ allprojects {
     // Allows use of Experimental Kotlin features, such as, Kotlin Contracts
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         kotlinOptions {
-            freeCompilerArgs = ["-Xuse-experimental=kotlin.Experimental", "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"]
+            freeCompilerArgs = ["-Xuse-experimental=kotlin.Experimental", "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
             jvmTarget = JavaVersion.VERSION_1_8
         }
     }
