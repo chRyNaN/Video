@@ -1,6 +1,7 @@
 package com.chrynan.video.presentation.reducer
 
 import com.chrynan.video.common.Inject
+import com.chrynan.video.presentation.core.Reducer
 import com.chrynan.video.presentation.state.SearchChange
 import com.chrynan.video.presentation.state.SearchState
 

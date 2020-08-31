@@ -2,11 +2,11 @@ package com.chrynan.video.presentation.presenter
 
 import com.chrynan.video.common.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
+import com.chrynan.video.presentation.core.View
 import com.chrynan.video.presentation.reducer.GenericContentVideoDetailsReducer
 import com.chrynan.video.presentation.state.GenericContentVideoDetailsChange
 import com.chrynan.video.presentation.state.GenericContentVideoDetailsIntent
 import com.chrynan.video.presentation.state.GenericContentVideoDetailsState
-import com.chrynan.video.presentation.view.View
 
 class GenericContentVideoDetailsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,

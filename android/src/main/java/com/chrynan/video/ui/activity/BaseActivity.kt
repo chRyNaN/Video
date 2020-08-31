@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.lifecycle.coroutineScope
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.ActivityCoroutineScope
-import com.chrynan.video.presentation.navigator.Navigator
-import com.chrynan.video.presentation.navigator.Screen
+import com.chrynan.video.presentation.core.Navigator
+import com.chrynan.video.presentation.core.Screen
 import com.chrynan.video.presentation.presenter.BasePresenter
 import com.chrynan.video.ui.fragment.BaseFragment
 import dagger.android.support.DaggerAppCompatActivity

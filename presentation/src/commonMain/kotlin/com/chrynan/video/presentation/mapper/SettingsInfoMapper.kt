@@ -1,10 +1,10 @@
 package com.chrynan.video.presentation.mapper
 
 import com.chrynan.video.common.Inject
-import com.chrynan.video.common.mapper.Mapper
 import com.chrynan.video.common.model.SettingsInfo
+import com.chrynan.video.presentation.core.AdapterItem
+import com.chrynan.video.presentation.core.Mapper
 import com.chrynan.video.presentation.resources.Strings
-import com.chrynan.video.presentation.viewmodel.AdapterItem
 import com.chrynan.video.presentation.viewmodel.SettingsItemViewModel
 import com.chrynan.video.presentation.viewmodel.builder.settings
 

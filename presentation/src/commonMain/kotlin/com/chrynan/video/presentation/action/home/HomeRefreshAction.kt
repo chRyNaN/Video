@@ -4,7 +4,7 @@ import com.chrynan.video.common.Inject
 import com.chrynan.video.common.model.api.FeedItem
 import com.chrynan.video.common.repository.FeedItemRepository
 import com.chrynan.video.common.utils.startWith
-import com.chrynan.video.presentation.action.Action
+import com.chrynan.video.presentation.core.Action
 import com.chrynan.video.presentation.mapper.video.VideoShowcaseMapper
 import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent

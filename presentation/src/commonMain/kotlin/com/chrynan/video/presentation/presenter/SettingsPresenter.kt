@@ -3,11 +3,11 @@ package com.chrynan.video.presentation.presenter
 import com.chrynan.video.common.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.common.repository.SettingsInfoRepository
+import com.chrynan.video.presentation.core.View
 import com.chrynan.video.presentation.reducer.SettingsReducer
 import com.chrynan.video.presentation.state.SettingsChange
 import com.chrynan.video.presentation.state.SettingsIntent
 import com.chrynan.video.presentation.state.SettingsState
-import com.chrynan.video.presentation.view.View
 
 class SettingsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,

@@ -1,10 +1,12 @@
 package com.chrynan.video.presentation.reducer
 
 import com.chrynan.video.common.Inject
+import com.chrynan.video.presentation.core.Reducer
 import com.chrynan.video.presentation.state.ServiceProviderDetailsChange
 import com.chrynan.video.presentation.state.ServiceProviderDetailsState
 
-class ServiceProviderDetailsReducer @Inject constructor(): Reducer<ServiceProviderDetailsState, ServiceProviderDetailsChange> {
+class ServiceProviderDetailsReducer @Inject constructor() :
+    Reducer<ServiceProviderDetailsState, ServiceProviderDetailsChange> {
 
     override suspend fun reduce(
         previous: ServiceProviderDetailsState,

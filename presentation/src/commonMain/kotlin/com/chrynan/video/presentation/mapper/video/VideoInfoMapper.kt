@@ -1,8 +1,8 @@
 package com.chrynan.video.presentation.mapper.video
 
 import com.chrynan.video.common.Inject
-import com.chrynan.video.common.mapper.Mapper
-import com.chrynan.video.presentation.viewmodel.AdapterItem
+import com.chrynan.video.presentation.core.AdapterItem
+import com.chrynan.video.presentation.core.Mapper
 
 class VideoInfoMapper @Inject constructor(
     private val headerMapper: VideoHeaderMapper,

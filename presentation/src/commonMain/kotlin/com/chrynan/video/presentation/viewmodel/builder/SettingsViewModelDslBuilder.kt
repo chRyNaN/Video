@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.viewmodel.builder
 
-import com.chrynan.video.presentation.viewmodel.AdapterItem
+import com.chrynan.video.presentation.core.AdapterItem
 import com.chrynan.video.presentation.viewmodel.SectionHeaderViewModel
 import com.chrynan.video.presentation.viewmodel.SettingsItemViewModel
 

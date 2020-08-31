@@ -4,11 +4,11 @@ import com.chrynan.video.common.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
 
 import com.chrynan.video.common.provider.OpenVideoProvider
+import com.chrynan.video.presentation.core.View
 import com.chrynan.video.presentation.reducer.OpenVideoDetailsReducer
 import com.chrynan.video.presentation.state.OpenVideoDetailsChange
 import com.chrynan.video.presentation.state.OpenVideoDetailsIntent
 import com.chrynan.video.presentation.state.OpenVideoDetailsState
-import com.chrynan.video.presentation.view.View
 
 class OpenVideoDetailsPresenter @Inject constructor(
     dispatchers: CoroutineDispatchers,

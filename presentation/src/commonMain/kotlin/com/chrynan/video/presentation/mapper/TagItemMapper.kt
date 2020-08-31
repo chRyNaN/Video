@@ -1,8 +1,8 @@
 package com.chrynan.video.presentation.mapper
 
 import com.chrynan.video.common.Inject
-import com.chrynan.video.common.mapper.Mapper
 import com.chrynan.video.common.model.TagSuggestion
+import com.chrynan.video.presentation.core.Mapper
 import com.chrynan.video.presentation.viewmodel.TagItemViewModel
 
 class TagItemMapper @Inject constructor() :

@@ -3,16 +3,10 @@ package com.chrynan.video.ui.fragment
 import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.chrynan.kotlinutils.perform
 import com.chrynan.video.R
 import com.chrynan.video.coroutine.FragmentCoroutineScope
-import com.chrynan.video.presentation.navigator.Navigator
-import com.chrynan.video.presentation.navigator.Screen
+import com.chrynan.video.presentation.core.*
 import com.chrynan.video.presentation.presenter.BasePresenter
-import com.chrynan.video.presentation.state.Change
-import com.chrynan.video.presentation.state.Intent
-import com.chrynan.video.presentation.state.State
-import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.activity.BaseActivity
 import dagger.android.support.DaggerFragment
 import kotlin.coroutines.CoroutineContext
@@ -84,8 +78,9 @@ abstract class BaseFragment<INTENT : Intent, STATE : State, CHANGE : Change, SCR
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
-    protected fun startActivitySafely(f: (Context) -> android.content.Intent) =
-        context.perform { startActivity(f(this)) }
+    protected fun startActivitySafely(f: (Context) -> android.content.Intent) {
+        startActivity(f(requireContext()))
+    }
 
     protected fun startActivitySafelyAndFinish(f: (Context) -> android.content.Intent) {
         startActivitySafely(f).also {

@@ -6,12 +6,12 @@ import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.action.home.HomeLoadInitialAction
 import com.chrynan.video.presentation.action.home.HomeLoadMoreAction
 import com.chrynan.video.presentation.action.home.HomeRefreshAction
-import com.chrynan.video.presentation.action.perform
+import com.chrynan.video.presentation.core.View
+import com.chrynan.video.presentation.core.perform
 import com.chrynan.video.presentation.reducer.HomeReducer
 import com.chrynan.video.presentation.state.HomeChange
 import com.chrynan.video.presentation.state.HomeIntent
 import com.chrynan.video.presentation.state.HomeState
-import com.chrynan.video.presentation.view.View
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn

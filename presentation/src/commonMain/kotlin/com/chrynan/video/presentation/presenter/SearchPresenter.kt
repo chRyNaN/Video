@@ -3,15 +3,15 @@ package com.chrynan.video.presentation.presenter
 import com.chrynan.logger.Logger
 import com.chrynan.video.common.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.presentation.action.perform
 import com.chrynan.video.presentation.action.search.SearchClearAction
 import com.chrynan.video.presentation.action.search.SearchLoadMoreAction
 import com.chrynan.video.presentation.action.search.SearchQueryAction
+import com.chrynan.video.presentation.core.View
+import com.chrynan.video.presentation.core.perform
 import com.chrynan.video.presentation.reducer.SearchReducer
 import com.chrynan.video.presentation.state.SearchChange
 import com.chrynan.video.presentation.state.SearchIntent
 import com.chrynan.video.presentation.state.SearchState
-import com.chrynan.video.presentation.view.View
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn

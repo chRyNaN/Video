@@ -19,6 +19,7 @@ kotlin {
                 implementation Deps.KOTLIN_COMMON
 
                 implementation project(":common")
+                implementation project(":presentation-core")
 
                 implementation Deps.KOTLIN_COROUTINES_COMMON
 

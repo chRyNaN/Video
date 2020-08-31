@@ -1,10 +1,7 @@
 package com.chrynan.video.presentation.presenter
 
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.presentation.coroutine.PresenterCoroutineScope
-import com.chrynan.video.presentation.state.Change
-import com.chrynan.video.presentation.state.Intent
-import com.chrynan.video.presentation.state.State
+import com.chrynan.video.presentation.core.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
