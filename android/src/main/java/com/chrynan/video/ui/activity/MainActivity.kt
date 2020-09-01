@@ -5,21 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import com.chrynan.expandable.ExpandableChildLayout
-import com.chrynan.expandable.ExpandableContainerView
-import com.chrynan.expandable.ExpandableState
-import com.chrynan.expandable.ExpandableStateListener
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.R
 import com.chrynan.video.presentation.navigator.MainScreen
-import com.chrynan.video.ui.fragment.*
 import com.chrynan.video.ui.widget.BaseExpandableOverlayWidget
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainScreen>(),
     TopMenuView,
-    ExpandableContainerView,
     BottomNavigationView.OnNavigationItemSelectedListener,
     BaseExpandableOverlayWidget.ProgressChangedListener {
 
@@ -40,26 +34,6 @@ class MainActivity : BaseActivity<MainScreen>(),
 
         }
 
-    override val currentExpandableState: ExpandableState
-        get() = ExpandableState.Collapsed // expandableLayout?.currentExpandableState ?: ExpandableState.Collapsed
-
-    override val expandableChildLayout: ExpandableChildLayout?
-        get() = null // videoFragmentContainer
-
-    override val endAsExpanded = true
-
-    override var expandedInteractionView: View?
-        get() = expandableChildLayout?.expandedInteractionView
-        set(value) {
-            expandableChildLayout?.expandedInteractionView = value
-        }
-
-    override var collapsedInteractionView: View?
-        get() = expandableChildLayout?.collapsedInteractionView
-        set(value) {
-            expandableChildLayout?.collapsedInteractionView = value
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -67,22 +41,6 @@ class MainActivity : BaseActivity<MainScreen>(),
         mainBottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
         goTo(MainScreen.Home)
-    }
-
-    override fun addStateListener(listener: ExpandableStateListener) {
-        // expandableLayout?.expandableStateListeners?.add(listener)
-    }
-
-    override fun removeStateListener(listener: ExpandableStateListener) {
-        // expandableLayout?.expandableStateListeners?.remove(listener)
-    }
-
-    override fun expand() {
-        // expandableLayout?.expand()
-    }
-
-    override fun collapse() {
-        // expandableLayout?.collapse()
     }
 
     override fun goTo(screen: MainScreen) {

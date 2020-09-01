@@ -5,8 +5,8 @@ import com.chrynan.video.di.module.fragment.ChannelFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.core.Navigator
 import com.chrynan.video.presentation.navigator.ChannelScreen
-import com.chrynan.video.presentation.navigator.Navigator
 import com.chrynan.video.ui.activity.ChannelActivity
 import com.chrynan.video.ui.fragment.ChannelFragment
 import com.chrynan.video.utils.ActivityContext

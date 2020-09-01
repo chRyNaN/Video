@@ -7,7 +7,7 @@ import com.chrynan.video.di.module.fragment.ServiceProviderListFragmentModule
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
-import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.core.Navigator
 import com.chrynan.video.presentation.navigator.ServiceProviderScreen
 import com.chrynan.video.ui.activity.ServiceProviderActivity
 import com.chrynan.video.ui.fragment.ServiceProviderDetailsFragment

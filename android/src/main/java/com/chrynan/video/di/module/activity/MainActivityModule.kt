@@ -1,14 +1,13 @@
 package com.chrynan.video.di.module.activity
 
-import com.chrynan.expandable.ExpandableContainerView
 import com.chrynan.video.coroutine.ActivityCoroutineScope
 import com.chrynan.video.ui.view.TopMenuView
 import com.chrynan.video.di.module.fragment.*
 import com.chrynan.video.di.qualifier.ActivityContextQualifier
 import com.chrynan.video.di.scope.ActivityScope
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.core.Navigator
 import com.chrynan.video.presentation.navigator.MainScreen
-import com.chrynan.video.presentation.navigator.Navigator
 import com.chrynan.video.ui.activity.MainActivity
 import com.chrynan.video.ui.fragment.*
 import com.chrynan.video.utils.ActivityContext
@@ -31,10 +30,6 @@ internal abstract class MainActivityModule {
     @Binds
     @ActivityScope
     abstract fun bindTopMenuView(activity: MainActivity): TopMenuView
-
-    @Binds
-    @ActivityScope
-    abstract fun bindExpandableView(activity: MainActivity): ExpandableContainerView
 
     @Binds
     @ActivityScope

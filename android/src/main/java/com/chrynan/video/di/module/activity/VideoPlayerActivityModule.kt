@@ -10,7 +10,7 @@ import com.chrynan.video.di.scope.FragmentScope
 import com.chrynan.video.common.provider.OpenVideoProvider
 import com.chrynan.video.di.module.fragment.GenericContentVideoDetailsFragmentModule
 import com.chrynan.video.di.module.fragment.LbryVideoDetailsFragmentModule
-import com.chrynan.video.presentation.navigator.Navigator
+import com.chrynan.video.presentation.core.Navigator
 import com.chrynan.video.presentation.navigator.VideoScreen
 import com.chrynan.video.provider.source.OpenVideoProviderSource
 import com.chrynan.video.ui.activity.VideoPlayerActivity

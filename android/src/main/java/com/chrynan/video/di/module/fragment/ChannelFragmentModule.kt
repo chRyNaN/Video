@@ -1,11 +1,11 @@
 package com.chrynan.video.di.module.fragment
 
 import com.chrynan.video.di.scope.FragmentScope
+import com.chrynan.video.presentation.core.Navigator
+import com.chrynan.video.presentation.core.View
 import com.chrynan.video.presentation.navigator.ChannelDetailsScreen
-import com.chrynan.video.presentation.navigator.Navigator
 import com.chrynan.video.presentation.state.ChannelDetailsIntent
 import com.chrynan.video.presentation.state.ChannelDetailsState
-import com.chrynan.video.presentation.view.View
 import com.chrynan.video.ui.adapter.channel.*
 import com.chrynan.video.ui.adapter.video.VideoRecommendationAdapter
 import com.chrynan.video.ui.fragment.ChannelFragment
