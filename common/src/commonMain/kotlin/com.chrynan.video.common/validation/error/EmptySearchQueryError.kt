@@ -1,6 +1,8 @@
 package com.chrynan.video.common.validation.error
 
-import com.chrynan.video.common.validation.core.ValidationError
+import com.chrynan.validator.ValidationError
 
-object EmptySearchQueryError :
-    ValidationError
+object EmptySearchQueryError : ValidationError {
+
+    override val details: String? = null
+}
