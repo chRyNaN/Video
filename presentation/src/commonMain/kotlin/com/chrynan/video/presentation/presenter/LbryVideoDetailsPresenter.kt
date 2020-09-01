@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.presenter
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.core.View
 import com.chrynan.video.presentation.reducer.LbryVideoDetailsReducer

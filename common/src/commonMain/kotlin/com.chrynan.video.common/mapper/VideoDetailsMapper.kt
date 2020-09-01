@@ -1,6 +1,6 @@
 package com.chrynan.video.common.mapper
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.model.api.VideoDetails
 import com.chrynan.video.common.model.api.VideoInfo
 

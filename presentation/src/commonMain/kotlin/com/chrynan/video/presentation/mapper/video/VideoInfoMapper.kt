@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.mapper.video
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.presentation.core.AdapterItem
 import com.chrynan.video.presentation.core.Mapper
 

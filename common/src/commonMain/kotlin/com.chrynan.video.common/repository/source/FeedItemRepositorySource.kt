@@ -2,7 +2,7 @@ package com.chrynan.video.common.repository.source
 
 import FeedQuery
 import com.apollographql.apollo.api.Input
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.graphql.GraphQLClientFactory
 import com.chrynan.video.common.graphql.filterSuccess
 import com.chrynan.video.common.mapper.FeedItemMapper

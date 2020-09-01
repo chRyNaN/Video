@@ -4,7 +4,7 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.ApolloExperimental
 import com.apollographql.apollo.api.ScalarTypeAdapters
 import com.apollographql.apollo.network.http.ApolloHttpNetworkTransport
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.model.core.UriString
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 

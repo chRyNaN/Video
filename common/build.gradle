@@ -26,7 +26,7 @@ kotlin {
 
                 implementation Deps.KOTLIN_COROUTINES_COMMON
 
-                implementation Deps.CHRYNAN_INJECT_COMMON
+                api Deps.CHRYNAN_INJECT_COMMON
 
                 // HTTP
                 api Deps.KTOR_CORE_COMMON
@@ -49,7 +49,7 @@ kotlin {
             dependencies {
                 implementation Deps.KOTLIN_JVM
 
-                implementation Deps.CHRYNAN_INJECT_JVM
+                api Deps.CHRYNAN_INJECT_JVM
                 implementation Deps.JAVAX_INJECT
 
                 implementation Deps.KOTLIN_COROUTINES_JVM

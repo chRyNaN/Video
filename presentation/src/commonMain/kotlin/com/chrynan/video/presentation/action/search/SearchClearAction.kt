@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.action.search
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.presentation.core.Action
 import com.chrynan.video.presentation.state.SearchChange
 import com.chrynan.video.presentation.state.SearchIntent

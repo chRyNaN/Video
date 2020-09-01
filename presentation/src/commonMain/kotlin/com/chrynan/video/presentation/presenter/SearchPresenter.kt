@@ -1,7 +1,7 @@
 package com.chrynan.video.presentation.presenter
 
 import com.chrynan.logger.Logger
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
 import com.chrynan.video.presentation.action.search.SearchClearAction
 import com.chrynan.video.presentation.action.search.SearchLoadMoreAction

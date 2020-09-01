@@ -1,6 +1,6 @@
 package com.chrynan.video.presentation.action.home
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.model.api.FeedItem
 import com.chrynan.video.common.repository.FeedItemRepository
 import com.chrynan.video.common.utils.startWith

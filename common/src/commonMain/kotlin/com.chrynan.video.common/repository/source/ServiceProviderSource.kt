@@ -1,6 +1,6 @@
 package com.chrynan.video.common.repository.source
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.model.ServiceProvider
 import com.chrynan.video.common.model.core.UriString
 import com.chrynan.video.common.repository.ServiceProviderRepository

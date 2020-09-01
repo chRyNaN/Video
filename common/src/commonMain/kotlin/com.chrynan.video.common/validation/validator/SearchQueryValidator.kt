@@ -1,6 +1,6 @@
 package com.chrynan.video.common.validation.validator
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.model.SearchQuery
 import com.chrynan.video.common.validation.core.ValidationResult
 import com.chrynan.video.common.validation.core.Validator

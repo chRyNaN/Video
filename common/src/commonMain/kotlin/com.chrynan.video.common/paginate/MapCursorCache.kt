@@ -1,10 +1,9 @@
 package com.chrynan.video.common.paginate
 
-import com.chrynan.video.common.Inject
+import com.chrynan.inject.Inject
 import com.chrynan.video.common.model.core.UriString
 
-class MapCursorCache @Inject constructor() :
-    CursorCache {
+class MapCursorCache @Inject constructor() : CursorCache {
 
     private val cacheMap = mutableMapOf<UriString, CursorCacheValue?>()
 
