@@ -28,6 +28,10 @@ kotlin {
 
                 api Deps.CHRYNAN_INJECT_COMMON
 
+                // Validation
+                api Deps.CHRYNAN_VALIDATOR_CORE_COMMON
+                api Deps.CHRYNAN_VALIDATOR_WEB_COMMON
+
                 // HTTP
                 api Deps.KTOR_CORE_COMMON
                 api Deps.KTOR_SERIALIZATION
@@ -51,6 +55,10 @@ kotlin {
 
                 api Deps.CHRYNAN_INJECT_JVM
                 implementation Deps.JAVAX_INJECT
+
+                // Validation
+                api Deps.CHRYNAN_VALIDATOR_CORE_JVM
+                api Deps.CHRYNAN_VALIDATOR_WEB_JVM
 
                 implementation Deps.KOTLIN_COROUTINES_JVM
 

@@ -22,6 +22,7 @@ object Versions {
     const val CHRYNAN_LOGGING = "1.2.1"
     const val CHRYNAN_AAAAH = "0.7.0"
     const val CHRYNAN_INJECT = "0.6.0"
+    const val CHRYNAN_VALIDATOR = "0.1.0"
 
     const val UI_CIRCLE_VIEW = "3.0.1"
 
@@ -102,6 +103,14 @@ object Deps {
     const val CHRYNAN_INJECT_COMMON = "com.chrynan.inject:inject-common:${Versions.CHRYNAN_INJECT}"
     const val CHRYNAN_INJECT_JVM = "com.chrynan.inject:inject-jvm:${Versions.CHRYNAN_INJECT}"
     const val CHRYNAN_INJECT_JS = "com.chrynan.inject:inject-js:${Versions.CHRYNAN_INJECT}"
+    const val CHRYNAN_VALIDATOR_CORE_COMMON =
+        "com.chrynan.validator:validator-core:${Versions.CHRYNAN_VALIDATOR}"
+    const val CHRYNAN_VALIDATOR_CORE_JVM =
+        "com.chrynan.validator:validator-core-jvm:${Versions.CHRYNAN_VALIDATOR}"
+    const val CHRYNAN_VALIDATOR_WEB_COMMON =
+        "com.chrynan.validator:validator-web:${Versions.CHRYNAN_VALIDATOR}"
+    const val CHRYNAN_VALIDATOR_WEB_JVM =
+        "com.chrynan.validator:validator-web-jvm:${Versions.CHRYNAN_VALIDATOR}"
 
     const val UI_CIRCLE_VIEW = "de.hdodenhof:circleimageview:${Versions.UI_CIRCLE_VIEW}"
 
