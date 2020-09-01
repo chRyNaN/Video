@@ -21,7 +21,7 @@ object Versions {
 
     const val CHRYNAN_LOGGING = "1.2.1"
     const val CHRYNAN_AAAAH = "0.7.0"
-    const val CHRYNAN_INJECT = "0.5.0"
+    const val CHRYNAN_INJECT = "0.6.0"
 
     const val UI_CIRCLE_VIEW = "3.0.1"
 
