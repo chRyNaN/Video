@@ -38,7 +38,7 @@ class ChannelInfoAdapter @Inject constructor(
         if (item.about != null) {
             adapterChannelInfoAboutTextView?.let {
                 it.visibility = View.VISIBLE
-                markdownParser.setMarkdown(it, item.about)
+                markdownParser.setMarkdown(it, item.about!!)
             }
         } else {
             adapterChannelInfoAboutTextView?.visibility = View.GONE

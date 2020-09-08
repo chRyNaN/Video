@@ -3,7 +3,7 @@ package com.chrynan.video.ui.adapter.factory
 import androidx.recyclerview.widget.RecyclerView
 import com.chrynan.aaaah.*
 import com.chrynan.video.common.coroutine.CoroutineDispatchers
-import com.chrynan.video.presentation.viewmodel.AdapterItem
+import com.chrynan.video.presentation.core.AdapterItem
 import com.chrynan.video.ui.adapter.core.AdapterItemHandler
 import com.chrynan.video.ui.adapter.core.BaseAdapter
 import com.chrynan.video.ui.adapter.core.BaseAdapterItemHandler
